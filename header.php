@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin Dashboard</title>
 
-    <link rel="" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     
@@ -38,7 +38,7 @@
                   <a href="form.php" class="nav-link text-white">Form example</a>
                 
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="register.php">Register</a>
+                        <a class="nav-link text-white" href="registration.php">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="login.php">Login</a>

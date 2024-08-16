@@ -6,32 +6,11 @@ require_once "header.php";
 
 
   
-<div class="container py-5 mb5">
-  <h1 class="mb-5"> <b> Institut za zdravlje i sigurnost hrane </b></h1>
+<div class="container  mb5">
+  <h1 class="mb-5 naslov"> <b> Institut za zdravlje i sigurnost hrane </b></h1>
 
-  <div class="row">
-    <div class="col-md-3">
-        <form class="mb-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-success">Search</button>
-            </div>
-          </div>
-        </form>
-
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action"> Dashboard </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            Inbox
-            <span class="badge badge-primary badge-pill ml-auto">14</span>
-          </a>
-          <a href="#" class="link-opacity-100-hover">Orders</a>
-          <a href="#" class="list-group-item list-group-item-action">Uzorak</a>
-          <a href="#" class="list-group-item list-group-item-action">Firma</a>
-          <a href="#" class="list-group-item list-group-item-action">Radnici</a>
-        </div>
-    </div>
+  <div class="roww ">
+    
     <div class="col-md-9">
 
       <div class="row d-none">
@@ -49,21 +28,29 @@ require_once "header.php";
         </div>
       </div>
 
-      <table class="table">
+      <table class="table-listItems">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Ime</th>
-      <th scope="col">Prezime</th>
-      <th scope="col">Email</th>
       <th scope="col">Slika</th>
-      <th scope="col">Uredi</th>
+      <th scope="col">Telefon</th>
+      <th scope="col">Adresa</th>
+      <th scope="col">Odjel</th>
+      <th scope="col">Uredi / Obriši</th>
+      
     </tr>
   </thead>
   <tbody>
+
+    <?php 
+      //int i;
+      for($i=1;$i<10;$i++) :
+
+      ?>
   
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><?php echo $i; ?></th>
       <td>
         <a href="#">
         Some item on your list
@@ -85,158 +72,53 @@ require_once "header.php";
         </a>
       </td>
       <td>
-      <a href="#!" class="btn btn-success">
-      <span class="fas fa-edit mr-"></span>
-      Edit</a>
-
+        <a href="#">
+        tehnicar
+        </a>
+      </td>
+      <td>
+        <a href="#!" class="link-edit btn-sm my-1 my-sm-0">
+        <span span class="fas fa-edit mr-1"></span>
+        Uredi</a>
         
-        <a href="#" class="btn btn-sm btn-link my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">2</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
         <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
           <span class="fas fa-trash mr-1"></span>
-          Delete</a>
+          Obriši</a>
       </td>
     </tr>
+    <?php endfor; ?>
   
-    <tr>
-      <th scope="row">3</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">4</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">5</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">6</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">7</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">8</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-    <tr>
-      <th scope="row">9</th>
-      <td>
-        <a href="#">
-        Some item on your list
-        </a>
-      </td>
-      <td>
-        <a href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
-          <span class="fas fa-edit mr-1"></span>
-          Edit</a>
-        <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
-          <span class="fas fa-trash mr-1"></span>
-          Delete</a>
-      </td>
-    </tr>
-  
-  </tbody>
-</table>
-
-    </div>
-  </div>
+    <div class='sidebar'>
+		<div class='sidebar-area'> 
+			<div class='row' style='margin-bottom: 20px;'> 
+				<div class='col-md-6 '> 
+        <div class='user-profile'> 
+						<img src='images/3678412 - doctor medical care medical help stethoscope.png' class='img-responsive' style='max-height: 80px;' /> 
+					</div>
+				</div> 
+				<div class='col-md-6'> 
+        <div class='user-names'> 
+						<p>Muhamed</p> 
+					</div>
+					
+					<div class='user-role'> 
+          <p>Admin</p> 
+					</div>
+				</div> 
+			</div> 
+			<ul class='sidebar-menu'>
+				<li><a href='index.php'><img class='sidebar-menu-icon' src='images/ic_account_balance_wallet_white_24dp.png'  /> Dashboard</a></li>
+				<li><a href='profile.php?token=<?php echo $userToken; ?>'><img class='sidebar-menu-icon' src='images/ic_account_box_white_24dp.png'  /> Profile</a></li>
+				<li><a href='patients.php'><img class='sidebar-menu-icon' src='images/ic_assignment_ind_white_24dp.png'  /> Radnici</a></li>
+				<li><a href='add-doctors.php'><img class='sidebar-menu-icon' src='images/ic_group_add_white.png'  /> Auta</a></li>
+				<li><a href='doctors-record.php'><img class='sidebar-menu-icon' src='images/ic_group_add_white.png'  /> Poslovi</a></li>
+				<li><a href='appointments.php'><img class='sidebar-menu-icon' src='images/ic_alarm_white_24dp.png'  /> Firme</a></li>
+				<!--<li><a href='enquiry.php'><img class='sidebar-menu-icon' src='images/ic_help_outline_white_24dp.png'  /> Enquiry</a></li>-->
+				<li><a href='add-outbreak.php'><img class='sidebar-menu-icon' src='images/ic_group_work_white_24dp.png'  /> Historija</a></li>
+				
+			</ul> 
+		</div> 
+	</div>
 
 <?php
 
