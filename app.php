@@ -88,26 +88,9 @@ require_once "header.php";
     </tr>
     <?php endfor; ?>
   
-    <div class='sidebar'>
-		<div class='sidebar-area'> 
-			<div class='row' style='margin-bottom: 20px;'> 
-				<div class=' razmak'> 
-        
-				</div> 
-			</div> 
-			<ul class='sidebar-menu'>
-				<li><a href='index.php'><img class='sidebar-menu-icon' src='images/ic_account_balance_wallet_white_24dp.png'  /> Dashboard</a></li>
-				<li><a href='profile.php?token=<?php echo $userToken; ?>'><img class='sidebar-menu-icon' src='images/ic_account_box_white_24dp.png'  /> Profile</a></li>
-				<li><a href='patients.php'><img class='sidebar-menu-icon' src='images/ic_assignment_ind_white_24dp.png'  /> Radnici</a></li>
-				<li><a href='add-doctors.php'><img class='sidebar-menu-icon' src='images/ic_group_add_white.png'  /> Auta</a></li>
-				<li><a href='doctors-record.php'><img class='sidebar-menu-icon' src='images/ic_group_add_white.png'  /> Poslovi</a></li>
-				<li><a href='appointments.php'><img class='sidebar-menu-icon' src='images/ic_alarm_white_24dp.png'  /> Firme</a></li>
-				<!--<li><a href='enquiry.php'><img class='sidebar-menu-icon' src='images/ic_help_outline_white_24dp.png'  /> Enquiry</a></li>-->
-				<li><a href='add-outbreak.php'><img class='sidebar-menu-icon' src='images/ic_group_work_white_24dp.png'  /> Historija</a></li>
-				
-			</ul> 
-		</div> 
-	</div>
+    <?php require_once "sidebar.php"; ?>
+
+  <h1 class="razmak"></h1>
 
 <?php
 

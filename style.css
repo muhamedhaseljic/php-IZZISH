@@ -54,6 +54,7 @@
     border-top: 1px solid #dee2e6; }
 
 .roww {
+    margin-top: -48px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -62,12 +63,13 @@
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
     margin-right: -30%;
+    margin-left: 5%;
      }
 .naslov{
     margin-left: 0;
     
 }
-
+/*
 .sidebar{
 	position: relative;
 
@@ -77,7 +79,7 @@
 	z-index: 1;
 	position: fixed;
 	top: 50px;
-	background: #633636; 
+	background: #4a903a; 
 	width: 219px;
 	height: 100%;
 	padding: 100px 10px 10px 10px;
@@ -131,4 +133,12 @@
 
 .razmak{
     margin-bottom: 100px;
+}
+
+.proba{
+    color: orange;
+}*/
+
+.razmak{
+    margin-bottom: 50px;
 }
