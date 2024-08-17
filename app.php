@@ -7,7 +7,7 @@ require_once "header.php";
 
   
 <div class="container  mb5">
-  <h1 class="mb-5 naslov"> <b> Institut za zdravlje i sigurnost hrane </b></h1>
+  
 
   <div class="roww ">
     
@@ -91,19 +91,8 @@ require_once "header.php";
     <div class='sidebar'>
 		<div class='sidebar-area'> 
 			<div class='row' style='margin-bottom: 20px;'> 
-				<div class='col-md-6 '> 
-        <div class='user-profile'> 
-						<img src='images/3678412 - doctor medical care medical help stethoscope.png' class='img-responsive' style='max-height: 80px;' /> 
-					</div>
-				</div> 
-				<div class='col-md-6'> 
-        <div class='user-names'> 
-						<p>Muhamed</p> 
-					</div>
-					
-					<div class='user-role'> 
-          <p>Admin</p> 
-					</div>
+				<div class=' razmak'> 
+        
 				</div> 
 			</div> 
 			<ul class='sidebar-menu'>
