@@ -9,26 +9,13 @@ require_once "header.php";
 <div class="container  mb5">
   
 
-  <div class="roww ">
+  <div class="roww col-lg-12">
     
-    <div class="col-md-9">
+    <div class="col-md-9 card">
 
-      <div class="row d-none">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">
-                Some quick example text to build on the card title
-                and make up the bulk of the card's content.
-              </p>
-              <!--<a href="#!" class="btn btn-primary">Go somewhere</a>-->
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
-      <table class="table-listItems">
+      <table class="table-listItems table-bordered table-striped">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
@@ -87,6 +74,11 @@ require_once "header.php";
       </td>
     </tr>
     <?php endfor; ?>
+    </tbody>
+</table>
+
+    </div>
+  </div>
   
     <?php require_once "sidebar.php"; ?>
 

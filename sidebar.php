@@ -1,33 +1,33 @@
 <style>
 	nav#sidebar {
     height: calc(100%);
-    position: fixed;
+    /*position: fixed; */
     z-index: 99;
     left: 0;
     width: 300px;
-    background: url(assets/img/payroll-cover.jpg);
+    /*background: url(assets/img/payroll-cover.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 a.nav-item {
     position: relative;
     display: block;
-    padding: .75rem 1.25rem;
+    padding: .95rem 1.55rem;
     margin-bottom: -1px;
     border: 1px solid rgba(0,0,0,.125);
-    background-color: #000000c4;
-    color: #989898;
+    background-color: #dbe9d8;
+    color: #434952;
     font-weight: 600;
 }
 a.nav-item:hover, .nav-item.active {
-    background-color: #000000ad;
+    background-color:#202020;
     color: #fffafa;
 }
 
 </style>
 
-<nav id="sidebar" class='mx-lt-5 bg-dark' >
+<nav id="sidebar" class='mx-lt-5 bojapozadine' >
 		
 		<div class="sidebar-list">
 
