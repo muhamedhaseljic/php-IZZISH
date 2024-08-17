@@ -6,12 +6,25 @@ require_once "header.php";
 
 
   
-<div class="container  mb5">
-  
+<div class="custom-container d-flex">
+<?php require_once "sidebar.php"; ?>
 
-  <div class="roww col-lg-12">
-    
-    <div class="col-md-9 card">
+  <div class="roww  ">
+  <div class=" custom-card-header card-header row-top-form align-items-center">
+            <div class="col-md-6 ">
+              <span class="naziv"><b>Lista radnika</b></span>
+              <div class="input-group">
+              <input type="text" class="custom-form-control" placeholder="Search">
+              <div class="input-group-append">
+                <button type="submit" class=" link-edit">Search</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 text-right">
+						<button class="float-right link-edit " type="button" id="new_emp_btn"><span class="fa fa-plus"></span> Add Employee</button>
+            </div>
+          </div>
+    <div class=" scrolling-div">
 
       
 
@@ -80,9 +93,9 @@ require_once "header.php";
     </div>
   </div>
   
-    <?php require_once "sidebar.php"; ?>
+    
 
-  <h1 class="razmak"></h1>
+  
 
 <?php
 

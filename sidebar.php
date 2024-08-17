@@ -1,10 +1,12 @@
 <style>
 	nav#sidebar {
+    margin-top: -48px;
     height: calc(100%);
-    /*position: fixed; */
+    position: sticky; 
     z-index: 99;
     left: 0;
-    width: 300px;
+    width: 15%;
+    
     /*background: url(assets/img/payroll-cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;*/
