@@ -6,14 +6,10 @@ require_once "header.php";
 
 
   
-<div class="custom-container d-flex">
-<?php require_once "sidebar.php"; ?>
+
+
   
-  
-  <div class="roww  ">
-  <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home'; ?>
-  <?php include $page .".php" ?>
-  <!-- <div class=" custom-card-header card-header row-top-form align-items-center">
+  <div class=" custom-card-header card-header row-top-form align-items-center">
             <div class="col-md-6 ">
               <span class="naziv"><b>Lista radnika</b></span>
               <div class="input-group">
@@ -93,8 +89,8 @@ require_once "header.php";
     </tbody>
 </table>
 
-    </div>
-  </div>-->
+    
+  
   
     
 

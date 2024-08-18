@@ -2,7 +2,7 @@
 	nav#sidebar {
     margin-top: -48px;
     height: calc(100%);
-    position: sticky; 
+    position: fixed; 
     z-index: 99;
     left: 0;
     width: 15%;
@@ -17,19 +17,20 @@ a.nav-item {
     display: block;
     padding: .95rem 1.55rem;
     margin-bottom: -1px;
-    border: 1px solid rgba(0,0,0,.125);
-    background-color: #dbe9d8;
-    color: #434952;
+    border: 1px solid black;
+    background-color: #202020;
+    color: white;
     font-weight: 600;
 }
 a.nav-item:hover, .nav-item.active {
-    background-color:#202020;
+    background-color:black;
     color: #fffafa;
+    text-decoration:none;
 }
 
 </style>
 
-<nav id="sidebar" class='mx-lt-5 bojapozadine' >
+<nav id="sidebar" class='mx-lt-5  bg-dark' >
 		
 		<div class="sidebar-list">
 
@@ -45,6 +46,7 @@ a.nav-item:hover, .nav-item.active {
 					
 				
 				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
+                
 				
 			
 		</div>

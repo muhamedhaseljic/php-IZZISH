@@ -17,12 +17,12 @@
     
     
   </head>
-  <body>
+  <body class="bg-light">
 
-  <div class="bg-success navbar-dark text-white">
+  <div class="bg-dark navbar-dark text-white">
     <div class="container">
         
-      <nav class="navbar navbar-expand-lg navbar-dark  bg-success mb-5 ">
+      <nav class="navbar navbar-expand-lg navbar-dark  bg-dark mb-5 ">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="inz_logo_-1.png" width="220" height="60" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
