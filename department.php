@@ -1,20 +1,5 @@
-<?php
 
-require_once "header.php";
-
-?>
-
-
-  
-<div class="custom-container d-flex">
-<?php require_once "sidebar.php"; ?>
-
-  
-<?php $page = isset($_GET['page']) ? $_GET['page'] : 'home'; ?>
-<?php include $page .".php" ?>
-  <!-- 
-  <div class="roww  ">
-  
+<div class="roww  ">
   <div class=" custom-card-header card-header row-top-form align-items-center">
             <div class="col-md-6 ">
               <span class="naziv"><b>Lista radnika</b></span>
@@ -27,8 +12,8 @@ require_once "header.php";
           </div>
           <div class="col-md-6 text-right">
 						<button class="float-right link-edit " type="button" id="new_emp_btn"><span class="fa fa-plus"></span> Add Employee</button>
-            </div>
           </div>
+    </div>
     <div class=" scrolling-div">
 
       
@@ -42,16 +27,20 @@ require_once "header.php";
       <th scope="col">Telefon</th>
       <th scope="col">Adresa</th>
       <th scope="col">Odjel</th>
-      <th scope="col">Uredi / Obriši</th>
+      
       
     </tr>
   </thead>
   <tbody>
 
-    
+    <?php 
+      //int i;
+      for($i=1;$i<10;$i++) :
+
+      ?>
   
     <tr>
-      <th scope="row"></th>
+      <th scope="row"><?php echo $i; ?></th>
       <td>
         <a href="#">
         Some item on your list
@@ -87,20 +76,8 @@ require_once "header.php";
           Obriši</a>
       </td>
     </tr>
-    
+    <?php endfor; ?>
     </tbody>
 </table>
-
-    </div>
-  </div>
-  -->
-  
-    
-
-  
-
-<?php
-
-require_once "footer.php";
-
-?>
+</div>
+</div>

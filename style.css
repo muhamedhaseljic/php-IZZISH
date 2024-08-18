@@ -210,3 +210,9 @@
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
      }
+     .contentt {
+        margin-left: 220px;
+        padding: 20px;
+        flex-grow: 1;
+        background-color: red;
+    }

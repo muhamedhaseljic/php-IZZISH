@@ -2,7 +2,7 @@
 	nav#sidebar {
     margin-top: -48px;
     height: calc(100%);
-    position: fixed; 
+    position: sticky; 
     z-index: 99;
     left: 0;
     width: 15%;
@@ -22,7 +22,12 @@ a.nav-item {
     color: white;
     font-weight: 600;
 }
-a.nav-item:hover, .nav-item.active {
+a.nav-item:hover {
+    background-color:black;
+    color: #fffafa;
+    text-decoration:none;
+}
+.nav-item.active{
     background-color:black;
     color: #fffafa;
     text-decoration:none;
