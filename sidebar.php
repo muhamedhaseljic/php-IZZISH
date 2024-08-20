@@ -114,3 +114,12 @@ h3.nav-item{
 		</div>
 
 </nav>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var page = '<?php echo isset($_GET['page']) ? htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8') : ''; ?>';
+        if (page) {
+            $('.nav-' + page).addClass('active');
+        }
+    });
+</script>

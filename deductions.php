@@ -176,7 +176,7 @@ button {
                         <th>Email</th>
                         <th>Number</th>
                         <th>Role</th>
-                        <th>Gender</th>
+                        <th>Gender</th>                        
                         <th>Image</th>
                         <th>CreatedAt</th>
                         <th>Actions</th>
