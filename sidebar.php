@@ -58,8 +58,8 @@ img.nav-item{
     background-color: #16171b;
     color: white;
     font-weight: 400;
-    margin-bottom:100px;
-    margin-top: 50px;
+    margin-bottom:110px;
+    margin-top: 110px;
 }
 .sidebar-custom  a.nav-item:last-child {
     position: relative;

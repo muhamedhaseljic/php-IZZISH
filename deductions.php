@@ -98,7 +98,20 @@ tbody tr:last-child {
     border-radius: 50%;
 }
 
-.custom-add-btn, .custom-edit-btn, .custom-delete-btn {
+.custom-add-btn{
+    padding: 10px 20px;
+    color: #fff;
+    
+    background-color: #262c78;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+}
+.custom-add-btn:hover{
+    background-color: #484b8f;
+}
+.custom-edit-btn, .custom-delete-btn {
     background-color: #444;
     border: none;
     padding: 10px;
@@ -107,15 +120,10 @@ tbody tr:last-child {
     color: white;
 }
 
-.custom-add-btn:hover, .custom-edit-btn:hover, .custom-delete-btn:hover {
+ .custom-edit-btn:hover, .custom-delete-btn:hover {
     background-color: #555;
 }
 
-.custom-add-btn {
-    padding: 10px 20px;
-    color: #fff;
-    font-weight: bold;
-}
 
 .custom-edit-btn {
     margin-right: 10px;
