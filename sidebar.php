@@ -1,12 +1,13 @@
 <style>
 	nav#sidebar {
     margin-top: -48px;
-    height: calc(100%);
+    height: 89vh;
     position: sticky; 
+    padding: 20px;
     z-index: 99;
     left: 0;
     width: 15%;
-    
+    border: 1px solid black;
     /*background: url(assets/img/payroll-cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;*/
@@ -15,24 +16,25 @@
 a.nav-item {
     position: relative;
     display: block;
-    padding: .95rem 1.55rem;
+    padding: 0.55rem 0.95rem;
+    
     margin-bottom: -1px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     background-color: #202020;
     color: white;
     font-weight: 600;
 }
 a.nav-item:hover {
-    background-color:black;
-    color: #fffafa;
+    background-color:#6c68fb;
+    color: black;
     text-decoration:none;
+    border-radius: 10px;
 }
 .nav-item.active{
-    background-color:black;
+    background-color:#6c68fb;
     color: #fffafa;
     text-decoration:none;
 }
-
 </style>
 
 <nav id="sidebar" class='mx-lt-5  bg-dark' >
@@ -51,7 +53,7 @@ a.nav-item:hover {
 					
 				
 				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
-                
+                <a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
 				
 			
 		</div>

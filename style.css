@@ -39,6 +39,7 @@
     width: 100%;
   margin-bottom: 1rem;
   color: #212529;
+  
 }
 
 .table-listItems .thead-light th {
@@ -215,4 +216,8 @@
         padding: 20px;
         flex-grow: 1;
         background-color: red;
+    }
+    .rezmak{
+        margin: 10px;
+        padding: 10px;
     }

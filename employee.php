@@ -6,20 +6,20 @@
               <div class="input-group">
               <input type="text" class="custom-form-control" placeholder="Search">
               <div class="input-group-append">
-                <button type="submit" class=" link-edit">Search</button>
+                <button type="submit" class=" btn-light link-edit">Search</button>
               </div>
             </div>
           </div>
           <div class="col-md-6 text-right">
-						<button class="float-right link-edit " type="button" id="new_emp_btn"><span class="fa fa-plus"></span> Add Employee</button>
+						<button class="float-right link-edit btn-success" type="button" id="new_emp_btn"><span class="fa fa-plus"></span> Add Employee</button>
           </div>
     </div>
     <div class=" scrolling-div">
 
       
 
-      <table class="table-listItems table-bordered table-striped">
-  <thead class="thead-light">
+      <table class="table-responsive table-listItems table-border  table-dark table-hover table-sm" style="border-width:10px">
+  <thead class="table-active">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Ime</th>
@@ -27,7 +27,7 @@
       <th scope="col">Telefon</th>
       <th scope="col">Adresa</th>
       <th scope="col">Odjel</th>
-      <th scope="col">Uredi / Obriši</th>
+      <th scope="col">Akcije</th>
       
     </tr>
   </thead>
@@ -39,41 +39,48 @@
 
       ?>
   
-    <tr>
+    <tr">
       <th scope="row"><?php echo $i; ?></th>
       <td>
-        <a href="#">
+        
         Some item on your list
-        </a>
+        
       </td>
       <td>
-        <a href="#">
+        
         neko prezime
-        </a>
+        
       </td>
       <td>
-        <a href="#">
+        
         neki mejl
-        </a>
+        
       </td>
       <td>
-        <a href="#">
+        
         neka slika
-        </a>
+        
       </td>
       <td>
-        <a href="#">
+        
         tehnicar
-        </a>
+        
       </td>
       <td>
+
+      <a href="#" class="btn btn-sm btn-light my-1 my-sm-0">
+          <span class="fas fa-eye mr-1"></span>
+          </a>
+
         <a href="#!" class="link-edit btn-sm my-1 my-sm-0">
         <span span class="fas fa-edit mr-1"></span>
-        Uredi</a>
+        </a>
         
         <a href="#" class="btn btn-sm btn-danger my-1 my-sm-0">
           <span class="fas fa-trash mr-1"></span>
-          Obriši</a>
+          </a>
+
+          
       </td>
     </tr>
     <?php endfor; ?>
