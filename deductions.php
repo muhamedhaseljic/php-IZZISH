@@ -94,6 +94,13 @@ tbody tr:last-child {
     
 }
 
+.custom-table tbody tr:hover td {
+    
+    background-color: #232728;
+    
+    
+}
+
 .custom-profile-img {
     width: 40px;
     height: 40px;
@@ -178,7 +185,7 @@ button {
                         <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
                         <td>28/02/2023 12:07:33</td>
                         <td>
-                        <button class="custom-delete-btn">👀</button>
+                            <button class="custom-edit-btn">👀</button>
                             <button class="custom-edit-btn">✏️</button>
                             <button class="custom-delete-btn">❌</button>
                         </td>
@@ -193,7 +200,7 @@ button {
                         <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
                         <td>28/02/2023 12:07:33</td>
                         <td>
-                            <button class="custom-delete-btn">👀</button>
+                            <button class="custom-edit-btn">👀</button>
                             <button class="custom-edit-btn">✏️</button>
                             <button class="custom-delete-btn">❌</button>                            
 

@@ -79,9 +79,10 @@ img.nav-item{
     display: flex;
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
+    color:grey;
     
-    background-color: #16171b;
-    color: white;
+    
+    
 
 }
 h3.nav-item{
