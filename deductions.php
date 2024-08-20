@@ -4,6 +4,7 @@
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
     padding: 100px;
+    padding-top:20px;
     background-color: #16171b;
     min-height: 100vh;
 }
@@ -96,7 +97,7 @@ tbody tr:last-child {
 
 .custom-table tbody tr:hover td {
     
-    background-color: #232728;
+    background-color: #2b2f30;
     
     
 }
@@ -152,6 +153,12 @@ button {
     color:white;
     margin-bottom:20px;
 }
+.scrolling-divv{
+    overflow-y: scroll;
+    height: 69vh;
+    box-sizing: border-box;
+    width: 100%;
+}
     </style>
     
     <div class="custom-main-content">
@@ -160,6 +167,7 @@ button {
                 <input type="text" placeholder="Search name..." class="custom-search-bar">
                 <button class="custom-add-btn">Add</button>
             </div>
+            <div class="scrolling-divv">
             <table class="table custom-table">
                 <thead>
                     <tr>
@@ -206,7 +214,88 @@ button {
 
                         </td>
                     </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zijad Doglod</td>
+                        <td>zijad@gmail.com</td>
+                        <td>062624571</td>
+                        <td>Kmet</td>
+                        <td>Male</td>
+                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
+                        <td>28/02/2023 12:07:33</td>
+                        <td>
+                            <button class="custom-edit-btn">👀</button>
+                            <button class="custom-edit-btn">✏️</button>
+                            <button class="custom-delete-btn">❌</button>                            
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zijad Doglod</td>
+                        <td>zijad@gmail.com</td>
+                        <td>062624571</td>
+                        <td>Kmet</td>
+                        <td>Male</td>
+                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
+                        <td>28/02/2023 12:07:33</td>
+                        <td>
+                            <button class="custom-edit-btn">👀</button>
+                            <button class="custom-edit-btn">✏️</button>
+                            <button class="custom-delete-btn">❌</button>                            
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zijad Doglod</td>
+                        <td>zijad@gmail.com</td>
+                        <td>062624571</td>
+                        <td>Kmet</td>
+                        <td>Male</td>
+                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
+                        <td>28/02/2023 12:07:33</td>
+                        <td>
+                            <button class="custom-edit-btn">👀</button>
+                            <button class="custom-edit-btn">✏️</button>
+                            <button class="custom-delete-btn">❌</button>                            
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zijad Doglod</td>
+                        <td>zijad@gmail.com</td>
+                        <td>062624571</td>
+                        <td>Kmet</td>
+                        <td>Male</td>
+                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
+                        <td>28/02/2023 12:07:33</td>
+                        <td>
+                            <button class="custom-edit-btn">👀</button>
+                            <button class="custom-edit-btn">✏️</button>
+                            <button class="custom-delete-btn">❌</button>                            
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Zijad Doglod</td>
+                        <td>zijad@gmail.com</td>
+                        <td>062624571</td>
+                        <td>Kmet</td>
+                        <td>Male</td>
+                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
+                        <td>28/02/2023 12:07:33</td>
+                        <td>
+                            <button class="custom-edit-btn">👀</button>
+                            <button class="custom-edit-btn">✏️</button>
+                            <button class="custom-delete-btn">❌</button>                            
+
+                        </td>
+                    </tr>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>
+            </div>
         </div>

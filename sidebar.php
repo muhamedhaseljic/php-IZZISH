@@ -79,10 +79,7 @@ img.nav-item{
     display: flex;
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
-    color:grey;
-    
-    
-    
+    color:grey;   
 
 }
 h3.nav-item{
