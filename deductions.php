@@ -29,7 +29,9 @@
     width: 300px;
     border-radius: 20px;
     border: none;
-    color: #000;
+    color: white;
+    background-color:#16171b;
+    border:1px solid white;
 }
 
 /* Table Styling */
