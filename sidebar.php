@@ -16,7 +16,7 @@ a.nav-item {
     
     background-color: #16171b;
     color: white;
-    font-weight: 600;
+    font-weight: 100;
 }
 a.nav-item:hover{
     background-color:#6c68fb;
@@ -37,13 +37,58 @@ a.nav-item:hover{
 }
 div.nav-item{
     position: relative;
-    display: block;
+    display: flex;
     padding: 0.55rem 0.35rem;
     margin-bottom: -1px;
     
     background-color: #16171b;
     color: white;
     font-weight: 400;
+    margin-bottom:0px; 
+    place-content:center;
+}
+div.nav-item img{
+    border-radius:100%;
+}
+
+img.nav-item{
+    position: relative;
+    display: block;
+    padding: 0.55rem 0.35rem;    
+    background-color: #16171b;
+    color: white;
+    font-weight: 400;
+    margin-bottom:100px;
+    margin-top: 50px;
+}
+.sidebar-custom  a.nav-item:last-child {
+    position: relative;
+    display: flex;
+    padding: 0.55rem 0.95rem;
+    margin-bottom: -1px;
+    
+    background-color: #16171b;
+    color: white;
+    font-weight: 100;
+    justify-content:center;
+    align-items:center;
+    place-content:center;
+}
+.sidebar-custom  a.nav-item:last-child:hover {
+    position: relative;
+    display: flex;
+    padding: 0.55rem 0.95rem;
+    margin-bottom: -1px;
+    
+    background-color: #16171b;
+    color: white;
+
+}
+h3.nav-item{
+    display: flex;
+    font-size:12px;
+    color:white;
+    place-content:center;
     margin-bottom:50px;
 }
 </style>
@@ -52,26 +97,22 @@ div.nav-item{
 		
 		<div class="sidebar-list">
                 <div class="nav-item">
-                    <img class="nav-item" src="images/Haseljić Muhamed_pp.jpg" width="80px" height="100px" alt="">
-                    <br><span>Ime </span>
-                    <span>Role | Admin</span>
+                    <img class="" src="images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
                 </div>
+                <h3 class="nav-item">Muhamed haseljić</h3>
 
 				<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'><i class="fa fa-home"> &nbsp; &nbsp;</i></span> Home</a>
-				<a href="index.php?page=attendance" class="nav-item nav-attendance"><span class='icon-field'><i class="fa fa-th-list"></i></span> Attendance</a>
-				<a href="index.php?page=payroll" class="nav-item nav-payroll"><span class='icon-field'><i class="fa fa-columns"></i></span> Payroll List</a>
-				<a href="index.php?page=employee" class="nav-item nav-employee"><span class='icon-field'><i class="fa fa-user-tie"></i></span> Employee List</a>
-				<a href="index.php?page=department" class="nav-item nav-department"><span class='icon-field'><i class="fa fa-columns"></i></span> Depatment List</a>
-				<a href="index.php?page=position" class="nav-item nav-position"><span class='icon-field'><i class="fa fa-user-tie"></i></span> Position List</a>
+				<a href="index.php?page=attendance" class="nav-item nav-attendance"><span class='icon-field'><i class="fa fa-th-list">  &nbsp; &nbsp;</i></span> Attendance</a>
+				<a href="index.php?page=payroll" class="nav-item nav-payroll"><span class='icon-field'><i class="fa fa-columns">  &nbsp; &nbsp;</i></span> Payroll List</a>
+				<a href="index.php?page=employee" class="nav-item nav-employee"><span class='icon-field'><i class="fa fa-user-tie"> &nbsp; &nbsp;</i></span> Employee List</a>
+				<a href="index.php?page=department" class="nav-item nav-department"><span class='icon-field'><i class="fa fa-columns"> &nbsp; &nbsp;</i></span> Depatment List</a>
+				<a href="index.php?page=position" class="nav-item nav-position"><span class='icon-field'><i class="fa fa-user-tie"> &nbsp; &nbsp;</i></span> Position List</a>
 
-				<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"></i></span> Allowance List</a>
-				<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"></i></span> Deduction List</a>		
-					
-				
-				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
-                <a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
-				
-			
+				<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Allowance List</a>
+				<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		
+				<img class="nav-item" src="inz_logo_-1.png" width="200px" height="60px" alt="">
+
+                <a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
 		</div>
 
 </nav>
