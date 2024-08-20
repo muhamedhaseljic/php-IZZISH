@@ -1,6 +1,5 @@
-
-<div class="roww  ">
-  <div class=" custom-card-header card-header row-top-form align-items-center">
+<div class="main">
+<div class=" custom-card-header card-header row-top-form align-items-center">
             <div class="col-md-6 ">
               <span class="naziv"><b>Lista radnika</b></span>
               <div class="input-group">
@@ -14,6 +13,8 @@
 						<button class="float-right link-edit btn-success" type="button" id="new_emp_btn"><span class="fa fa-plus"></span> Add Employee</button>
           </div>
     </div>
+<div class="roww  ">
+  
     <div class=" scrolling-div">
 
       
@@ -86,5 +87,6 @@
     <?php endfor; ?>
     </tbody>
 </table>
+</div>
 </div>
 </div>
