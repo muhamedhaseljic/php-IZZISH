@@ -121,7 +121,7 @@ tbody tr:last-child {
 .custom-add-btn:hover{
     background-color: #484b8f;
 }
-.custom-edit-btn, .custom-delete-btn {
+.custom-edit-btn, .custom-delete-btn, .custom-view-btn {
     background-color: #444;
     border: none;
     padding: 10px;
@@ -130,18 +130,33 @@ tbody tr:last-child {
     color: white;
 }
 
- .custom-edit-btn:hover, .custom-delete-btn:hover {
+ .custom-edit-btn:hover, .custom-delete-btn:hover, .custom-view-btn:hover{
     background-color: #555;
 }
 
 
 .custom-edit-btn {
     margin-right: 10px;
-    color: #00d8ff;
+    background-color: #548ace;
+}
+.custom-edit-btn:hover{
+    background-color: #386bab;
 }
 
 .custom-delete-btn {
-    color: #ff5252;
+    margin-right: 10px;
+    background-color: #ed484d;
+}
+.custom-delete-btn:hover{
+    background-color: #ba383c;
+}
+
+.custom-view-btn {
+    margin-right: 10px;
+    background-color: #807e7e;
+}
+.custom-view-btn:hover{
+    background-color: #666565;
 }
 
 button {
@@ -172,128 +187,35 @@ button {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Ime i prezime</th>
                         <th>Email</th>
-                        <th>Number</th>
-                        <th>Role</th>
-                        <th>Gender</th>                        
-                        <th>Image</th>
-                        <th>CreatedAt</th>
-                        <th>Actions</th>
+                        <th>Telefon</th>
+                        <th>Pozicija</th>
+                        <th>Plata</th>                        
+                        <th>Slika</th>
+                        <th>Datum rodjenja</th>
+                        <th>Akcije</th>
                     </tr>
                 </thead>
+                
                 <tbody>
+                <?php for($i=1;$i<10;$i++) : ?>
                     <tr>
-                        <td>1</td>
+                        <td><?php echo $i ?></td>
                         <td>Medina Haseljić</td>
                         <td>medina@gmail.com</td>
                         <td>062624571</td>
                         <td>Radni Kmet</td>
-                        <td>Female</td>
+                        <td>$ 1350</td>
                         <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
+                        <td>29. 10. 1999</td>
                         <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>
+                            <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                            <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
+                            <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Zijad Doglod</td>
-                        <td>zijad@gmail.com</td>
-                        <td>062624571</td>
-                        <td>Kmet</td>
-                        <td>Male</td>
-                        <td><img src="zijadDoglod.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>28/02/2023 12:07:33</td>
-                        <td>
-                            <button class="custom-edit-btn">👀</button>
-                            <button class="custom-edit-btn">✏️</button>
-                            <button class="custom-delete-btn">❌</button>                            
-
-                        </td>
-                    </tr>
+                    <?php endfor; ?>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>
