@@ -7,6 +7,7 @@
     padding-top:20px;
     background-color: #16171b;
     min-height: 100vh;
+    padding-bottom:0px;
 }
 
 .d-flex {
@@ -170,10 +171,14 @@ button {
 }
 .scrolling-divv{
     overflow-y: scroll;
-    height: 69vh;
+    height: 75vh;
     box-sizing: border-box;
     width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: white #16171b;
+    padding-right:5px;
 }
+
     </style>
     
     <div class="custom-main-content">
@@ -204,7 +209,12 @@ button {
                         <td><?php echo $i ?></td>
                         <td>Medina Haseljić</td>
                         <td>medina@gmail.com</td>
-                        <td>062624571</td>
+                        <td>
+                            <?php
+                                $FourDigitRandomNumber = mt_rand(111111111,999999999);
+                                echo "+" . $FourDigitRandomNumber;
+                            ?>
+                        </td>
                         <td>Radni Kmet</td>
                         <td>$ 1350</td>
                         <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
