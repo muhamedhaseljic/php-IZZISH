@@ -11,8 +11,8 @@ nav#sidebar {
 a.nav-item {
     position: relative;
     display: block;
-    padding: 0.55rem 0.95rem;
-    margin-bottom: -1px;
+    padding: 0.43rem 0.95rem;
+    margin-bottom: 5px;
     
     background-color: #16171b;
     color: white;
@@ -73,6 +73,7 @@ img.nav-item{
     justify-content:center;
     align-items:center;
     place-content:center;
+    
 }
 .sidebar-custom  a.nav-item:last-child:hover {
     position: relative;

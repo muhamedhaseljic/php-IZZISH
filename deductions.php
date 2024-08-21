@@ -121,6 +121,8 @@ tbody tr:last-child {
 }
 .custom-add-btn:hover{
     background-color: #484b8f;
+    color: #fff;
+    text-decoration:none;
 }
 .custom-edit-btn, .custom-delete-btn, .custom-view-btn {
     background-color: #444;
@@ -185,7 +187,7 @@ button {
         <h1 >Employees List</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <input type="text" placeholder="Search name..." class="custom-search-bar">
-                <button class="custom-add-btn">Add</button>
+                <a href="add_employees.php" class="custom-add-btn">Add</a>
             </div>
             <div class="scrolling-divv">
             <table class="table custom-table">
