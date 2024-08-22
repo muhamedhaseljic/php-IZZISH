@@ -135,9 +135,9 @@ textarea {
     background-color:#212528;
     color: #fff;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 14px;
-    resize: vertical; /* Allows resizing vertically */
+    resize: none; /* Allows resizing vertically */
     overflow-y: auto; /* Adds scroll for overflow */
     line-height: 1.5;
 }
@@ -160,84 +160,88 @@ textarea:focus {
         <form class="employee-form">
             <h2>Dodaj novog radnika</h2>
 
-            <!-- Name and New Field in Same Line -->
+            <!-- Ime Mjesto_rodjenja i Pozicija -->
             <div class="flex-container">
-                <!-- Name Input -->
                 <div class="input-group">
                     <label for="name"><i class="fa fa-user"></i></label>
-                    <input type="text" id="name" name="name" placeholder="Name" required>
+                    <input type="text" id="name" name="name" placeholder="Ime" required>
                 </div>
 
-                <!-- New Input (e.g. Surname) -->
+                <div class="input-group">
+                    <label for="city"><i class="fa fa-location-arrow"></i></label>
+                    <input type="text" id="city" name="city-of-birth" placeholder="Mjesto rođenja" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="position"><i class="fa fa-briefcase"></i></label>
+                    <input type="text" id="position" name="position" placeholder="Pozicija" required>
+                </div>
+            </div>
+
+            <!-- Prezime Adresa_boravista Radno stanje -->
+            <div class="flex-container">
                 <div class="input-group">
                     <label for="surname"><i class="fa fa-user"></i></label>
-                    <input type="text" id="surname" name="surname" placeholder="Surname" required>
+                    <input type="text" id="surname" name="surname" placeholder="Prezime" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="email"><i class="fa fa-envelope"></i></label>
-                    <input type="email" id="email" name="email" placeholder="merima.jaskic@gmail.com" required>
+                    <label for="city"><i class="fa fa-location-arrow"></i></label>
+                    <input type="text" id="city" name="adress_of_living" placeholder="Adresa boravišta" required>
                 </div>
-            </div>
 
-            <div class="flex-container">
-                <!-- Name Input -->
-                <!-- Phone -->
-            <div class="input-group">
-                <label for="phone"><i class="fa fa-phone"></i></label>
-                <input type="phone" id="phone" name="phone" placeholder="000-000-000" required>
-            </div>
-
-            <!-- City -->
-            <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="text" id="city" name="city" placeholder="Tuzla" required>
-            </div>
-            <div class="input-group">
-                
-            </div>
-
-                
-            </div>
-
-            <div class="flex-container">
-                <!-- Name Input -->
-                <!-- Phone -->
-            <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="city" id="city" name="city_birth" placeholder="Mjesto boravista" required>
-            </div>
-
-            <!-- City -->
-            <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="text" id="city" name="city" placeholder="Adresa boravista" required>
-            </div>
-
-            <div class="input-group">
-                <label for="date"><i class="fa fa-calendar-o"></i></label>
-                <input type="date" id="date" name="date_birth" placeholder="01/01/24" required>
-            </div>
-
-                
-            <!--spol i jmbg-->
-            </div>
-
-            <div class="flex-container">
-                <!-- Name Input -->
-                <!-- Phone -->
                 <div class="input-group">
-                <select id="gender" name="gender" required>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
+                <label for="status_zaposlenja"><i class="fa fa-clipboard-list"></i></label>
+                <select id="status_zaposlenja" name="status_zaposlenja" required>
+                     
+                    <option value="stalno_zaposlen">Stalno zaposlen</option>
+                    <option value="zamjena ">Zamjena </option>
+                    <option value="sezonski_rad ">Sezonski rad </option>
+                    <option value="pripravnik  ">Pripravnik  </option>
                 </select>
             </div>
+            </div>
 
-            <!-- City -->
+            
+                
+            
+
+            
+            <!-- email datum_rodjenja datum_zapošljavanja -->
+            <div class="flex-container">
             <div class="input-group">
-                <label for="jmbg"><i class="fa fa-location-arrow"></i></label>
-                <input type="jmbg" id="jmbg" name="jmbg" placeholder="0000000000000" required>
-            </div>          
+                    <label for="email"><i class="fa fa-envelope	"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="date"><i class="fa fa-calendar"></i></label>
+                    <input type="date" id="date" name="date_of_birth"  required>
+                </div>
+
+                <div class="input-group">
+                    <label for="date"><i class="fa fa-calendar"></i></label>
+                    <input type="date" id="date" name="date_of_working"  required>
+                </div>  
+                
+            </div>
+
+            <!-- telefon jmbg plata -->
+            <div class="flex-container">
+            <div class="input-group">
+                    <label for="phone"><i class="fa fa-phone	"></i></label>
+                    <input type="phone" id="phone" name="phone" placeholder="phone-number" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="jmbg"><i class="fa fa-calendar"></i></label>
+                    <input type="jmbg" id="jmbg" name="jmbg" placeholder="jmbg" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="salary"><i class="payment"></i></label>
+                    <input type="number" id="salary" name="salary"  required>
+                </div>  
                 
             </div>
 
