@@ -69,6 +69,10 @@ require_once "header.php";?>
     font-size: 18px;
     
 }
+.date-group label{
+    
+    transform: translateX(200%) translateY(-50%);
+}
 ::placeholder{
     color:grey;
 }
@@ -152,6 +156,7 @@ textarea:focus {
     border-color: #3b49df;
     box-shadow: 0 0 8px rgba(59, 73, 223, 0.5);
 }
+
 </style>
 <div class="custom-main-content">
         
@@ -214,13 +219,14 @@ textarea:focus {
                     <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
 
-                <div class="input-group">
-                    <label for="date"><i class="fa fa-calendar"></i></label>
+                <div class="input-group date-group">
+                    <label for="date">Rodjenje</label>
                     <input type="date" id="date" name="date_of_birth"  required>
+                    
                 </div>
 
-                <div class="input-group">
-                    <label for="date"><i class="fa fa-calendar"></i></label>
+                <div class="input-group date-group">
+                    <label for="date">Zaposlenje</label>
                     <input type="date" id="date" name="date_of_working"  required>
                 </div>  
                 
@@ -239,70 +245,35 @@ textarea:focus {
                 </div>
 
                 <div class="input-group">
-                    <label for="salary"><i class="payment"></i></label>
-                    <input type="number" id="salary" name="salary"  required>
+                    <label for="salary"><i class="fa fa-wallet"></i></label>
+                    <input type="salary" id="salary" name="salary" placeholder="Plata" required>
                 </div>  
                 
             </div>
 
+            <!-- password spol  -->
             <div class="flex-container">
-                <!-- Name Input -->
-                <!-- Phone -->
             <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="city" id="city" name="city_birth" placeholder="Mjesto boravista" required>
-            </div>
+                    <label for="password"><i class="fa fa-lock	"></i></label>
+                    <input type="password" id="password" name="password" placeholder="sifra" required>
+                    
+                </div>
 
-            <!-- City -->
-            <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="text" id="city" name="city" placeholder="Adresa boravista" required>
-            </div>
-
-            <div class="input-group">
-                
-            </div>
-                
-            <!--spol i jmbg-->
-            </div>
-
-            <!-- Phone -->
-            <div class="input-group">
-                <label for="phone"><i class="fa fa-phone"></i></label>
-                <input type="phone" id="phone" name="phone" placeholder="000-000-000" required>
-            </div>
-
-            <!-- 
-            <div class="input-group">
-                <label for="city"><i class="fa fa-location-arrow"></i></label>
-                <input type="text" id="city" name="city" placeholder="Tuzla" required>
-            </div>
-
-            <div class="input-group">
-                <label for="username"><i class="fa fa-user"></i></label>
-                <input type="text" id="username" name="username" placeholder="merima" required>
-            </div>
-
-            <div class="input-group">
-                <label for="password"><i class="fa fa-lock"></i></label>
-                <input type="password" id="password" name="password" placeholder="merima123" required>
-            </div>
-
-            <div class="input-group">
-                <select id="role" name="role" required>
-                    <option value="nurse">Nurse</option>
-                    <option value="doctor">Doctor</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </div>
-
-            <div class="input-group">
+                <div class="input-group">
+                <label for="gender"><i class="fas fa-venus-mars"></i></label>
                 <select id="gender" name="gender" required>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
+                     
+                    <option value="male">Muško</option>
+                    <option value="female ">Žensko </option>
                 </select>
-            </div>-->
+            </div>
 
+                <div class="input-group">
+                    
+                </div>  
+                
+            </div>
+            
             <!-- Grid Section -->
             <div class="grid-inputs-container">
                 <!-- First Input (top-left) -->
@@ -319,8 +290,8 @@ textarea:focus {
 
                 <!-- Third Input (right, double-height) -->
                 <div class="input-group">
-                    <label for="description"><i class="fa fa-file-alt"></i></label>
-                    <textarea id="description" name="description" placeholder="Write your description here..."></textarea>
+                    
+                    <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
                 </div>
             </div>
 
