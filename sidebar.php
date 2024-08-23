@@ -83,12 +83,20 @@ img.nav-item{
     color:grey;   
 
 }
+h2.nav-item{
+    display: flex;
+    font-size:12px;
+    color:white;
+    place-content:center;
+    
+}
 h3.nav-item{
     display: flex;
     font-size:12px;
     color:white;
     place-content:center;
     margin-bottom:50px;
+    margin-top:-5px;
 }
 </style>
 
@@ -98,17 +106,18 @@ h3.nav-item{
                 <div class="nav-item">
                     <img class="" src="images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
                 </div>
-                <h3 class="nav-item">Muhamed haseljić</h3>
+                <h2 class="nav-item">Muhamed Haseljić</h2>
+                <h3 class="nav-item">Admin</h3>
 
-				<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'><i class="fa fa-home"> &nbsp; &nbsp;</i></span> Home</a>
-				<a href="index.php?page=attendance" class="nav-item nav-attendance"><span class='icon-field'><i class="fa fa-th-list">  &nbsp; &nbsp;</i></span> Attendance</a>
-				<a href="index.php?page=payroll" class="nav-item nav-payroll"><span class='icon-field'><i class="fa fa-columns">  &nbsp; &nbsp;</i></span> Payroll List</a>
-				<a href="index.php?page=employee" class="nav-item nav-employee"><span class='icon-field'><i class="fa fa-user-tie"> &nbsp; &nbsp;</i></span> Employee List</a>
-				<a href="index.php?page=department" class="nav-item nav-department"><span class='icon-field'><i class="fa fa-columns"> &nbsp; &nbsp;</i></span> Depatment List</a>
-				<a href="index.php?page=position" class="nav-item nav-position"><span class='icon-field'><i class="fa fa-user-tie"> &nbsp; &nbsp;</i></span> Position List</a>
+				<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
+				<a href="index.php?page=radnici" class="nav-item nav-radnici"><span class='icon-field'><i class="fa fa-users">  &nbsp; &nbsp;</i></span> Radnici</a>
+				<a href="index.php?page=kupci" class="nav-item nav-kupci"><span class='icon-field'><i class="fa fa-handshake">  &nbsp; &nbsp;</i></span> Kupac</a>
+				<a href="index.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
+				<a href="index.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
+				<a href="index.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
 
-				<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Allowance List</a>
-				<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		
+				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
+				<!--<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		-->
 				<img class="nav-item" src="inz_logo_-1.png" width="200px" height="60px" alt="">
 
                 <a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>

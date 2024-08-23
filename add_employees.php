@@ -296,6 +296,9 @@ textarea:focus {
     font-size: 14px;
     outline: none;
 }
+.center-image-upload{
+    align:center;
+}
 </style>
 
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
@@ -442,7 +445,7 @@ textarea:focus {
     <!-- First Input (top-left) -->
     <div class="input-group">
         <label for="image-upload"><i class="fa fa-upload"></i> </label>
-        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+        <input class="center-image-upload" type="file" id="image-upload" name="image-upload" accept="image/*">
     </div>
 
     <!-- Second Input (bottom-left) -->
