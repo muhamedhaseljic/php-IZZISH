@@ -69,10 +69,7 @@ require_once "header.php";?>
     font-size: 18px;
     
 }
-.date-group label{
-    
-    transform: translateX(200%) translateY(-50%);
-}
+
 ::placeholder{
     color:grey;
 }
@@ -110,7 +107,7 @@ input:focus, select:focus {
 .grid-inputs-container {
     display: grid;
     grid-template-columns: 1fr 2fr ; /* Two columns, 1/3 and 2/3 width */
-    grid-template-rows: 1fr 1fr 1fr; /* Two rows */
+    grid-template-rows: 1fr 1fr ; /* Two rows */
     /*gap: 100px;  Space between inputs */
     margin-bottom: 20px; /* Space from other fields */
     grid-row-gap:5px;
@@ -130,7 +127,7 @@ input:focus, select:focus {
 /* Third input takes the first and second rows, spanning two rows */
 .grid-inputs-container .input-group:nth-child(3) {
     grid-column: 2 / 3;
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
 }
 textarea {
     width: 100%;
@@ -156,8 +153,89 @@ textarea:focus {
     border-color: #3b49df;
     box-shadow: 0 0 8px rgba(59, 73, 223, 0.5);
 }
+#dropzoneUpload {
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
+        .grid-inputs-container .dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.date-picker-with-label {
+    margin-bottom: 15px;
+    
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #212528;
+    color: #fff;
+}
+
+/* Styling for the icon inside the date picker */
+.date-picker-with-label i {
+    margin-right: 10px;
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* Styling for the label inside the date picker */
+.date-picker-with-label .date-label {
+    
+    font-size: 14px;
+    font-size: 18px;
+    color: grey;
+    left: 10px;
+    top: 50%;
+    
+/*
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: grey;
+    font-size: 18px;*/
+}
+
+/* Styling for the date input */
+.date-picker-input {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 15px;
+    
+ /*
+    width: 100%;
+    padding: 10px 15px;
+    padding-left: 40px;
+    background-color: #212528;
+    color: #fff;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 14px;*/
+}
 </style>
+
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.10.2/dropzone.min.css" />
+
 <div class="custom-main-content">
         
             
@@ -191,8 +269,8 @@ textarea:focus {
                 </div>
 
                 <div class="input-group">
-                    <label for="city"><i class="fa fa-location-arrow"></i></label>
-                    <input type="text" id="city" name="adress_of_living" placeholder="Adresa boravišta" required>
+                    <label for="cityy"><i class="fa fa-location-arrow"></i></label>
+                    <input type="text" id="cityy" name="adress_of_living" placeholder="Adresa boravišta" required>
                 </div>
 
                 <div class="input-group">
@@ -219,16 +297,18 @@ textarea:focus {
                     <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
 
-                <div class="input-group date-group">
-                    <label for="date">Rodjenje</label>
-                    <input type="date" id="date" name="date_of_birth"  required>
-                    
+                <div class="date-picker-with-label ">
+                    <i class="fa fa-birthday-cake"></i>
+                    <span class="date-label">Date of Birth</span>
+                    <input type="date" id="dob" name="dob" class="date-picker-input">
                 </div>
 
-                <div class="input-group date-group">
-                    <label for="date">Zaposlenje</label>
-                    <input type="date" id="date" name="date_of_working"  required>
-                </div>  
+                <!-- Start Date Input -->
+                <div class="date-picker-with-label ">
+                    <i class="fa fa-briefcase"></i>
+                    <span class="date-label">Start Date</span>
+                    <input type="date" id="start-date" name="start-date" class="date-picker-input">
+                </div>
                 
             </div>
 
@@ -274,42 +354,94 @@ textarea:focus {
                 
             </div>
             
-            <!-- Grid Section -->
+            <!-- Grid Section 
             <div class="grid-inputs-container">
-                <!-- First Input (top-left) -->
-                <div class="input-group">
-                    <label for="input1"><i class="fa fa-user"></i></label>
-                    <input type="text" id="input1" name="input1" placeholder="Input 1">
-                </div>
+                
+                <form  action="upload_photo_path.php" class="dropzone" id="dropzoneUpload">
+                        <div class="dz-message">Drop files here or click to upload</div>
+                    </form>
+                    <input type="hidden" id="photoPathInput" name="photoPath">
+                
 
-                <!-- Second Input (bottom-left) -->
                 <div class="input-group">
                     <label for="input2"><i class="fa fa-envelope"></i></label>
                     <input type="text" id="input2" name="input2" placeholder="Input 2">
                 </div>
 
-                <!-- Third Input (right, double-height) -->
                 <div class="input-group">
                     
                     <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
                 </div>
             </div>
+            -->
+
+            <div class="grid-inputs-container">
+    <!-- First Input (top-left) -->
+    <div class="input-group">
+        <label for="image-upload"><i class="fa fa-upload"></i> Upload Image</label>
+        <input type="file" id="image-upload" name="image-upload" accept="image/*">
+    </div>
+
+    <!-- Second Input (bottom-left) -->
+    <div class="input-group">
+        <label for="input2"><i class="fa fa-envelope"></i></label>
+        <input type="text" id="input2" name="input2" placeholder="Input 2">
+    </div>
+
+    <!-- Third Input (right, double-height) -->
+    <div class="input-group">
+        <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
+    </div>
+
+    <!-- New Image Upload Bar -->
+    
+</div>
 
             <!-- Save Button -->
             <div class="flex-container">
                 <!-- Name Input -->
-                <div class="input-group">
+                <button type="reset" id="clearButton">Clear</button>
                     
+                <div>
+
                 </div>
 
                 <!-- New Input (e.g. Surname) -->
                 <button type="submit">Save</button>
 
-                <div class="input-group">
-                    
-                </div>
+                
             </div>
             
         </form>
+
     </div>
+
+   
+    
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.10.2/dropzone.min.js"></script>
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+<script>
+    Dropzone.options.dropzoneUpload = {
+            url: "upload_photo_path.php",
+            paramName: "photo",
+            maxFilesize: 20,
+            acceptedFiles: "image/*",
+            init: function() {
+                this.on("success", function(file, response) {
+                    const jsonResponse = JSON.parse(response);
+                    if (jsonResponse.success) {
+                        document.getElementById('photoPathInput').value = jsonResponse.photo_path;
+                    } else {
+                        console.error(jsonResponse.error);
+                    }
+                });
+
+                this.on("error", function(file, response) {
+                    console.error("File upload error: ", response);
+                });
+            }
+        };
+</script>
