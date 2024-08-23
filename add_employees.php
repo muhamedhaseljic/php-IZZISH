@@ -115,7 +115,7 @@ input:focus, select:focus {
 }
 .grid-inputs-container .input-group:nth-child(1) {
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 1 / 3;
 }
 
 /* Second input takes the second row and first column */
@@ -129,6 +129,9 @@ input:focus, select:focus {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
 }
+
+
+
 textarea {
     width: 100%;
     height: 100%;
@@ -195,7 +198,7 @@ textarea:focus {
 .date-picker-with-label .date-label {
     
     font-size: 14px;
-    font-size: 18px;
+    
     color: grey;
     left: 10px;
     top: 50%;
@@ -230,6 +233,68 @@ textarea:focus {
     border: 1px solid grey;
     border-radius: 10px;
     font-size: 14px;*/
+}
+.flex-containerr {
+    display: flex;
+    
+    gap: 140px;
+    flex-wrap: wrap; /* To handle responsiveness if needed */
+}
+
+/* Make all the input containers the same width */
+.same-width {
+    flex: 1; /* Allow elements to grow and take up equal space */
+     /* Ensure there's a minimum width */
+}
+
+/* Styling for the input group */
+.input-groupp {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #fff;
+    
+}
+
+/* Styling for the date picker container with icon, label, and input */
+.date-picker-with-label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #212528;
+    color: #fff;
+    
+}
+
+/* Icon styling inside the input group */
+.input-groupp label i,
+.date-picker-with-label i {
+    margin-right: 10px;
+    color: grey;
+    font-size: 16px;
+}
+
+/* Label styling for the date picker */
+.date-picker-with-label .date-label {
+    margin-right: 0px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Input styling */
+.input-groupp input,
+.date-picker-input {
+    
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
 }
 </style>
 
@@ -291,25 +356,23 @@ textarea:focus {
 
             
             <!-- email datum_rodjenja datum_zapošljavanja -->
-            <div class="flex-container">
-            <div class="input-group">
-                    <label for="email"><i class="fa fa-envelope	"></i></label>
+            <div class="flex-containerr">
+                <div class="input-group same-width">
+                    <label for="email"><i class="fa fa-envelope"></i></label>
                     <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
 
-                <div class="date-picker-with-label ">
+                <div class="date-picker-with-label same-width">
                     <i class="fa fa-birthday-cake"></i>
                     <span class="date-label">Date of Birth</span>
                     <input type="date" id="dob" name="dob" class="date-picker-input">
                 </div>
 
-                <!-- Start Date Input -->
-                <div class="date-picker-with-label ">
+                <div class="date-picker-with-label same-width">
                     <i class="fa fa-briefcase"></i>
                     <span class="date-label">Start Date</span>
                     <input type="date" id="start-date" name="start-date" class="date-picker-input">
                 </div>
-                
             </div>
 
             <!-- telefon jmbg plata -->
@@ -378,20 +441,21 @@ textarea:focus {
             <div class="grid-inputs-container">
     <!-- First Input (top-left) -->
     <div class="input-group">
-        <label for="image-upload"><i class="fa fa-upload"></i> Upload Image</label>
+        <label for="image-upload"><i class="fa fa-upload"></i> </label>
         <input type="file" id="image-upload" name="image-upload" accept="image/*">
     </div>
 
     <!-- Second Input (bottom-left) -->
     <div class="input-group">
-        <label for="input2"><i class="fa fa-envelope"></i></label>
-        <input type="text" id="input2" name="input2" placeholder="Input 2">
+        
     </div>
 
     <!-- Third Input (right, double-height) -->
     <div class="input-group">
         <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
     </div>
+
+    
 
     <!-- New Image Upload Bar -->
     
