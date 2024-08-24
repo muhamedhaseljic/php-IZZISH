@@ -115,6 +115,7 @@ h3.nav-item{
 				<a href="index.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
 				<a href="index.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
 				<a href="index.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
+				<a href="index.php?page=white-home" class="nav-item nav-white-home"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>white-home</a>
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
 				<!--<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		-->
