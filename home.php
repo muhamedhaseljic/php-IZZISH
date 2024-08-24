@@ -3,8 +3,8 @@
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
-    padding: 50px;
-    padding-top:0px;
+    padding: 100px;
+    padding-top:20px;
     background-color: #16171b;
     min-height: 100vh;
     padding-bottom:0px;
@@ -18,46 +18,51 @@
 
 .profile-container {
     display: flex;
-    max-width: 1000px; /* Adjust for a compact layout */
+    max-width: 1400px; /* Adjust for a compact layout */
     margin: 40px auto;
     background-color: #212528;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    gap: 20px;
+    padding: 0px;
+    gap: 0px;
+    height:600px;
     
 }
 
 .left-section {
     flex: 0 0 200px; /* Fixed width for picture section */
     background-color: #212528;
-    padding: 20px;
+    padding:5px;
+    padding-top: 20px;
+    
     text-align: center;
 }
 
 .profile-picture img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-bottom:20px;
 }
 
 .border-divider {
-    width: 20px;
+    width: 40px;
     background-color: #16171b; /* Visible border between sections */
     margin-left: ;
+    height:650px;
+    margin-top:-50px;
 }
 
 .right-section {
-    flex: 1;
+    flex: 1,1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding:100px;
+    padding-top: 20px;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns layout */
     
-    grid-row-gap: 10px;
+    grid-row-gap: 0px;
 
     grid-column-gap: 60px;
 
@@ -89,24 +94,66 @@ input {
 input::placeholder {
     color: white;
 }
+.left-section h1{
+    color:white;
+    text-align: center;
+    font-size:18px;
+}
+.left-section p{
+    color:white;
+    text-align: left;
+    font-size:18px;
+    margin: 10px 0;
+    
+}
+.profile-label {
+    display: inline-block;
+    width: 50px; /* Adjust this value to your desired space */
+    
+    font-size:18px;
+  }
+
+.detalji-profil{
+    color:grey;
+    text-align: left;
+    font-size:16px;
+    margin-left:40px;
+    font-family:ui-sans-serif, -apple-system, system-ui, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    weight:400;
+}
+.right-section h1{
+    color:white;
+    text-align: center;
+    font-size:18px;
+    margin-right:70px;
+    margin-left:-70px;
+}
     </style>
     
     <div class="custom-main-content">
-        <h1 >Profil</h1>
+        
 
         <div class="profile-container">
+        
         <!-- Left Section (Profile Picture) -->
         <div class="left-section">
+        <h1 ><b>PROFIL DETALJI</b></h1>
             <div class="profile-picture">
-                <img src="default-avatar.png" alt="Profile Picture" />
+                <img src="images/Haseljić Muhamed_pp.jpg" alt="Profile Picture" />
             </div>
+            <p><span class="profile-label">Ime:</span> <span class="detalji-profil">Muhamed</span></p>
+            <p><span class="profile-label">Godine:</span> <span class="detalji-profil">22 godine</span></p>
+            <p><span class="profile-label">Lokacija:</span> <span class="detalji-profil">Zenica</span></p>
+            <p><span class="profile-label">Staž:</span> <span class="detalji-profil">15 godina</span></p>
         </div>
 
         <!-- Divider with Border -->
         <div class="border-divider"></div>
 
         <!-- Right Section (Editable Fields) -->
+         
         <div class="right-section">
+        <h1 ><b>O MENI</b></h1>
             <div class="form-grid">
                 <div class="form-group">
                     <label for="radnikid">RadnikID:</label>
