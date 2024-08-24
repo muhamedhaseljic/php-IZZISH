@@ -74,6 +74,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    
 }
 
 label {
@@ -89,6 +90,7 @@ input {
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #16171b;
+    color:white;
 }
 
 input::placeholder {
@@ -207,15 +209,17 @@ input::placeholder {
                     <label for="plata">Plata:</label>
                     <input type="number" id="plata" name="plata" placeholder="Enter Plata" />
                 </div>
-                <div class="form-group">
-                    <label for="autoid">AutoID:</label>
-                    <input type="number" id="autoid" name="autoid" placeholder="Enter AutoID" />
-                </div>
+                
                 <div class="form-group">
                     <label for="pozicija">Pozicija:</label>
                     <input type="text" id="pozicija" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
+
+                <div class="form-group">
+                    <button>submit</button>
+                </div>
             </div>
+            
         </div>
     </div>
         </div>
