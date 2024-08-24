@@ -19,16 +19,16 @@ a.nav-item {
     font-weight: 100;
 }
 a.nav-item:hover{
-    background-color:#6b69f8;
+    background-color:#0f67b1;
     
-    color: black;
+    color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .nav-item.active {
-    background-color:#6b69f8;
+    background-color:#0f67b1;
     
-    color: black;
+    color: white;
     text-decoration:none;
     border-radius: 10px;
 }

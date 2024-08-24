@@ -5,7 +5,7 @@
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #f0f4f5;
+    background-color: #f1f1f1;
     min-height: 100vh;
     padding-bottom:0px;
 }/*
@@ -20,9 +20,9 @@
     display: flex;
     max-width: 1400px; /* Adjust for a compact layout */
     margin: 40px auto;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
-
+    border-radius:20px;
     padding: 0px;
     gap: 0px;
     height:600px;
@@ -31,11 +31,11 @@
 
 .left-section {
     flex: 0 0 200px; /* Fixed width for picture section */
-    background-color: white;
+    background-color: #ffffff;
     padding:5px;
     padding-top: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-
+    border-radius:20px;
     text-align: center;
 }
 
@@ -47,11 +47,10 @@
 
 .border-divider {
     width: 40px;
-    background-color: #f0f4f5; /* Visible border between sections */
+    background-color: #f1f1f1; /* Visible border between sections */
     margin-left: ;
     height:600px;
     margin-top:0px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -93,7 +92,7 @@ input {
     padding: 5px; /* Smaller padding for compact inputs */
     /*border-radius: 5px;
     border: 1px solid black;*/
-    background-color: white;
+    background-color: #eeeeee;
     color:black;
     box-shadow: 10px 10px 10px  rgba(, 0, 0, 0.1);
     border:none;

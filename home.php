@@ -25,6 +25,7 @@
     padding: 0px;
     gap: 0px;
     height:600px;
+    border: 1px solid black;
     
 }
 
