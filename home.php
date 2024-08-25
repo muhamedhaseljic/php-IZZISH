@@ -25,8 +25,7 @@
     padding: 0px;
     gap: 0px;
     height:600px;
-    border: 1px solid black;
-    
+    border-radius:15px;
 }
 
 .left-section {
@@ -34,7 +33,7 @@
     background-color: #212528;
     padding:5px;
     padding-top: 20px;
-    
+    border-radius:15px;
     text-align: center;
 }
 
