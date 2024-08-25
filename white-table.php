@@ -4,7 +4,7 @@
     width: 100%;
     padding: 20px;
     padding-top:30px;
-    background-color: #16171b;
+    background-color: #0d1017;
     min-height: 100vh;
     padding-bottom:0px;
 }
@@ -26,9 +26,9 @@
 
 .col {
     width: 260px;
-    background-color: #212528;
+    background-color: #161c21;
     padding: 10px;
-    border: 1px solid #212528;
+    border: 1px solid #161c21;
     border-radius: 5px;
     min-height: 300px;
     max-height: 500px; /* Set a maximum height for the column */
@@ -49,7 +49,7 @@ h3 {
 
 .task-card {
     display: flex;
-    background-color: #16171b;
+    background-color: #0d1017;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;

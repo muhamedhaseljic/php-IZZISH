@@ -5,7 +5,7 @@
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #16171b;
+    background-color: #0d1017;
     min-height: 100vh;
     padding-bottom:0px;
 }
@@ -32,7 +32,7 @@
     border-radius: 20px;
     border: none;
     color: white;
-    background-color:#16171b;
+    background-color:#171c22;
     border:1px solid white;
 }
 
@@ -91,14 +91,14 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color: #212528;
+    background-color:#171c22 ;
     vertical-align: middle;
     
 }
 
 .custom-table tbody tr:hover td {
     
-    background-color: #2b2f30;
+    background-color: #212528;
     
     
 }

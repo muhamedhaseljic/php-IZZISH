@@ -5,7 +5,7 @@
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #16171b;
+    background-color: #0d1017;
     min-height: 100vh;
     padding-bottom:0px;
 }/*
@@ -20,7 +20,7 @@
     display: flex;
     max-width: 1400px; /* Adjust for a compact layout */
     margin: 40px auto;
-    background-color: #212528;
+    background-color: #171c22;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 0px;
     gap: 0px;
@@ -30,7 +30,7 @@
 
 .left-section {
     flex: 0 0 200px; /* Fixed width for picture section */
-    background-color: #212528;
+    background-color: #171c22;
     padding:5px;
     padding-top: 20px;
     border-radius:15px;
@@ -45,7 +45,7 @@
 
 .border-divider {
     width: 40px;
-    background-color: #16171b; /* Visible border between sections */
+    background-color: #0d1017; /* Visible border between sections */
     margin-left: ;
     height:650px;
     margin-top:-50px;
@@ -88,8 +88,8 @@ input {
     flex: 1;
     padding: 5px; /* Smaller padding for compact inputs */
     border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #16171b;
+    border: 1px solid grey;
+    background-color: #0d1017;
     color:white;
 }
 

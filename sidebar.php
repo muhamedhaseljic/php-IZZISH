@@ -14,26 +14,26 @@ a.nav-item {
     padding: 0.43rem 0.95rem;
     margin-bottom: 5px;
     
-    background-color: #16171b;
+    background-color: #0d1017;
     color: white;
     font-weight: 100;
 }
 a.nav-item:hover{
-    background-color:#272727;
+    background-color:#5b3a9e;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .nav-item.active {
-    background-color:#16a249;
+    background-color:#4f289e;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .sidebar-custom{
-    background-color: #16171b;
+    background-color: #0d1017;
 }
 div.nav-item{
     position: relative;
@@ -41,7 +41,7 @@ div.nav-item{
     padding: 0.55rem 0.35rem;
     margin-bottom: -1px;
     
-    background-color: #16171b;
+    background-color: #0d1017;
     color: white;
     font-weight: 400;
     margin-bottom:0px; 
@@ -55,7 +55,7 @@ img.nav-item{
     position: relative;
     display: block;
     padding: 0.55rem 0.35rem;    
-    background-color: #16171b;
+    background-color: #0d1017;
     color: white;
     font-weight: 400;
     margin-bottom:110px;
@@ -67,7 +67,7 @@ img.nav-item{
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
     
-    background-color: #16171b;
+    background-color: #0d1017;
     color: white;
     font-weight: 100;
     justify-content:center;
@@ -115,7 +115,7 @@ h3.nav-item{
 				<a href="index.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
 				<a href="index.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
 				<a href="index.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
-				<a href="index.php?page=white-home" class="nav-item nav-white-home"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>white-home</a>
+				<a href="index.php?page=white-table" class="nav-item nav-white-home"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>white-home</a>
 
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
