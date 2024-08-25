@@ -177,7 +177,7 @@ button {
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
-    scrollbar-color: white #16171b;
+    scrollbar-color: white #0d1017;
     padding-right:5px;
 }
 

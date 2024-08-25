@@ -98,13 +98,14 @@ h3.nav-item{
     margin-bottom:50px;
     margin-top:-5px;
 }
+
 </style>
 
 <nav id="sidebar" class='mx-lt-5 sidebar-custom' >
 		
 		<div class="sidebar-list">
                 <div class="nav-item">
-                    <img class="" src="images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
+                    <img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
                 </div>
                 <h2 class="nav-item">Muhamed Haseljić</h2>
                 <h3 class="nav-item">Admin</h3>
