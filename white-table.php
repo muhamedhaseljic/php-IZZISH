@@ -96,6 +96,7 @@ h3 {
 .task-card.done {
     background-color: #d4edda; /* Light green for completed task */
     border-color: #c3e6cb;
+    color:black;
 }
 
 /* Submit button container */
@@ -128,10 +129,10 @@ button#submitBtn:hover {
             <div class="col" id="todo">
                 <h3>Ponedjeljak</h3>
                 <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
+                    
                     <div class="task-details">
-                        <p class="task-name">Task Name</p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
+                        <p class="task-name">Sanitarna <br> Robot</p>
+                        <p class="task-date">Adresa</p>
                         <label>
                             <input type="checkbox" class="done-checkbox"> Done
                         </label>
