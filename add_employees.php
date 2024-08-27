@@ -13,291 +13,121 @@ require_once "header.php";?>
     width: 100%;
     
     
-    background-color: #16171b;
+    background-color: #0d1017;
     
     padding-bottom:0px;
     display: flex;
     justify-content: center;  /* Center horizontally */
     align-items: center;      /* Center vertically */
     height: 100vh;    
-    padding: 100px;    
-    padding-top:0px;
+    padding: 150px;    
+    padding-top:150px;
 }
 
-.custom-main-content h1{
+
+.employee-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  background-color: #171c22;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group {
+  width: 30%;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #0d1017;
+  color: #fff;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
+}
+textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn {
+  background-color: #3a3b9a;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-btn {
+  background-color: #6c757d;
+}
+
+.btn:hover {
+  background-color: #2a2b6a;
+}
+label{
     color:white;
-    margin-bottom:20px;
+    margin:0;
+    
 }
-.form-container {
-    background-color: #16171b;
-    padding: 30px;
-    border-radius: 10px;
-    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);*/
-    width: 100%;
-    /*max-width: 800px;*/
-}
-
-.employee-form h2 {
+ h2 {
     text-align: left;
     color: #fff;
     margin-bottom: 20px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.input-group input,
-.input-group select {
-    width: 100%;
-    padding: 10px 15px;
-    padding-left: 40px;
-    background-color: #212528;
-    color: #fff;
-    border: 1px solid grey;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-.input-group label {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: grey;
-    font-size: 18px;
+    
     
 }
-
-::placeholder{
-    color:grey;
-}
-
-button {
-    width: 20%;
-    padding: 12px;
+.custom-add-btn{
+    padding: 10px 20px;
+    color: #fff;
+    
     background-color: #262c78;
     border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    color: white;
 }
-
-button:hover {
+.custom-add-btn:hover{
     background-color: #484b8f;
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: #484b8f;
-    box-shadow: 0 0 8px rgba(59, 73, 223, 0.5);
-}
-.flex-container {
-    display: flex;
-    gap: 100px; /* Space between inputs */
-}
-
-.flex-container .input-group {
-    flex: 1; /* Make inputs take equal width */
-}
-/* Special container for grid inputs */
-.grid-inputs-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr ; /* Two columns, 1/3 and 2/3 width */
-    grid-template-rows: 1fr 1fr ; /* Two rows */
-    /*gap: 100px;  Space between inputs */
-    margin-bottom: 20px; /* Space from other fields */
-    grid-row-gap:5px;
-    grid-column-gap:50px;
-}
-.grid-inputs-container .input-group:nth-child(1) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-}
-
-/* Second input takes the second row and first column */
-.grid-inputs-container .input-group:nth-child(2) {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-}
-
-/* Third input takes the first and second rows, spanning two rows */
-.grid-inputs-container .input-group:nth-child(3) {
-    grid-column: 2 / 3;
-    grid-row: 1 / 3;
-}
-
-
-
-textarea {
-    width: 100%;
-    height: 100%;
-    padding: 10px 15px;
-    background-color:#212528;
     color: #fff;
-    border: 1px solid grey;
-    border-radius: 10px;
-    font-size: 14px;
-    resize: none; /* Allows resizing vertically */
-    overflow-y: auto; /* Adds scroll for overflow */
-    line-height: 1.5;
+    text-decoration:none;
 }
 
-/* Ensures the text starts from the top */
-textarea::placeholder {
-    color: #888;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #3b49df;
-    box-shadow: 0 0 8px rgba(59, 73, 223, 0.5);
-}
-#dropzoneUpload {
-            border: 2px dashed #007bff;
-            border-radius: 5px;
-            background-color: #f8f9fa;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .grid-inputs-container .dropzone {
-    border: 2px dashed #007bff;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-
-.date-picker-with-label {
-    margin-bottom: 15px;
-    
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    background-color: #212528;
+.custom-clear-btn{
+    padding: 10px 20px;
     color: #fff;
-}
-
-/* Styling for the icon inside the date picker */
-.date-picker-with-label i {
-    margin-right: 10px;
-    color: #ccc;
-    font-size: 16px;
-}
-
-/* Styling for the label inside the date picker */
-.date-picker-with-label .date-label {
     
-    font-size: 14px;
-    
-    color: grey;
-    left: 10px;
-    top: 50%;
-    
-/*
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: grey;
-    font-size: 18px;*/
-}
-
-/* Styling for the date input */
-.date-picker-input {
-    background-color: transparent;
+    background-color: #807e7e;
     border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+}
+.custom-clear-btn:hover{
+    background-color: #666565;
     color: #fff;
-    font-size: 14px;
-    flex: 1;
-    outline: none;
-    width: 100%;
-    padding-left: 40px;
-    padding-right: 15px;
-    
- /*
-    width: 100%;
-    padding: 10px 15px;
-    padding-left: 40px;
-    background-color: #212528;
-    color: #fff;
-    border: 1px solid grey;
-    border-radius: 10px;
-    font-size: 14px;*/
-}
-.flex-containerr {
-    display: flex;
-    
-    gap: 140px;
-    flex-wrap: wrap; /* To handle responsiveness if needed */
-}
-
-/* Make all the input containers the same width */
-.same-width {
-    flex: 1; /* Allow elements to grow and take up equal space */
-     /* Ensure there's a minimum width */
-}
-
-/* Styling for the input group */
-.input-groupp {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #fff;
-    
-}
-
-/* Styling for the date picker container with icon, label, and input */
-.date-picker-with-label {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    background-color: #212528;
-    color: #fff;
-    
-}
-
-/* Icon styling inside the input group */
-.input-groupp label i,
-.date-picker-with-label i {
-    margin-right: 10px;
-    color: grey;
-    font-size: 16px;
-}
-
-/* Label styling for the date picker */
-.date-picker-with-label .date-label {
-    margin-right: 0px;
-    color: #888;
-    font-size: 14px;
-}
-
-/* Input styling */
-.input-groupp input,
-.date-picker-input {
-    
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-}
-.center-image-upload{
-    align:center;
+    text-decoration:none;
 }
 </style>
 
@@ -305,183 +135,102 @@ textarea:focus {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.10.2/dropzone.min.css" />
 
 <div class="custom-main-content">
-        
             
-<div class="form-container">
-        <form class="employee-form">
-            <h2>Dodaj novog radnika</h2>
+<form class="">
+<h2>Dodaj novog radnika</h2>
+<div class="employee-form">
+  <div class="form-group">
+    <label for="ime"> Ime</label>
+    <input type="text" id="ime" placeholder="Ime">
+  </div>
 
-            <!-- Ime Mjesto_rodjenja i Pozicija -->
-            <div class="flex-container">
-                <div class="input-group">
-                    <label for="name"><i class="fa fa-user"></i></label>
-                    <input type="text" id="name" name="name" placeholder="Ime" required>
-                </div>
+  <div class="form-group">
+  <label for="prezime"> Prezime</label>
+    <input type="text" id="prezime" placeholder="Prezime">
+  </div>
 
-                <div class="input-group">
-                    <label for="city"><i class="fa fa-location-arrow"></i></label>
-                    <input type="text" id="city" name="city-of-birth" placeholder="Mjesto rođenja" required>
-                </div>
+  <div class="form-group">
+  <label for="email"> Email</label>
+    <input type="email" id="email" placeholder="Email">
+  </div>
 
-                <div class="input-group">
-                    <label for="position"><i class="fa fa-briefcase"></i></label>
-                    <input type="text" id="position" name="position" placeholder="Pozicija" required>
-                </div>
-            </div>
+  <div class="form-group">
+  <label for="phone-number"> Broj telefona</label>
+    <input type="tel" id="phone-number" placeholder="Phone Number">
+  </div>
 
-            <!-- Prezime Adresa_boravista Radno stanje -->
-            <div class="flex-container">
-                <div class="input-group">
-                    <label for="surname"><i class="fa fa-user"></i></label>
-                    <input type="text" id="surname" name="surname" placeholder="Prezime" required>
-                </div>
+  <div class="form-group">
+  <label for="sifra"> Sifra</label>
+    <input type="password" id="sifra" placeholder="Šifra">
+  </div>
 
-                <div class="input-group">
-                    <label for="cityy"><i class="fa fa-location-arrow"></i></label>
-                    <input type="text" id="cityy" name="adress_of_living" placeholder="Adresa boravišta" required>
-                </div>
+  <div class="form-group">
+  <label for="file"> Slika</label>
+    <input type="file" id="file">
+  </div>
 
-                <div class="input-group">
-                <label for="status_zaposlenja"><i class="fa fa-clipboard-list"></i></label>
-                <select id="status_zaposlenja" name="status_zaposlenja" required>
-                     
-                    <option value="stalno_zaposlen">Stalno zaposlen</option>
-                    <option value="zamjena ">Zamjena </option>
-                    <option value="sezonski_rad ">Sezonski rad </option>
-                    <option value="pripravnik  ">Pripravnik  </option>
-                </select>
-            </div>
-            </div>
+  <div class="form-group">
+  <label for="mjesto-rodjenja"> Mjesto rođenja</label>
+    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja">
+  </div>
 
-            
-                
-            
+  <div class="form-group">
+  <label for="adresa-boravista"> Adresa boravišta</label>
+    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta">
+  </div>
 
-            
-            <!-- email datum_rodjenja datum_zapošljavanja -->
-            <div class="flex-containerr">
-                <div class="input-group same-width">
-                    <label for="email"><i class="fa fa-envelope"></i></label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
+  <div class="form-group">
+  <label for="date-of-birth"> Date of Birth</label>
+    <input type="date" id="date-of-birth" placeholder="Date of Birth">
+  </div>
 
-                <div class="date-picker-with-label same-width">
-                    <i class="fa fa-birthday-cake"></i>
-                    <span class="date-label">Date of Birth</span>
-                    <input type="date" id="dob" name="dob" class="date-picker-input">
-                </div>
+  <div class="form-group">
+  <label for="jmbg"> JMBG</label>
+    <input type="text" id="jmbg" placeholder="JMBG">
+  </div>
 
-                <div class="date-picker-with-label same-width">
-                    <i class="fa fa-briefcase"></i>
-                    <span class="date-label">Start Date</span>
-                    <input type="date" id="start-date" name="start-date" class="date-picker-input">
-                </div>
-            </div>
+  <div class="form-group">
+  <label for="position"> Pozicija</label>
+    <input type="text" id="position" placeholder="Pozicija">
+  </div>
 
-            <!-- telefon jmbg plata -->
-            <div class="flex-container">
-            <div class="input-group">
-                    <label for="phone"><i class="fa fa-phone	"></i></label>
-                    <input type="phone" id="phone" name="phone" placeholder="phone-number" required>
-                </div>
+  <div class="form-group">
+  <label for="employment-status"> Status</label>
+    <select id="employment-status">
+      <option value="stalno-zaposlen">Stalno zaposlen</option>
+      <option value="privremeno">Privremeno</option>
+    </select>
+  </div>
 
-                <div class="input-group">
-                    <label for="jmbg"><i class="fa fa-calendar"></i></label>
-                    <input type="jmbg" id="jmbg" name="jmbg" placeholder="jmbg" required>
-                </div>
+  <div class="form-group">
+  <label for="start-date"> Datum zaposlenja</label>
+    <input type="date" id="start-date" placeholder="Start Date">
+  </div>
 
-                <div class="input-group">
-                    <label for="salary"><i class="fa fa-wallet"></i></label>
-                    <input type="salary" id="salary" name="salary" placeholder="Plata" required>
-                </div>  
-                
-            </div>
+  <div class="form-group">
+  <label for="plata"> Plata</label>
+    <input type="text" id="plata" placeholder="Plata">
+  </div>
 
-            <!-- password spol  -->
-            <div class="flex-container">
-            <div class="input-group">
-                    <label for="password"><i class="fa fa-lock	"></i></label>
-                    <input type="password" id="password" name="password" placeholder="sifra" required>
-                    
-                </div>
+  <div class="form-group">
+  <label for="gender"> Spol</label>
+    <select id="gender">
+      <option value="musko">Muško</option>
+      <option value="zensko">Žensko</option>
+    </select>
+  </div>
 
-                <div class="input-group">
-                <label for="gender"><i class="fas fa-venus-mars"></i></label>
-                <select id="gender" name="gender" required>
-                     
-                    <option value="male">Muško</option>
-                    <option value="female ">Žensko </option>
-                </select>
-            </div>
+  <div class="form-group full-width">
+  <label for="notes"> Bilješke</label>
+    <textarea id="notes" placeholder="Bilješke radnika..."></textarea>
+  </div>
 
-                <div class="input-group">
-                    
-                </div>  
-                
-            </div>
-            
-            <!-- Grid Section 
-            <div class="grid-inputs-container">
-                
-                <form  action="upload_photo_path.php" class="dropzone" id="dropzoneUpload">
-                        <div class="dz-message">Drop files here or click to upload</div>
-                    </form>
-                    <input type="hidden" id="photoPathInput" name="photoPath">
-                
-
-                <div class="input-group">
-                    <label for="input2"><i class="fa fa-envelope"></i></label>
-                    <input type="text" id="input2" name="input2" placeholder="Input 2">
-                </div>
-
-                <div class="input-group">
-                    
-                    <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
-                </div>
-            </div>
-            -->
-
-            <div class="grid-inputs-container">
-    <!-- First Input (top-left) -->
-    <div class="input-group">
-        <label for="image-upload"><i class="fa fa-upload"></i> </label>
-        <input class="center-image-upload" type="file" id="image-upload" name="image-upload" accept="image/*">
-    </div>
-
-    <!-- Second Input (bottom-left) -->
-    <div class="input-group">
-        
-    </div>
-
-    <!-- Third Input (right, double-height) -->
-    <div class="input-group">
-        <textarea id="description" name="description" placeholder="Bilješke radnika..."></textarea>
-    </div>
-
-    
-
-    <!-- New Image Upload Bar -->
-    
-</div>
-
-            <!-- Save Button -->
-            <div class="flex-container">
-                <!-- Name Input -->
-                <button type="reset" id="clearButton">Clear</button>
-                    
-                <div>
-
-                </div>
-
-                <!-- New Input (e.g. Surname) -->
-                <button type="submit">Save</button>
-
-                
-            </div>
-            
-        </form>
-
-    </div>
+  <div class="form-buttons">
+    <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
+    <button type="submit" class="custom-add-btn">Save</button>
+  </div>
+  </div>
+</form>
 
    
     

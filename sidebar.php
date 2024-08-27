@@ -19,7 +19,7 @@ a.nav-item {
     font-weight: 100;
 }
 a.nav-item:hover{
-    background-color:#5b3a9e;
+    background-color:#0298c9;
     
     color: white;
     text-decoration:none;
