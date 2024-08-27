@@ -96,7 +96,7 @@ tbody tr:last-child {
     
 }
 
-.custom-table tbody tr:hover td {
+.custom-table tbody tr:hover td{
     
     background-color: #212528;
     
