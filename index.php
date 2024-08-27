@@ -175,7 +175,7 @@ a span:nth-child(4) {
     font-size: 14px;
     color: #03e9f4;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 .forgot-password:hover {
