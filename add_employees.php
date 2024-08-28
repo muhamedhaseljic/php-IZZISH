@@ -131,8 +131,6 @@ label{
 }
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.10.2/dropzone.min.css" />
 
 <div class="custom-main-content">
             
@@ -235,9 +233,6 @@ label{
    
     
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.10.2/dropzone.min.js"></script>
-
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
 <script>
     Dropzone.options.dropzoneUpload = {
