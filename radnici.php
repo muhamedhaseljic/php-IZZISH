@@ -144,6 +144,7 @@ tbody tr:last-child {
 }
 .custom-edit-btn:hover{
     background-color: #386bab;
+    color:white;
 }
 
 .custom-delete-btn {
@@ -219,7 +220,7 @@ button {
             width: 100%;
             height: 100%;
             overflow: auto; /* Enable scroll if needed */
-
+            
             top: 0;
             left: 0;
             right: 0;
@@ -237,7 +238,7 @@ button {
             padding: 20px;
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
-
+            margin-top:100px;
             display: flex;
             border-radius: 8px;
             width: 500px;
@@ -303,7 +304,7 @@ button {
                         <td>29. 10. 1999</td>
                         <td>
                             <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
+                            <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
