@@ -15,11 +15,11 @@ body {
 }
 
 .login-box {
-    position: relative;
+    /*position: relative;*/
     width: 300px;
     padding: 40px;
     background: rgba(0, 0, 0, 0.8);
-    text-align: center;
+    
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -170,31 +170,55 @@ a span:nth-child(4) {
 
 .forgot-password {
     display: block;
-    margin-top: -20px;
+    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 14px;
     color: #03e9f4;
     text-decoration: none;
-    transition: color 0.2s ease;
+    /*transition: color 0.2s ease;*/
 }
 
 .forgot-password:hover {
     color: #fff;
     text-decoration: underline;
 }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #0d1017;
+  color: #fff;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
+}
+.form-group label{
+    color:white;
+    margin:0px;
+    
+    
+}
+
 </style>
 <body>
     <div class="login-box">
         <h2>Login</h2>
         <form>
-            <div class="user-box">
-                <input type="email" name="email" required>
-                <label>email</label>
-            </div>
-            <div class="user-box">
-                <input type="password" name="password" required>
-                <label>Password</label>
-            </div>
+        <div class="form-group">
+            <label for="email"> Email</label>
+            <input type="email" id="email" placeholder="Email">
+        </div>
+        
+        <div class="form-group">
+            <label for="sifra"> Sifra</label>
+            <input type="password" id="password" placeholder="Šifra">
+        </div>
             <a href="#" class="forgot-password">Forgot Password?</a> <!-- Forgot Password Link -->
             <a href="#">
                 <span></span>

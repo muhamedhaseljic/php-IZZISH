@@ -91,7 +91,7 @@ label{
     margin:0;
     
 }
- h2 {
+.forma-custom h2 {
     text-align: left;
     color: #fff;
     margin-bottom: 20px;
@@ -136,7 +136,7 @@ label{
 
 <div class="custom-main-content">
             
-<form class="">
+<form class="forma-custom">
 <h2>Dodaj novog radnika</h2>
 <div class="employee-form">
   <div class="form-group">
