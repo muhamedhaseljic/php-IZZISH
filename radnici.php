@@ -1,5 +1,10 @@
+<?php
 
-    <style>
+require_once "config/config.php";
+
+?>
+  
+  <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
@@ -292,28 +297,31 @@ button {
                 </thead>
                 
                 <tbody>
-                <?php for($i=1;$i<10;$i++) : ?>
+                <?php 
+                    
+                    $sql = "SELECT * FROM radnici";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+
+                    foreach($results as $result) : ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Medina Haseljić</td>
-                        <td>medina@gmail.com</td>
+                        <td><?php echo $result['employee_id'] ?></td>
+                        <td><?php echo $result['first_name'] . $result['last_name'] ?></td>
+                        <td><?php echo $result['email'] ?></td>
                         <td>
-                            <?php
-                                $FourDigitRandomNumber = mt_rand(111111111,999999999);
-                                echo "+" . $FourDigitRandomNumber;
-                            ?>
+                            <?php echo $result['phone_number'] ?>
                         </td>
-                        <td>Radni Kmet</td>
-                        <td>$ 1350</td>
+                        <td><?php echo $result['position'] ?></td>
+                        <td>$ <?php echo $result['salary'] ?></td>
                         <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>29. 10. 1999</td>
+                        <td><?php echo $result['date_of_birth'] ?></td>
                         <td>
                             <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>

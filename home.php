@@ -1,4 +1,8 @@
+<?php
 
+require_once "config/config.php";
+
+?>
 <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */

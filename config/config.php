@@ -10,6 +10,3 @@ $conn = mysqli_connect($servername, $db_username, $db_password, $database_name);
 if(!$conn){
     die("Neuspjesna konekcija");
 }
-else{
-    echo "jes";
-}
