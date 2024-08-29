@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
         if ($users[$email]['role'] === 'admin') {
             header('Location: http://localhost/retro/dashboard.php?page=home');
         } elseif ($users[$email]['role'] === 'employee') {
-            header('Location: http://localhost/retro/index.php?page=home');
+            header('Location: http://localhost/retro/radnik/');
         }
         exit();
     } else {
