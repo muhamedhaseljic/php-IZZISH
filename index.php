@@ -1,5 +1,6 @@
 <?php
 // Start the session
+require_once "config/config.php";
 session_start();
 
 // Example hardcoded users (you can replace this with a database query)

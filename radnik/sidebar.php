@@ -116,7 +116,7 @@ img.nav-item{
                 <a href="index.php?page=poruke" class="nav-item poruke"><span class='icon-field'>&nbsp;<i class="fas fa-envelope">  &nbsp; &nbsp;</i></span> Poruke</a>
                 <img class="nav-item" src="../inz_logo_-1.png" width="200px" height="60px" alt="">
 
-                <a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
+                <a href="http://localhost/retro/index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
 		</div>
 
 </nav>
