@@ -192,7 +192,12 @@ button {
             border-radius: 50%;
             margin-right: 20px;
         }
-
+.profile-picture img{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin-right: 20px;
+}
         .radnik-details {
             display: flex;
             flex-direction: column;
@@ -318,13 +323,13 @@ button {
         <!-- Pop-up Window -->
 <div id="popup" class="popup">
     <div class="popup-content">
-        <div class="profile-picture"></div> <!-- Placeholder for the picture -->
+        <div class="profile-picture"><img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg"  alt=""> </div> <!-- Placeholder for the picture -->
         <div class="radnik-details">
-            <h2>Radnik Name</h2>
+            <h2>Muhamed Haseljić</h2>
             <ul>
                 <li><strong>RadnikID:</strong> int</li>
-                <li><strong>Ime:</strong> varchar(255)</li>
-                <li><strong>Prezime:</strong> varchar(255)</li>
+                <li><strong>Ime:</strong> Muhamed</li>
+                <li><strong>Prezime:</strong> Haseljić</li>
                 <li><strong>Email:</strong> varchar(255)</li>
                 <li><strong>Telefon:</strong> int</li>
                 <li><strong>Mjesto_rođenja:</strong> varchar(255)</li>

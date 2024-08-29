@@ -48,15 +48,19 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     background: #0d1017;
     font-family: Arial, sans-serif;
+
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .login-box {
     /*position: relative;*/
-    width: 300px;
-    padding: 40px;
+    width: 400px;
+    padding: 20px;
     background: #171c22;
     
     border-radius: 10px;
@@ -65,8 +69,14 @@ body {
 
 .login-box h2 {
     color: white;
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    text-align: center;
+    font-weight:200;
+}
+.login-box a {
+    
+    text-align: center;
 }
 
 .user-box {
@@ -113,7 +123,7 @@ a {
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     margin-top: 40px;
     border: none;
     cursor: pointer;
@@ -140,10 +150,12 @@ button{
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
-    letter-spacing: 4px;
-    margin-top: 40px;
+    letter-spacing: 2px;
+    margin-top: 50px;
     border: none;
     cursor: pointer;
+    width: 100%;
+
 }
 
 a span {
@@ -199,7 +211,6 @@ a span:nth-child(4) {
     font-size: 14px;
     color: white;
     text-decoration: none;
-    /*transition: color 0.2s ease;*/
     padding: 0px 2px;
     margin:0;
     
@@ -238,12 +249,20 @@ a span:nth-child(4) {
 .login-box .forgot-password{
     background-color:none;
 }
+h1{
+    color:white;
+}
+.naslov-razmak{
+    margin-bottom:70px;
+}
 </style>
 
 </head>
 <body>
+    <h1>INSTITUT ZA ZDRAVLJE</h1>
+    <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
-        <h2>Login</h2>    
+        <h2>Please login to start your session</h2>    
         <form id="loginForm"  method="POST">
         <div class="form-group">
             <label for="email"> Email</label>
