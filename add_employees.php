@@ -1,6 +1,8 @@
 <?php
 
-require_once "header.php";?>
+require_once "header.php";
+require_once 'config/config.php';?>
+
 
 <div class="custom-container d-flex">
 <?php require_once "sidebar.php";
@@ -134,67 +136,67 @@ label{
 
 <div class="custom-main-content">
             
-<form class="forma-custom">
+<form class="forma-custom" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novog radnika</h2>
 <div class="employee-form">
   <div class="form-group">
     <label for="ime"> Ime</label>
-    <input type="text" id="ime" placeholder="Ime">
+    <input type="text" id="ime" placeholder="Ime" name="first_name">
   </div>
 
   <div class="form-group">
   <label for="prezime"> Prezime</label>
-    <input type="text" id="prezime" placeholder="Prezime">
+    <input type="text" id="prezime" placeholder="Prezime" name="last_name">
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
-    <input type="email" id="email" placeholder="Email">
+    <input type="email" id="email" placeholder="Email" name="email">
   </div>
 
   <div class="form-group">
   <label for="phone-number"> Broj telefona</label>
-    <input type="tel" id="phone-number" placeholder="Phone Number">
+    <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number">
   </div>
 
   <div class="form-group">
   <label for="sifra"> Sifra</label>
-    <input type="password" id="sifra" placeholder="Šifra">
+    <input type="password" id="sifra" placeholder="Šifra" name="password">
   </div>
 
   <div class="form-group">
   <label for="file"> Slika</label>
-    <input type="file" id="file">
+    <input type="file" id="file" name="photo_path">
   </div>
 
   <div class="form-group">
   <label for="mjesto-rodjenja"> Mjesto rođenja</label>
-    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja">
+    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja" name="mjesto_rodjenja">
   </div>
 
   <div class="form-group">
   <label for="adresa-boravista"> Adresa boravišta</label>
-    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta">
+    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta" name="adresa_boravista">
   </div>
 
   <div class="form-group">
   <label for="date-of-birth"> Date of Birth</label>
-    <input type="date" id="date-of-birth" placeholder="Date of Birth">
+    <input type="date" id="date-of-birth" placeholder="Date of Birth" name="date_of_birth">
   </div>
 
   <div class="form-group">
   <label for="jmbg"> JMBG</label>
-    <input type="text" id="jmbg" placeholder="JMBG">
+    <input type="text" id="jmbg" placeholder="JMBG" name="jmbg">
   </div>
 
   <div class="form-group">
   <label for="position"> Pozicija</label>
-    <input type="text" id="position" placeholder="Pozicija">
+    <input type="text" id="position" placeholder="Pozicija" name="position">
   </div>
 
   <div class="form-group">
   <label for="employment-status"> Status</label>
-    <select id="employment-status">
+    <select id="employment-status" name="employment_status">
       <option value="stalno-zaposlen">Stalno zaposlen</option>
       <option value="privremeno">Privremeno</option>
     </select>
@@ -202,17 +204,17 @@ label{
 
   <div class="form-group">
   <label for="start-date"> Datum zaposlenja</label>
-    <input type="date" id="start-date" placeholder="Start Date">
+    <input type="date" id="start-date" placeholder="Start Date" name="start_date">
   </div>
 
   <div class="form-group">
   <label for="plata"> Plata</label>
-    <input type="text" id="plata" placeholder="Plata">
+    <input type="text" id="plata" placeholder="Plata" name="plata">
   </div>
 
   <div class="form-group">
   <label for="gender"> Spol</label>
-    <select id="gender">
+    <select id="gender" name="gender">
       <option value="musko">Muško</option>
       <option value="zensko">Žensko</option>
     </select>
@@ -220,7 +222,7 @@ label{
 
   <div class="form-group full-width">
   <label for="notes"> Bilješke</label>
-    <textarea id="notes" placeholder="Bilješke radnika..."></textarea>
+    <textarea id="notes" name="notes" placeholder="Bilješke radnika..."></textarea>
   </div>
 
   <div class="form-buttons">

@@ -291,7 +291,6 @@ button {
                         <th>Pozicija</th>
                         <th>Plata</th>                        
                         <th>Slika</th>
-                        <th>Datum rodjenja</th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
@@ -306,15 +305,14 @@ button {
                     foreach($results as $result) : ?>
                     <tr>
                         <td><?php echo $result['employee_id'] ?></td>
-                        <td><?php echo $result['first_name'] . $result['last_name'] ?></td>
+                        <td><?php echo $result['first_name'] ." ". $result['last_name'] ?></td>
                         <td><?php echo $result['email'] ?></td>
                         <td>
                             <?php echo $result['phone_number'] ?>
                         </td>
                         <td><?php echo $result['position'] ?></td>
                         <td>$ <?php echo $result['salary'] ?></td>
-                        <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td><?php echo $result['date_of_birth'] ?></td>
+                        <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
                         <td>
                             <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
