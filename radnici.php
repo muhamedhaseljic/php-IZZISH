@@ -272,6 +272,11 @@ button {
             text-decoration: none;
             cursor: pointer;
         }
+        .button-container{
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            justify-content: flex-end; /* Align items to the right */
+        }
     </style>
     
     <div class="custom-main-content">
@@ -314,9 +319,13 @@ button {
                         <td>$ <?php echo $result['salary'] ?></td>
                         <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
                         <td>
-                            <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                            <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
+                            <div class="button-container">
+                                <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                                <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
+                                <form class="brisanje-dugme-form" action="izbrisi_radnika.php" method="POST">
+                                    <button class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash "></span></button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     <?php endforeach; ?>
