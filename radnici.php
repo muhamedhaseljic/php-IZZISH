@@ -282,57 +282,53 @@ button {
     <div class="custom-main-content">
         <h1 >Employees List</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text"  placeholder="Search name..." class="custom-search-bar">
-                <a href="add_employees.php" class="custom-add-btn">Add</a>
-            </div>
-            <div class="scrolling-divv">
-            <table class="table custom-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ime i prezime</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Pozicija</th>
-                        <th>Plata</th>                        
-                        <th>Slika</th>
-                        <th>Akcije</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                <?php 
-                    
-                    $sql = "SELECT * FROM radnici";
-                    $run = $conn->query($sql);
-                    $results = $run->fetch_all(MYSQLI_ASSOC);
+    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+    <a href="add_employees.php" class="custom-add-btn">Add</a>
+</div>
+<div class="scrolling-divv">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ime i prezime</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Pozicija</th>
+                <th>Plata</th>                        
+                <th>Slika</th>
+                <th>Akcije</th>
+            </tr>
+        </thead>
+        <tbody id="employee-table">
+            <?php 
+            // Fetch all employees from the database
+            $sql = "SELECT * FROM radnici";
+            $run = $conn->query($sql);
+            $results = $run->fetch_all(MYSQLI_ASSOC);
 
-                    foreach($results as $result) : ?>
-                    <tr>
-                        <td><?php echo $result['employee_id'] ?></td>
-                        <td><?php echo $result['first_name'] ." ". $result['last_name'] ?></td>
-                        <td><?php echo $result['email'] ?></td>
-                        <td>
-                            <?php echo $result['phone_number'] ?>
-                        </td>
-                        <td><?php echo $result['position'] ?></td>
-                        <td>$ <?php echo $result['salary'] ?></td>
-                        <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
-                        <td>
-                            <div class="button-container">
-                                <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                                <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                                <form class="brisanje-dugme-form" action="izbrisi_radnika.php" method="POST">
-                                    <button class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash "></span></button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <!-- Repeat for other entries -->
-                </tbody>
-            </table>
-            </div>
+            foreach($results as $result) : ?>
+            <tr>
+                <td><?php echo $result['employee_id'] ?></td>
+                <td><?php echo $result['first_name'] ." ". $result['last_name'] ?></td>
+                <td><?php echo $result['email'] ?></td>
+                <td><?php echo $result['phone_number'] ?></td>
+                <td><?php echo $result['position'] ?></td>
+                <td>$ <?php echo $result['salary'] ?></td>
+                <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="img" class="custom-profile-img"></td>
+                <td>
+                    <div class="button-container">
+                        <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                        <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
+                        <form class="brisanje-dugme-form" action="izbrisi_radnika.php" method="POST">
+                            <button class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
         </div>
 
         <!-- Pop-up Window -->
@@ -391,4 +387,21 @@ button {
                 popup.style.display = "none";
             }
         }
+
+        document.getElementById('search-input').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#employee-table tr');
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(2)'); // Column for 'Ime i prezime'
+            const name = nameCell.textContent.toLowerCase();
+
+            // Check if the name starts with the search input
+            if (name.startsWith(searchValue)) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
     </script>
