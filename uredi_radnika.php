@@ -35,7 +35,8 @@
         }
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
 
-
+        if(!empty($photo_path)){
+            
         $sql = "UPDATE radnici SET first_name = ?,
                                    last_name = ?,
                                    email = ?, 
@@ -57,7 +58,30 @@
         $run = $conn->prepare($sql);
         $run->bind_param("sssssssisssssss", $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
         $run->execute();
+        }
+        else{
+            $sql = "UPDATE radnici SET first_name = ?,
+                                   last_name = ?,
+                                   email = ?, 
+                                   phone_number = ?,
+                                   date_of_birth = ?, 
+                                   place_of_birth = ?,
+                                   gender = ?, 
+                                   jmbg = ?, 
+                                   
+                                   adress = ?, 
+                                   date_of_employment = ?, 
+                                   status = ?,
+                                   salary = ?, 
+                                   position = ?, 
+                                   notes = ?
+                                   WHERE employee_id = 2";
+                
 
+        $run = $conn->prepare($sql);
+        $run->bind_param("sssssssissssss", $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
+        $run->execute();
+        }
         //$_SESSION['uspjeh'] = "Trener uspjesno dodat";
 
         header('location: http://localhost/retro/dashboard.php?page=radnici');
