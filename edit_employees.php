@@ -1,6 +1,8 @@
 <?php
 
-require_once "header.php";?>
+require_once "header.php";
+require_once 'config/config.php';?>
+
 
 <div class="custom-container d-flex">
 <?php require_once "sidebar.php";
@@ -134,95 +136,103 @@ label{
 
 <div class="custom-main-content">
             
-<form class="forma-custom">
+<form class="forma-custom" action="uredi_radnika.php" method="POST" enctype="multipart/form-data">
 <h2>Uredi profil radnika</h2>
+<?php 
+                    
+                    $sql = "SELECT * FROM radnici where employee_id=2";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+
+                    foreach($results as $result) : ?>
 <div class="employee-form">
   <div class="form-group">
     <label for="ime"> Ime</label>
-    <input type="text" id="ime" placeholder="Ime">
+    <input type="text" id="ime" value="<?php echo $result['first_name'] ?>" placeholder="Ime" name="first_name">
   </div>
 
   <div class="form-group">
   <label for="prezime"> Prezime</label>
-    <input type="text" id="prezime" placeholder="Prezime">
+    <input type="text" id="prezime" value="<?php echo $result['last_name'] ?>" placeholder="Prezime" name="last_name">
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
-    <input type="email" id="email" placeholder="Email">
+    <input type="email" id="email" value="<?php echo $result['email'] ?>" placeholder="Email" name="email">
   </div>
 
   <div class="form-group">
   <label for="phone-number"> Broj telefona</label>
-    <input type="tel" id="phone-number" placeholder="Phone Number">
+    <input type="tel" id="phone-number" value="<?php echo $result['phone_number'] ?>" placeholder="Phone Number" name="phone_number">
   </div>
 
   <div class="form-group">
   <label for="sifra"> Sifra</label>
-    <input type="password" id="sifra" placeholder="Šifra">
+    <input type="password" id="sifra" value="<?php echo $result['password'] ?>" placeholder="Šifra" name="password" disabled>
   </div>
 
   <div class="form-group">
   <label for="file"> Slika</label>
-    <input type="file" id="file">
+    <input type="file" id="file" value="<?php echo $result['photo_path'] ?>" name="photo_path">
   </div>
 
   <div class="form-group">
   <label for="mjesto-rodjenja"> Mjesto rođenja</label>
-    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja">
+    <input type="text" id="mjesto-rodjenja" value="<?php echo $result['place_of_birth'] ?>"  placeholder="Mjesto rođenja" name="mjesto_rodjenja">
   </div>
 
   <div class="form-group">
   <label for="adresa-boravista"> Adresa boravišta</label>
-    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta">
+    <input type="text" id="adresa-boravista" value="<?php echo $result['adress'] ?>" placeholder="Adresa boravišta" name="adresa_boravista">
   </div>
 
   <div class="form-group">
   <label for="date-of-birth"> Date of Birth</label>
-    <input type="date" id="date-of-birth" placeholder="Date of Birth">
+    <input type="date" id="date-of-birth" value="<?php echo $result['date_of_birth'] ?>" placeholder="Date of Birth" name="date_of_birth">
   </div>
 
   <div class="form-group">
   <label for="jmbg"> JMBG</label>
-    <input type="text" id="jmbg" placeholder="JMBG">
+    <input type="text" id="jmbg" placeholder="JMBG" value="<?php echo $result['jmbg'] ?>" name="jmbg">
   </div>
 
   <div class="form-group">
   <label for="position"> Pozicija</label>
-    <input type="text" id="position" placeholder="Pozicija">
+    <input type="text" id="position" placeholder="Pozicija" value="<?php echo $result['position'] ?>" name="position">
   </div>
 
   <div class="form-group">
   <label for="employment-status"> Status</label>
-    <select id="employment-status">
-      <option value="stalno-zaposlen">Stalno zaposlen</option>
-      <option value="privremeno">Privremeno</option>
+    <select id="employment-status"  name="employment_status">
+      <option value="stalno-zaposlen" <?php echo ($result['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
+      <option value="privremeno" <?php echo ($result['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
+      <option value="pripravnici_rad" <?php echo ($result['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
     </select>
   </div>
 
   <div class="form-group">
   <label for="start-date"> Datum zaposlenja</label>
-    <input type="date" id="start-date" placeholder="Start Date">
+    <input type="date" id="start-date" value="<?php echo $result['date_of_employment'] ?>" placeholder="Start Date" name="start_date">
   </div>
 
   <div class="form-group">
   <label for="plata"> Plata</label>
-    <input type="text" id="plata" placeholder="Plata">
+    <input type="text" id="plata" value="<?php echo $result['salary'] ?>" placeholder="Plata" name="plata">
   </div>
 
   <div class="form-group">
   <label for="gender"> Spol</label>
-    <select id="gender">
-      <option value="musko">Muško</option>
-      <option value="zensko">Žensko</option>
+    <select id="gender" name="gender">
+      <option value="musko" <?php echo ($result['status'] == 'Muško') ? 'selected' : ''; ?> >Muško</option>
+      <option value="zensko" <?php echo ($result['status'] == 'Žensko') ? 'selected' : ''; ?> >Žensko</option>
     </select>
   </div>
 
   <div class="form-group full-width">
   <label for="notes"> Bilješke</label>
-    <textarea id="notes" placeholder="Bilješke radnika..."></textarea>
+    <textarea id="notes" name="notes"  placeholder="Bilješke radnika..."><?php echo $result['notes'] ?></textarea>
   </div>
-
+<?php endforeach;?>
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
     <button type="submit" class="custom-add-btn">Save</button>

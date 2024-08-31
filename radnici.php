@@ -282,7 +282,7 @@ button {
     <div class="custom-main-content">
         <h1 >Employees List</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Search name..." class="custom-search-bar">
+                <input type="text"  placeholder="Search name..." class="custom-search-bar">
                 <a href="add_employees.php" class="custom-add-btn">Add</a>
             </div>
             <div class="scrolling-divv">
