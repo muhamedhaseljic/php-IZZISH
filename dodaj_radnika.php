@@ -43,7 +43,7 @@
         $run->bind_param("ssssssssisssssss", $first_name, $last_name, $email, $password, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
         $run->execute();
 
-        //$_SESSION['uspjeh'] = "Trener uspjesno dodat";
+        $_SESSION['message']['type'] = "radnik uspjesno dodat";
 
         header('location: http://localhost/retro/dashboard.php?page=radnici');
         exit();

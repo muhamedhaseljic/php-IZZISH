@@ -1,5 +1,6 @@
 <?php
 require_once 'config/config.php';
+require_once 'radnik/Radnik.php';
 require_once "header.php";?>
 
 
@@ -137,15 +138,51 @@ label{
 
 <div class="custom-main-content">
             
-<form class="forma-custom" action="uredi_radnika.php" method="POST" enctype="multipart/form-data">
+<form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Uredi profil radnika</h2>
 <?php 
-                    
-                    $sql = "SELECT * FROM radnici where employee_id=2";
-                    $run = $conn->query($sql);
-                    $results = $run->fetch_all(MYSQLI_ASSOC);
 
-                    foreach($results as $result) : ?>
+$employee_obj = new Radnik();
+$result = $employee_obj->read($_GET['id']);
+$target_dir = "images/";
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+  $employee_id = $_GET['id'];
+  $first_name= $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $phone_number = $_POST['phone_number'];
+  //$password = $_POST['password'];
+  $employment_status = $_POST['employment_status'];
+  $mjesto_rodjenja = $_POST['mjesto_rodjenja'];
+  $adresa_boravista = $_POST['adresa_boravista'];
+  $date_of_birth = $_POST['date_of_birth'];
+  $jmbg = $_POST['jmbg'];
+  $position = $_POST['position'];
+  $start_date = $_POST['start_date'];
+  $plata = $_POST['plata'];
+  $gender = $_POST['gender'];
+  $notes = $_POST['notes'];
+
+  $photo_path = basename($_FILES['photo_path']['name']);
+        $target_file = $target_dir . $photo_path;
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+        move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
+
+        $employee_obj->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
+        header('Location: dashboard.php?page=radnici');
+        exit();
+
+      }
+
+ ?>
 <div class="employee-form">
   <div class="form-group">
     <label for="ime"> Ime</label>
@@ -233,10 +270,9 @@ label{
   <label for="notes"> Bilješke</label>
     <textarea id="notes" name="notes"  placeholder="Bilješke radnika..."><?php echo $result['notes'] ?></textarea>
   </div>
-<?php endforeach;?>
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
-    <button type="submit" class="custom-add-btn">Save</button>
+    <button type="submit"  class="custom-add-btn">Save</button>
   </div>
   </div>
 </form>

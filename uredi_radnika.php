@@ -6,6 +6,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
+        $employee_id = $_POST['employee_id'];
         $first_name= $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $email = $_POST['email'];
@@ -52,7 +53,7 @@
                                    salary = ?, 
                                    position = ?, 
                                    notes = ?
-                                   WHERE employee_id = 2";
+                                   WHERE employee_id = $employee_id";
                 
 
         $run = $conn->prepare($sql);
@@ -75,7 +76,7 @@
                                    salary = ?, 
                                    position = ?, 
                                    notes = ?
-                                   WHERE employee_id = 2";
+                                   WHERE employee_id = $employee_id";
                 
 
         $run = $conn->prepare($sql);

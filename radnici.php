@@ -318,7 +318,7 @@ button {
                 <td>
                     <div class="button-container">
                         <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                        <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
+                        <a href="edit_employees.php?id=<?php echo $result['employee_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
                         <form class="brisanje-dugme-form" action="izbrisi_radnika.php" method="POST">
                             <button class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
                         </form>
