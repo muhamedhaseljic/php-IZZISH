@@ -131,72 +131,89 @@ label{
     color: #fff;
     text-decoration:none;
 }
+
+.form-group input.invalid {
+        border: 1px solid red;
+    }
+    .error-custom{
+      position: relative;
+
+    }
+    .form-group .error-message {
+        color: red;
+        font-size: 12px;
+        position: absolute;
+        top: 100%;  /* Below the input field */
+        left: 0;
+        display: none; /* Hidden by default */
+    }
 </style>
 
 
 <div class="custom-main-content">
             
-<form class="forma-custom" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
+<form class="forma-custom" id="employeeForm" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novog radnika</h2>
 <div class="employee-form">
-  <div class="form-group">
+  <div class="form-group ">
     <label for="ime"> Ime</label>
-    <input type="text" id="ime" placeholder="Ime" name="first_name">
+    <input type="text"  id="ime" placeholder="Ime" name="first_name" >
   </div>
 
   <div class="form-group">
   <label for="prezime"> Prezime</label>
-    <input type="text" id="prezime" placeholder="Prezime" name="last_name">
+    <input type="text" id="prezime" placeholder="Prezime" name="last_name" >
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
-    <input type="email" id="email" placeholder="Email" name="email">
+    <input type="email" id="email" placeholder="Email" name="email" >
   </div>
 
   <div class="form-group">
   <label for="phone-number"> Broj telefona</label>
-    <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number">
+    <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number" >
   </div>
 
-  <div class="form-group">
+  <div class="form-group error-custom">
   <label for="sifra"> Sifra</label>
-    <input type="password" id="sifra" placeholder="Šifra" name="password">
+    <input type="password" class="" id="sifra" placeholder="Šifra" name="password" >
+    <span id="passwordError" class="error-message">Password must be at least 5 characters long.</span>
   </div>
 
   <div class="form-group">
   <label for="file"> Slika</label>
-    <input type="file" id="file" name="photo_path">
+    <input type="file" id="file" name="photo_path" >
   </div>
 
   <div class="form-group">
   <label for="mjesto-rodjenja"> Mjesto rođenja</label>
-    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja" name="mjesto_rodjenja">
+    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja" name="mjesto_rodjenja" >
   </div>
 
   <div class="form-group">
   <label for="adresa-boravista"> Adresa boravišta</label>
-    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta" name="adresa_boravista">
+    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta" name="adresa_boravista" >
   </div>
 
   <div class="form-group">
   <label for="date-of-birth"> Date of Birth</label>
-    <input type="date" id="date-of-birth" placeholder="Date of Birth" name="date_of_birth">
+    <input type="date" id="date-of-birth" placeholder="Date of Birth" name="date_of_birth" >
   </div>
 
   <div class="form-group">
   <label for="jmbg"> JMBG</label>
-    <input type="text" id="jmbg" placeholder="JMBG" name="jmbg">
+    <input type="text" id="jmbg" placeholder="JMBG" name="jmbg" >
   </div>
 
   <div class="form-group">
   <label for="position"> Pozicija</label>
-    <input type="text" id="position" placeholder="Pozicija" name="position">
+    <input type="text" id="position" placeholder="Pozicija" name="position" >
   </div>
 
   <div class="form-group">
   <label for="employment-status"> Status</label>
-    <select id="employment-status" name="employment_status">
+    <select id="employment-status" name="employment_status" >
       <option value="stalno-zaposlen">Stalno zaposlen</option>
       <option value="privremeno">Privremeno</option>
     </select>
@@ -204,17 +221,17 @@ label{
 
   <div class="form-group">
   <label for="start-date"> Datum zaposlenja</label>
-    <input type="date" id="start-date" placeholder="Start Date" name="start_date">
+    <input type="date" id="start-date" placeholder="Start Date" name="start_date" >
   </div>
 
   <div class="form-group">
   <label for="plata"> Plata</label>
-    <input type="text" id="plata" placeholder="Plata" name="plata">
+    <input type="text" id="plata" placeholder="Plata" name="plata" >
   </div>
 
   <div class="form-group">
   <label for="gender"> Spol</label>
-    <select id="gender" name="gender">
+    <select id="gender" name="gender" >
       <option value="musko">Muško</option>
       <option value="zensko">Žensko</option>
     </select>
@@ -236,25 +253,23 @@ label{
     
     </div>
 
-<script>
-    Dropzone.options.dropzoneUpload = {
-            url: "upload_photo_path.php",
-            paramName: "photo",
-            maxFilesize: 20,
-            acceptedFiles: "image/*",
-            init: function() {
-                this.on("success", function(file, response) {
-                    const jsonResponse = JSON.parse(response);
-                    if (jsonResponse.success) {
-                        document.getElementById('photoPathInput').value = jsonResponse.photo_path;
-                    } else {
-                        console.error(jsonResponse.error);
-                    }
-                });
-
-                this.on("error", function(file, response) {
-                    console.error("File upload error: ", response);
-                });
-            }
-        };
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+document.getElementById('employeeForm').addEventListener('submit', function (event) {
+    var password = document.getElementById('sifra').value;
+    var passwordInput = document.getElementById('sifra');
+    var errorMessage = document.getElementById('passwordError');
+    
+    // Check if password length is less than 5
+    if (password.length < 5) {
+        event.preventDefault();  // Prevent form submission
+        alert("Please enter a valid password with at least 5 characters."); // Show the error
+        passwordInput.classList.add('invalid');
+        errorMessage.style.display = 'inline';
+    } else {
+        // If valid, remove error styles
+        passwordInput.classList.remove('invalid');
+        errorMessage.style.display = 'none';
+    }
+});
 </script>
