@@ -155,24 +155,32 @@ label{
 <form class="forma-custom" id="employeeForm" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novog radnika</h2>
 <div class="employee-form">
-  <div class="form-group ">
+  <div class="form-group error-custom">
     <label for="ime"> Ime</label>
     <input type="text"  id="ime" placeholder="Ime" name="first_name" >
+    <span id="first_nameError" class="error-message">Password must be at least 5 characters long.</span>
+
   </div>
 
   <div class="form-group">
   <label for="prezime"> Prezime</label>
     <input type="text" id="prezime" placeholder="Prezime" name="last_name" >
+    <span id="last_nameError" class="error-message">Password must be at least 5 characters long.</span>
+
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
     <input type="email" id="email" placeholder="Email" name="email" >
+    <span id="emailError" class="error-message">Password must be at least 5 characters long.</span>
+
   </div>
 
   <div class="form-group">
   <label for="phone-number"> Broj telefona</label>
     <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number" >
+    <span id="phone_numberError" class="error-message">Password must be at least 5 characters long.</span>
+
   </div>
 
   <div class="form-group error-custom">
@@ -259,17 +267,44 @@ document.getElementById('employeeForm').addEventListener('submit', function (eve
     var password = document.getElementById('sifra').value;
     var passwordInput = document.getElementById('sifra');
     var errorMessage = document.getElementById('passwordError');
+
+    var name = document.getElementById('ime').value;
+    var nameInput = document.getElementById('ime');
+    var first_nameError = document.getElementById('first_nameError');
+    
+
+    var hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    var hasNumber = /\d/;
+    var hasUppercase = /[A-Z]/;
+
+    if(name.length <3){
+      event.preventDefault();
+      nameInput.classList.add('invalid');
+      first_nameError.style.display = 'inline';
+      first_nameError.textContent = 'name must have 3 character.';
+    }
+    else{
+      nameInput.classList.remove('invalid');
+      first_nameError.style.display = 'none';
+    }
     
     // Check if password length is less than 5
     if (password.length < 5) {
         event.preventDefault();  // Prevent form submission
-        alert("Please enter a valid password with at least 5 characters."); // Show the error
+        //alert("Please enter a valid password with at least 5 characters."); // Show the error
         passwordInput.classList.add('invalid');
         errorMessage.style.display = 'inline';
-    } else {
-        // If valid, remove error styles
-        passwordInput.classList.remove('invalid');
-        errorMessage.style.display = 'none';
+        errorMessage.textContent = 'password must have 5 character.';
+
+    } else if(!hasSpecialChar.test(password) || !hasNumber.test(password) || !hasUppercase.test(password)) {
+      event.preventDefault();
+      passwordInput.classList.add('invalid');
+        errorMessage.style.display = 'inline';
+        errorMessage.textContent = 'Passwords must contain:  a minimum of 1 upper case letter [A-Z]; special character and;  numeric character [0-9].';
+    }
+    else{
+      passwordInput.classList.remove('invalid');
+      errorMessage.style.display = 'none';
     }
 });
 </script>

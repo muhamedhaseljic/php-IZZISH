@@ -30,7 +30,7 @@
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
         if (strlen($password) < 5) {
-            echo "<script>alert('Password must be at least 5 characters long.'); window.history.back();</script>";
+            echo "<script>alert('Password is wrong typed.'); window.history.back();</script>";
             exit();
         }
 
