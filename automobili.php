@@ -1,4 +1,9 @@
+<?php
 
+require_once "config/config.php";
+require_once "classes/Automobili.php";
+
+?>
 <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
@@ -206,48 +211,49 @@ button {
                 
                 <tbody>
                 <?php
-                  function generateRandomString($length = 25) {
-                    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    $charactersLength = strlen($characters);
-                    $randomString = '';
-                    for ($i = 0; $i < $length; $i++) {
-                        $randomString .= $characters[rand(0, $charactersLength - 1)];
-                    }
-                    return $randomString;
-                }
-                
-                for($i=1;$i<10;$i++) : ?>
+                  
+                  $sql = "SELECT automobili.*,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name
+                  FROM `automobili` 
+                  left join `radnici` on automobili.car_id = radnici.car_id;";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    $select_members = $results;
+                    
+                    foreach($results as $car) :
+                  ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Škoda</td>
-                        <td>Oktavia</td>
+                        <td><?= $car['car_id'] ?></td>
+                        <td><?= $car['name'] ?></td>
+                        <td><?= $car['model'] ?></td>
                         <td>
+                        <?= $car['registration'] ?>
+                        </td>
+                        <td><?= $car['kilometers'] . " km" ?></td>
+                        <td>
+                        <?= date("Y",strtotime($car['date_of_production'])) ?>
+                        </td>
+                        
+						<td>
                             <?php
-                                
-                              //usage 
-                              $myRandomString = generateRandomString(7);
-                              echo $myRandomString;
-                            ?>
-                        </td>
-                        <td>
 
-                        <?php
-                                $FourDigitRandomNumber = mt_rand(111111,999999);
-                                echo  $FourDigitRandomNumber ." km";
+                                if($car['employee_name']){
+                                    echo $car['employee_name'] ." ".$car['employee_last_name'];
+                                }
+                                else{
+                                    echo "Nema vozaća";
+                                }
+
                             ?>
                         </td>
-                        <td><?php
-                                $FourDigitRandomNumber = mt_rand(10,23);
-                                echo "20". $FourDigitRandomNumber ." godina.";
-                            ?></td>
-						<td>Muharem Ređepović</td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>
