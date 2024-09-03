@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Automobili.php';
-require_once "../header.php";?>
+require_once "../inc/header.php";?>
 
 <?php 
 
@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 <div class="custom-container d-flex">
-<?php require_once "../sidebar.php";
+<?php require_once "../inc/sidebar.php";
 
 ?>
 
@@ -195,9 +195,6 @@ label{
   <label for="kilometers"> Kilometri</label>
     <input type="text" id="kilometers" placeholder="Kilometri" value="<?php echo $result['kilometers'] ?>" name="kilometers">
   </div>
-
-  
-
   
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
