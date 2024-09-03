@@ -250,7 +250,7 @@ button {
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <a href="admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                            <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
+                            <a href="admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

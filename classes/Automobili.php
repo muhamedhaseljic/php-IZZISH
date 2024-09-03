@@ -42,4 +42,11 @@ protected $conn;
         $run->bind_param("ssssssi", $name, $model, $registration, $date_of_production,$price, $kilometers, $car_id);
         $run->execute();
     }
+
+    public function delete($car_id){
+        $sql = "DELETE FROM automobili WHERE car_id = ?";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $car_id);
+        $run->execute();
+    }
 }
