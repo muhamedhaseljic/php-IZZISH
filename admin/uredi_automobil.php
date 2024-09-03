@@ -167,32 +167,32 @@ label{
 
 <div class="employee-form">
   <div class="form-group">
-    <label for="name"> Ime</label>
+    <label for="name"> Naziv</label>
     <input type="text" id="name" value="<?php echo $result['name'] ?>" placeholder="Naziv" name="name">
   </div>
 
   <div class="form-group">
-  <label for="model"> Prezime</label>
+  <label for="model"> Model</label>
     <input type="text" id="model" value="<?php echo $result['model'] ?>" placeholder="Model" name="model">
   </div>
 
   <div class="form-group">
-  <label for="registration"> Email</label>
+  <label for="registration"> Registracija</label>
     <input type="text" id="registration" value="<?php echo $result['registration'] ?>" placeholder="Registracija" name="registration">
   </div>
 
   <div class="form-group">
-  <label for="date_of_production"> Date of Birth</label>
+  <label for="date_of_production"> Datum proizvodnje</label>
     <input type="date" id="date_of_production" value="<?php echo $result['date_of_production'] ?>" placeholder="Datum proizvodnje" name="date_of_production">
   </div>
 
   <div class="form-group">
-  <label for="price"> JMBG</label>
+  <label for="price"> Cijena</label>
     <input type="text" id="price" placeholder="Cijena" value="<?php echo $result['price'] ?>" name="price">
   </div>
 
   <div class="form-group">
-  <label for="kilometers"> Pozicija</label>
+  <label for="kilometers"> Kilometri</label>
     <input type="text" id="kilometers" placeholder="Kilometri" value="<?php echo $result['kilometers'] ?>" name="kilometers">
   </div>
 
