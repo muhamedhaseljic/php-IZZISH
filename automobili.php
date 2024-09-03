@@ -249,7 +249,7 @@ button {
                         </td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
+                            <a href="admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
