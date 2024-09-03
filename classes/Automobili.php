@@ -15,6 +15,13 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function create($name, $model, $registration, $date_of_production, $price, $kilometers){
+        $sql = "INSERT INTO automobili (name, model, registration, date_of_production, price, kilometers) VALUES (?, ?, ?, ?, ?, ?)";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("ssssss", $name, $model, $registration, $date_of_production, $price, $kilometers);
+        $run->execute();
+    }
+
     public function read($car_id){
         $run = $this->conn->prepare("SELECT * FROM automobili WHERE car_id=?");
         $run->bind_param("i", $car_id);
