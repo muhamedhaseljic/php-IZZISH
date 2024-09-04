@@ -51,6 +51,14 @@ protected $conn;
     }
 
     public function assign_car($car_id, $employee_id){
+        
+            $sql = "UPDATE radnici SET car_id = 0 
+                WHERE car_id = ? ";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $car_id);
+        $run->execute();
+        
+            
         $sql = "UPDATE radnici SET car_id = ? 
                 WHERE employee_id = ? ";
         $run = $this->conn->prepare($sql);
