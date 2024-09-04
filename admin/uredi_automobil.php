@@ -18,10 +18,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   //$password = $_POST['password'];
   $price = $_POST['price'];
   $kilometers = $_POST['kilometers'];
-  
+  $employee_id = $_POST['assign_car'];
 
   
         $car_obj->update($car_id, $name, $model, $registration, $date_of_production, $price, $kilometers);
+        $car_obj->assign_car($car_id, $employee_id);
         header('Location: ../dashboard.php?page=automobili');
         exit();
 
@@ -194,6 +195,28 @@ label{
   <div class="form-group">
   <label for="kilometers"> Kilometri</label>
     <input type="text" id="kilometers" placeholder="Kilometri" value="<?php echo $result['kilometers'] ?>" name="kilometers">
+  </div>
+
+  <div class="form-group">
+  <label for="assign_car"> Dodjeli auto radniku</label>
+    <select id="assign_car" name="assign_car" >
+      <option value="0"  >Bez vozača</option>
+    <?php
+                        
+                        $sql = "SELECT * FROM radnici";
+                        $run = $conn->query($sql);
+                        $results = $run->fetch_all(MYSQLI_ASSOC);
+                        $select_radnici = $results;
+                        
+                        
+                        foreach($select_radnici as $radnici) : ?>
+                        <option value="<?php echo $radnici['employee_id']; ?>">
+                                        <?php echo $radnici['first_name'] . " " . $radnici['last_name']; ?>
+                                    </option>
+
+                                <?php endforeach; ?>
+    </select>
+    
   </div>
   
   <div class="form-buttons">
