@@ -204,7 +204,6 @@ button {
                     <tr>
                         <th>ID</th>
                         <th>Ime i prezime</th>
-                        <th>Email</th>
                         <th>Telefon</th>
                         <th>Grad</th>
                         <th>Tip</th>
@@ -229,7 +228,6 @@ button {
                     <tr>
                         <td><?=$kupci['customer_id']?></td>
                         <td><?=$kupci['first_name']. " ".$kupci['last_name'] ?></td>
-                        <td><?=$kupci['email'] ?></td>
                         <td>
                         <?=$kupci['phone_number'] ?>
                         </td>

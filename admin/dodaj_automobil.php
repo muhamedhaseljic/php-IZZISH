@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Automobili.php';
-require_once "../inc/header.php";?>
+require_once "../radnik/header.php";?>
 
 <?php 
 
