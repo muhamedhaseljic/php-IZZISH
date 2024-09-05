@@ -233,7 +233,7 @@ button {
                         <td>
                         <?=$kupci['phone_number'] ?>
                         </td>
-                        <td><?=$kupci['type'] ?></td>
+                        <td><?=$kupci['adress'] ?></td>
                         <td><?=$kupci['description'] ?></td>
 						<td><?php
 

@@ -14,8 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
     $description = $_POST['description'];
+    $adress = $_POST['adress'];
     
-    $kupac->create($name, $surname, $email, $phone_number,0, $description);
+    $kupac->create($name, $surname, $email, $phone_number,$adress, $description);
     header('Location: ../dashboard.php?page=kupci');
     exit();
     }
@@ -184,6 +185,11 @@ label{
   <div class="form-group">
   <label for="description"> Detalji</label>
     <input type="text" id="description" placeholder="Detalji"  name="description">
+  </div>
+
+  <div class="form-group">
+  <label for="adress"> Adresa</label>
+    <input type="text" id="adress" placeholder="Adresa"  name="adress">
   </div>
 
   <div class="form-group">></div>

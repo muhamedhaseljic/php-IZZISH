@@ -15,10 +15,10 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($first_name, $last_name, $email, $phone_number, $type, $description){
-        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, type, description) VALUES (?, ?, ?, ?, ?, ?)";
+    public function create($first_name, $last_name, $email, $phone_number, $adress, $description){
+        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description) VALUES (?, ?, ?, ?, ?, ?)";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssssss", $first_name, $last_name, $email, $phone_number, $type, $description);
+        $run->bind_param("ssssss", $first_name, $last_name, $email, $phone_number, $adress, $description);
         $run->execute();
     }
 
@@ -30,16 +30,16 @@ protected $conn;
         return $result->fetch_assoc();
     }
 
-    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $type, $description){
+    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress, $description){
         $sql = "UPDATE kupac SET        first_name = ?,
                                           last_name = ?,
                                           email = ?, 
                                           phone_number = ?,
-                                          type = ?, 
+                                          adress = ?, 
                                           description = ?
                                           WHERE customer_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssssssi", $first_name, $last_name, $email, $phone_number, $type, $description, $customer_id);
+        $run->bind_param("ssssssi", $first_name, $last_name, $email, $phone_number, $adress, $description, $customer_id);
         $run->execute();
     }
 
