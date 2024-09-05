@@ -1,3 +1,12 @@
+<?php
+
+require_once "config/config.php";
+require_once "classes/Kupac.php";
+
+$kupac = new Kupac();
+$kupac = $kupac->fetch_all();
+
+?>
 
 <style>
 .custom-main-content {
@@ -205,27 +214,44 @@ button {
                 </thead>
                 
                 <tbody>
-                <?php for($i=1;$i<10;$i++) : ?>
+                <?php 
+                
+                $sql = "SELECT kupac.*,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name
+                  FROM `kupac` 
+                  left join `radnici` on kupac.customer_id = radnici.customer_id;";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    $select_members = $results;
+                    
+                    foreach($results as $kupci) : ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Medina Haseljić</td>
-                        <td>medina@gmail.com</td>
+                        <td><?=$kupci['customer_id']?></td>
+                        <td><?=$kupci['first_name']. " ".$kupci['last_name'] ?></td>
+                        <td><?=$kupci['email'] ?></td>
                         <td>
-                            <?php
-                                $FourDigitRandomNumber = mt_rand(111111111,999999999);
-                                echo "+" . $FourDigitRandomNumber;
-                            ?>
+                        <?=$kupci['phone_number'] ?>
                         </td>
-                        <td>Zenica</td>
-                        <td>Sanitarna</td>
-						<td>Muharem Ređepović</td>
+                        <td><?=$kupci['type'] ?></td>
+                        <td><?=$kupci['description'] ?></td>
+						<td><?php
+
+                            if($kupci['employee_name']){
+                                echo $kupci['employee_name'] ." ".$kupci['employee_last_name'];
+                            }
+                            else{
+                                echo "Nije dodjeljeno";
+                            }
+
+                            ?></td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>
