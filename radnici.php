@@ -277,6 +277,39 @@ button {
             align-items: center; /* Align items vertically */
             justify-content: flex-end; /* Align items to the right */
         }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     
     <div class="custom-main-content">
@@ -319,15 +352,34 @@ button {
                     <div class="button-container">
                         <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
                         <a href="edit_employees.php?id=<?php echo $result['employee_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
-                        <form class="brisanje-dugme-form" action="izbrisi_radnika.php" method="POST">
-                            <button class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
-                        </form>
+                            <button onclick="showPopup(<?php echo $result['employee_id']; ?>, '<?php echo $result['first_name']; ?>')" class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
                     </div>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <form id="deleteForm" action="izbrisi_radnika.php" method="POST">
+        <input type="hidden" name="employeeId" id="employeeId">
+        <input type="hidden" name="deleteReason" id="deleteReason">
+    </form>
+
+    <!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>Do you really want to delete <span id="employeeName"></span>?</p>
+        <label for="reason">Reason for deletion:</label>
+        <input type="text" id="reason" name="reason" placeholder="Enter reason here" required>
+        <div class="button-group">
+            <button type="button" onclick="submitForm()">Submit</button>
+            <button type="button" onclick="closePopup()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
 </div>
         </div>
 
@@ -362,31 +414,7 @@ button {
 </div>
 
 <script>
-        // Get the popup element
-        var popup = document.getElementById("popup");
-
-        // Get the button that opens the popup
-        var btn = document.getElementById("popupBtn");
-
-        // Get the <span> element that closes the popup
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the popup 
-        btn.onclick = function() {
-            popup.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the popup
-        span.onclick = function() {
-            popup.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the popup, close it
-        window.onclick = function(event) {
-            if (event.target == popup) {
-                popup.style.display = "none";
-            }
-        }
+        
 
         document.getElementById('search-input').addEventListener('input', function() {
         const searchValue = this.value.toLowerCase();
@@ -401,6 +429,44 @@ button {
                 row.style.display = ''; // Show the row
             } else {
                 row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
+
+    function showPopup(employeeId, employeeName) {
+        // Set the employee's data to the modal and show it
+        document.getElementById('employeeId').value = employeeId;
+        document.getElementById('employeeName').innerText = employeeName;
+        document.getElementById('modal').style.display = "block";
+    }
+
+    function closePopup() {
+        // Hide the modal
+        document.getElementById('modal').style.display = "none";
+    }
+
+    function submitForm() {
+        // Get the reason input value
+        let reasonInput = document.getElementById('reason').value.trim();
+
+        // Check if the reason input is filled
+        if (reasonInput !== "") {
+            // Set the reason in the form and submit it
+            document.getElementById('deleteReason').value = reasonInput;
+            console.log("Submitting form with reason: " + reasonInput); // Debugging log
+            document.getElementById('deleteForm').submit(); // Submit form via POST
+        } else {
+            // Show an alert if the reason input is empty
+            alert('Please provide a reason for deleting.');
+        }
+    }
+
+    // Event listener for form submission using Enter key in the input
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('reason').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
             }
         });
     });
