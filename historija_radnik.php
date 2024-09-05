@@ -1,4 +1,14 @@
 
+<?php
+
+require_once "config/config.php";
+require_once "classes/HistorijaRadnik.php";
+
+$history_radnik = new HistorijaRadnik();
+$history_radnik = $history_radnik->fetch_all();
+
+?>
+
 <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
@@ -206,27 +216,29 @@ button {
                 </thead>
                 
                 <tbody>
-                <?php for($i=1;$i<10;$i++) : ?>
+                <?php 
+
+
+                    foreach ($history_radnik as $history) :
+                
+                ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Medina Haseljić</td>
-                        <td>medina@gmail.com</td>
+                        <td><?=$history['history_id']?></td>
+                        <td><?=$history['first_name']. " ".$history['last_name'] ?></td>
+                        <td><?=$history['email'] ?></td>
                         <td>
-                            <?php
-                                $FourDigitRandomNumber = mt_rand(111111111,999999999);
-                                echo "+" . $FourDigitRandomNumber;
-                            ?>
+                            <?=$history['phone_number'] ?>
                         </td>
-                        <td>Radni Kmet</td>
-                        <td>$ 1350</td>
-                        <td><img src="Medina-Haseljic.jpg" alt="Edis" class="custom-profile-img"></td>
-                        <td>29. 10. 1999</td>
+                        <td><?=$history['position'] ?></td>
+                        <td><?=$history['salary'] ?></td>
+                        <td><img src="<?php echo "images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
+                        <td><?=$history['date_of_birth'] ?></td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                     <!-- Repeat for other entries -->
                 </tbody>
             </table>
