@@ -398,8 +398,16 @@ button {
                 <li><strong>Prezime:</strong> <span id="employee-last-name"></span></li>
                 <li><strong>Email:</strong> <span id="employee-email"></span></li>
                 <li><strong>Telefon:</strong> <span id="employee-phone"></span></li>
+                <li><strong>Datum rodjenja:</strong> <span id="employee-date-of-birth"></span></li>
+                <li><strong>Mjesto rodjenja:</strong> <span id="employee-place-of-birth"></span></li>
+                <li><strong>Spol:</strong> <span id="employee-gender"></span></li>
+                <li><strong>JMBG:</strong> <span id="employee-jmbg"></span></li>
+                <li><strong>Adresa:</strong> <span id="employee-address"></span></li>
+                <li><strong>Datum zaposlenja:</strong> <span id="employee-date-of-employment"></span></li>
+                <li><strong>Status:</strong> <span id="employee-status"></span></li>
                 <li><strong>Pozicija:</strong> <span id="employee-position"></span></li>
                 <li><strong>Plata:</strong> <span id="employee-salary"></span></li>
+                <li><strong>Bilješke:</strong> <span id="employee-notes"></span></li>
                 <!-- Add more fields as needed -->
             </ul>
         </div>
@@ -424,6 +432,15 @@ button {
         document.getElementById("employee-position").textContent = employee.position;
         document.getElementById("employee-salary").textContent = "$ " + employee.salary;
         document.getElementById("employee-image").src = "images/" + employee.photo_path;
+
+        document.getElementById("employee-date-of-birth").textContent = employee.date_of_birth;
+        document.getElementById("employee-place-of-birth").textContent = employee.place_of_birth;
+        document.getElementById("employee-gender").textContent = employee.gender;
+        document.getElementById("employee-jmbg").textContent = employee.jmbg;
+        document.getElementById("employee-address").textContent = employee.adress;
+        document.getElementById("employee-date-of-employment").textContent = employee.date_of_employment;
+        document.getElementById("employee-status").textContent = employee.status;
+        document.getElementById("employee-notes").textContent = employee.notes;
 
         popup.style.display = "block";
     }
