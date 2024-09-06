@@ -350,7 +350,7 @@ button {
                 <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="img" class="custom-profile-img"></td>
                 <td>
                     <div class="button-container">
-                        <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                        <button id="popupBtn" class="custom-view-btn view-employee-btn" data-employee='<?php echo json_encode($result); ?>'><span class="fas fa-eye"></span></button>
                         <a href="edit_employees.php?id=<?php echo $result['employee_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
                             <button onclick="showPopup(<?php echo $result['employee_id']; ?>, '<?php echo $result['first_name']; ?>')" class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
                     </div>
@@ -384,61 +384,72 @@ button {
         </div>
 
         <!-- Pop-up Window -->
+<!-- Popup HTML -->
 <div id="popup" class="popup">
     <div class="popup-content">
-        <div class="profile-picture"><img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg"  alt=""> </div> <!-- Placeholder for the picture -->
+        <div class="profile-picture">
+            <img id="employee-image" src="" alt="">
+        </div>
         <div class="radnik-details">
-            <h2>Muhamed Haseljić</h2>
+            <h2 id="employee-name"></h2>
             <ul>
-                <li><strong>RadnikID:</strong> int</li>
-                <li><strong>Ime:</strong> Muhamed</li>
-                <li><strong>Prezime:</strong> Haseljić</li>
-                <li><strong>Email:</strong> varchar(255)</li>
-                <li><strong>Telefon:</strong> int</li>
-                <li><strong>Mjesto_rođenja:</strong> varchar(255)</li>
-                <li><strong>Adresa_boravista:</strong> varchar(255)</li>
-                <li><strong>Datum_rođenja:</strong> date</li>
-                <li><strong>Spol:</strong> varchar(11)</li>
-                <li><strong>DatumZaposlenja:</strong> date</li>
-                <li><strong>RadnoStanje:</strong> zaposen, zamjena, itd...</li>
-                <li><strong>JMBG:</strong> int(13)</li>
-                <li><strong>Slika:</strong> varchar(255)</li>
-                <li><strong>Biljeske:</strong> varchar(255)</li>
-                <li><strong>Plata:</strong> money</li>
-                <li><strong>AutoID:</strong> int</li>
-                <li><strong>Pozicija:</strong> varchar(255)</li>
+                <li><strong>RadnikID:</strong> <span id="employee-id"></span></li>
+                <li><strong>Ime:</strong> <span id="employee-first-name"></span></li>
+                <li><strong>Prezime:</strong> <span id="employee-last-name"></span></li>
+                <li><strong>Email:</strong> <span id="employee-email"></span></li>
+                <li><strong>Telefon:</strong> <span id="employee-phone"></span></li>
+                <li><strong>Pozicija:</strong> <span id="employee-position"></span></li>
+                <li><strong>Plata:</strong> <span id="employee-salary"></span></li>
+                <!-- Add more fields as needed -->
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
     </div>
 </div>
 
+
 <script>
         // Get the popup element
-        var popup = document.getElementById("popup");
+        document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
 
-        // Get the button that opens the popup
-        var btn = document.getElementById("popupBtn");
+    // Function to show the popup and populate details
+    function showPopup(employee) {
+        document.getElementById("employee-id").textContent = employee.employee_id;
+        document.getElementById("employee-first-name").textContent = employee.first_name;
+        document.getElementById("employee-last-name").textContent = employee.last_name;
+        document.getElementById("employee-email").textContent = employee.email;
+        document.getElementById("employee-phone").textContent = employee.phone_number;
+        document.getElementById("employee-position").textContent = employee.position;
+        document.getElementById("employee-salary").textContent = "$ " + employee.salary;
+        document.getElementById("employee-image").src = "images/" + employee.photo_path;
 
-        // Get the <span> element that closes the popup
-        var span = document.getElementsByClassName("close")[0];
+        popup.style.display = "block";
+    }
 
-        // When the user clicks the button, open the popup 
-        btn.onclick = function() {
-            popup.style.display = "block";
-        }
+    // Event listener for all "View" buttons
+    document.querySelectorAll(".view-employee-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const employee = JSON.parse(this.getAttribute("data-employee"));
+            showPopup(employee);  // Show the popup with employee details
+        });
+    });
 
-        // When the user clicks on <span> (x), close the popup
-        span.onclick = function() {
+    // Close the popup when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+
+    // Close the popup when clicking outside of the content
+    window.onclick = function(event) {
+        if (event.target == popup) {
             popup.style.display = "none";
         }
+    }
+});
 
-        // When the user clicks anywhere outside of the popup, close it
-        window.onclick = function(event) {
-            if (event.target == popup) {
-                popup.style.display = "none";
-            }
-        }
+
 
         document.getElementById('search-input').addEventListener('input', function() {
         const searchValue = this.value.toLowerCase();
