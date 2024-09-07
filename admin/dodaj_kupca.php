@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Kupac.php';
-require_once "../inc/header.php";?>
+require_once "../radnik/header.php";?>
 
 <?php 
 
@@ -151,6 +151,20 @@ label{
     color: #fff;
     text-decoration:none;
 }
+.hidden {
+  visibility: hidden;
+  display: none;
+
+
+        }
+.visible {
+  visibility: visible;
+
+}
+.fixed-height {
+            height: 150px; /* Adjust this to your desired form height */
+            position: relative; /* Ensures that the input fields are positioned relative to this container */
+        }
 </style>
 
 
@@ -192,7 +206,39 @@ label{
     <input type="text" id="adress" placeholder="Adresa"  name="adress">
   </div>
 
-  <div class="form-group">></div>
+  <div class="form-group">
+  <label for="ustanova"> Ustanova</label>
+    <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova">
+  </div>
+
+  <div class="form-group">
+  <label for="ustanova"> Ustanova</label>
+    <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova">
+  </div>
+
+  <div class="form-group">
+  <label for="service">Select Service:</label>
+        <select id="service" name="service" onchange="showFields()">
+            <option value="sanitarna">Sanitarna</option>
+            <option value="deratizacija">Deratizacija</option>
+        </select>
+  </div>
+
+  <div id="sanitarnaFields" class="form-group ">
+            <label for="inspectionDate">Inspection Date:</label>
+            <input type="date" id="inspectionDate" name="inspectionDate">
+            <br>
+            <label for="sanitarnaNote">Notes:</label>
+            <input type="text" id="sanitarnaNote" name="sanitarnaNote">
+  </div>
+
+  <div id="deratizacijaFields" class="form-group hidden">
+            <label for="trapCount">Trap Count:</label>
+            <input type="number" id="trapCount" name="trapCount">
+            <br>
+            <label for="deratizacijaNote">Notes:</label>
+            <input type="text" id="deratizacijaNote" name="deratizacijaNote">
+        </div>
   
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
@@ -206,5 +252,24 @@ label{
     </div>
 
 <script>
-    
+    function showFields() {
+            const service = document.getElementById('service').value;
+            const sanitarnaFields = document.getElementById('sanitarnaFields');
+            const deratizacijaFields = document.getElementById('deratizacijaFields');
+
+            // Hide both initially
+            sanitarnaFields.classList.add('hidden');
+            sanitarnaFields.classList.remove('visible');
+            deratizacijaFields.classList.add('hidden');
+            deratizacijaFields.classList.remove('visible');
+
+            // Show the corresponding fields based on the selected value
+            if (service === 'sanitarna') {
+                sanitarnaFields.classList.remove('hidden');
+                sanitarnaFields.classList.add('visible');
+            } else if (service === 'deratizacija') {
+                deratizacijaFields.classList.remove('hidden');
+                deratizacijaFields.classList.add('visible');
+            }
+        }
 </script>
