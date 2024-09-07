@@ -212,8 +212,8 @@ label{
   </div>
 
   <div class="form-group">
-  <label for="ustanova"> Ustanova</label>
-    <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova">
+  <label for="website"> Website</label>
+    <input type="text" id="website" placeholder="Website"  name="website">
   </div>
 
   <div class="form-group">
@@ -224,20 +224,20 @@ label{
         </select>
   </div>
 
-  <div id="sanitarnaFields" class="form-group ">
-            <label for="inspectionDate">Inspection Date:</label>
-            <input type="date" id="inspectionDate" name="inspectionDate">
-            <br>
-            <label for="sanitarnaNote">Notes:</label>
-            <input type="text" id="sanitarnaNote" name="sanitarnaNote">
+  <div id="sanitarnaFields" class="form-group full-width">
+  <label for="notes"> Ime i Prezime</label>
+    <textarea id="notes" name="notes" placeholder="Dodaj osobe nad kojima se izvršava sanitarna"></textarea>
   </div>
 
   <div id="deratizacijaFields" class="form-group hidden">
-            <label for="trapCount">Trap Count:</label>
-            <input type="number" id="trapCount" name="trapCount">
+            <label for="nameProduct">Naziv proizvoda</label>
+            <input type="text" id="nameProduct" name="Naziv proizvoda">
             <br>
-            <label for="deratizacijaNote">Notes:</label>
-            <input type="text" id="deratizacijaNote" name="deratizacijaNote">
+            <label for="typeProizvod">Tip</label>
+            <input type="text" id="typeProizvod" name="Tip">
+            <br>
+            <label for="descriptionProduct">Opis</label>
+            <input type="text" id="descriptionProduct" name="Opis">
         </div>
   
   <div class="form-buttons">
