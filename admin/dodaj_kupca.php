@@ -257,13 +257,11 @@ label{
             const sanitarnaFields = document.getElementById('sanitarnaFields');
             const deratizacijaFields = document.getElementById('deratizacijaFields');
 
-            // Hide both initially
             sanitarnaFields.classList.add('hidden');
             sanitarnaFields.classList.remove('visible');
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
 
-            // Show the corresponding fields based on the selected value
             if (service === 'sanitarna') {
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
