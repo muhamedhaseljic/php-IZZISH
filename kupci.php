@@ -189,7 +189,93 @@ button {
     scrollbar-color: white #16171b;
     padding-right:5px;
 }
+.profile-picture {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+.profile-picture img{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin-right: 20px;
+}
+        .kupac-details {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .kupac-details h2 {
+            margin-top: 0;
+        }
+
+        .kupac-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .kupac-details ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Close button */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            margin-top:100px;
+            display: flex;
+            border-radius: 8px;
+            width: 500px;
+            text-align: left;
+            position: relative;
+        }
+
+
+
+        /* The close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-container{
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            justify-content: flex-end; /* Align items to the right */
+        }
     </style>
     
     <div class="custom-main-content">
@@ -244,9 +330,11 @@ button {
 
                             ?></td>
                         <td>
-                            <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                        <div class="button-container">
+                            <button id="popupBtn" class="custom-view-btn view-customer-btn" data-customer='<?php echo json_encode($kupci); ?>'><span class="fas fa-eye"></span></button>
                             <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
                             <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
+                            </div>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -255,3 +343,67 @@ button {
             </table>
             </div>
         </div>
+
+
+        <div id="popup" class="popup">
+    <div class="popup-content">
+        
+        <div class="kupac-details">
+            <h2 hidden id="customer-id" > </h2>
+            <h2 id="customer-first-name" > </h2>
+
+            <h2 id="customer-last-name" > </h2>
+            <ul>
+                <li><strong>Email:</strong> <span id="customer-email"></span></li>
+                <li><strong>Telefon:</strong> <span id="customer-phone"></span></li>
+                <li><strong>Adresa:</strong> <span id="customer-adress"></span></li>
+                <li><strong>Opis:</strong> <span id="customer-description"></span></li>
+                <!-- Add more fields as needed -->
+            </ul>
+        </div>
+        <span class="close" id="close-popup">&times;</span>
+    </div>
+</div>
+
+<script>
+        // Get the popup element
+        document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Function to show the popup and populate details
+    function showPopup(customer) {
+        document.getElementById("customer-id").textContent = customer.customer_id;
+        document.getElementById("customer-first-name").textContent = customer.first_name;
+        document.getElementById("customer-last-name").textContent = customer.last_name;
+        document.getElementById("customer-email").textContent = customer.email;
+        document.getElementById("customer-phone").textContent = customer.phone_number;
+        document.getElementById("customer-description").textContent = customer.position;
+        document.getElementById("customer-adress").textContent = customer.position;
+
+
+        
+        popup.style.display = "block";
+    }
+
+    // Event listener for all "View" buttons
+    document.querySelectorAll(".view-customer-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const employee = JSON.parse(this.getAttribute("data-customer"));
+            showPopup(employee);  // Show the popup with employee details
+        });
+    });
+
+    // Close the popup when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+
+    // Close the popup when clicking outside of the content
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+});
+</script>
