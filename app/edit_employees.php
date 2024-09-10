@@ -1,7 +1,7 @@
 <?php
-require_once 'config/config.php';
-require_once 'radnik/Radnik.php';
-require_once "inc/header.php";?>
+require_once '../config/config.php';
+require_once '../radnik/Radnik.php';
+require_once "../inc/header.php";?>
 
 <?php 
 
@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 <div class="custom-container d-flex">
-<?php require_once "inc/sidebar.php";
+<?php require_once "../inc/sidebar.php";
 
 ?>
 

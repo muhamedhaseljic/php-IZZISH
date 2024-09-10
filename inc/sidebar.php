@@ -105,18 +105,18 @@ h3.nav-item{
 		
 		<div class="sidebar-list ">
                 <div class="nav-item">
-                    <img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
+                    <img class="boja-pozadine" src="../images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
                 </div>
                 <h2 class="nav-item">Muhamed Haseljić</h2>
                 <h3 class="nav-item">Admin</h3>
 
-				<a href="dashboard.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
-				<a href="dashboard.php?page=radnici" class="nav-item nav-radnici"><span class='icon-field'><i class="fa fa-users">  &nbsp; &nbsp;</i></span> Radnici</a>
-				<a href="dashboard.php?page=kupci" class="nav-item nav-kupci"><span class='icon-field'><i class="fa fa-handshake">  &nbsp; &nbsp;</i></span> Kupac</a>
-				<a href="dashboard.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
-				<a href="dashboard.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
-				<a href="dashboard.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
-				<a href="dashboard.php?page=white-table" class="nav-item nav-white-home"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>white-home</a>
+				<a href="../app/dashboard.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
+				<a href="../app/dashboard.php?page=radnici" class="nav-item nav-radnici"><span class='icon-field'><i class="fa fa-users">  &nbsp; &nbsp;</i></span> Radnici</a>
+				<a href="../app/dashboard.php?page=kupci" class="nav-item nav-kupci"><span class='icon-field'><i class="fa fa-handshake">  &nbsp; &nbsp;</i></span> Kupac</a>
+				<a href="../app/dashboard.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
+				<a href="../app/dashboard.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
+				<a href="../app/dashboard.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
+				<a href="../app/dashboard.php?page=godisnji" class="nav-item nav-white-home"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Godišnji</a>
 
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->

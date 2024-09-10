@@ -1,14 +1,4 @@
 
-<?php
-
-require_once "config/config.php";
-require_once "classes/HistorijaRadnik.php";
-
-$history_radnik = new HistorijaRadnik();
-$history_radnik = $history_radnik->fetch_all();
-
-?>
-
 <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
@@ -101,12 +91,12 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color: #171c22 ;
+    background-color:#171c22 ;
     vertical-align: middle;
     
 }
 
-.custom-table tbody tr:hover td{
+.custom-table tbody tr:hover td {
     
     background-color: #212528;
     
@@ -194,53 +184,5 @@ button {
     </style>
     
     <div class="custom-main-content">
-        <h1 >Historija radnika</h1>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Search name..." class="custom-search-bar">
-                
-            </div>
-            <div class="scrolling-divv">
-            <table class="table custom-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ime i prezime</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Pozicija</th>
-                        <th>Plata</th>                        
-                        <th>Slika</th>
-                        <th>Datum rodjenja</th>
-                        <th>Akcije</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                <?php 
-
-
-                    foreach ($history_radnik as $history) :
-                
-                ?>
-                    <tr>
-                        <td><?=$history['history_id']?></td>
-                        <td><?=$history['first_name']. " ".$history['last_name'] ?></td>
-                        <td><?=$history['email'] ?></td>
-                        <td>
-                            <?=$history['phone_number'] ?>
-                        </td>
-                        <td><?=$history['position'] ?></td>
-                        <td><?=$history['salary'] ?></td>
-                        <td><img src="<?php echo "images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
-                        <td><?=$history['date_of_birth'] ?></td>
-                        <td>
-                            <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <!-- Repeat for other entries -->
-                </tbody>
-            </table>
-            </div>
+        
         </div>

@@ -1,9 +1,14 @@
+
 <?php
 
-require_once "config/config.php";
-require_once "classes/Automobili.php";
+require_once "../config/config.php";
+require_once "../classes/HistorijaRadnik.php";
+
+$history_radnik = new HistorijaRadnik();
+$history_radnik = $history_radnik->fetch_all();
 
 ?>
+
 <style>
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
@@ -101,7 +106,7 @@ tbody tr:last-child {
     
 }
 
-.custom-table tbody tr:hover td {
+.custom-table tbody tr:hover td{
     
     background-color: #212528;
     
@@ -189,68 +194,48 @@ button {
     </style>
     
     <div class="custom-main-content">
-        <h1 >Lista automobila</h1>
+        <h1 >Historija radnika</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Pretraži po nazivu..." class="custom-search-bar">
-                <a href="admin/dodaj_automobil.php" class="custom-add-btn">Dodaj</a>
+                <input type="text" placeholder="Search name..." class="custom-search-bar">
+                
             </div>
             <div class="scrolling-divv">
             <table class="table custom-table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Naziv</th>
-                        <th>Model</th>
-                        <th>Registracija</th>
-                        <th>Kilometraža</th>
-                        <th>Godina proizvodnje</th>
-						            <th>Radnik</th>                        
+                        <th>Ime i prezime</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Pozicija</th>
+                        <th>Plata</th>                        
+                        <th>Slika</th>
+                        <th>Datum rodjenja</th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                <?php
-                  
-                  $sql = "SELECT automobili.*,
-                  radnici.first_name as employee_name,
-                  radnici.last_name as employee_last_name
-                  FROM `automobili` 
-                  left join `radnici` on automobili.car_id = radnici.car_id;";
-                    $run = $conn->query($sql);
-                    $results = $run->fetch_all(MYSQLI_ASSOC);
-                    $select_members = $results;
-                    
-                    foreach($results as $car) :
-                  ?>
+                <?php 
+
+
+                    foreach ($history_radnik as $history) :
+                
+                ?>
                     <tr>
-                        <td><?= $car['car_id'] ?></td>
-                        <td><?= $car['name'] ?></td>
-                        <td><?= $car['model'] ?></td>
+                        <td><?=$history['history_id']?></td>
+                        <td><?=$history['first_name']. " ".$history['last_name'] ?></td>
+                        <td><?=$history['email'] ?></td>
                         <td>
-                        <?= $car['registration'] ?>
+                            <?=$history['phone_number'] ?>
                         </td>
-                        <td><?= $car['kilometers'] . " km" ?></td>
-                        <td>
-                        <?= date("Y",strtotime($car['date_of_production'])) ?>
-                        </td>
-                        
-						<td>
-                            <?php
-
-                                if($car['employee_name']){
-                                    echo $car['employee_name'] ." ".$car['employee_last_name'];
-                                }
-                                else{
-                                    echo "Nema vozaća";
-                                }
-
-                            ?>
-                        </td>
+                        <td><?=$history['position'] ?></td>
+                        <td><?=$history['salary'] ?></td>
+                        <td><img src="<?php echo "images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
+                        <td><?=$history['date_of_birth'] ?></td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <a href="admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                            <a href="admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
+                            
                         </td>
                     </tr>
                     <?php endforeach; ?>

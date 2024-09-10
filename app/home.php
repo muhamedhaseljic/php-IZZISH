@@ -1,6 +1,6 @@
 <?php
 
-require_once "config/config.php";
+require_once "../config/config.php";
 
 ?>
 <style>
@@ -145,7 +145,7 @@ input::placeholder {
         <div class="left-section">
         <h1 ><b>PROFIL DETALJI</b></h1>
             <div class="profile-picture">
-                <img src="images/Haseljić Muhamed_pp.jpg" alt="Profile Picture" />
+                <img src="../images/Haseljić Muhamed_pp.jpg" alt="Profile Picture" />
             </div>
             <p><span class="profile-label">Ime:</span> <span class="detalji-profil">Muhamed</span></p>
             <p><span class="profile-label">Godine:</span> <span class="detalji-profil">22 godine</span></p>

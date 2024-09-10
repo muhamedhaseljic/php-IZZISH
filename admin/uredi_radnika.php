@@ -1,8 +1,8 @@
 <?php
 
-    require_once 'config/config.php';
+    require_once '../config/config.php';
 
-    $target_dir = "images/";
+    $target_dir = "../images/";
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -85,6 +85,6 @@
         }
         //$_SESSION['uspjeh'] = "Trener uspjesno dodat";
 
-        header('location: http://localhost/retro/dashboard.php?page=radnici');
+        header('location: http://localhost/app/retro/dashboard.php?page=radnici');
         exit();
     }
