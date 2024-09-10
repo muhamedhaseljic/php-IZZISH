@@ -333,7 +333,7 @@ button {
                         <div class="button-container">
                             <button id="popupBtn" class="custom-view-btn view-customer-btn" data-customer='<?php echo json_encode($kupci); ?>'><span class="fas fa-eye"></span></button>
                             <button class="custom-edit-btn"><span class="fas fa-edit "></span></button>
-                            <button class="custom-delete-btn"><span class="fas fa-trash "></span></button>
+                            <a href="../admin/obrisi_kupca.php?id=<?php echo $kupci['customer_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
                             </div>
                         </td>
                     </tr>
