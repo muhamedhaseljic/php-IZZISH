@@ -7,7 +7,7 @@ require_once "../inc/header.php";?>
 
 $employee_obj = new Radnik();
 $result = $employee_obj->read($_GET['id']);
-$target_dir = "images/";
+$target_dir = "../images/";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
 
         $employee_obj->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
-        header('Location: dashboard.php?page=radnici');
+        header('Location: ../app/dashboard.php?page=radnici');
         exit();
 
       }

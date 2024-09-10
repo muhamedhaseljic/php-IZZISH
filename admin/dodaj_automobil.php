@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $kilometers = $_POST['kilometers'];
     
     $car->create($name, $model, $registration, $date_of_production, $price, $kilometers);
-    header('Location: ../dashboard.php?page=automobili');
+    header('Location: ../app/dashboard.php?page=automobili');
     exit();
     }
 

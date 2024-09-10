@@ -192,7 +192,7 @@ button {
         <h1 >Lista automobila</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <input type="text" placeholder="Pretraži po nazivu..." class="custom-search-bar">
-                <a href="admin/dodaj_automobil.php" class="custom-add-btn">Dodaj</a>
+                <a href="../admin/dodaj_automobil.php" class="custom-add-btn">Dodaj</a>
             </div>
             <div class="scrolling-divv">
             <table class="table custom-table">
@@ -249,8 +249,8 @@ button {
                         </td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <a href="admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                            <a href="admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
+                            <a href="../admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
+                            <a href="../admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

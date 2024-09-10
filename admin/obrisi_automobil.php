@@ -10,6 +10,6 @@ $car = new Automobil();
 
     $car->delete($car_id);
 
-    header("Location: ../dashboard.php?page=automobili");
+    header("Location: ../app/dashboard.php?page=automobili");
 
 ?>

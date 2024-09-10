@@ -347,7 +347,7 @@ button {
                 <td><?php echo $result['phone_number'] ?></td>
                 <td><?php echo $result['position'] ?></td>
                 <td>$ <?php echo $result['salary'] ?></td>
-                <td><img src="<?php echo "images/" . $result['photo_path'] ?>" alt="img" class="custom-profile-img"></td>
+                <td><img src="<?php echo "../images/" . $result['photo_path'] ?>" alt="img" class="custom-profile-img"></td>
                 <td>
                     <div class="button-container">
                         <button id="popupBtn" class="custom-view-btn view-employee-btn" data-employee='<?php echo json_encode($result); ?>'><span class="fas fa-eye"></span></button>
@@ -431,7 +431,7 @@ button {
         document.getElementById("employee-phone").textContent = employee.phone_number;
         document.getElementById("employee-position").textContent = employee.position;
         document.getElementById("employee-salary").textContent = "$ " + employee.salary;
-        document.getElementById("employee-image").src = "images/" + employee.photo_path;
+        document.getElementById("employee-image").src = "../images/" + employee.photo_path;
 
         document.getElementById("employee-date-of-birth").textContent = employee.date_of_birth;
         document.getElementById("employee-place-of-birth").textContent = employee.place_of_birth;

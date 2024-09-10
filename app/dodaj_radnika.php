@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'config/config.php';
+    require_once '../config/config.php';
 
     $response = array('errors' => array(), 'success' => false);
     $target_dir = "images/";

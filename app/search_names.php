@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 
 // Get the search query from the URL parameter
 $query = isset($_GET['q']) ? $_GET['q'] : '';

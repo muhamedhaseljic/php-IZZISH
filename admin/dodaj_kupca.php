@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Kupac.php';
-require_once "../radnik/header.php";?>
+require_once "../inc/header.php";?>
 
 <?php 
 
@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     
     $kupac->create($name, $surname, $email, $phone_number,$adress, $description);
-    header('Location: ../dashboard.php?page=kupci');
+    header('Location: ../app/dashboard.php?page=kupci');
     exit();
     }
 
