@@ -185,7 +185,93 @@ button {
     scrollbar-color: white #16171b;
     padding-right:5px;
 }
+.profile-picture {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+.profile-picture img{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin-right: 20px;
+}
+        .automobil-details {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .automobil-details h2 {
+            margin-top: 0;
+        }
+
+        .automobil-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .automobil-details ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Close button */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            margin-top:100px;
+            display: flex;
+            border-radius: 8px;
+            width: 500px;
+            text-align: left;
+            position: relative;
+        }
+
+
+
+        /* The close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-container{
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            justify-content: flex-end; /* Align items to the right */
+        }
     </style>
     
     <div class="custom-main-content">
@@ -248,10 +334,12 @@ button {
                             ?>
                         </td>
                         <td>
-                            <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <a href="../admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
-                            <a href="../admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
-                        </td>
+                        <div class="button-container">
+                        <button id="popupBtn" class="custom-view-btn view-car-btn" data-car='<?php echo json_encode($car); ?>'><span class="fas fa-eye"></span></button>     
+                        <a href="../admin/uredi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit "></span></a>
+                        <a href="../admin/obrisi_automobil.php?id=<?php echo $car['car_id']; ?>" class="custom-delete-btn"><span class="fas fa-trash "></span></a>
+                        </div>
+                    </td>
                     </tr>
                     <?php endforeach; ?>
                     <!-- Repeat for other entries -->
@@ -259,3 +347,68 @@ button {
             </table>
             </div>
         </div>
+
+        <div id="popup" class="popup">
+    <div class="popup-content">
+        
+        <div class="automobil-details">
+            <h2 hidden id="car-id" > </h2>
+            <h2 id="car-name" > </h2>
+
+            
+            <ul>
+                <li><strong>Model:</strong> <span id="car-model"></span></li>
+                <li><strong>Registracija:</strong> <span id="car-registration"></span></li>
+                <li><strong>Datum proizvodnje:</strong> <span id="car-date_of_production"></span></li>
+                <li><strong>Cijena:</strong> <span id="car-price"></span></li>
+                <li><strong>Kilometraža:</strong> <span id="car-kilometers"></span></li>
+
+                <!-- Add more fields as needed -->
+            </ul>
+        </div>
+        <span class="close" id="close-popup">&times;</span>
+    </div>
+</div>
+
+<script>
+        // Get the popup element
+        document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Function to show the popup and populate details
+    function showPopup(car) {
+        document.getElementById("car-id").textContent = car.car_id;
+        document.getElementById("car-name").textContent = car.name;
+        document.getElementById("car-model").textContent = car.model;
+        document.getElementById("car-registration").textContent = car.registration;
+        document.getElementById("car-date_of_production").textContent = car.date_of_production;
+        document.getElementById("car-price").textContent = car.price;
+        document.getElementById("car-kilometers").textContent = car.kilometers;
+
+
+        
+        popup.style.display = "block";
+    }
+
+    // Event listener for all "View" buttons
+    document.querySelectorAll(".view-car-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const employee = JSON.parse(this.getAttribute("data-car"));
+            showPopup(employee);  // Show the popup with employee details
+        });
+    });
+
+    // Close the popup when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+
+    // Close the popup when clicking outside of the content
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+});
+</script>

@@ -378,8 +378,8 @@ button {
         document.getElementById("customer-last-name").textContent = customer.last_name;
         document.getElementById("customer-email").textContent = customer.email;
         document.getElementById("customer-phone").textContent = customer.phone_number;
-        document.getElementById("customer-description").textContent = customer.position;
-        document.getElementById("customer-adress").textContent = customer.position;
+        document.getElementById("customer-description").textContent = customer.description;
+        document.getElementById("customer-adress").textContent = customer.adress;
 
 
         
