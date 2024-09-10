@@ -281,7 +281,7 @@ button {
     <div class="custom-main-content">
         <h1 >Lista kupaca</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Pretraži po imenu..." class="custom-search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
                 <a href="../admin/dodaj_kupca.php" class="custom-add-btn">Dodaj</a>
             </div>
             <div class="scrolling-divv">
@@ -298,7 +298,7 @@ button {
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="customer-table">
                 <?php 
                 
                 $sql = "SELECT kupac.*,
@@ -406,4 +406,21 @@ button {
         }
     }
 });
+
+document.getElementById('search-input').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#customer-table tr');
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(2)'); // Column for 'Ime i prezime'
+            const name = nameCell.textContent.toLowerCase();
+
+            // Check if the name starts with the search input
+            if (name.startsWith(searchValue)) {
+                row.style.display = ''; // Show the row
+            } else {
+                row.style.display = 'none'; // Hide the row
+            }
+        });
+    });
 </script>
