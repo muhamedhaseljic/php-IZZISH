@@ -224,7 +224,7 @@ label{
   <div class="form-group">
   <label for="assign_employee"> Dodjeli posao radniku</label>
     <select id="assign_employee" name="assign_employee" >
-      <option value="0"  >Bez radnika</option>
+      <option value="0" <?php echo ($result['employee_id'] == 0) ? 'selected' : ''; ?>  >Bez radnika</option>
     <?php
                         
                         $sql = "SELECT * FROM radnici";
@@ -234,7 +234,7 @@ label{
                         
                         
                         foreach($select_radnici as $radnici) : ?>
-                        <option value="<?php echo $radnici['employee_id']; ?>">
+                        <option <?php echo ($result['employee_id'] == $radnici['employee_id']) ? 'selected' : ''; ?> value="<?php echo $radnici['employee_id']; ?>">
                                         <?php echo $radnici['first_name'] . " " . $radnici['last_name']; ?>
                                     </option>
 
