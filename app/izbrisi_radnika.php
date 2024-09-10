@@ -51,6 +51,6 @@
         }
 
         $_SESSION['uspjeh'] = $message;
-        header('location: http://localhost/retro/dashboard.php?page=radnici');
+        header('location: http://localhost/retro/app/dashboard.php?page=radnici');
         exit;
     }

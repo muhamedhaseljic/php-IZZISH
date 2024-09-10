@@ -22,9 +22,9 @@ protected $conn;
         $run->execute();
     }
 
-    public function read($car_id){
-        $run = $this->conn->prepare("SELECT * FROM automobili WHERE car_id=?");
-        $run->bind_param("i", $car_id);
+    public function read($customer_id){
+        $run = $this->conn->prepare("SELECT * FROM kupac WHERE customer_id=?");
+        $run->bind_param("i", $customer_id);
         $run->execute();
         $result = $run->get_result();
         return $result->fetch_assoc();
@@ -52,17 +52,18 @@ protected $conn;
 
     public function assign_employee($customer_id, $employee_id){
         
-            $sql = "UPDATE radnici SET customer_id = 0 
-                WHERE customer_id = ? ";
-        $run = $this->conn->prepare($sql);
-        $run->bind_param("i", $customer_id);
-        $run->execute();
-        
-            
-        $sql = "UPDATE radnici SET customer_id = ? 
+       if($employee_id == 0){
+            $sql = "UPDATE kupac SET employee_id = 0 
                 WHERE employee_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ii", $customer_id, $employee_id);
+        $run->bind_param("i", $employee_id);
+        $run->execute();
+       }
+            
+        $sql = "UPDATE kupac SET employee_id = ? 
+                WHERE customer_id = ? ";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("ii", $employee_id, $customer_id);
         $run->execute();
         }
 }

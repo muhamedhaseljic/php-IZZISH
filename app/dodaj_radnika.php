@@ -3,7 +3,7 @@
     require_once '../config/config.php';
 
     $response = array('errors' => array(), 'success' => false);
-    $target_dir = "images/";
+    $target_dir = "../images/";
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -53,6 +53,6 @@
         $_SESSION['message']['type'] = "radnik uspjesno dodat";
         
         
-        header('location: http://localhost/retro/dashboard.php?page=radnici');
+        header('location: http://localhost/retro/app/dashboard.php?page=radnici');
         exit();}
     
