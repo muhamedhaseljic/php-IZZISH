@@ -358,6 +358,7 @@ button {
                 <li><strong>Telefon:</strong> <span id="customer-phone"></span></li>
                 <li><strong>Adresa:</strong> <span id="customer-adress"></span></li>
                 <li><strong>Opis:</strong> <span id="customer-description"></span></li>
+                <li><strong>Objekat:</strong> <span id="customer-objekt"></span></li>
                 <li><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
                 <!-- Add more fields as needed -->
             </ul>
@@ -381,6 +382,7 @@ button {
         document.getElementById("customer-phone").textContent = customer.phone_number;
         document.getElementById("customer-description").textContent = customer.description;
         document.getElementById("customer-adress").textContent = customer.adress;
+        document.getElementById("customer-objekt").textContent = customer.objekat;
         document.getElementById("customer-employee-name").textContent = customer.employee_name;
         document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
 

@@ -15,8 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $phone_number = $_POST['phone_number'];
     $description = $_POST['description'];
     $adress = $_POST['adress'];
+    $objekat = $_POST['ustanova'];
     
-    $kupac->create($name, $surname, $email, $phone_number,$adress, $description);
+    $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
     header('Location: ../app/dashboard.php?page=kupci');
     exit();
     }

@@ -397,8 +397,6 @@ button {
         document.getElementById("employee-reason-notes").textContent = history.reason_notes;
         
 
-       
-
         popup.style.display = "block";
     }
 

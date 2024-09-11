@@ -18,9 +18,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $phone_number = $_POST['phone_number'];
     $description = $_POST['description'];
     $adress = $_POST['adress'];
+    $objekat= $_POST['ustanova'];
     $employee_id= $_POST['assign_employee'];
     
-    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress, $description);
+    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress, $description, $objekat);
     $kupac_obj->assign_employee($customer_id, $employee_id);
     header('Location: ../app/dashboard.php?page=kupci');
     exit();

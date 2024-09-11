@@ -15,10 +15,10 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($first_name, $last_name, $email, $phone_number, $adress, $description){
-        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description) VALUES (?, ?, ?, ?, ?, ?)";
+    public function create($first_name, $last_name, $email, $phone_number, $adress, $description, $objekat){
+        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description, objekat) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssssss", $first_name, $last_name, $email, $phone_number, $adress, $description);
+        $run->bind_param("sssssss", $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat);
         $run->execute();
     }
 
@@ -30,16 +30,17 @@ protected $conn;
         return $result->fetch_assoc();
     }
 
-    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress, $description){
+    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat){
         $sql = "UPDATE kupac SET        first_name = ?,
                                           last_name = ?,
                                           email = ?, 
                                           phone_number = ?,
                                           adress = ?, 
-                                          description = ?
+                                          description = ?,
+                                          objekat = ?
                                           WHERE customer_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssssssi", $first_name, $last_name, $email, $phone_number, $adress, $description, $customer_id);
+        $run->bind_param("sssssssi", $first_name, $last_name, $email, $phone_number, $adress, $description,$objekat, $customer_id);
         $run->execute();
     }
 
