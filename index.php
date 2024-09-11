@@ -1,6 +1,6 @@
 <?php
 // Start the session
-require_once "../config/config.php";
+require_once "config/config.php";
 //session_start();
 
 // Example hardcoded users (you can replace this with a database query)
@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
 
         // Redirect based on user role
         if ($users[$email]['role'] === 'admin') {
-            header('Location: http://localhost/retro/dashboard.php?page=home');
+            header('Location: http://localhost/retro/app/dashboard.php?page=home');
         } elseif ($users[$email]['role'] === 'employee') {
             header('Location: http://localhost/retro/radnik/index.php?page=home');
         }
