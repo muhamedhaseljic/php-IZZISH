@@ -190,6 +190,97 @@ button {
     scrollbar-color: white #16171b;
     padding-right:5px;
 }
+/* Pop-up styling */
+
+
+        /* Styling for the picture */
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+.profile-picture img{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin-right: 20px;
+}
+        .radnik-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .radnik-details h2 {
+            margin-top: 0;
+        }
+
+        .radnik-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .radnik-details ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Close button */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            margin-top:100px;
+            display: flex;
+            border-radius: 8px;
+            width: 500px;
+            text-align: left;
+            position: relative;
+        }
+
+
+
+        /* The close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-container{
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Align items vertically */
+            justify-content: flex-end; /* Align items to the right */
+        }
 
     </style>
     
@@ -215,7 +306,7 @@ button {
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="employee-table">
                 <?php 
 
 
@@ -231,10 +322,11 @@ button {
                         </td>
                         <td><?=$history['position'] ?></td>
                         <td><?=$history['salary'] ?></td>
-                        <td><img src="<?php echo "images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
+                        <td><img src="<?php echo "../images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
                         <td><?=$history['date_of_birth'] ?></td>
                         <td>
-                            <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                            
+                        <button id="popupBtn" class="custom-view-btn view-employee-btn" data-employee='<?php echo json_encode($history); ?>'><span class="fas fa-eye"></span></button>
                             
                         </td>
                     </tr>
@@ -244,3 +336,90 @@ button {
             </table>
             </div>
         </div>
+
+        <div id="popup" class="popup">
+    <div class="popup-content">
+        <div class="profile-picture">
+            <img id="employee-image" src="" alt="">
+        </div>
+        <div class="radnik-details">
+        <h2 hidden id="employee-id"></h2>
+            <h2 id="employee-first-name"></h2>
+            <h2 id="employee-last-name"></h2>
+            
+            <ul>
+                <li><strong>Email:</strong> <span id="employee-email"></span></li>
+                <li><strong>Telefon:</strong> <span id="employee-phone"></span></li>
+                <li><strong>Datum rodjenja:</strong> <span id="employee-date-of-birth"></span></li>
+                <li><strong>Mjesto rodjenja:</strong> <span id="employee-place-of-birth"></span></li>
+                <li><strong>Spol:</strong> <span id="employee-gender"></span></li>
+                <li><strong>JMBG:</strong> <span id="employee-jmbg"></span></li>
+                <li><strong>Adresa:</strong> <span id="employee-address"></span></li>
+                <li><strong>Datum zaposlenja:</strong> <span id="employee-date-of-employment"></span></li>
+                <li><strong>Status:</strong> <span id="employee-status"></span></li>
+                <li><strong>Pozicija:</strong> <span id="employee-position"></span></li>
+                <li><strong>Plata:</strong> <span id="employee-salary"></span></li>
+                <li><strong>Bilješke:</strong> <span id="employee-notes"></span></li>
+                <li><strong>Razlog brisanja:</strong> <span id="employee-reason-notes"></span></li>
+                <!-- Add more fields as needed -->
+            </ul>
+        </div>
+        <span class="close" id="close-popup">&times;</span>
+    </div>
+</div>
+
+<script>
+     // Get the popup element
+     document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    // Function to show the popup and populate details
+    function showPopup(history) {
+        document.getElementById("employee-id").textContent = history.history_id;
+        document.getElementById("employee-first-name").textContent = history.first_name;
+        document.getElementById("employee-last-name").textContent = history.last_name;
+        document.getElementById("employee-email").textContent = history.email;
+        document.getElementById("employee-phone").textContent = history.phone_number;
+
+        document.getElementById("employee-date-of-birth").textContent = history.date_of_birth;
+        document.getElementById("employee-place-of-birth").textContent = history.place_of_birth;
+        document.getElementById("employee-gender").textContent = history.gender;
+        document.getElementById("employee-jmbg").textContent = history.jmbg;
+        document.getElementById("employee-address").textContent = history.adress;
+        document.getElementById("employee-date-of-employment").textContent = history.date_of_employment;
+        document.getElementById("employee-status").textContent = history.status;
+
+        document.getElementById("employee-position").textContent = history.position;
+        document.getElementById("employee-salary").textContent = "$ " + history.salary;
+        document.getElementById("employee-image").src = "../images/" + history.photo_path;
+        document.getElementById("employee-notes").textContent = history.notes;
+        document.getElementById("employee-reason-notes").textContent = history.reason_notes;
+        
+
+       
+
+        popup.style.display = "block";
+    }
+
+    // Event listener for all "View" buttons
+    document.querySelectorAll(".view-employee-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const history = JSON.parse(this.getAttribute("data-employee"));
+            showPopup(history);  // Show the popup with employee details
+        });
+    });
+
+    // Close the popup when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+
+    // Close the popup when clicking outside of the content
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+});
+</script>
