@@ -213,12 +213,15 @@ label{
 
   <div class="form-group">
   <label for="ustanova"> Ustanova</label>
-    <input type="text" id="ustanova" value="<?php if($result['ustanova_id'] == 1)  echo "ima"; else{echo "nema";} ?>" placeholder="Ustanova"  name="ustanova">
+    <input type="text" id="ustanova" value="<?php if($result['objekat'] == 0)  echo "nema objekata"; else{echo $result['objekat'];} ?>" placeholder="Ustanova"  name="ustanova">
   </div>
 
   <div class="form-group">
-  <label for="website"> Website</label>
-    <input type="text" id="website" placeholder="Website"  name="website">
+  <label for="service">Select Service:</label>
+        <select id="service" name="service" onchange="showFields()">
+            <option value="sanitarna">Sanitarna</option>
+            <option value="deratizacija">Deratizacija</option>
+        </select>
   </div>
 
   <div class="form-group">
@@ -243,13 +246,7 @@ label{
     
   </div>
 
-  <div class="form-group">
-  <label for="service">Select Service:</label>
-        <select id="service" name="service" onchange="showFields()">
-            <option value="sanitarna">Sanitarna</option>
-            <option value="deratizacija">Deratizacija</option>
-        </select>
-  </div>
+  
 
   <div id="sanitarnaFields" class="form-group full-width">
   <label for="notes"> Ime i Prezime</label>
