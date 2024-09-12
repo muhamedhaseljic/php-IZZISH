@@ -171,23 +171,49 @@ label{
             display: flex;
             overflow-x: auto;
             max-width: 1330px; /* Set a fixed width */
-            height:185px;
+            min-height:185px;
             /*border: 1px solid #ccc;*/
             padding: 0px;
+            
             white-space: nowrap; /* Ensure it scrolls horizontally */
+            margin-bottom:0px;
+            scrollbar-width: thin;
+    scrollbar-color: white #16171b;
         }
 
         .person {
             min-width: 400px; /* Each input block size */
             padding: 0px;
             /*border: 1px solid #ddd;*/
-            margin-right: 10px;
+            margin-right: 65px;
             
             /*background-color: #f9f9f9;*/
         }
 
         .person label {
             display: block;
+        }
+        .person input {
+            margin-bottom:15px;
+        }
+        .btn-product-remove{
+          display: block;
+          margin-top:0px;
+        }
+        .btn-add-person{
+          margin-top:0px;
+        }
+        .person button {
+            margin-top: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .person button:hover {
+            background-color: darkred;
         }
 </style>
 
@@ -257,7 +283,7 @@ label{
                 <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="last_name_product" required>
             </div>
         </div>
-        <button type="button" onclick="addPerson()">Add Another Person</button>
+        <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
   <div id="deratizacijaFields" class="form-group hidden">
@@ -307,9 +333,11 @@ label{
             var personDiv = document.createElement('div');
             personDiv.classList.add('person');
             personDiv.innerHTML = `
-                <label>First Name: <input type="text" name="persons[][name]" required></label>
-                <label>Last Name: <input type="text" name="persons[][last_name]" required></label>
-                <button type="button" onclick="removePerson(this)">Remove</button>
+           
+            
+            <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="name_product" required>
+            <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="last_name_product" required>    
+            <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
             `;
             document.getElementById('persons').appendChild(personDiv);
         }
