@@ -166,6 +166,29 @@ label{
             height: 150px; /* Adjust this to your desired form height */
             position: relative; /* Ensures that the input fields are positioned relative to this container */
         }
+
+        #persons {
+            display: flex;
+            overflow-x: auto;
+            max-width: 1330px; /* Set a fixed width */
+            height:185px;
+            /*border: 1px solid #ccc;*/
+            padding: 0px;
+            white-space: nowrap; /* Ensure it scrolls horizontally */
+        }
+
+        .person {
+            min-width: 400px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            margin-right: 10px;
+            
+            /*background-color: #f9f9f9;*/
+        }
+
+        .person label {
+            display: block;
+        }
 </style>
 
 
@@ -226,8 +249,15 @@ label{
   </div>
 
   <div id="sanitarnaFields" class="form-group full-width">
-  <label for="notes"> Ime i Prezime</label>
-    <textarea id="notes" name="notes" placeholder="Dodaj osobe nad kojima se izvršava sanitarna"></textarea>
+  <div id="persons">
+            <!-- Initial Person Input -->
+            <div class="person">
+            
+                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="name_product" required>
+                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="last_name_product" required>
+            </div>
+        </div>
+        <button type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
   <div id="deratizacijaFields" class="form-group hidden">
@@ -270,5 +300,22 @@ label{
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
             }
+        }
+
+        // Add new person input fields dynamically
+        function addPerson() {
+            var personDiv = document.createElement('div');
+            personDiv.classList.add('person');
+            personDiv.innerHTML = `
+                <label>First Name: <input type="text" name="persons[][name]" required></label>
+                <label>Last Name: <input type="text" name="persons[][last_name]" required></label>
+                <button type="button" onclick="removePerson(this)">Remove</button>
+            `;
+            document.getElementById('persons').appendChild(personDiv);
+        }
+
+        // Remove person input fields
+        function removePerson(button) {
+            button.parentElement.remove();
         }
 </script>
