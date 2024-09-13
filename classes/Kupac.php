@@ -67,4 +67,11 @@ protected $conn;
         $run->bind_param("ii", $employee_id, $customer_id);
         $run->execute();
         }
+
+        public function assign_sanitarna($first_name, $last_name, $customer_id){
+            $sql = "INSERT INTO produkt_osoba (first_name, last_name, customer_id) VALUES (?, ?, ?)";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("ssi", $first_name, $last_name, $customer_id);
+        $run->execute();
+        }
 }

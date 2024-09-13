@@ -17,7 +17,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     $objekat = $_POST['ustanova'];
     
+    $customer_id = 37;
+
+    
     $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
+    if(!empty($_POST['persons'])){
+      
+      foreach($_POST['persons'] as $person){
+        $name = $person['name_product'];
+        $last_name = $person['last_name_product'];
+        $kupac->assign_sanitarna($name, $last_name, $customer_id);
+        var_dump($last_name);
+      }
+    }
+    
     header('Location: ../app/dashboard.php?page=kupci');
     exit();
     }
@@ -201,20 +214,29 @@ label{
           margin-top:0px;
         }
         .btn-add-person{
-          margin-top:0px;
+          padding: 10px 20px;
+    color: #fff;
+    
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: black;
+    font-weight:800;
         }
+        
         .person button {
             margin-top: 10px;
-            background-color: red;
-            color: white;
+            background-color: white;
+            color: black;
+    font-weight:800;
             border: none;
-            padding: 5px;
+            padding: 10px 10px;
             cursor: pointer;
+            border: none;
+    border-radius: 20px;
         }
-
-        .person button:hover {
-            background-color: darkred;
-        }
+        
 </style>
 
 
@@ -279,8 +301,8 @@ label{
             <!-- Initial Person Input -->
             <div class="person">
             
-                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="name_product" required>
-                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="last_name_product" required>
+                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" required>
+                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]" required>
             </div>
         </div>
         <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
@@ -330,20 +352,33 @@ label{
 
         // Add new person input fields dynamically
         function addPerson() {
-            var personDiv = document.createElement('div');
-            personDiv.classList.add('person');
-            personDiv.innerHTML = `
-           
-            
-            <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="name_product" required>
-            <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="last_name_product" required>    
-            <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
-            `;
-            document.getElementById('persons').appendChild(personDiv);
-        }
+    var personDiv = document.createElement('div');
+    var personCount = document.querySelectorAll('.person').length; // Get the current count of persons
+    personDiv.classList.add('person');
+    
+    // Use personCount as the index to group name and last name fields
+    personDiv.innerHTML = `
+        <label for="nameProduct">Ime</label>
+        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
 
-        // Remove person input fields
-        function removePerson(button) {
-            button.parentElement.remove();
-        }
+        <label for="surnameProduct">Prezime</label>
+        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
+
+        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
+    `;
+    document.getElementById('persons').appendChild(personDiv);
+}
+
+// Remove person input fields
+function removePerson(button) {
+    button.parentElement.remove();
+
+    // Re-index remaining inputs after removing
+    var persons = document.querySelectorAll('.person');
+    persons.forEach((personDiv, index) => {
+        personDiv.querySelector('input[name^="persons"]').name = `persons[${index}][name_product]`;
+        personDiv.querySelector('input[name^="persons"]').nextElementSibling.name = `persons[${index}][last_name_product]`;
+    });
+}
+
 </script>
