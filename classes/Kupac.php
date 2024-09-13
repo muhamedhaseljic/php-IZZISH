@@ -74,4 +74,18 @@ protected $conn;
         $run->bind_param("ssi", $first_name, $last_name, $customer_id);
         $run->execute();
         }
+
+        public function get_latest_id_by_name($name, $last_name) {
+            $sql = "SELECT MAX(customer_id) AS latest_id FROM kupac WHERE first_name = ? AND last_name = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("ss", $name, $last_name);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($row = $result->fetch_assoc()) {
+                return $row['latest_id'];  
+            } else {
+                return null; 
+            }
+        }
 }

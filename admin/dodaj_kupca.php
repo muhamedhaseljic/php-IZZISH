@@ -17,10 +17,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     $objekat = $_POST['ustanova'];
     
-    $customer_id = 37;
-
-    
     $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
+    $customer_id = $kupac->get_latest_id_by_name($name, $surname);
     if(!empty($_POST['persons'])){
       
       foreach($_POST['persons'] as $person){
