@@ -304,6 +304,9 @@ button {
                 $sql = "SELECT kupac.*,
                   radnici.first_name as employee_name,
                   radnici.last_name as employee_last_name,
+                  produkt_hrana.name as product_food_name,
+                  produkt_hrana.type as product_food_type,
+                  produkt_hrana.description as product_food_description,
                    GROUP_CONCAT(CONCAT(produkt_osoba.first_name, ' ', produkt_osoba.last_name) SEPARATOR ', ') AS produkt_osoba_names
                   FROM `kupac` 
                   left join `radnici` on kupac.employee_id = radnici.employee_id
@@ -365,7 +368,12 @@ button {
                 <li><strong>Opis:</strong> <span id="customer-description"></span></li>
                 <li><strong>Objekat:</strong> <span id="customer-objekt"></span></li>
                 <li><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
-                <li><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
+                <li id="osobe-product-name"><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
+                <div id="customer-product-food">
+                    <li><strong>Hrana:</strong> <span id="customer-product-food-name"></span></li>
+                    <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
+                    <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
+                </div>
                 <!-- Add more fields as needed -->
             </ul>
         </div>
@@ -381,6 +389,10 @@ button {
 
     // Function to show the popup and populate details
     function showPopup(customer) {
+
+        document.getElementById("osobe-product-name").style.display = "block";  // Show the person section
+        document.getElementById("customer-product-food").style.display = "block";
+
         document.getElementById("customer-id").textContent = customer.customer_id;
         document.getElementById("customer-first-name").textContent = customer.first_name;
         document.getElementById("customer-last-name").textContent = customer.last_name;
@@ -393,15 +405,27 @@ button {
         document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
         //document.getElementById("customer-product-name").textContent = customer.produkt_osoba_name;
 
-        const productNames = customer.produkt_osoba_names.split(','); // Assuming it's comma-separated
+        const produktOsobaNames = customer.produkt_osoba_names;
+        //const productNames = customer.produkt_osoba_names.split(','); // Assuming it's comma-separated
         const productNameContainer = document.getElementById("customer-product-name");
         productNameContainer.innerHTML = ''; // Clear existing persons
-        productNames.forEach(function(name) {
-            const li = document.createElement('li');
-            li.textContent = name.trim(); // Create a new list item for each person
-            productNameContainer.appendChild(li);
-        });
 
+        if (produktOsobaNames) {
+            const productNamesArray = produktOsobaNames.split(',');
+            productNamesArray.forEach(function(name) {
+                const li = document.createElement('li');
+                li.textContent = name.trim(); // Create a new list item for each person
+                productNameContainer.appendChild(li);
+            });
+            document.getElementById("customer-product-food").style.display = "none";
+        } else{
+            document.getElementById("osobe-product-name").style.display = "none";
+            document.getElementById("customer-product-food-name").textContent = customer.product_food_name;
+            document.getElementById("customer-product-food-type").textContent = customer.product_food_type;
+            document.getElementById("customer-product-food-description").textContent = customer.product_food_description;
+            
+            
+        }
         
         popup.style.display = "block";
     }
