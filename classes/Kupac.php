@@ -49,6 +49,16 @@ protected $conn;
         $run = $this->conn->prepare($sql);
         $run->bind_param("i", $customer_id);
         $run->execute();
+
+        $sql = "DELETE FROM produkt_osoba WHERE customer_id = ?";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $customer_id);
+        $run->execute();
+
+        $sql = "DELETE FROM produkt_hrana WHERE customer_id = ?";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $customer_id);
+        $run->execute();
     }
 
     public function assign_employee($customer_id, $employee_id){
@@ -75,13 +85,20 @@ protected $conn;
         $run->execute();
         }
 
+        public function assign_deratizacija($name, $type, $description, $customer_id){
+        $sql = "INSERT INTO produkt_hrana (name, type, description, customer_id) VALUES (?, ?, ?, ?)";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("sssi", $name, $type, $description, $customer_id);
+        $run->execute();
+        }
+
         public function get_latest_id_by_name($name, $last_name) {
             $sql = "SELECT MAX(customer_id) AS latest_id FROM kupac WHERE first_name = ? AND last_name = ?";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("ss", $name, $last_name);
             $stmt->execute();
             $result = $stmt->get_result();
-            
+
             if ($row = $result->fetch_assoc()) {
                 return $row['latest_id'];  
             } else {

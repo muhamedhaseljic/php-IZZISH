@@ -19,16 +19,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
     $customer_id = $kupac->get_latest_id_by_name($name, $surname);
+
     if(!empty($_POST['persons'])){
-      
+
       foreach($_POST['persons'] as $person){
+        if (!empty($person['name_product']) && !empty($person['last_name_product'])) {
         $name = $person['name_product'];
         $last_name = $person['last_name_product'];
         $kupac->assign_sanitarna($name, $last_name, $customer_id);
-        var_dump($last_name);
+        }
       }
     }
+
+    if (!empty($_POST['name_product_food']) && !empty($_POST['type_product']) && !empty($_POST['description_product'])) {
+        $name_product_food = $_POST['name_product_food'];
+        $type_product = $_POST['type_product'];
+        $description_product = $_POST['description_product'];
+        $kupac->assign_deratizacija($name_product_food, $type_product, $description_product, $customer_id);
     
+    }
     header('Location: ../app/dashboard.php?page=kupci');
     exit();
     }
@@ -299,22 +308,22 @@ label{
             <!-- Initial Person Input -->
             <div class="person">
             
-                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" required>
-                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]" required>
+                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" >
+                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]">
             </div>
         </div>
         <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
   <div id="deratizacijaFields" class="form-group hidden">
-            <label for="nameProduct">Naziv proizvoda</label>
-            <input type="text" id="nameProduct" name="Naziv proizvoda">
+            <label for="name_product_food">Naziv proizvoda</label>
+            <input type="text" id="name_product_food" name="name_product_food">
             <br>
             <label for="typeProizvod">Tip</label>
-            <input type="text" id="typeProizvod" name="Tip">
+            <input type="text" id="typeProizvod" name="type_product">
             <br>
             <label for="descriptionProduct">Opis</label>
-            <input type="text" id="descriptionProduct" name="Opis">
+            <input type="text" id="descriptionProduct" name="description_product">
         </div>
   
   <div class="form-buttons">
