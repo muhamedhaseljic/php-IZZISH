@@ -303,9 +303,14 @@ button {
                 
                 $sql = "SELECT kupac.*,
                   radnici.first_name as employee_name,
-                  radnici.last_name as employee_last_name
+                  radnici.last_name as employee_last_name,
+                   GROUP_CONCAT(CONCAT(produkt_osoba.first_name, ' ', produkt_osoba.last_name) SEPARATOR ', ') AS produkt_osoba_names
                   FROM `kupac` 
-                  left join `radnici` on kupac.employee_id = radnici.employee_id;";
+                  left join `radnici` on kupac.employee_id = radnici.employee_id
+                  left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
+                  left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
+                  GROUP BY 
+                  kupac.customer_id;";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     $select_members = $results;
@@ -360,6 +365,7 @@ button {
                 <li><strong>Opis:</strong> <span id="customer-description"></span></li>
                 <li><strong>Objekat:</strong> <span id="customer-objekt"></span></li>
                 <li><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
+                <li><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
                 <!-- Add more fields as needed -->
             </ul>
         </div>
@@ -385,7 +391,16 @@ button {
         document.getElementById("customer-objekt").textContent = customer.objekat;
         document.getElementById("customer-employee-name").textContent = customer.employee_name;
         document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
+        //document.getElementById("customer-product-name").textContent = customer.produkt_osoba_name;
 
+        const productNames = customer.produkt_osoba_names.split(','); // Assuming it's comma-separated
+        const productNameContainer = document.getElementById("customer-product-name");
+        productNameContainer.innerHTML = ''; // Clear existing persons
+        productNames.forEach(function(name) {
+            const li = document.createElement('li');
+            li.textContent = name.trim(); // Create a new list item for each person
+            productNameContainer.appendChild(li);
+        });
 
         
         popup.style.display = "block";
