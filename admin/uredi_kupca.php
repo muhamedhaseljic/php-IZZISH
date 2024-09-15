@@ -200,8 +200,6 @@ label{
     <input type="number" id="phone_number" value="<?php echo $result['phone_number'] ?>" placeholder="Broj telefona" name="phone_number">
   </div>
 
-  
-
   <div class="form-group">
   <label for="description"> Detalji</label>
     <input type="text" id="description" value="<?php echo $result['description'] ?>" placeholder="Detalji"  name="description">
@@ -287,10 +285,10 @@ label{
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
 
-            if (service === 'sanitarna') {
+            if (service === 'deratizacija') {
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
-            } else if (service === 'deratizacija') {
+            } else if (service === 'sanitarna ') {
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
             }
