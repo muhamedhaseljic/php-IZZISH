@@ -80,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 .form-group {
   width: 30%;
+  position: relative;
 }
 
 .form-group.full-width {
@@ -243,29 +244,49 @@ label{
             border: none;
     border-radius: 20px;
         }
-        
+        .form-group input.invalid {
+        border: 1px solid red;
+    }
+    .error-custom{
+      position: relative;
+
+    }
+    .form-group .error-message {
+        color: red;
+        font-size: 12px;
+        position: absolute;
+        top: 100%;  /* Below the input field */
+        left: 0;
+        display: none; /* Hidden by default */
+    }
 </style>
 
 
 <div class="custom-main-content">
             
-<form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
+<form id="validationForm" class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novi zahtjev</h2>
 
 <div class="employee-form">
-  <div class="form-group">
+  <div class="form-group error-custom">
     <label for="name"> Ime</label>
-    <input type="text" id="name"  placeholder="Ime" name="name">
+    <input  data-parsley-length="[1, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="name"  placeholder="Ime" name="name">
+    <span class="error-message">Ime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   <div class="form-group">
     <label for="surname"> Prezime</label>
-    <input type="text" id="surname"  placeholder="Prezime" name="surname">
+    <input data-parsley-length="[1, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="surname"  placeholder="Prezime" name="surname">
+    <span id="first_nameError" class="error-message">Prezime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
-    <input type="email" id="email"  placeholder="Email" name="email">
+    <input id="first_lastnameError" type="email" id="email"  placeholder="Email" name="email"
+          data-parsley-type="email" 
+           data-parsley-required="true" 
+           data-parsley-error-message="Please enter a valid email address.">
+           <span id="emailError" class="error-message"></span>
   </div>
 
   <div class="form-group">
@@ -336,7 +357,7 @@ label{
    
     
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 <script>
     function showFields() {
             const service = document.getElementById('service').value;
@@ -388,4 +409,32 @@ function removePerson(button) {
     });
 }
 
+$('#validationForm').parsley({
+  errorsContainer: function (ParsleyField) {
+    return ParsleyField.$element.siblings('.error-message');  // Use custom error message container
+  },
+  errorsWrapper: '',  // Prevent default Parsley wrapper
+  errorTemplate: ''  // Prevent default Parsley error template
+});
+
+$('#validationForm').parsley({
+    errorsContainer: function (ParsleyField) {
+        return ParsleyField.$element.siblings('.error-message');
+    }
+});
+
+$('#validationForm').parsley().on('field:validated', function(field) {
+      var $field = $(field.$element);
+      var $errorMessage = $field.siblings('.error-message');
+      
+      // Show or hide the error message
+      if (field.isValid()) {
+          $errorMessage.hide();       // Hide error message
+          $field.removeClass('invalid'); // Remove red border
+      } else {
+          $errorMessage.show();       // Show error message
+          $field.addClass('invalid'); // Add red border
+      }
+  });
 </script>
+
