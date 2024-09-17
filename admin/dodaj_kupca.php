@@ -270,13 +270,13 @@ label{
 <div class="employee-form">
   <div class="form-group error-custom">
     <label for="name"> Ime</label>
-    <input  data-parsley-length="[1, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="name"  placeholder="Ime" name="name">
+    <input  data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="name"  placeholder="Ime" name="name">
     <span class="error-message">Ime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   <div class="form-group">
     <label for="surname"> Prezime</label>
-    <input data-parsley-length="[1, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="surname"  placeholder="Prezime" name="surname">
+    <input data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="surname"  placeholder="Prezime" name="surname">
     <span id="first_nameError" class="error-message">Prezime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
@@ -286,12 +286,16 @@ label{
           data-parsley-type="email" 
            data-parsley-required="true" 
            data-parsley-error-message="Please enter a valid email address.">
-           <span id="emailError" class="error-message"></span>
+           <span id="emailError" class="error-message">Email nije unsesen pravilno</span>
   </div>
 
   <div class="form-group">
   <label for="phone_number"> Broj telefona</label>
-    <input type="number" id="phone_number"  placeholder="Broj telefona" name="phone_number">
+    <input type="number" id="phone_number"  placeholder="Broj telefona" name="phone_number"
+            data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" 
+           data-parsley-length="[3, 15]"
+           data-parsley-required="true">
+           <span id="emailError" class="error-message">Limit za dužinu broja je 15</span>
   </div>
 
   
