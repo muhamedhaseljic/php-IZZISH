@@ -313,6 +313,22 @@ button {
     </style>
     
     <div class="custom-main-content">
+
+    <?php
+
+if(isset($_SESSION['message'])) :?>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert">
+    <?php
+    
+      echo $_SESSION['message']['text'];
+      unset($_SESSION['message']);
+    
+    ?>
+</div>
+
+<?php endif; ?>
+
+
         <h1 >Employees List</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">

@@ -324,8 +324,10 @@ label{
   <label for="service">Select Service:</label>
         <select id="service" name="service" onchange="showFields()">
             <option value="posao">Izaberi posao</option>
-            <option value="sanitarna">Sanitarna</option>
+            <option value="sanitarna">Sanitarna odbrada</option>
             <option value="deratizacija">Analiza</option>
+            <option value="posao">Deratizacija</option>
+            <option value="posao">Dezinfekcija</option>
         </select>
   </div>
 

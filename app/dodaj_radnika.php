@@ -12,6 +12,7 @@
         $email = $_POST['email'];
         $phone_number = $_POST['phone_number'];
         $password = $_POST['password'];
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $employment_status = $_POST['employment_status'];
         $mjesto_rodjenja = $_POST['mjesto_rodjenja'];
         $adresa_boravista = $_POST['adresa_boravista'];
@@ -48,9 +49,16 @@
 
         $run = $conn->prepare($sql);
         $run->bind_param("ssssssssisssssss", $first_name, $last_name, $email, $password, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
-        $run->execute();
+        $result = $run->execute();
+/*
+        if($result){
+            $_SESSION['employee_id'] = $result->insert_id;
+            $_SESSION['message']['type'] = "radnik uspjesno dodat";
+            
+        }*/
 
-        $_SESSION['message']['type'] = "radnik uspjesno dodat";
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "Radnik supjesno dodan";
         
         
         header('location: http://localhost/retro/app/dashboard.php?page=radnici');
