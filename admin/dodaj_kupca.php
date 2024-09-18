@@ -323,12 +323,13 @@ label{
   <div class="form-group">
   <label for="service">Select Service:</label>
         <select id="service" name="service" onchange="showFields()">
+            <option value="posao">Izaberi posao</option>
             <option value="sanitarna">Sanitarna</option>
-            <option value="deratizacija">Deratizacija</option>
+            <option value="deratizacija">Analiza</option>
         </select>
   </div>
 
-  <div id="sanitarnaFields" class="form-group full-width">
+  <div id="sanitarnaFields" class="form-group hidden full-width">
   <div id="persons">
             <!-- Initial Person Input -->
             <div class="person">
@@ -372,16 +373,39 @@ label{
             sanitarnaFields.classList.remove('visible');
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
+            
 
             if (service === 'sanitarna') {
+              clearInputs(deratizacijaFields);
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
             } else if (service === 'deratizacija') {
+              clearInputs(sanitarnaFields);
+              clearPersons(); 
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
+            }else if (service === 'posao'){
+            
+            clearInputs(deratizacijaFields);
+            clearInputs(sanitarnaFields);
+            clearPersons();
             }
         }
-
+        function clearInputs(container) {
+    var inputs = container.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";  // Clear each input value
+    }
+}
+function clearPersons() {
+    const personsContainer = document.getElementById('persons');
+    const initialPerson = personsContainer.querySelector('.initial');
+    
+    // Clear all dynamically added persons except the initial one
+    while (personsContainer.children.length > 1) {
+        personsContainer.removeChild(personsContainer.lastChild);
+    }
+}
         // Add new person input fields dynamically
         function addPerson() {
     var personDiv = document.createElement('div');
@@ -391,10 +415,10 @@ label{
     // Use personCount as the index to group name and last name fields
     personDiv.innerHTML = `
         <label for="nameProduct">Ime</label>
-        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
+        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" >
 
         <label for="surnameProduct">Prezime</label>
-        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
+        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" >
 
         <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
     `;

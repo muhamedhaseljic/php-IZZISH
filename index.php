@@ -60,7 +60,7 @@ body {
 
 .login-box {
     /*position: relative;*/
-    width: 400px;
+    width: 450px;
     padding: 20px;
     background: #171c22;
     
@@ -72,12 +72,12 @@ body {
     color: white;
     margin-bottom: 50px;
     font-size: 20px;
-    text-align: center;
+    text-align: left;
     font-weight:200;
 }
 .login-box a {
     
-    text-align: center;
+    text-align: left;
 }
 
 .user-box {
@@ -122,9 +122,9 @@ a {
     color: #008cba;
     font-size: 16px;
     text-decoration: none;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     overflow: hidden;
-    letter-spacing: 3px;
+    /*letter-spacing: 3px;*/
     margin-top: 40px;
     border: none;
     cursor: pointer;
@@ -147,9 +147,9 @@ button{
     position: relative;
     display: inline-block;
     padding: 10px 65px;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     overflow: hidden;
     letter-spacing: 2px;
     margin-top: 50px;
@@ -226,6 +226,7 @@ a span:nth-child(4) {
 }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%;
+  height:50px;
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
@@ -263,19 +264,20 @@ h1{
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
-        <h2>Please login to start your session</h2>    
+        <h2>Prijava</h2>    
         <form id="loginForm"  method="POST">
+        
         <div class="form-group">
             <label for="email"> Email</label>
             <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
         
         <div class="form-group">
-            <label for="password"> Sifra</label>
+            <label for="password"> Šifra</label>
             <input type="password" id="password" name="password" placeholder="Šifra" required>
         </div>
-            <a href="#" class="forgot-password">Forgot Password?</a> <!-- Forgot Password Link -->
-            <button type="submit" name="login">Login</button>
+            <a href="#" class="forgot-password">Zaboravili ste šifru?</a> <!-- Forgot Password Link -->
+            <button type="submit" name="login">Prijavi se</button>
         </form>
     </div>
     
