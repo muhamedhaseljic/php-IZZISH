@@ -373,15 +373,20 @@ label{
             sanitarnaFields.classList.remove('visible');
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
+
+            removeRequired(sanitarnaFields);
+            removeRequired(deratizacijaFields);
             
 
             if (service === 'sanitarna') {
               clearInputs(deratizacijaFields);
+              addRequired(sanitarnaFields);
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
             } else if (service === 'deratizacija') {
               clearInputs(sanitarnaFields);
               clearPersons(); 
+              addRequired(deratizacijaFields);
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
             }else if (service === 'posao'){
@@ -406,6 +411,21 @@ function clearPersons() {
         personsContainer.removeChild(personsContainer.lastChild);
     }
 }
+
+function addRequired(container) {
+    const inputs = container.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].setAttribute('required', 'required');
+    }
+}
+
+// Helper function to remove 'required' from inputs
+function removeRequired(container) {
+    const inputs = container.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].removeAttribute('required');
+    }
+}
         // Add new person input fields dynamically
         function addPerson() {
     var personDiv = document.createElement('div');
@@ -415,10 +435,10 @@ function clearPersons() {
     // Use personCount as the index to group name and last name fields
     personDiv.innerHTML = `
         <label for="nameProduct">Ime</label>
-        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" >
+        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
 
         <label for="surnameProduct">Prezime</label>
-        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" >
+        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
 
         <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
     `;
