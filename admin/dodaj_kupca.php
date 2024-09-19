@@ -336,8 +336,8 @@ label{
             <!-- Initial Person Input -->
             <div class="person">
             
-                <label for="nameProduct">Ime </label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" >
-                <label for="surnameProduct">Prezime</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]">
+                <label for="nameProduct">Ime osobe za sanitarnu</label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" >
+                <label for="surnameProduct">Prezime osobe za sanitarnu</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]">
             </div>
         </div>
         <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>

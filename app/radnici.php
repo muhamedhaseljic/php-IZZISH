@@ -310,14 +310,28 @@ button {
             text-decoration: none;
             cursor: pointer;
         }
-    </style>
-    
-    <div class="custom-main-content">
 
-    <?php
+        .alert-success {
+            background-color: #4caf50;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border-radius: 4px;
+    display: none; /* Initially hidden */
+    width: 300px; /* Set a fixed width, adjust as needed */
+    text-align: center; /* Center the text */
+    }
+    </style>
+
+<?php
 
 if(isset($_SESSION['message'])) :?>
-<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert">
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">>
+
     <?php
     
       echo $_SESSION['message']['text'];
@@ -327,6 +341,10 @@ if(isset($_SESSION['message'])) :?>
 </div>
 
 <?php endif; ?>
+    
+    <div class="custom-main-content">
+
+    
 
 
         <h1 >Employees List</h1>
@@ -537,5 +555,15 @@ if(isset($_SESSION['message'])) :?>
                 submitForm();
             }
         });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var popup = document.getElementById("success-popup");
+        if (popup) {
+            popup.style.display = 'block'; // Show popup
+            setTimeout(function() {
+                popup.style.display = 'none'; // Hide after 3 seconds
+            }, 3000);
+        }
     });
     </script>
