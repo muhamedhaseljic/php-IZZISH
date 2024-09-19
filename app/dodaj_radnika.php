@@ -58,7 +58,7 @@
         }*/
 
         $_SESSION['message']['type'] = "success";
-        $_SESSION['message']['text'] = "Radnik supjesno dodan";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Radnik upješno dodan";
         
         
         header('location: http://localhost/retro/app/dashboard.php?page=radnici');

@@ -312,25 +312,42 @@ button {
         }
 
         .alert-success {
-            background-color: #4caf50;
+    background-color: #4cb050;
     color: white;
     padding: 15px;
     position: fixed;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-    border-radius: 4px;
-    display: none; /* Initially hidden */
-    width: 300px; /* Set a fixed width, adjust as needed */
-    text-align: center; /* Center the text */
-    }
+    border-radius: 7px;
+    display: none;
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    border:none;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: #c9e8c6;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width linear; /* Smooth transition */
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
     </style>
 
 <?php
 
 if(isset($_SESSION['message'])) :?>
-<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
 
     <?php
     
@@ -338,6 +355,7 @@ if(isset($_SESSION['message'])) :?>
       unset($_SESSION['message']);
     
     ?>
+     <div class="progress-bar" id="progress-bar"></div>
 </div>
 
 <?php endif; ?>
@@ -557,13 +575,64 @@ if(isset($_SESSION['message'])) :?>
         });
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var popup = document.getElementById("success-popup");
-        if (popup) {
-            popup.style.display = 'block'; // Show popup
-            setTimeout(function() {
-                popup.style.display = 'none'; // Hide after 3 seconds
-            }, 3000);
-        }
-    });
+    let timeout;
+let totalDuration = 5000; // Total time in milliseconds (5 seconds)
+let remainingTime = totalDuration; // Time remaining on countdown
+let startTime;
+let elapsedTime = 0; // Tracks how much time has passed
+let isHovered = false; // Tracks hover state
+let progressBar, popup;
+
+document.addEventListener("DOMContentLoaded", function() {
+    popup = document.getElementById("success-popup");
+    progressBar = document.getElementById("progress-bar");
+
+    if (popup) {
+        popup.style.display = 'block'; // Show the popup
+        progressBar.style.width = '100%'; // Set it to full width immediately
+        setTimeout(() => {
+            startTimer(remainingTime); // Start the timer and progress bar
+        }, 50); // A slight delay for the initial width to take effect.
+
+        popup.addEventListener("mouseenter", pauseTimer);
+        popup.addEventListener("mouseleave", resumeTimer);
+    }
+});
+
+function startTimer(duration) {
+    // Start the progress bar and countdown
+    startTime = Date.now();
+    timeout = setTimeout(hidePopup, duration);
+    
+    progressBar.style.transitionDuration = duration + 'ms';
+    progressBar.style.width = '0%'; // Animate to 0% over the duration
+}
+
+function hidePopup() {
+    popup.style.display = 'none';
+}
+
+function pauseTimer() {
+    if (!isHovered) {
+        clearTimeout(timeout); // Pause the countdown timer
+        elapsedTime += Date.now() - startTime; // Add the time that has passed
+        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+
+        // Freeze the progress bar
+        let percentageElapsed = (elapsedTime / totalDuration) * 100;
+        progressBar.style.width = (100 - percentageElapsed) + '%';
+        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        isHovered = true;
+    }
+}
+
+function resumeTimer() {
+    if (isHovered) {
+        startTimer(remainingTime); // Resume the countdown
+        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
+        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        isHovered = false;
+    }
+}
+
     </script>
