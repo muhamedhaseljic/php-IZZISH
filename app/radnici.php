@@ -238,7 +238,7 @@ button {
             background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
             justify-content: center;
             align-items: center;
-            z-index: 10;
+            z-index: 999;
         }
 
         /* Popup content */
@@ -282,7 +282,7 @@ button {
         .modal {
             display: none; /* Hidden by default */
             position: fixed;
-            z-index: 1;
+            z-index: 999;
             left: 0;
             top: 0;
             width: 100%;
