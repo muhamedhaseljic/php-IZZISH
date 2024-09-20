@@ -243,10 +243,10 @@ button {
 
         /* Popup content */
         .popup-content {
-            background-color: #fefefe;
+            background-color: #2f2f2f;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
-            border: 1px solid #888;
+            /*border: 1px solid #888;*/
             width: 80%; /* Could be more or less, depending on screen size */
             margin-top:100px;
             display: flex;
@@ -254,6 +254,7 @@ button {
             width: 500px;
             text-align: left;
             position: relative;
+            color:white;
         }
 
 
@@ -341,6 +342,11 @@ button {
 @keyframes progress {
     from { width: 100%; }
     to { width: 0%; }
+}
+
+.radnik-details strong{
+    font-size:16px;
+    margin-right:8px;
 }
     </style>
 
@@ -576,7 +582,7 @@ if(isset($_SESSION['message'])) :?>
     });
 
     let timeout;
-let totalDuration = 5000; // Total time in milliseconds (5 seconds)
+let totalDuration = 2500; // Total time in milliseconds (5 seconds)
 let remainingTime = totalDuration; // Time remaining on countdown
 let startTime;
 let elapsedTime = 0; // Tracks how much time has passed
