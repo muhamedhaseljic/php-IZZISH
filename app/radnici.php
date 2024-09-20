@@ -287,15 +287,35 @@ button {
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #171c22;
             margin: 15% auto;
             padding: 20px;
-            border: 1px solid #888;
-            width: 300px;
+            /*border: 1px solid #888;*/
+            width: 400px;
+            color:white;
+            border-radius:20px;
+        }
+
+        .modal-content input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 0px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #0d1017;
+            color: #fff;
+            font-family: FontAwesome, sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .modal-content input:focus{
+            border: 1px solid #008cba;
+    outline: none;
         }
 
         .close {
@@ -347,6 +367,14 @@ button {
 .radnik-details strong{
     font-size:16px;
     margin-right:8px;
+}
+
+.button-group{
+    margin-top:20px;
+}
+
+.modal-name{
+    font-weight:800;
 }
     </style>
 
@@ -410,7 +438,7 @@ if(isset($_SESSION['message'])) :?>
                     <div class="button-container">
                         <button id="popupBtn" class="custom-view-btn view-employee-btn" data-employee='<?php echo json_encode($result); ?>'><span class="fas fa-eye"></span></button>
                         <a href="edit_employees.php?id=<?php echo $result['employee_id']; ?>" class="custom-edit-btn"><span class="fas fa-edit"></span></a>
-                            <button onclick="showPopup(<?php echo $result['employee_id']; ?>, '<?php echo $result['first_name']; ?>')" class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
+                            <button onclick="showPopup(<?php echo $result['employee_id']; ?>, '<?php echo $result['first_name']; ?>', '<?php echo $result['last_name']; ?>')" class="custom-delete-btn" name="employee_id" value="<?php echo $result['employee_id']; ?>"><span class="fas fa-trash"></span></button>
                     </div>
                 </td>
             </tr>
@@ -427,12 +455,12 @@ if(isset($_SESSION['message'])) :?>
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePopup()">&times;</span>
-        <p>Do you really want to delete <span id="employeeName"></span>?</p>
-        <label for="reason">Reason for deletion:</label>
-        <input type="text" id="reason" name="reason" placeholder="Enter reason here" required>
-        <div class="button-group">
-            <button type="button" onclick="submitForm()">Submit</button>
-            <button type="button" onclick="closePopup()">Cancel</button>
+        <p>Radnik kojeg želite da izbrišete: <br> <span class="modal-name" id="employeeName"></span> <span class="modal-name" id="employeeLastName"></span></p>
+        <label for="reason">Razlog brisanja:</label>
+        <input type="text" id="reason" name="reason" placeholder="Unesite razlog ovdje" required>
+        <div class="button-group d-flex justify-content-between">
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
         </div>
     </div>
 </div>
@@ -543,10 +571,11 @@ if(isset($_SESSION['message'])) :?>
         });
     });
 
-    function showPopup(employeeId, employeeName) {
+    function showPopup(employeeId, employeeName, employeeLastName) {
         // Set the employee's data to the modal and show it
         document.getElementById('employeeId').value = employeeId;
         document.getElementById('employeeName').innerText = employeeName;
+        document.getElementById('employeeLastName').innerText = employeeLastName;
         document.getElementById('modal').style.display = "block";
     }
 
