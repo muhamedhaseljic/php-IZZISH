@@ -1,3 +1,11 @@
+<?php
+
+require_once "../config/config.php";
+require_once "../radnik/Radnik.php";
+$radnik = new Radnik();
+
+?>
+
 <style>
 nav#sidebar {
     height: 100vh;
@@ -104,10 +112,12 @@ h3.nav-item{
 <nav id="sidebar" class='mx-lt-5 sidebar-custom' >
 		
 		<div class="sidebar-list ">
+            
                 <div class="nav-item">
-                    <img class="boja-pozadine" src="../images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
+                <?php $employee_data = $radnik->get_employee_data() ?>
+                    <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>" width="70px" height="70px" alt="">                   
                 </div>
-                <h2 class="nav-item">Muhamed Haseljić</h2>
+                <h2 class="nav-item"><?=$employee_data['first_name'] . " ". $employee_data['last_name']?></h2>
                 <h3 class="nav-item">Admin</h3>
 
 				<a href="../app/dashboard.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>

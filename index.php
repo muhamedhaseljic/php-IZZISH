@@ -1,6 +1,27 @@
 <?php
 // Start the session
 require_once "config/config.php";
+require_once "radnik/Radnik.php";
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $radnik = new Radnik();
+    $result = $radnik->login($email, $password);
+
+    if(!$result){
+        $_SESSION['message']['type'] = "danger";
+        $_SESSION['message']['text'] = "Netacan email ili sifra";
+        header('Location: http://localhost/retro/index.php?page=deductions');
+        exit;
+    }
+
+    header('Location: http://localhost/retro/app/dashboard.php?page=home');
+    exit;
+}
+
 //session_start();
 
 // Example hardcoded users (you can replace this with a database query)
@@ -265,7 +286,7 @@ h1{
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
         <h2>Prijava</h2>    
-        <form id="loginForm"  method="POST">
+        <form action="" id="loginForm"  method="POST">
         
         <div class="form-group">
             <label for="email"> Email</label>

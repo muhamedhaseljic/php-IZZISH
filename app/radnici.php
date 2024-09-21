@@ -243,7 +243,7 @@ button {
 
         /* Popup content */
         .popup-content {
-            background-color: #2f2f2f;
+            background-color: #171c22;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             /*border: 1px solid #888;*/
@@ -287,7 +287,7 @@ button {
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
         }
 
         .modal-content {

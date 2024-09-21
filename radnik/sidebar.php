@@ -105,7 +105,8 @@ img.nav-item{
 		
 		<div class="sidebar-list ">
                 <div class="nav-item">
-                    <img class="boja-pozadine" src="../images/Haseljić Muhamed_pp.jpg" width="70px" height="70px" alt="">                   
+                    
+                    <img class="boja-pozadine" src="<?php echo "../images/" . $_SESSION['photo_path'] ?>" width="70px" height="70px" alt="">                   
                 </div>
                 <h2 class="nav-item">Muhamed Haseljić</h2>
                 <h3 class="nav-item">Admin</h3>
@@ -114,7 +115,7 @@ img.nav-item{
                 <a href="index.php?page=radna_sedmica" class="nav-item radna_sedmica"><span class='icon-field'>&nbsp;<i class="fas fa-calendar-week">  &nbsp; &nbsp;</i></span> Radna sedmica</a>
                 <a href="index.php?page=poslovi" class="nav-item poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-tasks">  &nbsp; &nbsp;</i></span> Poslovi</a>
                 <a href="index.php?page=poruke" class="nav-item poruke"><span class='icon-field'>&nbsp;<i class="fas fa-envelope">  &nbsp; &nbsp;</i></span> Poruke</a>
-                <img class="nav-item" src="../inz_logo_-1.png" width="200px" height="60px" alt="">
+                <img class="nav-item" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
 
                 <a href="http://localhost/retro/index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
 		</div>
