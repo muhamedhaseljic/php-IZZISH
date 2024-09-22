@@ -1,6 +1,8 @@
 <?php
 
 require_once "../config/config.php";
+require_once "../radnik/Radnik.php";
+$radnik = new Radnik();
 
 ?>
 <style>
@@ -22,23 +24,23 @@ require_once "../config/config.php";
 
 .profile-container {
     display: flex;
-    max-width: 1400px; /* Adjust for a compact layout */
+    max-width: 1600px; /* Adjust for a compact layout */
     margin: 40px auto;
     background-color: #171c22;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 0px;
     gap: 0px;
     height:600px;
-    border-radius:15px;
+    border-radius:8px;
 }
 
 .left-section {
-    flex: 0 0 200px; /* Fixed width for picture section */
+    flex: 0 0 400px; /* Fixed width for picture section */
     background-color: #171c22;
-    padding:5px;
+    padding:20px;
     padding-top: 20px;
     border-radius:15px;
-    text-align: center;
+    text-align: left;
 }
 
 .profile-picture img {
@@ -48,7 +50,7 @@ require_once "../config/config.php";
 }
 
 .border-divider {
-    width: 40px;
+    width: 20px;
     background-color: #0d1017; /* Visible border between sections */
     margin-left: ;
     height:650px;
@@ -102,8 +104,9 @@ input::placeholder {
 }
 .left-section h1{
     color:white;
-    text-align: center;
+    text-align: left;
     font-size:18px;
+    margin-bottom:20px;
 }
 .left-section p{
     color:white;
@@ -138,23 +141,45 @@ input::placeholder {
     
     <div class="custom-main-content">
         
-
+    <?php $employee_data = $radnik->get_employee_data() ?>
         <div class="profile-container">
         
         <!-- Left Section (Profile Picture) -->
         <div class="left-section">
         <h1 ><b>PROFIL DETALJI</b></h1>
             <div class="profile-picture">
-                <img src="../images/Haseljić Muhamed_pp.jpg" alt="Profile Picture" />
+                <img src="<?php echo "../images/" . $employee_data['photo_path'] ?>" alt="Profile Picture" />
             </div>
-            <p><span class="profile-label">Ime:</span> <span class="detalji-profil">Muhamed</span></p>
-            <p><span class="profile-label">Godine:</span> <span class="detalji-profil">22 godine</span></p>
-            <p><span class="profile-label">Lokacija:</span> <span class="detalji-profil">Zenica</span></p>
-            <p><span class="profile-label">Staž:</span> <span class="detalji-profil">15 godina</span></p>
+            <p><span class="profile-label">Ime:</span> <span class="detalji-profil"><?=$employee_data['first_name'] . " " . $employee_data['last_name'] ?></span></p>
+            <p><span class="profile-label">Email:</span> <span class="detalji-profil"><?=$employee_data['email']?></span></p>
+            <p><span class="profile-label">Godine:</span> <span class="detalji-profil">
+                <?php
+                    $date_of_birth = $employee_data['date_of_birth'];
+                    $dob = new DateTime($date_of_birth);
+                    $now = new DateTime();
+                    $age = $now->diff($dob)->y;
+                    echo $age;
+                ?>
+            </span></p>
+            <p><span class="profile-label">Lokacija:</span> <span class="detalji-profil"><?=$employee_data['adress']?></span></p>
+            <p><span class="profile-label">Staž:</span> <span class="detalji-profil">
+            <?php
+                    $date_of_employment = $employee_data['date_of_employment'];
+                    $pocetak = new DateTime($date_of_employment);
+                    
+                    $staz_dan = $now->diff($pocetak)->d;
+                    $staz_mjesec = $now->diff($pocetak)->m;
+                    $staz_godine = $now->diff($pocetak)->y;
+                    echo $staz_godine . " god. ". $staz_mjesec . " mje. " . $staz_dan . " dana";
+                ?>
+            </span></p>
+            <p><span class="profile-label">Status:</span> <span class="detalji-profil"><?=$employee_data['status']?></span></p>
+            <p><span class="profile-label">Pozicija:</span> <span class="detalji-profil"><?=$employee_data['position']?></span></p>
+            <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']?></span></p>
         </div>
 
         <!-- Divider with Border -->
-        <div class="border-divider"></div>
+        <div class="border-divider"></div> 
 
         <!-- Right Section (Editable Fields) -->
          

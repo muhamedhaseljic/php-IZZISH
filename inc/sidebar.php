@@ -118,7 +118,7 @@ h3.nav-item{
                     <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>" width="70px" height="70px" alt="">                   
                 </div>
                 <h2 class="nav-item"><?=$employee_data['first_name'] . " ". $employee_data['last_name']?></h2>
-                <h3 class="nav-item">Admin</h3>
+                <h3 class="nav-item"><?php if($employee_data['is_admin'] == 1) echo "Admin"; echo "Radnik"; ?></h3>
 
 				<a href="../app/dashboard.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
 				<a href="../app/dashboard.php?page=radnici" class="nav-item nav-radnici"><span class='icon-field'><i class="fa fa-users">  &nbsp; &nbsp;</i></span> Radnici</a>
