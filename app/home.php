@@ -1,9 +1,7 @@
 <?php
 
-require_once "../config/config.php";
-require_once "../radnik/Radnik.php";
-$radnik = new Radnik();
-$employee_data = $radnik->get_employee_data();
+
+
 $target_dir = "../images/";
 
 if($_SERVER['REQUEST_METHOD']== "POST"){
@@ -26,7 +24,15 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     $start_date = $_POST['datum_zaposlenja'];
     $plata = $_POST['plata'];
     $gender = $_POST['spol'];
+    $notes = "";
     
+    
+    
+
+    if (empty($_FILES['photo_path']['name'])){
+        $photo_path = $employee_data['photo_path'];
+    }
+    else{
     $photo_path = basename($_FILES['photo_path']['name']);
         $target_file = $target_dir . $photo_path;
         $uploadOk = 1;
@@ -37,10 +43,12 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
             $uploadOk = 0;
         }
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
-
+    }
         $radnik_temp->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
-        header('Location: ../app/dashboard.php?page=radnici');
-        exit();
+        
+        echo "<script>window.location.href = '" . $_SERVER['PHP_SELF'] . "';</script>";
+        exit;
+       
 
 }
 
@@ -221,7 +229,7 @@ input::placeholder {
     
     <div class="custom-main-content">
         
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form id="myForm" action="" method="POST" enctype="multipart/form-data">
         <div class="profile-container">
         
         <!-- Left Section (Profile Picture) -->
@@ -346,3 +354,4 @@ input::placeholder {
         </div>
     </div>
         </div>
+        
