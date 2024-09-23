@@ -58,9 +58,8 @@ $radnik = new Radnik();
 }
 
 .right-section {
-    flex: 1,1;
-    display: flex;
-    padding:100px;
+    
+    padding:20px;
     padding-top: 20px;
 }
 
@@ -81,6 +80,24 @@ $radnik = new Radnik();
     justify-content: space-between;
     margin-bottom: 10px;
     
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #0d1017;
+  color: #fff;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
 }
 
 label {
@@ -132,10 +149,10 @@ input::placeholder {
 }
 .right-section h1{
     color:white;
-    text-align: center;
+    text-align: left;
     font-size:18px;
     margin-right:70px;
-    margin-left:-70px;
+    margin-left:0px;
 }
     </style>
     
@@ -186,62 +203,69 @@ input::placeholder {
         <div class="right-section">
         <h1 ><b>O MENI</b></h1>
             <div class="form-grid">
+                <!--
                 <div class="form-group">
                     <label for="radnikid">RadnikID:</label>
-                    <input type="number" id="radnikid" name="radnikid" placeholder="Enter RadnikID" />
-                </div>
+                    <input type="number" value="<?=$employee_data['employee_id']?>" id="radnikid" name="radnikid" placeholder="Enter RadnikID" />
+                </div>-->
                 <div class="form-group">
                     <label for="ime">Ime:</label>
-                    <input type="text" id="ime" name="ime" placeholder="Enter Ime" maxlength="255" />
+                    <input type="text" value="<?=$employee_data['first_name']?>" id="ime" name="ime" placeholder="Enter Ime" maxlength="255" />
                 </div>
                 <div class="form-group">
                     <label for="prezime">Prezime:</label>
-                    <input type="text" id="prezime" name="prezime" placeholder="Enter Prezime" maxlength="255" />
+                    <input type="text" value="<?=$employee_data['last_name']?>" id="prezime" name="prezime" placeholder="Enter Prezime" maxlength="255" />
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter Email" />
+                    <input type="email" id="email" value="<?=$employee_data['email']?>" name="email" placeholder="Enter Email" />
                 </div>
                 <div class="form-group">
                     <label for="telefon">Telefon:</label>
-                    <input type="number" id="telefon" name="telefon" placeholder="Enter Telefon" />
+                    <input type="number" id="telefon" value="<?=$employee_data['phone_number']?>" name="telefon" placeholder="Enter Telefon" />
                 </div>
                 <div class="form-group">
                     <label for="mjesto_rodjenja">Mjesto rođenja:</label>
-                    <input type="text" id="mjesto_rodjenja" name="mjesto_rodjenja" placeholder="Enter Mjesto rođenja" />
+                    <input type="text" id="mjesto_rodjenja" value="<?=$employee_data['place_of_birth']?>" name="mjesto_rodjenja" placeholder="Enter Mjesto rođenja" />
                 </div>
                 <div class="form-group">
                     <label for="adresa_boravista">Adresa boravišta:</label>
-                    <input type="text" id="adresa_boravista" name="adresa_boravista" placeholder="Enter Adresa boravišta" />
+                    <input type="text" id="adresa_boravista" value="<?=$employee_data['adress']?>" name="adresa_boravista" placeholder="Enter Adresa boravišta" />
                 </div>
                 <div class="form-group">
                     <label for="datum_rodjenja">Datum rođenja:</label>
-                    <input type="date" id="datum_rodjenja" name="datum_rodjenja" />
+                    <input type="date" id="datum_rodjenja" value="<?=$employee_data['date_of_birth']?>" name="datum_rodjenja" />
                 </div>
                 <div class="form-group">
                     <label for="spol">Spol:</label>
-                    <input type="text" id="spol" name="spol" placeholder="Enter Spol" maxlength="11" />
+                    <input type="text" id="spol" value="<?=$employee_data['gender']?>" name="spol" placeholder="Enter Spol" maxlength="11" />
                 </div>
                 <div class="form-group">
                     <label for="datum_zaposlenja">Datum Zaposlenja:</label>
-                    <input type="date" id="datum_zaposlenja" name="datum_zaposlenja" />
+                    <input type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
                 </div>
                 <div class="form-group">
                     <label for="radni_status">Radni Status:</label>
-                    <input type="text" id="radni_status" name="radni_status" placeholder="Enter Radni Status" />
+                    <input type="text" id="radni_status" value="<?=$employee_data['status']?>" name="radni_status" placeholder="Enter Radni Status" />
                 </div>
                 <div class="form-group">
                     <label for="jmbg">JMBG:</label>
-                    <input type="number" id="jmbg" name="jmbg" placeholder="Enter JMBG" />
+                    <input type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
                 </div>
+
+                <div class="form-group">
+                <label for="file"> Slika</label>
+                    <input type="file"  id="file" name="photo_path" >
+                </div>
+
                 <div class="form-group">
                     <label for="plata">Plata:</label>
-                    <input type="number" id="plata" name="plata" placeholder="Enter Plata" />
+                    <input type="number" id="plata" value="<?=$employee_data['salary']?>" name="plata" placeholder="Enter Plata" />
                 </div>
                 
                 <div class="form-group">
                     <label for="pozicija">Pozicija:</label>
-                    <input type="text" id="pozicija" name="pozicija" placeholder="Enter Pozicija" />
+                    <input type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
 
                 <div class="form-group">
