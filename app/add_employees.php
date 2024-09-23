@@ -95,7 +95,7 @@ label{
 }
 .forma-custom h2 {
     text-align: left;
-    color: #fff;
+    color: white;
     margin-bottom: 20px;
     
     
