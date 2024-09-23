@@ -9,11 +9,13 @@ $radnik = new Radnik();
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
-    padding: 100px;
-    padding-top:20px;
+    
     background-color: #0d1017;
     min-height: 100vh;
     padding-bottom:0px;
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;
 }/*
 .custom-main-content {
     padding: 20px;
@@ -61,6 +63,8 @@ $radnik = new Radnik();
     
     padding:20px;
     padding-top: 20px;
+    
+
 }
 
 .form-grid {
@@ -120,9 +124,9 @@ input::placeholder {
     color: white;
 }
 .left-section h1{
-    color:white;
+    color:#548ace;
     text-align: left;
-    font-size:18px;
+    font-size:22px;
     margin-bottom:20px;
 }
 .left-section p{
@@ -148,12 +152,30 @@ input::placeholder {
     weight:400;
 }
 .right-section h1{
-    color:white;
+    color:#548ace;
     text-align: left;
-    font-size:18px;
+    font-size:22px;
     margin-right:70px;
     margin-left:0px;
 }
+
+.form-group button{
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    margin-top: 60px;
+    background-color: #262c78;
+    text-align: center;
+    
+}
+.form-group button:hover{
+    background-color: #484b8f;
+    color:white;
+    
+}
+
     </style>
     
     <div class="custom-main-content">
@@ -269,7 +291,7 @@ input::placeholder {
                 </div>
 
                 <div class="form-group">
-                    <button>submit</button>
+                    <button class="custom-add-btn">SPREMI</button>
                 </div>
             </div>
             
