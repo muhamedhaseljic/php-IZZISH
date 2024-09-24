@@ -611,7 +611,7 @@ if(isset($_SESSION['message'])) :?>
     });
 
     let timeout;
-let totalDuration = 2500; // Total time in milliseconds (5 seconds)
+let totalDuration = 5000; // Total time in milliseconds (5 seconds)
 let remainingTime = totalDuration; // Time remaining on countdown
 let startTime;
 let elapsedTime = 0; // Tracks how much time has passed

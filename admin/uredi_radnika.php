@@ -36,7 +36,7 @@
         }
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
 
-        if(!empty($photo_path)){
+        if(!empty($_FILES['photo_path']['name'])){
             
         $sql = "UPDATE radnici SET first_name = ?,
                                    last_name = ?,

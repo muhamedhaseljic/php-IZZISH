@@ -94,7 +94,7 @@ img.nav-item{
 h2.nav-item{
     display: flex;
     font-size:12px;
-    color:white;
+    color:#8EC1FF;
     place-content:center;
     
 }
