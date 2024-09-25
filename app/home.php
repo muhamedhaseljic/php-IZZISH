@@ -45,7 +45,8 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
     }
         $radnik_temp->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
-        
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Vaša informacije na profilu su uspješno uređene";
         echo "<script>window.location.href = '" . $_SERVER['PHP_SELF'] . "?page=home';</script>";
         exit;
 

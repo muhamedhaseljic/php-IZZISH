@@ -8,6 +8,13 @@ require_once "../inc/header.php";?>
 $kupac_obj = new Kupac();
 $result = $kupac_obj->read($_GET['id']);
 
+$query = "SELECT * FROM produkt_osoba WHERE customer_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $_GET['id']);
+$stmt->execute();
+$rezultat = $stmt->get_result();
+$persons = $rezultat->fetch_all(MYSQLI_ASSOC);
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     
@@ -171,6 +178,66 @@ label{
             height: 150px; /* Adjust this to your desired form height */
             position: relative; /* Ensures that the input fields are positioned relative to this container */
         }
+
+        .form-group.full-width {
+  width: 100%;
+}
+#persons {
+            display: flex;
+            overflow-x: auto;
+            max-width: 1330px; /* Set a fixed width */
+            min-height:185px;
+            /*border: 1px solid #ccc;*/
+            padding: 0px;
+            
+            white-space: nowrap; /* Ensure it scrolls horizontally */
+            margin-bottom:0px;
+            scrollbar-width: thin;
+    scrollbar-color: white #16171b;
+        }
+
+        .person {
+            min-width: 400px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            margin-right: 65px;
+            
+            /*background-color: #f9f9f9;*/
+        }
+
+        .person label {
+            display: block;
+        }
+        .person input {
+            margin-bottom:15px;
+        }
+        .btn-product-remove{
+          display: block;
+          margin-top:0px;
+        }
+        .btn-add-person{
+          padding: 10px 20px;
+    color: #fff;
+    
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: black;
+    font-weight:800;
+        }
+        
+        .person button {
+            margin-top: 10px;
+            background-color: white;
+            color: black;
+    font-weight:800;
+            border: none;
+            padding: 10px 10px;
+            cursor: pointer;
+            border: none;
+    border-radius: 20px;
+        }
 </style>
 
 
@@ -218,8 +285,11 @@ label{
   <div class="form-group">
   <label for="service">Select Service:</label>
         <select id="service" name="service" onchange="showFields()">
-            <option value="sanitarna">Sanitarna</option>
-            <option value="deratizacija">Deratizacija</option>
+            <option value="posao">Izaberi posao</option>
+            <option value="sanitarna">Sanitarna odbrada</option>
+            <option value="deratizacija">Analiza</option>
+            <option value="posao">Deratizacija</option>
+            <option value="posao">Dezinfekcija</option>
         </select>
   </div>
 
@@ -247,20 +317,29 @@ label{
 
   
 
-  <div id="sanitarnaFields" class="form-group full-width">
-  <label for="notes"> Ime i Prezime</label>
-    <textarea id="notes" name="notes" placeholder="Dodaj osobe nad kojima se izvršava sanitarna"></textarea>
+  <div id="sanitarnaFields" class="form-group hidden full-width">
+  <div id="persons">
+            <!-- Initial Person Input -->
+            <?php foreach($persons as $index=>$person): ?>
+            <div class="person" data-id="<?php echo $person['product_person_id'] ?>">
+            
+                <label for="nameProduct">Ime osobe za sanitarnu</label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[<?php echo $index; ?>][name_product]" value="<?php echo $person['first_name'];?>">
+                <label for="surnameProduct">Prezime osobe za sanitarnu</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[<?php echo $index; ?>][last_name_product]" value="<?php echo $person['last_name'];?>">
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
-  <div id="deratizacijaFields" class="form-group hidden">
-            <label for="nameProduct">Naziv proizvoda</label>
-            <input type="text" id="nameProduct" name="Naziv proizvoda">
+  <div id="deratizacijaFields" class="form-group ">
+            <label for="name_product_food">Naziv proizvoda</label>
+            <input type="text" id="name_product_food" name="name_product_food">
             <br>
             <label for="typeProizvod">Tip</label>
-            <input type="text" id="typeProizvod" name="Tip">
+            <input type="text" id="typeProizvod" name="type_product">
             <br>
             <label for="descriptionProduct">Opis</label>
-            <input type="text" id="descriptionProduct" name="Opis">
+            <input type="text" id="descriptionProduct" name="description_product">
         </div>
   
   <div class="form-buttons">
@@ -285,12 +364,86 @@ label{
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
 
-            if (service === 'deratizacija') {
+            removeRequired(sanitarnaFields);
+            removeRequired(deratizacijaFields);
+            
+
+            if (service === 'sanitarna') {
+              //clearInputs(deratizacijaFields);
+              addRequired(sanitarnaFields);
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
-            } else if (service === 'sanitarna ') {
+            } else if (service === 'deratizacija') {
+              //clearInputs(sanitarnaFields);
+              //clearPersons(); 
+              addRequired(deratizacijaFields);
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
+            }else if (service === 'posao'){
+            
+            //clearInputs(deratizacijaFields);
+            //clearInputs(sanitarnaFields);
+            //clearPersons();
             }
         }
+        function clearInputs(container) {
+    var inputs = container.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";  // Clear each input value
+    }
+}
+function clearPersons() {
+    const personsContainer = document.getElementById('persons');
+    const initialPerson = personsContainer.querySelector('.initial');
+    
+    // Clear all dynamically added persons except the initial one
+    while (personsContainer.children.length > 1) {
+        personsContainer.removeChild(personsContainer.lastChild);
+    }
+}
+
+function addRequired(container) {
+    const inputs = container.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].setAttribute('required', 'required');
+    }
+}
+
+// Helper function to remove 'required' from inputs
+function removeRequired(container) {
+    const inputs = container.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].removeAttribute('required');
+    }
+}
+                // Add new person input fields dynamically
+                function addPerson() {
+    var personDiv = document.createElement('div');
+    var personCount = document.querySelectorAll('.person').length; // Get the current count of persons
+    personDiv.classList.add('person');
+    
+    // Use personCount as the index to group name and last name fields
+    personDiv.innerHTML = `
+        <label for="nameProduct">Ime</label>
+        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
+
+        <label for="surnameProduct">Prezime</label>
+        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
+
+        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
+    `;
+    document.getElementById('persons').appendChild(personDiv);
+}
+
+// Remove person input fields
+function removePerson(button) {
+    button.parentElement.remove();
+
+    // Re-index remaining inputs after removing
+    var persons = document.querySelectorAll('.person');
+    persons.forEach((personDiv, index) => {
+        personDiv.querySelector('input[name^="persons"]').name = `persons[${index}][name_product]`;
+        personDiv.querySelector('input[name^="persons"]').nextElementSibling.name = `persons[${index}][last_name_product]`;
+    });
+}
 </script>

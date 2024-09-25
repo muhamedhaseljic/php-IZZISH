@@ -343,7 +343,7 @@ button {
     z-index: 9999;
     border-radius: 7px;
     display: none;
-    width: 300px;
+    width: 400px;
     text-align: center;
     overflow: hidden;
     border:none;

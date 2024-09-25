@@ -44,7 +44,7 @@ protected $conn;
         $run->execute();
         
         $_SESSION['message']['type'] = "success";
-        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Vaša informacije na profilu su uspješno uređene";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno uređen radnik ".$first_name;
     }
 
     public function login($email, $password){
