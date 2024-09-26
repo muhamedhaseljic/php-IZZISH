@@ -436,11 +436,11 @@ function removeRequired(container) {
     
     // Use personCount as the index to group name and last name fields
     personDiv.innerHTML = `
-        <label for="nameProduct">Ime</label>
-        <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
+        <label for="nameProduct${personCount}">Ime</label>
+        <input type="text" id="nameProduct${personCount}" name="persons[${personCount}][name_product]" placeholder="Ime" required>
 
-        <label for="surnameProduct">Prezime</label>
-        <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
+        <label for="surnameProduct${personCount}">Prezime</label>
+        <input type="text" id="surnameProduct${personCount}" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
 
         <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
     `;

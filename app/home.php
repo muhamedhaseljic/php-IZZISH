@@ -378,7 +378,7 @@ if(isset($_SESSION['message'])) :?>
                 </div>
 
                 <div class="form-group">
-                <label for="file"> Slika</label>
+                <label for="files"> Slika</label>
                     <input type="file"  id="file" name="photo_path" >
                 </div>
 
