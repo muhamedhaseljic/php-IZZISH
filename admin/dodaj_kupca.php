@@ -336,7 +336,7 @@ input[type="checkbox"]:checked + label:after {
 
 <div class="custom-main-content">
             
-<form id="validationForm" class="forma-custom" action="" method="POST" enctype="multipart/form-data">
+<form id="validationForm" class="forma-custom" action="" method="POST" enctype="multipart/form-data" onsubmit="validateCheckboxes();">
 <h2>Dodaj novi zahtjev</h2>
 
 <div class="employee-form">
@@ -452,7 +452,9 @@ input[type="checkbox"]:checked + label:after {
             <input type="checkbox" id="demoCheckbox8" name="checkbox" value="1">
             <label for="demoCheckbox8">Bacilius cereus</label>
             </div>
+            
         </div>
+        <p id="error-message" style="color:red; display:none;">Please select at least one checkbox.</p>
         
   
   <div class="form-buttons">
@@ -589,5 +591,22 @@ $('#validationForm').parsley().on('field:validated', function(field) {
           $field.addClass('invalid'); // Add red border
       }
   });
+
+  function validateCheckboxes() {
+    // Get all checkboxes
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // Convert NodeList to Array and check if any checkbox is checked
+    var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+    // Show error message if no checkbox is checked
+    var errorMessage = document.getElementById('error-message');
+    if (!isChecked) {
+        errorMessage.style.display = 'block'; // Show error message
+        return false; // Prevent form submission
+    } else {
+        errorMessage.style.display = 'none'; // Hide error message
+        return true; // Allow form submission
+    }
+}
 </script>
 
