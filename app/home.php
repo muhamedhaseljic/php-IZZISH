@@ -7,8 +7,6 @@ $target_dir = "../images/";
 if($_SERVER['REQUEST_METHOD']== "POST"){
     $radnik_temp = new Radnik();
 
-    
-
     $employee_id = $employee_data['employee_id'];
     $first_name= $_POST['ime'];
     $last_name = $_POST['prezime'];

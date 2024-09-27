@@ -259,6 +259,78 @@ label{
         left: 0;
         display: none; /* Hidden by default */
     }
+    .razmak{
+      display: none; align-items: flex-start; gap: 20px;
+      
+    }
+
+    .analiza{
+      min-width: 400px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            margin-right: 50px;
+            
+            /*background-color: #f9f9f9;*/
+    }
+
+    /* Hide the default checkbox */
+    .analiza-checkbox{
+      min-width: 300px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            
+            margin-top:20px;
+    }
+    input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom checkbox */
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 35px; /* Space for the custom checkbox */
+    cursor: pointer;
+    user-select: none;
+    display: inline-block; /* Ensure the label and checkbox are on the same line */
+    vertical-align: middle;
+    margin-bottom:40px;
+}
+input[type="checkbox"] + label:last-child{
+  margin-bottom:0px;
+}
+
+/* Custom checkbox style */
+input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid white; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #0d1017; /* Background color */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for checked state */
+input[type="checkbox"]:checked + label:before {
+    background-color: #008cba; /* Checked background color */
+    border-color: #008cba; /* Change border color when checked */
+}
+
+/* Add a check mark */
+input[type="checkbox"]:checked + label:after {
+    content: "\2713"; /* Unicode check mark */
+    position: absolute;
+    left: 3px;
+    top: 50%; /* Centering the checkmark vertically */
+    transform: translateY(-50%); /* Ensure it stays in the middle */
+    font-size: 16px;
+    color: white; /* Check mark color */
+}
+
 </style>
 
 
@@ -343,16 +415,45 @@ label{
         <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
-  <div id="deratizacijaFields" class="form-group hidden">
+  <div id="deratizacijaFields" class="form-group hidden razmak ">
+            <div class="analiza">
             <label for="name_product_food">Naziv proizvoda</label>
             <input type="text" id="name_product_food" name="name_product_food">
-            <br>
+            <br><br>
             <label for="typeProizvod">Tip</label>
             <input type="text" id="typeProizvod" name="type_product">
-            <br>
+            <br><br>
             <label for="descriptionProduct">Opis</label>
             <input type="text" id="descriptionProduct" name="description_product">
+            </div>
+            <div class="analiza-checkbox" style="margin-right: 140px;">
+            <input type="checkbox" id="demoCheckbox1" name="checkbox" value="1">
+            <label for="demoCheckbox1">Salmonela</label>
+            <br>
+            <input type="checkbox" id="demoCheckbox2" name="checkbox" value="1">
+            <label for="demoCheckbox2">Listeria monocytogenes</label>
+            
+            <input type="checkbox" id="demoCheckbox3" name="checkbox" value="1">
+            <label for="demoCheckbox3">Enterobacteriaceae</label>
+
+            <input type="checkbox" id="demoCheckbox4" name="checkbox" value="1">
+            <label for="demoCheckbox4">Koagulaza poztivne stafilokoke</label>
+            </div>
+            <div class="analiza-checkbox">
+            <input type="checkbox" id="demoCheckbox5" name="checkbox" value="1">
+            <label for="demoCheckbox5">Sulfitoredukujuće anaerobne bakterije</label>
+            <br>
+            <input type="checkbox" id="demoCheckbox6" name="checkbox" value="1">
+            <label for="demoCheckbox6">Aerobne mezofilne bakterije</label>
+            
+            <input type="checkbox" id="demoCheckbox7" name="checkbox" value="1">
+            <label for="demoCheckbox7">Escherichia coli</label>
+
+            <input type="checkbox" id="demoCheckbox8" name="checkbox" value="1">
+            <label for="demoCheckbox8">Bacilius cereus</label>
+            </div>
         </div>
+        
   
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
@@ -375,7 +476,8 @@ label{
             sanitarnaFields.classList.remove('visible');
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
-
+            
+            deratizacijaFields.style.display = "none";
             removeRequired(sanitarnaFields);
             removeRequired(deratizacijaFields);
             
@@ -386,13 +488,14 @@ label{
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
             } else if (service === 'deratizacija') {
+              deratizacijaFields.style.display = "flex";
               clearInputs(sanitarnaFields);
               clearPersons(); 
               addRequired(deratizacijaFields);
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
             }else if (service === 'posao'){
-            
+             
             clearInputs(deratizacijaFields);
             clearInputs(sanitarnaFields);
             clearPersons();
