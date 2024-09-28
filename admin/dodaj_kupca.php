@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $type_product = $_POST['type_product'];
         $description_product = $_POST['description_product'];
         $kupac->assign_deratizacija($name_product_food, $type_product, $description_product, $customer_id);
-        $food_id = $food->get_latest_id_by_name($name_product_food);
+        
         $bacteria_ids = $_POST['bacteria_ids'];
 
         foreach ($bacteria_ids as $bacteria_id){

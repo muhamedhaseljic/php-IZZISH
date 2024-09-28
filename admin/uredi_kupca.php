@@ -3,6 +3,7 @@ require_once '../config/config.php';
 require_once '../classes/Kupac.php';
 require_once '../classes/Produkt_osoba.php';
 require_once '../classes/Produkt_hrana.php';
+require_once '../classes/Bakterije_hrana.php';
 require_once "../inc/header.php";?>
 
 <?php 
@@ -10,6 +11,7 @@ require_once "../inc/header.php";?>
 $kupac_obj = new Kupac();
 $produkt_osoba_obj = new Produkt_osoba();
 $produkt_hrana_obj = new Produkt_hrana();
+$bakterije_hrana = new Bakterije_hrana();
 $result = $kupac_obj->read($_GET['id']);
 
 $query = "SELECT * FROM produkt_osoba WHERE customer_id = ?";
@@ -25,6 +27,17 @@ $stmt->bind_param('i', $_GET['id']);
 $stmt->execute();
 $rezultat = $stmt->get_result();
 $foods = $rezultat->fetch_assoc();
+
+$query = "SELECT bacteria_id FROM hrane_bakterije WHERE customer_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $_GET['id']);
+$stmt->execute();
+$resultbacteria = $stmt->get_result();
+
+$selected_bacteria_ids = [];
+while ($row = $resultbacteria->fetch_assoc()) {
+    $selected_bacteria_ids[] = $row['bacteria_id']; // Store bacteria IDs in an array
+}
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -43,6 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $kupac_obj->assign_employee($customer_id, $employee_id);
     $produkt_osoba_obj->delete($_GET['id']);
     $produkt_hrana_obj->delete($_GET['id']);
+    $bakterije_hrana->delete($_GET['id']);
     if(!empty($_POST['persons'])){
 
       foreach($_POST['persons'] as $person){
@@ -59,6 +73,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $type_product = $_POST['type_product'];
         $description_product = $_POST['description_product'];
         $produkt_hrana_obj->create($name_product_food, $type_product, $description_product, $customer_id);
+        foreach ($bacteria_ids as $bacteria_id){
+          $bakterije_hrana->create($bacteria_id, $customer_id);
+        }
     
     }
     header('Location: ../app/dashboard.php?page=kupci');
@@ -103,6 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 .form-group {
   width: 30%;
+  position: relative;
 }
 
 .form-group.full-width {
@@ -269,7 +287,82 @@ label{
             border: none;
     border-radius: 20px;
         }
-        
+        .razmak{
+          display: none;align-items: flex-start; gap: 20px;
+      
+    }
+        .analiza{
+      min-width: 400px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            margin-right: 50px;
+            
+            /*background-color: #f9f9f9;*/
+    }
+
+    /* Hide the default checkbox */
+    .analiza-checkbox{
+      min-width: 350px; /* Each input block size */
+            padding: 0px;
+            /*border: 1px solid #ddd;*/
+            
+            margin-top:10px;
+    }
+    input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom checkbox */
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 35px; /* Space for the custom checkbox */
+    cursor: pointer;
+    user-select: none;
+    display: inline-block; /* Ensure the label and checkbox are on the same line */
+    vertical-align: middle;
+    margin-bottom:10px;
+}
+input[type="checkbox"] + label:last-child{
+  margin-bottom:0px;
+}
+
+/* Custom checkbox style */
+input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid white; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #0d1017; /* Background color */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for checked state */
+input[type="checkbox"]:checked + label:before {
+    background-color: #008cba; /* Checked background color */
+    border-color: #008cba; /* Change border color when checked */
+}
+
+/* Add a check mark */
+input[type="checkbox"]:checked + label:after {
+    content: "\2713"; /* Unicode check mark */
+    position: absolute;
+    left: 3px;
+    top: 50%; /* Centering the checkmark vertically */
+    transform: translateY(-50%); /* Ensure it stays in the middle */
+    font-size: 16px;
+    color: white; /* Check mark color */
+}
+.naslov-bakterije{
+  color:white;
+  font-size:18px;
+  margin-bottom:20px;
+}
+
 </style>
 
 
@@ -373,14 +466,15 @@ label{
         <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
   </div>
 
-  <div id="deratizacijaFields"  class="form-group hidden">
+  <div id="deratizacijaFields"  class="form-group hidden razmak">
+  <div class="analiza">
     <?php if($foods != null) :?>
             <label for="name_product_food">Naziv proizvoda</label>
             <input value="<?php echo $foods['name'] ?>" placeholder="name" type="text" id="name_product_food" name="name_product_food">
-            <br>
+            <br><br>
             <label for="typeProizvod">Tip</label>
             <input value="<?php echo $foods['type'] ?>" type="text" id="typeProizvod" name="type_product">
-            <br>
+            <br><br>
             <label for="descriptionProduct">Opis</label>
             <input value="<?php echo $foods['description'] ?>" type="text" id="descriptionProduct" name="description_product">
             <?php endif; ?>
@@ -389,13 +483,62 @@ label{
         <?php if($foods == null) :?>
           <label for="name_product_food">Naziv proizvoda</label>
             <input type="text" id="name_product_food" name="name_product_food">
-            <br>
+            <br><br>
             <label for="typeProizvod">Tip</label>
             <input type="text" id="typeProizvod" name="type_product">
-            <br>
+            <br><br>
             <label for="descriptionProduct">Opis</label>
             <input type="text" id="descriptionProduct" name="description_product">
           <?php endif; ?>
+          </div>
+          <div class="analiza-checkbox" style="margin-right: 90px;">
+            <h1 class="naslov-bakterije">Mikrobiološka ispitivanja</h1>
+            <input type="checkbox" id="demoCheckbox1" name="bacteria_ids[]" value="1"
+            <?= in_array(1, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox1">Salmonela</label>
+            <br>
+            <input type="checkbox" id="demoCheckbox2" name="bacteria_ids[]" value="2"
+            <?= in_array(2, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox2">Listeria monocytogenes</label>
+            
+            <input type="checkbox" id="demoCheckbox3" name="bacteria_ids[]" value="3"
+            <?= in_array(3, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox3">Enterobacteriaceae</label>
+
+            <input type="checkbox" id="demoCheckbox4" name="bacteria_ids[]" value="4"
+            <?= in_array(4, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox4">Koagulaza poztivne stafilokoke</label>
+            
+            
+            <input type="checkbox" id="demoCheckbox5" name="bacteria_ids[]" value="5"
+            <?= in_array(5, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox5">Sulfitoredukujuće anaerobne bakterije</label>
+            
+            <input type="checkbox" id="demoCheckbox6" name="bacteria_ids[]" value="6"
+            <?= in_array(6, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox6">Aerobne mezofilne bakterije</label>
+            
+            <input type="checkbox" id="demoCheckbox7" name="bacteria_ids[]" value="7"
+            <?= in_array(7, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox7">Escherichia coli</label>
+<br>
+            <input type="checkbox" id="demoCheckbox8" name="bacteria_ids[]" value="8"
+            <?= in_array(8, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox8">Bacilius cereus</label>
+
+            <p id="error-message" style="position: absolute; color:red; display:none; white-space: nowrap;">Please select at least one checkbox.</p>
+            
+          </div>
+          <div class="analiza-checkbox">
+            <h1 class="naslov-bakterije">Hemijska i bromatološka ispitivanja</h1>
+            <input type="checkbox" id="demoCheckbox9" name="bacteria_ids[]" value="9"
+            <?= in_array(9, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox9">Određivanje energetske vrijednosti namirnica</label>
+            
+            <input type="checkbox" id="demoCheckbox10" name="bacteria_ids[]" value="10"
+            <?= in_array(10, $selected_bacteria_ids) ? 'checked' : '' ?>>
+            <label for="demoCheckbox10">Fizičko-hemijsko ispitivanje hrane</label>
+            </div>  
           </div>
   
   <div class="form-buttons">
@@ -420,6 +563,7 @@ label{
             deratizacijaFields.classList.add('hidden');
             deratizacijaFields.classList.remove('visible');
 
+            deratizacijaFields.style.display = "none";
             removeRequired(sanitarnaFields);
             removeRequired(deratizacijaFields);
             
@@ -430,6 +574,7 @@ label{
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
             } else if (service === 'deratizacija') {
+              deratizacijaFields.style.display = "flex";
               clearInputs(sanitarnaFields);
               clearPersons(); 
               addRequired(deratizacijaFields);
@@ -518,4 +663,6 @@ function addvisiblederatizacija(){
   deratizacijaFields.classList.add('visible');
   
 }
+
+
 </script>
