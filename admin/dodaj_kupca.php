@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $bacteria_ids = $_POST['bacteria_ids'];
 
         foreach ($bacteria_ids as $bacteria_id){
-          $bakterije_hrana->create($bacteria_id, $food_id);
+          $bakterije_hrana->create($bacteria_id, $customer_id);
         }
 
     }

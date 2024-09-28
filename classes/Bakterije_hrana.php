@@ -15,19 +15,19 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($bacteria_id, $product_food_id){
-        $sql = "INSERT INTO hrane_bakterije (bacteria_id, product_food_id) VALUES ( ?, ?)";
+    public function create($bacteria_id, $employee_id){
+        $sql = "INSERT INTO hrane_bakterije (bacteria_id, employee_id) VALUES ( ?, ?)";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ii", $bacteria_id, $product_food_id);
+        $run->bind_param("ii", $bacteria_id, $employee_id);
         $run->execute();
     }
 
     
 
-    public function delete($product_food_id){
-        $sql = "DELETE FROM hrane_bakterije WHERE product_food_id = ?";
+    public function delete($employee_id){
+        $sql = "DELETE FROM hrane_bakterije WHERE employee_id = ?";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("i", $product_food_id);
+        $run->bind_param("i", $employee_id);
         $run->execute();
     }
 
