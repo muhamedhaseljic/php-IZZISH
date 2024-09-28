@@ -275,11 +275,11 @@ label{
 
     /* Hide the default checkbox */
     .analiza-checkbox{
-      min-width: 300px; /* Each input block size */
+      min-width: 350px; /* Each input block size */
             padding: 0px;
             /*border: 1px solid #ddd;*/
             
-            margin-top:20px;
+            margin-top:10px;
     }
     input[type="checkbox"] {
     display: none;
@@ -293,7 +293,7 @@ input[type="checkbox"] + label {
     user-select: none;
     display: inline-block; /* Ensure the label and checkbox are on the same line */
     vertical-align: middle;
-    margin-bottom:40px;
+    margin-bottom:10px;
 }
 input[type="checkbox"] + label:last-child{
   margin-bottom:0px;
@@ -330,7 +330,11 @@ input[type="checkbox"]:checked + label:after {
     font-size: 16px;
     color: white; /* Check mark color */
 }
-
+.naslov-bakterije{
+  color:white;
+  font-size:18px;
+  margin-bottom:20px;
+}
 </style>
 
 
@@ -426,7 +430,8 @@ input[type="checkbox"]:checked + label:after {
             <label for="descriptionProduct">Opis</label>
             <input type="text" id="descriptionProduct" name="description_product">
             </div>
-            <div class="analiza-checkbox" style="margin-right: 140px;">
+            <div class="analiza-checkbox" style="margin-right: 90px;">
+            <h1 class="naslov-bakterije">Mikrobiološka ispitivanja</h1>
             <input type="checkbox" id="demoCheckbox1" name="checkbox" value="1">
             <label for="demoCheckbox1">Salmonela</label>
             <br>
@@ -438,23 +443,34 @@ input[type="checkbox"]:checked + label:after {
 
             <input type="checkbox" id="demoCheckbox4" name="checkbox" value="1">
             <label for="demoCheckbox4">Koagulaza poztivne stafilokoke</label>
-            </div>
-            <div class="analiza-checkbox">
+            
+            
             <input type="checkbox" id="demoCheckbox5" name="checkbox" value="1">
             <label for="demoCheckbox5">Sulfitoredukujuće anaerobne bakterije</label>
-            <br>
+            
             <input type="checkbox" id="demoCheckbox6" name="checkbox" value="1">
             <label for="demoCheckbox6">Aerobne mezofilne bakterije</label>
             
             <input type="checkbox" id="demoCheckbox7" name="checkbox" value="1">
             <label for="demoCheckbox7">Escherichia coli</label>
-
+<br>
             <input type="checkbox" id="demoCheckbox8" name="checkbox" value="1">
             <label for="demoCheckbox8">Bacilius cereus</label>
-            </div>
+
+            <p id="error-message" style="position: absolute; color:red; display:none; white-space: nowrap;">Please select at least one checkbox.</p>
+            
+          </div>
+          <div class="analiza-checkbox">
+            <h1 class="naslov-bakterije">Hemijska i bromatološka ispitivanja</h1>
+            <input type="checkbox" id="demoCheckbox9" name="checkbox" value="1">
+            <label for="demoCheckbox9">Određivanje energetske vrijednosti namirnica</label>
+            
+            <input type="checkbox" id="demoCheckbox10" name="checkbox" value="1">
+            <label for="demoCheckbox10">Fizičko-hemijsko ispitivanje hrane</label>
+            </div>  
             
         </div>
-        <p id="error-message" style="color:red; display:none;">Please select at least one checkbox.</p>
+        
         
   
   <div class="form-buttons">
