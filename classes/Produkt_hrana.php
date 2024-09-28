@@ -31,5 +31,20 @@ protected $conn;
         $run->execute();
     }
 
+    public function get_latest_id_by_name($name) {
+        $sql = "SELECT MAX(product_food_id) AS latest_id FROM produkt_hrana WHERE name = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            return $row['latest_id'];  
+        } else {
+            return null; 
+        }
+    }
+
+    
     
 }

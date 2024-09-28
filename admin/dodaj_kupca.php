@@ -1,6 +1,8 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Kupac.php';
+require_once '../classes/Produkt_hrana.php';
+require_once '../classes/Bakterije_hrana.php';
 require_once "../inc/header.php";?>
 
 <?php 
@@ -8,6 +10,8 @@ require_once "../inc/header.php";?>
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $kupac = new Kupac();
+    $food = new Produkt_hrana();
+    $bakterije_hrana = new Bakterije_hrana();
   
     $name= $_POST['name'];
     $surname = $_POST['surname'];
@@ -16,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $description = $_POST['description'];
     $adress = $_POST['adress'];
     $objekat = $_POST['ustanova'];
+    
     
     $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
     $customer_id = $kupac->get_latest_id_by_name($name, $surname);
@@ -36,7 +41,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $type_product = $_POST['type_product'];
         $description_product = $_POST['description_product'];
         $kupac->assign_deratizacija($name_product_food, $type_product, $description_product, $customer_id);
-    
+        $food_id = $food->get_latest_id_by_name($name_product_food);
+        $bacteria_ids = $_POST['bacteria_ids'];
+
+        foreach ($bacteria_ids as $bacteria_id){
+          $bakterije_hrana->create($bacteria_id, $food_id);
+        }
+
     }
     header('Location: ../app/dashboard.php?page=kupci');
     exit();
@@ -430,31 +441,33 @@ input[type="checkbox"]:checked + label:after {
             <label for="descriptionProduct">Opis</label>
             <input type="text" id="descriptionProduct" name="description_product">
             </div>
+
+
             <div class="analiza-checkbox" style="margin-right: 90px;">
             <h1 class="naslov-bakterije">Mikrobiološka ispitivanja</h1>
-            <input type="checkbox" id="demoCheckbox1" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox1" name="bacteria_ids[]" value="1">
             <label for="demoCheckbox1">Salmonela</label>
             <br>
-            <input type="checkbox" id="demoCheckbox2" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox2" name="bacteria_ids[]" value="2">
             <label for="demoCheckbox2">Listeria monocytogenes</label>
             
-            <input type="checkbox" id="demoCheckbox3" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox3" name="bacteria_ids[]" value="3">
             <label for="demoCheckbox3">Enterobacteriaceae</label>
 
-            <input type="checkbox" id="demoCheckbox4" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox4" name="bacteria_ids[]" value="4">
             <label for="demoCheckbox4">Koagulaza poztivne stafilokoke</label>
             
             
-            <input type="checkbox" id="demoCheckbox5" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox5" name="bacteria_ids[]" value="5">
             <label for="demoCheckbox5">Sulfitoredukujuće anaerobne bakterije</label>
             
-            <input type="checkbox" id="demoCheckbox6" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox6" name="bacteria_ids[]" value="6">
             <label for="demoCheckbox6">Aerobne mezofilne bakterije</label>
             
-            <input type="checkbox" id="demoCheckbox7" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox7" name="bacteria_ids[]" value="7">
             <label for="demoCheckbox7">Escherichia coli</label>
 <br>
-            <input type="checkbox" id="demoCheckbox8" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox8" name="bacteria_ids[]" value="8">
             <label for="demoCheckbox8">Bacilius cereus</label>
 
             <p id="error-message" style="position: absolute; color:red; display:none; white-space: nowrap;">Please select at least one checkbox.</p>
@@ -462,17 +475,13 @@ input[type="checkbox"]:checked + label:after {
           </div>
           <div class="analiza-checkbox">
             <h1 class="naslov-bakterije">Hemijska i bromatološka ispitivanja</h1>
-            <input type="checkbox" id="demoCheckbox9" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox9" name="bacteria_ids[]" value="9">
             <label for="demoCheckbox9">Određivanje energetske vrijednosti namirnica</label>
             
-            <input type="checkbox" id="demoCheckbox10" name="checkbox" value="1">
+            <input type="checkbox" id="demoCheckbox10" name="bacteria_ids[]" value="10">
             <label for="demoCheckbox10">Fizičko-hemijsko ispitivanje hrane</label>
             </div>  
-            
         </div>
-        
-        
-  
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
     <button type="submit"  class="custom-add-btn">Save</button>
