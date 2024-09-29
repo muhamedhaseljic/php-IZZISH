@@ -38,10 +38,10 @@ $selected_bacteria_ids = [];
 while ($row = $resultbacteria->fetch_assoc()) {
     $selected_bacteria_ids[] = $row['bacteria_id']; // Store bacteria IDs in an array
 }
-
+echo "<script> console.log('cao'); </script>";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    
+    echo "<script> console.log('cao'); </script>";
     $customer_id = $_GET['id'];
     $name= $_POST['name'];
     $surname = $_POST['surname'];
@@ -73,9 +73,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $type_product = $_POST['type_product'];
         $description_product = $_POST['description_product'];
         $produkt_hrana_obj->create($name_product_food, $type_product, $description_product, $customer_id);
+        if (!empty($_POST['bacteria_ids'])) {
+        $bacteria_ids = $_POST['bacteria_ids'];
+
         foreach ($bacteria_ids as $bacteria_id){
           $bakterije_hrana->create($bacteria_id, $customer_id);
-        }
+        }}
     
     }
     header('Location: ../app/dashboard.php?page=kupci');
@@ -543,7 +546,7 @@ input[type="checkbox"]:checked + label:after {
   
   <div class="form-buttons">
     <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
-    <button type="submit"  class="custom-add-btn">Save</button>
+    <button type="submit"  class="custom-add-btn" onclick="return validateForm()">Save</button>
   </div>
   </div>
 </form>
@@ -609,7 +612,9 @@ function clearPersons() {
 function addRequired(container) {
     const inputs = container.getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].setAttribute('required', 'required');
+      if (inputs[i].type !== 'checkbox') { // Exclude checkboxes
+            inputs[i].setAttribute('required', 'required');
+        }
     }
 }
 
@@ -663,6 +668,32 @@ function addvisiblederatizacija(){
   deratizacijaFields.classList.add('visible');
   
 }
+function validateCheckboxes() {
+    // Get all checkboxes
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // Convert NodeList to Array and check if any checkbox is checked
+    var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
+    // Show error message if no checkbox is checked
+    var errorMessage = document.getElementById('error-message');
+    if (!isChecked) {
+        errorMessage.style.display = 'block'; // Show error message
+        return false; // Prevent form submission
+    } else {
+        errorMessage.style.display = 'none'; // Hide error message
+        return true; // Allow form submission
+    }
+}
+function validateForm() {
+    const checkboxes = document.querySelectorAll('input[name="bacteria_ids[]"]:checked');
+    const errorMessage = document.getElementById('error-message');
 
+    if (checkboxes.length === 0) {
+        errorMessage.style.display = 'block';
+        return false; // Prevent form submission
+    } else {
+        errorMessage.style.display = 'none';
+        return true; // Allow form submission
+    }
+}
 </script>
