@@ -77,17 +77,38 @@ body {
 
     text-align: justify;
     text-justify: inter-word;
-}
 
+    position: relative; /* To ensure the pseudo-element is positioned correctly */
+    margin: 0;
+    min-height: 100vh; /* Ensures the body covers the entire viewport */
+
+  
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/pozadina.jpg'); /* Replace with your image path */
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+    opacity: 0.1; /* Adjust opacity for the background image */
+    z-index: -1; /* Keeps the background behind the body content */
+}
 .login-box {
     /*position: relative;*/
     width: 450px;
     padding: 20px;
-    background: #171c22;
+    background: #11131f;
     
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    
 }
+
 
 .login-box h2 {
     color: white;
@@ -177,7 +198,7 @@ button{
     border: none;
     cursor: pointer;
     width: 100%;
-
+    height:50px;
 }
 
 a span {
@@ -278,10 +299,56 @@ h1{
 .naslov-razmak{
     margin-bottom:70px;
 }
+
+.alert-danger {
+    background-color: #4cb050;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border-radius: 7px;
+    display: none;
+    width: 450px;
+    text-align: center;
+    overflow: hidden;
+    border:none;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: #c9e8c6;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width linear; /* Smooth transition */
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
 </style>
 
 </head>
 <body>
+    <?php
+if(isset($_SESSION['message'])) :?>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
+
+    <?php
+    
+      echo $_SESSION['message']['text'];
+      unset($_SESSION['message']);
+    
+    ?>
+     <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<?php endif; ?>
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
@@ -310,6 +377,66 @@ h1{
         password.type = "text";
     } else {
         password.type = "password";
+    }
+}
+
+let timeout;
+let totalDuration = 5000; // Total time in milliseconds (5 seconds)
+let remainingTime = totalDuration; // Time remaining on countdown
+let startTime;
+let elapsedTime = 0; // Tracks how much time has passed
+let isHovered = false; // Tracks hover state
+let progressBar, popup;
+
+document.addEventListener("DOMContentLoaded", function() {
+    popup = document.getElementById("success-popup");
+    progressBar = document.getElementById("progress-bar");
+
+    if (popup) {
+        popup.style.display = 'block'; // Show the popup
+        progressBar.style.width = '100%'; // Set it to full width immediately
+        setTimeout(() => {
+            startTimer(remainingTime); // Start the timer and progress bar
+        }, 50); // A slight delay for the initial width to take effect.
+
+        popup.addEventListener("mouseenter", pauseTimer);
+        popup.addEventListener("mouseleave", resumeTimer);
+    }
+});
+
+function startTimer(duration) {
+    // Start the progress bar and countdown
+    startTime = Date.now();
+    timeout = setTimeout(hidePopup, duration);
+    
+    progressBar.style.transitionDuration = duration + 'ms';
+    progressBar.style.width = '0%'; // Animate to 0% over the duration
+}
+
+function hidePopup() {
+    popup.style.display = 'none';
+}
+
+function pauseTimer() {
+    if (!isHovered) {
+        clearTimeout(timeout); // Pause the countdown timer
+        elapsedTime += Date.now() - startTime; // Add the time that has passed
+        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+
+        // Freeze the progress bar
+        let percentageElapsed = (elapsedTime / totalDuration) * 100;
+        progressBar.style.width = (100 - percentageElapsed) + '%';
+        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        isHovered = true;
+    }
+}
+
+function resumeTimer() {
+    if (isHovered) {
+        startTimer(remainingTime); // Resume the countdown
+        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
+        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        isHovered = false;
     }
 }
 </script>

@@ -38,10 +38,8 @@ $selected_bacteria_ids = [];
 while ($row = $resultbacteria->fetch_assoc()) {
     $selected_bacteria_ids[] = $row['bacteria_id']; // Store bacteria IDs in an array
 }
-echo "<script> console.log('cao'); </script>";
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    echo "<script> console.log('cao'); </script>";
     $customer_id = $_GET['id'];
     $name= $_POST['name'];
     $surname = $_POST['surname'];
