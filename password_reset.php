@@ -2,54 +2,125 @@
 // Start the session
 require_once "config/config.php";
 require_once "radnik/Radnik.php";
+// Load Composer's autoloader for PHPMailer
+require 'vendor/autoload.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+// Database connection
 
-    $radnik = new Radnik();
-    $result = $radnik->login($email, $password);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
+    $userEmail = $_POST['email'];
 
-    if(!$result){
-        $_SESSION['message']['type'] = "danger";
-        $_SESSION['message']['text'] = "Netacan email ili sifra";
-        header('Location: http://localhost/retro/index.php?page=deductions');
-        exit;
-    }
+    // Check if email exists in the database
+    $stmt = $conn->prepare("SELECT email FROM radnici WHERE email = ?");
+    $stmt->bind_param("s", $userEmail);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    header('Location: http://localhost/retro/app/dashboard.php?page=home');
-    exit;
-}
+    if ($result->num_rows > 0) {
+        // Create a new PHPMailer object
+        $mail = new PHPMailer(true);
 
-//session_start();
+        try {
+            // Server settings for email
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'muhamed.haseljic.20@size.ba';
+            $mail->Password   = 'ssgoixhlivmucwjb';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = 587;
 
-// Example hardcoded users (you can replace this with a database query)
-$users = [
-    'admin@example.com' => ['password' => 'adminpass', 'role' => 'admin'],
-    'employee@example.com' => ['password' => 'employeepass', 'role' => 'employee']
-];
+            // Recipients
+            $mail->setFrom('your_email@example.com', 'Your Website');
+            $mail->addAddress($userEmail);
 
-// Check if the form was submitted
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+            // Email content
+            $mail->isHTML(true);
+            $mail->Subject = 'Reset your password';
 
-    // Check if the user exists and the password is correct
-    if (isset($users[$email]) && $users[$email]['password'] === $password) {
-        // Store the user role in the session
-        $_SESSION['role'] = $users[$email]['role'];
+            // Create the reset URL (e.g. reset-password.php page with email as query param)
+            $resetLink = "http://yourwebsite.com/reset-password.php?email=" . urlencode($userEmail);
 
-        // Redirect based on user role
-        if ($users[$email]['role'] === 'admin') {
-            header('Location: http://localhost/retro/app/dashboard.php?page=home');
-        } elseif ($users[$email]['role'] === 'employee') {
-            header('Location: http://localhost/retro/radnik/index.php?page=home');
+            // HTML email body
+            $mail->Body = '
+                <html>
+                <head>
+                    <style>
+                        .container {
+                            font-family: Arial, sans-serif;
+                            width: 100%;
+                            padding: 20px;
+                            background-color: #f9f9f9;
+                            text-align: center;
+                        }
+                        .email-content {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #fff;
+                            border-radius: 10px;
+                            padding: 20px;
+                            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                        }
+                        .email-header {
+                            font-size: 22px;
+                            color: #333;
+                            margin-bottom: 20px;
+                        }
+                        .email-body {
+                            font-size: 16px;
+                            color: #555;
+                        }
+                        .btn-reset {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            color: #fff;
+                            background-color: #28a745;
+                            text-decoration: none;
+                            border-radius: 5px;
+                            font-size: 16px;
+                        }
+                        .email-footer {
+                            margin-top: 30px;
+                            font-size: 14px;
+                            color: #888;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="email-content">
+                            <div class="email-header">
+                                Reset your password
+                            </div>
+                            <div class="email-body">
+                                <p>We received a request to reset your password. Click the button below to reset it:</p>
+                                <p>
+                                    <a href="' . $resetLink . '" class="btn-reset">Reset your password</a>
+                                </p>
+                                <p>If you didn\'t request a password reset, you can ignore this email.</p>
+                            </div>
+                            <div class="email-footer">
+                                <p>Thanks,</p>
+                                <p>Your Website Team</p>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            ';
+
+            // Send the email
+            $mail->send();
+            echo 'An email has been sent with instructions to reset your password.';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-        exit();
     } else {
-        // If login fails, display an error message
-        echo "<script>alert('Invalid email or password');</script>";
+        // Email not found
+        echo 'The email you entered is not registered in our system.';
     }
 }
 ?>
@@ -301,7 +372,7 @@ h1{
 }
 
 .alert-danger {
-    background-color: #b81f1f;
+    background-color: #4cb050;
     color: white;
     padding: 15px;
     position: fixed;
@@ -352,20 +423,16 @@ if(isset($_SESSION['message'])) :?>
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
-        <h2>Prijava</h2>    
+        <h2>Unesite verifikovanu adresu e-pošte vašeg korisničkog naloga i mi ćemo vam poslati link za poništavanje lozinke.</h2>    
         <form action="" id="loginForm"  method="POST">
         
         <div class="form-group">
             <label for="email"> Email</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="email" id="email" name="email" placeholder="Unesite vašu email adresu" required>
         </div>
         
-        <div class="form-group">
-            <label for="password"> Šifra</label>
-            <input type="password" id="password" name="password" placeholder="Šifra" required>
-        </div>
-            <a href="password_reset.php" class="forgot-password">Zaboravili ste šifru?</a> <!-- Forgot Password Link -->
-            <button type="submit" name="login">Prijavi se</button>
+        
+            <button type="submit" name="login">Pošalji email za poništavanje lozinke</button>
         </form>
     </div>
     
