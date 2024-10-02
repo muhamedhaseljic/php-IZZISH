@@ -5,8 +5,9 @@ require_once "radnik/Radnik.php";
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST['email'];
+    
     $password = $_POST['password'];
+    $newpassword = $_POST['newpassword'];
 
     $radnik = new Radnik();
     $result = $radnik->login($email, $password);

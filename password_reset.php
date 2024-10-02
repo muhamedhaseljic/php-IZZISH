@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->Password   = 'ssgoixhlivmucwjb';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
+            $mail->CharSet = 'UTF-8';
+            $mail->Encoding = 'base64';
 
             // Recipients
             $mail->setFrom('your_email@example.com', 'IZZISLJ');
