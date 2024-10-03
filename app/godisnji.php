@@ -3,16 +3,14 @@
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
-    padding: 60px;
+    padding: 100px;
     padding-top:20px;
     background-color: #0d1017;
     min-height: 100vh;
     padding-bottom:0px;
-    display: flex;
-    justify-content: center;
-      align-items: center;
+    
+    
 }
-
 .d-flex {
     display: flex;
 }
@@ -184,142 +182,139 @@ button {
     padding-right:5px;
 }
 .tabs {
-      width: 80%;
-      display: flex;
-      justify-content: center;
-      background-color: #333;
-      position: fixed;
-      top: 0;
-      margin-top:50px;
-      
-    }
+    width: auto; /* Allow tabs to fit to content */
+    display: flex;
+    position: fixed;
+    top: 0;
+    margin-top: 100px; /* Space for fixed tabs */
+}
 
-    .tab {
-      padding: 15px 20px;
-      color: white;
-      cursor: pointer;
-      text-align: center;
-      flex: 1;
-    }
+.tab {
+    background-color: #0d1017;
+    padding: 10px 10px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: 10px;
+}
 
-    .tab:hover, .tab.active {
-      background-color: #555;
-    }
+.tab:hover, .tab.active {
+    background-color: #171c22;
+}
 
-    /* Main content area */
-    .content {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 60px; /* To create space below the fixed tabs */
-    }
+/* Main content area */
+.content {
+    width: 100%; /* Ensures full width of the content area */
+    display: flex; 
+    justify-content: flex-start; /* Align left */
+    align-items: flex-start; /* Align top */
+    margin-top: 60px; /* Space below the fixed tabs */
+}
 
-    /* Container Section */
-    .container {
-      display: none;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
-      padding-top: 20px;
-    }
+.container-custom {
+    width: 100%; /* Allow container to fill the space */
+    display: none; /* Hide by default */
+    justify-content: flex-start; /* Align items left */
+    align-items: flex-start; /* Align items at the top */
+    padding-top: 100px;
+}
 
-    .active-container {
-      display: flex;
-    }
+.active-container-custom {
+    display: flex; /* Show active container */
+}
 
-    .box {
-      width: 1000px;
-      height: 600px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      overflow-y: auto;
-    }
+.box {
+    width: 1400px; /* Set to a larger fixed width */
+    max-width: 100%; /* Ensures it doesn’t exceed the viewport width */
+    height: 600px;
+    background-color: #171c22;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    color: white;
+    margin: 0; /* No margin to ensure it uses full width */
+}
 
-    .box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+/* Headings and Requests */
+.box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
 
-    .request {
-      background-color: #e0e0e0;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 15px;
-    }
+.request {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
 
-    .request p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
-    }
+.request p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
 
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
-    .actions button {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+.actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
 
-    .approve {
-      background-color: #4CAF50;
-      color: white;
-    }
+.approve {
+    background-color: #4CAF50;
+    color: white;
+}
 
-    .decline {
-      background-color: #f44336;
-      color: white;
-    }
+.decline {
+    background-color: #f44336;
+    color: white;
+}
 
-    .approved {
-      background-color: #DFF0D8;
-    }
+.approved {
+    background-color: #DFF0D8;
+}
 
-    .rejected {
-      background-color: #F2DEDE;
-    }
+.rejected {
+    background-color: #F2DEDE;
+}
 
-    .waiting {
-      background-color: #FCF8E3;
-    }
+.waiting {
+    background-color: #FCF8E3;
+}
+* {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
     </style>
     
     <div class="custom-main-content">
+      <h1>Godišnji odmor</h1>
     <div class="tabs">
-    <div class="tab active" onclick="showContainer('approved')">Approved</div>
-    <div class="tab" onclick="showContainer('waiting')">Waiting</div>
-    <div class="tab" onclick="showContainer('rejected')">Rejected</div>
+    <div class="tab active" onclick="showContainer('na čekanju')">NA ČEKANJU</div>
+    <div class="tab" onclick="showContainer('odobreno')">ODOBRENO</div>
+    <div class="tab" onclick="showContainer('odbijeno')">ODBIJENO</div>
   </div>
 
   <!-- Content (vacation requests) -->
+  
   <div class="content">
-    <!-- Approved Requests -->
-    <div id="approved" class="container active-container">
-      <div class="box">
-        <h2>Approved</h2>
-        <div class="request approved">
-          <p>John Doe - 2024-10-05 to 2024-10-10</p>
-        </div>
-        <div class="request approved">
-          <p>Jane Smith - 2024-09-20 to 2024-09-25</p>
-        </div>
-      </div>
-    </div>
-
     <!-- Waiting Requests -->
-    <div id="waiting" class="container">
+    <div id="na čekanju" class="container-custom active-container-custom">
       <div class="box">
-        <h2>Waiting</h2>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Na čekanju</h2>
+    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+</div>
         <div class="request waiting">
           <p>Michael Johnson - 2024-10-15 to 2024-10-20</p>
           <div class="actions">
@@ -337,10 +332,30 @@ button {
       </div>
     </div>
 
+    
+    <!-- Approved Requests -->
+    <div id="odobreno" class="container-custom ">
+      <div class="box"> <!-- Add inline style -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Odobreno</h2>
+    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+</div>
+        <div class="request approved">
+          <p>John Doe - 2024-10-05 to 2024-10-10</p>
+        </div>
+        <div class="request approved">
+          <p>Jane Smith - 2024-09-20 to 2024-09-25</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Rejected Requests -->
-    <div id="rejected" class="container">
+    <div id="odbijeno" class="container-custom">
       <div class="box">
-        <h2>Rejected</h2>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Odbijeno</h2>
+    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+</div>
         <div class="request rejected">
           <p>Tom Hanks - 2024-08-10 to 2024-08-15</p>
         </div>
@@ -353,15 +368,27 @@ button {
         </div>
 
         <script>
-    function showContainer(tabId) {
-      // Remove active class from all tabs
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      // Add active class to the clicked tab
-      document.querySelector(`.tab[onclick="showContainer('${tabId}')"]`).classList.add('active');
+    function showContainer(containerId) {
+    // Hide all containers
+    const containers = document.querySelectorAll('.container-custom');
+    containers.forEach(container => {
+        container.classList.remove('active-container-custom');
+    });
 
-      // Hide all containers
-      document.querySelectorAll('.container').forEach(container => container.classList.remove('active-container'));
-      // Show the clicked container
-      document.getElementById(tabId).classList.add('active-container');
+    // Show the selected container
+    const activeContainer = document.getElementById(containerId);
+    if (activeContainer) {
+        activeContainer.classList.add('active-container-custom');
     }
+
+    // Update active tab
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    const activeTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase() === containerId);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
+}
   </script>

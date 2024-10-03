@@ -22,7 +22,7 @@ a.nav-item {
     padding: 0.43rem 0.95rem;
     margin-bottom: 5px;
     
-    background-color: #0d1017;
+    background-color: #171c22;
     color: white;
     font-weight: 100;
 }
@@ -41,7 +41,7 @@ a.nav-item:hover{
     border-radius: 10px;
 }
 .sidebar-custom{
-    background-color: #0d1017;
+    background-color: #171c22;
 }
 div.nav-item{
     position: relative;
@@ -49,7 +49,7 @@ div.nav-item{
     padding: 0.55rem 0.35rem;
     margin-bottom: -1px;
     
-    background-color: #0d1017;
+    background-color: #171c22;
     color: white;
     font-weight: 400;
     margin-bottom:0px; 
@@ -63,7 +63,7 @@ img.nav-item{
     position: relative;
     display: block;
     padding: 0.55rem 0.35rem;    
-    background-color: #0d1017;
+    background-color: #171c22;
     color: white;
     font-weight: 400;
     margin-bottom:110px;
@@ -75,7 +75,7 @@ img.nav-item{
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
     
-    background-color: #0d1017;
+    background-color: #171c22;
     color: white;
     font-weight: 100;
     justify-content:center;
