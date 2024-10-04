@@ -259,7 +259,7 @@ button {
 
 .actions {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-top: 10px;
 }
 
@@ -269,6 +269,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    margin-bottom: 5px; /* Adds space between the buttons */
+    font-size: 16px;
 }
 
 .approve {
@@ -292,8 +294,8 @@ button {
 .waiting {
     background-color: #FCF8E3;
 }
-* {
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+.request p{
+    font-size:18px;
 }
     </style>
     
@@ -315,8 +317,11 @@ button {
       <h2>Na čekanju</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
-        <div class="request waiting">
+        <div class="request waiting d-flex justify-content-between align-items-center mb-3">
+            <div>
           <p>Michael Johnson - 2024-10-15 to 2024-10-20</p>
+          <p>Michael Johnson - 2024-10-15 to 2024-10-20</p>
+          </div>
           <div class="actions">
             <button class="approve">Approve</button>
             <button class="decline">Decline</button>
