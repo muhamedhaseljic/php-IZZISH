@@ -357,12 +357,12 @@ if(isset($_SESSION['message'])) :?>
         <form action="" id="loginForm"  method="POST">
         
         <div class="form-group">
-            <label for="password"> Šifra</label>
+            <label for="password">Nova šifra</label>
             <input type="password" id="password" name="password" placeholder="Unesi novu šifru" required>
         </div>
         
         <div class="form-group">
-            <label for="newpassword"> Šifra</label>
+            <label for="newpassword"> Potvrdi novu šifru</label>
             <input type="password" id="newpassword" name="newpassword" placeholder="Ponovi šifru" required>
         </div>
             <button type="submit" name="login">Prijavi se</button>
