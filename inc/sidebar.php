@@ -56,7 +56,8 @@ div.nav-item{
     place-content:center;
 }
 div.nav-item img{
-    border-radius:100%;
+    border: 3px solid #008cba; 
+    border-radius:50%;
 }
 
 img.nav-item{
@@ -93,9 +94,10 @@ img.nav-item{
 }
 h2.nav-item{
     display: flex;
-    font-size:12px;
+    font-size:14px;
     color:#8EC1FF;
     place-content:center;
+    font-weight:bold;
     
 }
 h3.nav-item{
@@ -106,7 +108,19 @@ h3.nav-item{
     margin-bottom:50px;
     margin-top:-5px;
 }
-
+.boja-pozadine{
+    width:110px;
+    height:110px;
+     
+}
+nav#sidebar .sidebar-list .hr-custom {
+    padding: 0; /* Ensure no padding */
+    margin: 0 -20px; /* Counter the parent padding with negative margin */
+    width: calc(100% + 40px); /* Adjust width to account for negative margins */
+    height: 1px; /* Set the height */
+    background-color: #0d1017; /* Background color for the line */
+    border: none; /* Remove default border */
+}
 </style>
 
 <nav id="sidebar" class='mx-lt-5 sidebar-custom' >
@@ -115,11 +129,11 @@ h3.nav-item{
             
                 <div class="nav-item">
                 <?php $employee_data = $radnik->get_employee_data() ?>
-                    <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>" width="70px" height="70px" alt="">                   
+                    <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>"  alt="">                   
                 </div>
                 <h2 class="nav-item"><?=$employee_data['first_name'] . " ". $employee_data['last_name']?></h2>
                 <h3 class="nav-item"><?php if($employee_data['is_admin'] == 1) echo "Admin"; echo "Radnik"; ?></h3>
-
+                <hr class="hr-custom">
 				<a href="../app/dashboard.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
 				<a href="../app/dashboard.php?page=radnici" class="nav-item nav-radnici"><span class='icon-field'><i class="fa fa-users">  &nbsp; &nbsp;</i></span> Radnici</a>
 				<a href="../app/dashboard.php?page=kupci" class="nav-item nav-kupci"><span class='icon-field'><i class="fa fa-handshake">  &nbsp; &nbsp;</i></span> Stranka</a>
@@ -127,7 +141,7 @@ h3.nav-item{
 				<a href="../app/dashboard.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
 				<a href="../app/dashboard.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
 				<a href="../app/dashboard.php?page=godisnji" class="nav-item nav-godisnji"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Godišnji</a>
-
+                <hr class="hr-custom">
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
 				<!--<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		-->
