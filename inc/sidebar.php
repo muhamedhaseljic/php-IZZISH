@@ -21,7 +21,7 @@ a.nav-item {
     display: block;
     padding: 0.43rem 0.95rem;
     margin-bottom: 5px;
-    
+    margin-top: 5px;
     background-color: #171c22;
     color: white;
     font-weight: 100;

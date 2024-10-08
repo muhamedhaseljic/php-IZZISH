@@ -246,9 +246,10 @@ button {
 
 .request {
     background-color: #e0e0e0;
-    padding: 10px;
+    padding:5px 5px;
     border-radius: 5px;
     margin-bottom: 15px;
+    padding-bottom: 0;
 }
 
 .request p {
@@ -260,7 +261,7 @@ button {
 .actions {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .actions button {
@@ -319,16 +320,19 @@ button {
 </div>
         <div class="request waiting d-flex justify-content-between align-items-center mb-3">
             <div>
-          <p>Michael Johnson - 2024-10-15 to 2024-10-20</p>
-          <p>Michael Johnson - 2024-10-15 to 2024-10-20</p>
+          <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
+          
           </div>
           <div class="actions">
             <button class="approve">Approve</button>
             <button class="decline">Decline</button>
           </div>
         </div>
-        <div class="request waiting">
-          <p>Sarah Brown - 2024-11-01 to 2024-11-07</p>
+        <div class="request waiting d-flex justify-content-between align-items-center mb-3">
+            <div>
+          <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
+          
+          </div>
           <div class="actions">
             <button class="approve">Approve</button>
             <button class="decline">Decline</button>
