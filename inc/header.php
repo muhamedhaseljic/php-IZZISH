@@ -28,23 +28,40 @@
     position: fixed;
     left: 10px;
     top: 10px;
-    background-color: #444;
+    background-color: #171c22;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     width: 50px;
     z-index: 100; /* Increase the z-index */
+    border:1px solid white;
+    border-radius: 10px;
 }
 
 
 #toggleButton:hover {
-    background-color: #555;
+    background-color: #171c22;
+}
+.icon-open {
+    /* Styles for open icon */
+    background-image: url('path/to/open-icon.png'); /* Example for image */
 }
 
-.content {
-    
-    
+.icon-close {
+    /* Styles for close icon */
+    background-image: url('path/to/close-icon.png'); /* Example for image */
 }
+
+/* Example of changing display for text */
+.icon-open, .icon-close {
+    display: inline-block;
+    width: 20px; /* Set appropriate size */
+    height: 20px; /* Set appropriate size */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
   </style>
   <body>

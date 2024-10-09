@@ -12,11 +12,15 @@ nav#sidebar {
     position: sticky;
     z-index: 99;
     left: 0;
-    width:  250px;
+    width:  270px;
 
     padding: 20px;
     border: 1px solid black;
-    transition: transform 0.3s ease;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+nav#sidebar.closed {
+    margin-left: -250px; /* Move the sidebar out of view */
 }
 a.nav-item {
     position: relative;
@@ -156,7 +160,9 @@ nav#sidebar .sidebar-list .hr-custom {
                 <a href="../index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> Odjava</a>
 		</div>
 </nav>
-<button id="toggleButton">X</button>
+<button id="toggleButton">
+<i id="toggleIcon" class="icon-open">Open</i>
+</button>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

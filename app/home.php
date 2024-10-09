@@ -253,14 +253,7 @@ input::placeholder {
 }
 
 /* Content Styles */
-.content {
-    transition: margin-left 0.3s ease-in-out; /* Smooth transition */
-}
 
-/* When Sidebar is Closed */
-.content.shifted {
-    margin-left: 0; /* Content takes the full width when sidebar is closed */
-}
 
 @keyframes progress {
     from { width: 100%; }
