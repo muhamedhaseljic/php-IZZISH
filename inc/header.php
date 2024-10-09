@@ -48,18 +48,14 @@
     background-image: url('path/to/open-icon.png'); /* Example for image */
 }
 
-.icon-close {
-    /* Styles for close icon */
-    background-image: url('path/to/close-icon.png'); /* Example for image */
+.icon-open::before {
+    content: '\f054'; /* FontAwesome icon for 'Open' */
+    font-family: FontAwesome; /* Adjust to your icon library */
 }
 
-/* Example of changing display for text */
-.icon-open, .icon-close {
-    display: inline-block;
-    width: 20px; /* Set appropriate size */
-    height: 20px; /* Set appropriate size */
-    background-size: contain;
-    background-repeat: no-repeat;
+.icon-close::before {
+    content: '\f057'; /* FontAwesome icon for 'Close' */
+    font-family: FontAwesome; /* Adjust to your icon library */
 }
 
 

@@ -161,7 +161,7 @@ nav#sidebar .sidebar-list .hr-custom {
 		</div>
 </nav>
 <button id="toggleButton">
-<i id="toggleIcon" class="icon-open">Open</i>
+<i id="toggleIcon" class="fa fa-caret-left	"></i>
 </button>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

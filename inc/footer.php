@@ -11,25 +11,38 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script>
     // script.js
-    document.getElementById('toggleButton').addEventListener('click', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const content = document.querySelector('.content');
     const toggleIcon = document.getElementById('toggleIcon');
 
-    sidebar.classList.toggle('closed'); // Toggle sidebar visibility
-    content.classList.toggle('shifted'); // Toggle content margin
-
-    // Change icon based on sidebar state
-    if (sidebar.classList.contains('closed')) {
-        toggleIcon.classList.remove('icon-open');
-        toggleIcon.classList.add('icon-close'); // Change to close icon
-        toggleIcon.textContent = "Close"; // Optional text change
-    } else {
-        toggleIcon.classList.remove('icon-close');
-        toggleIcon.classList.add('icon-open'); // Change to open icon
-        toggleIcon.textContent = "Open"; // Optional text change
+    // Check local storage for sidebar state
+    const sidebarClosed = localStorage.getItem('sidebarClosed') === 'true';
+    if (sidebarClosed) {
+        sidebar.classList.add('closed'); // Set sidebar to closed
+        content.classList.add('shifted'); // Shift content to the right
+        toggleIcon.classList.remove('fa-caret-right'); // Change to close icon
+        toggleIcon.classList.add('fa-caret-left'); // Add left caret icon
     }
+
+    document.getElementById('toggleButton').addEventListener('click', function() {
+        // Toggle sidebar visibility
+        sidebar.classList.toggle('closed');
+        content.classList.toggle('shifted');
+
+        // Change icon based on sidebar state
+        if (sidebar.classList.contains('closed')) {
+            toggleIcon.classList.remove('fa-caret-right');
+            toggleIcon.classList.add('fa-caret-left');
+            localStorage.setItem('sidebarClosed', 'true'); // Store closed state
+        } else {
+            toggleIcon.classList.remove('fa-caret-left');
+            toggleIcon.classList.add('fa-caret-right');
+            localStorage.setItem('sidebarClosed', 'false'); // Store open state
+        }
+    });
 });
+
 
 
 
