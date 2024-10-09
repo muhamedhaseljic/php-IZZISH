@@ -64,6 +64,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     display: flex;
     justify-content: center;  /* Center horizontally */
     align-items: center;
+    
 }/*
 .custom-main-content {
     padding: 20px;
@@ -251,6 +252,16 @@ input::placeholder {
     transition: width linear; /* Smooth transition */
 }
 
+/* Content Styles */
+.content {
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* When Sidebar is Closed */
+.content.shifted {
+    margin-left: 0; /* Content takes the full width when sidebar is closed */
+}
+
 @keyframes progress {
     from { width: 100%; }
     to { width: 0%; }
@@ -272,7 +283,8 @@ if(isset($_SESSION['message'])) :?>
 </div>
 
 <?php endif; ?>
-    <div class="custom-main-content">
+
+    <div class="custom-main-content content">
         
     <form id="myForm" action="" method="POST" enctype="multipart/form-data">
         <div class="profile-container">

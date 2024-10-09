@@ -19,4 +19,32 @@
     
     
   </head>
+  <style>
+    #sidebar.closed {
+    transform: translateX(-250px);
+}
+
+#toggleButton {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50px;
+    z-index: 100; /* Increase the z-index */
+}
+
+
+#toggleButton:hover {
+    background-color: #555;
+}
+
+.content {
+    
+    
+}
+  </style>
   <body>

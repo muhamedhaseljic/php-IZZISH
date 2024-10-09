@@ -12,9 +12,11 @@ nav#sidebar {
     position: sticky;
     z-index: 99;
     left: 0;
-    width:  15%;
+    width:  250px;
+
     padding: 20px;
     border: 1px solid black;
+    transition: transform 0.3s ease;
 }
 a.nav-item {
     position: relative;
@@ -121,6 +123,10 @@ nav#sidebar .sidebar-list .hr-custom {
     background-color: #0d1017; /* Background color for the line */
     border: none; /* Remove default border */
 }
+
+
+
+
 </style>
 
 <nav id="sidebar" class='mx-lt-5 sidebar-custom' >
@@ -149,8 +155,9 @@ nav#sidebar .sidebar-list .hr-custom {
 
                 <a href="../index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> Odjava</a>
 		</div>
-
 </nav>
+<button id="toggleButton">X</button>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -159,4 +166,7 @@ nav#sidebar .sidebar-list .hr-custom {
             $('.nav-' + page).addClass('active');
         }
     });
+
+    
+
 </script>
