@@ -35,8 +35,7 @@
     cursor: pointer;
     width: 50px;
     z-index: 100; /* Increase the z-index */
-    border:1px solid white;
-    border-radius: 10px;
+    
 }
 
 
@@ -45,7 +44,12 @@
 }
 .icon-open {
     /* Styles for open icon */
-    background-image: url('path/to/open-icon.png'); /* Example for image */
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/021/797/174/small/arrow-left-icon-isolated-on-white-background-vector.jpg'); /* Example for image */
+}
+
+.icon-close {
+    /* Styles for close icon */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7g27Jo9GbahWe2CeIOcWnQybtAqAl8cAiDWRJmo6VGPY1zmH-KcvO2vSuqbEA8eo-XQ&usqp=CAU'); /* Example for image */
 }
 
 .icon-open::before {

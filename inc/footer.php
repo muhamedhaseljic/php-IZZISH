@@ -20,11 +20,11 @@
     content.classList.toggle('shifted'); // Toggle content margin
     // Change icon based on sidebar state
     if (sidebar.classList.contains('closed')) {
-        toggleIcon.classList.remove('fab fa-500px');
-            toggleIcon.classList.add('fab fa-accusoft');
+        toggleIcon.classList.remove('icon-open');
+            toggleIcon.classList.add('icon-close');
     } else {
-        toggleIcon.classList.remove('fab fa-accusoft');
-            toggleIcon.classList.add('fab fa-500px');
+        toggleIcon.classList.remove('icon-close');
+            toggleIcon.classList.add('icon-open');
     }
 });
 
