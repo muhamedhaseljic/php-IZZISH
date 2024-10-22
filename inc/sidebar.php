@@ -20,7 +20,7 @@ nav#sidebar {
 }
 
 nav#sidebar.closed {
-    margin-left: -250px; /* Move the sidebar out of view */
+    margin-left: -270px; /* Move the sidebar out of view */
 }
 a.nav-item {
     position: relative;
@@ -159,10 +159,11 @@ nav#sidebar .sidebar-list .hr-custom {
 
                 <a href="../index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> Odjava</a>
 		</div>
-</nav>
-<button id="toggleButton">
-<i id="toggleIcon" class="icon-open"></i>
+        <button id="toggleButton" lass="move-button">
+<i id="toggleIcon" class="fas fa-times fa-2x"></i>
 </button>
+</nav>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

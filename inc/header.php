@@ -20,31 +20,44 @@
     
   </head>
   <style>
+    body{
+        user-select: none; 
+    }
     #sidebar.closed {
-    transform: translateX(-250px);
+    transform: translateX(-270px);
 }
 
 #toggleButton {
     position: fixed;
     left: 10px;
     top: 10px;
-    background-color: #171c22;
+    background-color: #0d1017;
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     width: 50px;
+    padding-left: 50px;
     z-index: 100; /* Increase the z-index */
+    margin-left:230px;
     
 }
 
+   #toggleButton:focus {
+      outline: none;
+      box-shadow: none; /* Removes the white border or shadow */
+   }
 
-#toggleButton:hover {
-    background-color: #171c22;
-}
+   #toggleButton:active {
+      outline: none;
+      border: none;
+      box-shadow: none; /* Removes border on active state */
+   }
+
+
 .icon-open {
     /* Styles for open icon */
-    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/021/797/174/small/arrow-left-icon-isolated-on-white-background-vector.jpg'); /* Example for image */
+    background-image: '../images/Stethoscope.png'; /* Example for image */
 }
 
 .icon-close {
@@ -61,7 +74,9 @@
     content: '\f057'; /* FontAwesome icon for 'Close' */
     font-family: FontAwesome; /* Adjust to your icon library */
 }
-
+#toggleIcon {
+      font-size: 30px;  /* Custom size for the icon */
+   }
 
   </style>
   <body>

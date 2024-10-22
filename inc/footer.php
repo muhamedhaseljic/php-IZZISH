@@ -11,6 +11,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script>
     // script.js
+    
     document.getElementById('toggleButton').addEventListener('click', function() {
     const sidebar = document.getElementById('sidebar');
     const content = document.querySelector('.content');
@@ -18,13 +19,15 @@
     const toggleIcon = document.getElementById('toggleIcon');
     sidebar.classList.toggle('closed'); // Toggle sidebar visibility
     content.classList.toggle('shifted'); // Toggle content margin
+
+    
     // Change icon based on sidebar state
     if (sidebar.classList.contains('closed')) {
-        toggleIcon.classList.remove('icon-open');
-            toggleIcon.classList.add('icon-close');
+        toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
     } else {
-        toggleIcon.classList.remove('icon-close');
-            toggleIcon.classList.add('icon-open');
+        toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-times');
     }
 });
 
