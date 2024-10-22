@@ -276,6 +276,17 @@ button {
             align-items: center; /* Align items vertically */
             justify-content: flex-end; /* Align items to the right */
         }
+        .noEmployee{
+            background-color: #8A0000;
+            border-radius: 10px;
+            padding: 5px;
+            width: 131px;
+        }
+        .yesEmployee{
+            background-color: green;
+            border-radius: 10px;
+            padding: 5px;
+        }
     </style>
     
     <div class="custom-main-content">
@@ -330,10 +341,10 @@ button {
 						<td><?php
 
                             if($kupci['employee_name']){
-                                echo $kupci['employee_name'] ." ".$kupci['employee_last_name'];
+                                echo "<div class='yesEmployee'>" . $kupci['employee_name'] ." ".$kupci['employee_last_name'] . "</div>";
                             }
                             else{
-                                echo "Nije dodjeljeno";
+                                echo "<div class='noEmployee'>Nije dodjeljeno</div>";
                             }
 
                             ?></td>
