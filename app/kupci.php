@@ -286,10 +286,11 @@ button {
             background-color: green;
             border-radius: 10px;
             padding: 5px;
+            display: inline-block;
         }
     </style>
     
-    <div class="custom-main-content">
+    <div class="custom-main-content content">
         <h1 >Lista kupaca</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">

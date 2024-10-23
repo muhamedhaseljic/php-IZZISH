@@ -262,7 +262,11 @@ label{
    
     
     </div>
+    <?php
+    
+    require_once "../inc/footer.php";
 
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 document.getElementById('employeeForm').addEventListener('submit', function (event) {

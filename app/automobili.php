@@ -274,7 +274,7 @@ button {
         }
     </style>
     
-    <div class="custom-main-content">
+    <div class="custom-main-content content">
         <h1 >Lista automobila</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <input type="text" placeholder="Pretraži po nazivu..." class="custom-search-bar">

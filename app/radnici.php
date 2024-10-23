@@ -1,8 +1,4 @@
-<?php
 
-require_once "../config/config.php";
-
-?>
   
   <style>
 .custom-main-content {
@@ -394,7 +390,7 @@ if(isset($_SESSION['message'])) :?>
 
 <?php endif; ?>
     
-    <div class="custom-main-content">
+    <div class="custom-main-content content">
 
     
 
