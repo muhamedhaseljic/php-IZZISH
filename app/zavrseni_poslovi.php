@@ -162,11 +162,7 @@ tbody tr:last-child {
     background-color: #666565;
 }
 
-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .custom-main-content h1{
     color:white;
     margin-bottom:20px;

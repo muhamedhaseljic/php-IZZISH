@@ -3,12 +3,13 @@
 .custom-main-content {
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
-    padding: 100px;
+    padding: 80px;
     padding-top:20px;
     background-color: #0d1017;
-    min-height: 100vh;
-    padding-bottom:0px;
-    
+    height: 100vh;
+    padding-bottom:0px;    
+    display: flex;
+    justify-content: center;  /* Center horizontally */
     
 }
 .d-flex {
@@ -163,11 +164,7 @@ tbody tr:last-child {
     background-color: #666565;
 }
 
-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .custom-main-content h1{
     color:white;
     margin-bottom:20px;
@@ -204,13 +201,7 @@ button {
 }
 
 /* Main content area */
-.content {
-    width: 100%; /* Ensures full width of the content area */
-    display: flex; 
-    justify-content: flex-start; /* Align left */
-    align-items: flex-start; /* Align top */
-    margin-top: 60px; /* Space below the fixed tabs */
-}
+
 
 .container-custom {
     width: 100%; /* Allow container to fill the space */
@@ -225,7 +216,7 @@ button {
 }
 
 .box {
-    width: 1400px; /* Set to a larger fixed width */
+    width: 1480px; /* Set to a larger fixed width */
     max-width: 100%; /* Ensures it doesn’t exceed the viewport width */
     height: 600px;
     background-color: #171c22;
@@ -298,45 +289,47 @@ button {
 .request p{
     font-size:18px;
 }
+.container-custom-div{
+    width: 100%;
+}
     </style>
     
-    <div class="custom-main-content">
-      <h1>Godišnji odmor</h1>
-    <div class="tabs">
-    <div class="tab active" onclick="showContainer('na čekanju')">NA ČEKANJU</div>
-    <div class="tab" onclick="showContainer('odobreno')">ODOBRENO</div>
-    <div class="tab" onclick="showContainer('odbijeno')">ODBIJENO</div>
-  </div>
+    <div class="custom-main-content content">
+        <div>
+        <h1>Godišnji odmor</h1>
+        <div class="tabs">
+            <div class="tab active" onclick="showContainer('na čekanju')">NA ČEKANJU</div>
+            <div class="tab" onclick="showContainer('odobreno')">ODOBRENO</div>
+            <div class="tab" onclick="showContainer('odbijeno')">ODBIJENO</div>
+        </div>
 
   <!-- Content (vacation requests) -->
   
-  <div class="content">
+  <div class="container-custom-div">
     <!-- Waiting Requests -->
     <div id="na čekanju" class="container-custom active-container-custom">
-      <div class="box">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-      <h2>Na čekanju</h2>
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
-</div>
+        <div class="box">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Na čekanju</h2>
+        <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+    </div>
         <div class="request waiting d-flex justify-content-between align-items-center mb-3">
             <div>
-          <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
-          
-          </div>
-          <div class="actions">
-            <button class="approve">Approve</button>
-            <button class="decline">Decline</button>
-          </div>
+                <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
+            </div>
+            <div class="actions">
+                <button class="approve">Approve</button>
+                <button class="decline">Decline</button>
+            </div>
         </div>
         <div class="request waiting d-flex justify-content-between align-items-center mb-3">
             <div>
-          <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
-          
-          </div>
-          <div class="actions">
-            <button class="approve">Approve</button>
-            <button class="decline">Decline</button>
-          </div>
+                <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
+            </div>
+            <div class="actions">
+                <button class="approve">Approve</button>
+                <button class="decline">Decline</button>
+            </div>
         </div>
       </div>
     </div>
@@ -375,7 +368,7 @@ button {
     </div>
   </div>
         </div>
-
+        </div>
         <script>
     function showContainer(containerId) {
     // Hide all containers
@@ -401,3 +394,9 @@ button {
     }
 }
   </script>
+
+  <?php
+  
+  require_once "../inc/footer.php";
+  
+  ?>

@@ -349,7 +349,7 @@ input[type="checkbox"]:checked + label:after {
 </style>
 
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
             
 <form id="validationForm" class="forma-custom" action="" method="POST" enctype="multipart/form-data" onsubmit="validateCheckboxes();">
 <h2>Dodaj novi zahtjev</h2>
@@ -492,6 +492,7 @@ input[type="checkbox"]:checked + label:after {
    
     
     </div>
+    <?php require_once "../inc/footer.php"; ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 <script>
     function showFields() {

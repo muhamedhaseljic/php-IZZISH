@@ -7,7 +7,7 @@
     padding: 100px;
     padding-top:20px;
     background-color: #0d1017;
-    min-height: 100vh;
+    height: 100vh;
     padding-bottom:0px;
 }
 
@@ -164,11 +164,7 @@ tbody tr:last-child {
     background-color: #666565;
 }
 
-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .custom-main-content h1{
     color:white;
     margin-bottom:20px;

@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 require_once '../classes/Automobili.php';
-require_once "../radnik/header.php";?>
+require_once "../inc/header.php";?>
 
 <?php 
 
@@ -154,7 +154,7 @@ label{
 </style>
 
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
             
 <form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novi auto</h2>
@@ -204,3 +204,5 @@ label{
 <script>
     
 </script>
+
+<?php require_once "../inc/footer.php";  ?>
