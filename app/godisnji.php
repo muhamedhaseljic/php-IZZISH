@@ -131,44 +131,29 @@ tbody tr:last-child {
     color: #fff;
     text-decoration:none;
 }
-.custom-edit-btn, .custom-delete-btn, .custom-view-btn {
-    background-color: #444;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: white;
-}
 
- .custom-edit-btn:hover, .custom-delete-btn:hover, .custom-view-btn:hover{
-    background-color: #555;
-}
 
 
 .custom-edit-btn {
-    margin-right: 10px;
-    background-color: #548ace;
+    background-color: #4CAF50;
+    color:white;
+    
 }
 .custom-edit-btn:hover{
-    background-color: #386bab;
+    background-color: #219426;
+    color:white;
+    text-decoration: none;
 }
 
 .custom-delete-btn {
-    margin-right: 10px;
     background-color: #ed484d;
+    color:white;
 }
 .custom-delete-btn:hover{
     background-color: #ba383c;
+    color:white;
+    text-decoration: none;
 }
-
-.custom-view-btn {
-    margin-right: 10px;
-    background-color: #807e7e;
-}
-.custom-view-btn:hover{
-    background-color: #666565;
-}
-
 
 .custom-main-content h1{
     color:white;
@@ -258,9 +243,10 @@ tbody tr:last-child {
     display: flex;
     flex-direction: column;
     margin-top: 0px;
+    padding: 5px;
 }
 
-.actions button {
+.actions a {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -322,7 +308,8 @@ tbody tr:last-child {
                   
                   $sql = "SELECT *,
                   radnici.first_name as employee_name,
-                  radnici.last_name as employee_last_name
+                  radnici.last_name as employee_last_name,
+                  bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
                   WHERE bolovanje.status='pending'";
@@ -334,12 +321,13 @@ tbody tr:last-child {
         <div class="request waiting d-flex justify-content-between align-items-center mb-3">
         
             <div>
-                <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date'] ?>) 22 days left</p>
+                <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
             </div>
             <div class="actions">
-            <div>
-                <button class="approve">Approve</button>
-                <button class="decline">Decline</button>
+            <div >
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="custom-edit-btn" ><span  >Approve</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="custom-delete-btn" ><span  >Decline</span></a>
+
                 </div>
             </div>
             
@@ -356,12 +344,24 @@ tbody tr:last-child {
       <h2>Odobreno</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
+<?php
+                  
+                  $sql = "SELECT *,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name,
+                  bolovanje.status as bolovanje_status
+                  FROM `bolovanje` 
+                  left join `radnici` on bolovanje.employee_id = radnici.employee_id
+                  WHERE bolovanje.status='approved'";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    
+                    foreach($results as $leave) :
+                  ?>
         <div class="request approved">
-          <p>John Doe - 2024-10-05 to 2024-10-10</p>
+        <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
         </div>
-        <div class="request approved">
-          <p>Jane Smith - 2024-09-20 to 2024-09-25</p>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
 
@@ -372,12 +372,24 @@ tbody tr:last-child {
       <h2>Odbijeno</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
+<?php
+                  
+                  $sql = "SELECT *,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name,
+                  bolovanje.status as bolovanje_status
+                  FROM `bolovanje` 
+                  left join `radnici` on bolovanje.employee_id = radnici.employee_id
+                  WHERE bolovanje.status='disapproved'";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    
+                    foreach($results as $leave) :
+                  ?>
         <div class="request rejected">
-          <p>Tom Hanks - 2024-08-10 to 2024-08-15</p>
+        <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
         </div>
-        <div class="request rejected">
-          <p>Alice Cooper - 2024-07-25 to 2024-07-30</p>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>

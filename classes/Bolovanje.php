@@ -1,6 +1,6 @@
 <?php
 
-class Godisnji{
+class Bolovanje{
 
 protected $conn;
 
