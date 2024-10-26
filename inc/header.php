@@ -22,6 +22,7 @@
   <style>
     body{
         user-select: none; 
+        
     }
     #sidebar.closed {
     transform: translateX(-270px);

@@ -161,7 +161,7 @@ label{
 </style>
 
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
             
 <form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Uredi opcije auta</h2>
@@ -230,6 +230,8 @@ label{
     
     </div>
 
-<script>
-    
-</script>
+<?php
+
+require_once "../inc/footer.php";
+
+?>

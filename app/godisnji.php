@@ -1,3 +1,8 @@
+<?php
+
+require_once "../classes/Bolovanje.php";
+
+?>
 
 <style>
 .custom-main-content {
@@ -313,24 +318,33 @@ tbody tr:last-child {
         <h2>Na čekanju</h2>
         <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
     </div>
+    <?php
+                  
+                  $sql = "SELECT *,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name
+                  FROM `bolovanje` 
+                  left join `radnici` on bolovanje.employee_id = radnici.employee_id
+                  WHERE bolovanje.status='pending'";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    
+                    foreach($results as $leave) :
+                  ?>
         <div class="request waiting d-flex justify-content-between align-items-center mb-3">
+        
             <div>
-                <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
+                <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date'] ?>) 22 days left</p>
             </div>
             <div class="actions">
-                <button class="approve">Approve</button>
-                <button class="decline">Decline</button>
-            </div>
-        </div>
-        <div class="request waiting d-flex justify-content-between align-items-center mb-3">
             <div>
-                <p>Michael Johnson - (2024-10-15 to 2024-10-20) 22 days left</p>
-            </div>
-            <div class="actions">
                 <button class="approve">Approve</button>
                 <button class="decline">Decline</button>
+                </div>
             </div>
+            
         </div>
+        <?php endforeach; ?>
       </div>
     </div>
 

@@ -234,6 +234,7 @@ label{
 }
 #persons {
             display: flex;
+            
             overflow-x: auto;
             max-width: 1330px; /* Set a fixed width */
             min-height:185px;
@@ -367,7 +368,7 @@ input[type="checkbox"]:checked + label:after {
 </style>
 
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
             
 <form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Uredi zahtjev</h2>
@@ -695,3 +696,9 @@ function validateForm() {
     }
 }
 </script>
+
+<?php
+
+require_once "../inc/footer.php";
+
+?>

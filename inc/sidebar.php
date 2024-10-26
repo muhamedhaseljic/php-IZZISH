@@ -139,7 +139,7 @@ nav#sidebar .sidebar-list .hr-custom {
             
                 <div class="nav-item">
                 <?php $employee_data = $radnik->get_employee_data() ?>
-                    <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>"  alt="">                   
+                    <img class="boja-pozadine" draggable="false" src="<?php echo "../images/" . $employee_data['photo_path'] ?>"  alt="">                   
                 </div>
                 <h2 class="nav-item"><?=$employee_data['first_name'] . " ". $employee_data['last_name']?></h2>
                 <h3 class="nav-item"><?php if($employee_data['is_admin'] == 1) echo "Admin"; echo "Radnik"; ?></h3>
@@ -155,7 +155,7 @@ nav#sidebar .sidebar-list .hr-custom {
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
 				<!--<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		-->
-				<img class="nav-item" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
+				<img class="nav-item" draggable="false" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
 
                 <a href="../index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> Odjava</a>
 		</div>

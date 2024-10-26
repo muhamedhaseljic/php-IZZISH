@@ -178,7 +178,7 @@ label{
 </style>
 
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
             
 <form class="forma-custom" action="" method="POST" enctype="multipart/form-data">
 <h2>Uredi profil radnika</h2>
@@ -303,3 +303,9 @@ label{
             }
         };
 </script>
+
+<?php
+
+require_once "../inc/footer.php";
+
+?>
