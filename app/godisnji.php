@@ -161,7 +161,7 @@ tbody tr:last-child {
 }
 .scrolling-divv{
     overflow-y: scroll;
-    height: 75vh;
+    max-height: 35vh; 
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
@@ -209,11 +209,11 @@ tbody tr:last-child {
     width: 1480px; /* Set to a larger fixed width */
     max-width: 100%; /* Ensures it doesn’t exceed the viewport width */
     height: 600px;
-    background-color: #171c22;
+    background-color: #0d1017;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    overflow-y: auto;
+    
     color: white;
     margin: 0; /* No margin to ensure it uses full width */
 }
@@ -283,6 +283,100 @@ tbody tr:last-child {
 .container-custom-div{
     width: 100%;
 }
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.styled-table thead tr {
+    background-color: #262c78;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 15px;
+    text-align: left;
+    padding-right: 0;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #171c22;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #15171a;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #ddd;
+}
+
+
+
+.status {
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.status.active {
+    background-color: #a2f0b1;
+    color: #1d7d3a;
+    text-decoration: none;
+
+
+}
+
+.status.inactive {
+    background-color: #f0a2a2;
+    color: #7d1d1d;
+    text-decoration: none;
+
+}
+.styled-table thead th:nth-child(1),
+.styled-table tbody td:nth-child(1) {
+    width: 150px; /* Example: adjust as needed */
+}
+
+.styled-table thead th:nth-child(2),
+.styled-table tbody td:nth-child(2) {
+    width: 300px;
+}
+
+.styled-table thead th:nth-child(3),
+.styled-table tbody td:nth-child(3) {
+    width: 200px;
+}
+
+.styled-table thead th:nth-child(4),
+.styled-table tbody td:nth-child(4) {
+    width: 200px;
+}
+
+.styled-table thead th:nth-child(5),
+.styled-table tbody td:nth-child(5) {
+    width: 100px;
+}
+
+.styled-table thead th:nth-child(6),
+.styled-table tbody td:nth-child(6) {
+    width: 200px;
+}
+
+.styled-table thead th:nth-child(7),
+.styled-table tbody td:nth-child(7) {
+    width: 140px;
+}
     </style>
     
     <div class="custom-main-content content">
@@ -304,6 +398,23 @@ tbody tr:last-child {
         <h2>Na čekanju</h2>
         <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
     </div>
+    <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Email</th>
+            <th>Početak bolovanja</th>
+            <th>Kraj bolovanja</th>
+            <th>Dani</th>
+            <th>Datum slanja</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    </table>
+    
+    <div class="scrolling-divv" >
+    <table class="styled-table">
+    <tbody>
     <?php
                   
                   $sql = "SELECT *,
@@ -318,21 +429,24 @@ tbody tr:last-child {
                     
                     foreach($results as $leave) :
                   ?>
-        <div class="request waiting d-flex justify-content-between align-items-center mb-3">
-        
-            <div>
-                <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
-            </div>
-            <div class="actions">
-            <div >
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="custom-edit-btn" ><span  >Approve</span></a>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="custom-delete-btn" ><span  >Decline</span></a>
-
-                </div>
-            </div>
-            
-        </div>
+        <tr>
+            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
+            <td>muhamedhaselji@gmail.com</td>
+            <td>16/02/2024</td>
+            <td>16/03/2024</td>
+            <td>30</td>
+            <td>15/02/2024</td>
+            <td>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
+            </td>
+        </tr>
         <?php endforeach; ?>
+        
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+</div>
       </div>
     </div>
 
