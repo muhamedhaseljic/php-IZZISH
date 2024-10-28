@@ -58,11 +58,6 @@ require_once "../classes/Bolovanje.php";
     color: #fff;
 }
 
-thead tr {
-    background-color: #272c78;
-    
-
-}
 
 .custom-table thead th {
     padding: 15px;
@@ -161,7 +156,7 @@ tbody tr:last-child {
 }
 .scrolling-divv{
     overflow-y: scroll;
-    max-height: 35vh; 
+    max-height: 55vh; 
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
@@ -327,7 +322,6 @@ tbody tr:last-child {
 }
 
 
-
 .status {
     padding: 5px 10px;
     border-radius: 12px;
@@ -335,6 +329,7 @@ tbody tr:last-child {
     font-size: 0.9em;
     font-weight: bold;
     text-decoration: none;
+    margin: 10px 5px 0px 5px;
 
 }
 
@@ -395,6 +390,7 @@ tbody tr:last-child {
                   $sql = "SELECT *,
                   radnici.first_name as employee_name,
                   radnici.last_name as employee_last_name,
+                  radnici.email as employee_email,
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
@@ -406,15 +402,16 @@ tbody tr:last-child {
                   ?>
         <tr>
             <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
-            <td>muhamedhaselji@gmail.com</td>
-            <td>16/02/2024</td>
-            <td>16/03/2024</td>
-            <td>30</td>
-            <td>15/02/2024</td>
+            <td><?php echo $leave['employee_email'] ?></td>
+            <td><?php echo $leave['leave_date'] ?></td>
+            <td><?php echo $leave['return_date'] ?></td>
+            <td><?php echo $leave['days'] ?></td>
+            <td><?php echo $leave['created_date'] ?></td>
             <td>
+                <div>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
-            </td>
+            </div></td>
         </tr>
         <?php endforeach; ?>
         
@@ -433,11 +430,27 @@ tbody tr:last-child {
       <h2>Odobreno</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
-<?php
+
+        <div class="scrolling-divv" >
+    <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Email</th>
+            <th>Početak bolovanja</th>
+            <th>Kraj bolovanja</th>
+            <th>Dani</th>
+            <th>Datum slanja</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
                   
                   $sql = "SELECT *,
                   radnici.first_name as employee_name,
                   radnici.last_name as employee_last_name,
+                  radnici.email as employee_email,
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
@@ -447,10 +460,25 @@ tbody tr:last-child {
                     
                     foreach($results as $leave) :
                   ?>
-        <div class="request approved">
-        <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
-        </div>
+        <tr>
+            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
+            <td><?php echo $leave['employee_email'] ?></td>
+            <td><?php echo $leave['leave_date'] ?></td>
+            <td><?php echo $leave['return_date'] ?></td>
+            <td><?php echo $leave['days'] ?></td>
+            <td><?php echo $leave['created_date'] ?></td>
+            <td>
+                <div>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
+            </div></td>
+        </tr>
         <?php endforeach; ?>
+        
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+</div>
+
       </div>
     </div>
 
@@ -461,11 +489,29 @@ tbody tr:last-child {
       <h2>Odbijeno</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
-<?php
+<div class="scrolling-divv" >
+    <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Email</th>
+            <th>Početak bolovanja</th>
+            <th>Kraj bolovanja</th>
+            <th>Dani</th>
+            <th>Datum slanja</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    
+    
+    
+    <tbody>
+    <?php
                   
                   $sql = "SELECT *,
                   radnici.first_name as employee_name,
                   radnici.last_name as employee_last_name,
+                  radnici.email as employee_email,
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
@@ -475,10 +521,24 @@ tbody tr:last-child {
                     
                     foreach($results as $leave) :
                   ?>
-        <div class="request rejected">
-        <p><?php echo $leave['employee_name'] .  " - (". $leave['leave_date'] . " to " . $leave['return_date']. ") " . $leave['days'] . " days " . $leave['bolovanje_status'] ?></p>
-        </div>
+        <tr>
+            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
+            <td><?php echo $leave['employee_email'] ?></td>
+            <td><?php echo $leave['leave_date'] ?></td>
+            <td><?php echo $leave['return_date'] ?></td>
+            <td><?php echo $leave['days'] ?></td>
+            <td><?php echo $leave['created_date'] ?></td>
+            <td>
+                <div>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
+            </div></td>
+        </tr>
         <?php endforeach; ?>
+        
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+</div>
       </div>
     </div>
   </div>
