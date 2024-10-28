@@ -286,26 +286,35 @@ tbody tr:last-child {
 
 .styled-table {
     width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0px;
+    border: 1px solid #343a40;
+
 }
 
-.styled-table thead tr {
+.styled-table thead th{
     background-color: #262c78;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-}
-
-.styled-table th, .styled-table td {
+    position: sticky;
+    top: 0;
     padding: 15px;
     text-align: left;
     padding-right: 0;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #343a40; /* Existing bottom border */
+    
+    
+    
+}
+
+ .styled-table td {
+    padding: 15px;
+    text-align: left;
+    padding-right: 0;
+    border: 1px solid #343a40;
 }
 
 .styled-table tbody tr {
-    border-bottom: 1px solid #e0e0e0;
     background-color: #171c22;
 }
 
@@ -343,40 +352,6 @@ tbody tr:last-child {
     text-decoration: none;
 
 }
-.styled-table thead th:nth-child(1),
-.styled-table tbody td:nth-child(1) {
-    width: 150px; /* Example: adjust as needed */
-}
-
-.styled-table thead th:nth-child(2),
-.styled-table tbody td:nth-child(2) {
-    width: 300px;
-}
-
-.styled-table thead th:nth-child(3),
-.styled-table tbody td:nth-child(3) {
-    width: 200px;
-}
-
-.styled-table thead th:nth-child(4),
-.styled-table tbody td:nth-child(4) {
-    width: 200px;
-}
-
-.styled-table thead th:nth-child(5),
-.styled-table tbody td:nth-child(5) {
-    width: 100px;
-}
-
-.styled-table thead th:nth-child(6),
-.styled-table tbody td:nth-child(6) {
-    width: 200px;
-}
-
-.styled-table thead th:nth-child(7),
-.styled-table tbody td:nth-child(7) {
-    width: 140px;
-}
     </style>
     
     <div class="custom-main-content content">
@@ -398,6 +373,7 @@ tbody tr:last-child {
         <h2>Na čekanju</h2>
         <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
     </div>
+    <div class="scrolling-divv" >
     <table class="styled-table">
     <thead>
         <tr>
@@ -410,10 +386,9 @@ tbody tr:last-child {
             <th>Akcije</th>
         </tr>
     </thead>
-    </table>
     
-    <div class="scrolling-divv" >
-    <table class="styled-table">
+    
+    
     <tbody>
     <?php
                   
