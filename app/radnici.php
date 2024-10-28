@@ -42,7 +42,7 @@
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0px;
     
 }
 
@@ -54,7 +54,8 @@
 
 thead tr {
     background-color: #272c78;
-    
+    position: sticky;
+    top: 0;
 
 }
 
@@ -94,7 +95,7 @@ tbody tr:last-child {
     border: none;
     background-color: #171c22 ;
     vertical-align: middle;
-    
+    border-top: 10px solid #0d1017 ;
 }
 
 .custom-table tbody tr:hover td {
@@ -662,5 +663,4 @@ function resumeTimer() {
         isHovered = false;
     }
 }
-
     </script>

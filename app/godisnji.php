@@ -283,7 +283,6 @@ tbody tr:last-child {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0px;
-    border: 1px solid #343a40;
 
 }
 
