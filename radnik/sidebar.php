@@ -1,3 +1,11 @@
+
+<?php
+
+require_once "Radnik.php";
+$radnik = new Radnik();
+
+?>
+
 <style>
 nav#sidebar {
     height: 100vh;
@@ -105,11 +113,11 @@ img.nav-item{
 		
 		<div class="sidebar-list ">
                 <div class="nav-item">
-                    
-                    <img class="boja-pozadine" src="<?php echo "../images/" . $_SESSION['photo_path'] ?>" width="70px" height="70px" alt="">                   
+                <?php $employee_data = $radnik->get_employee_data() ?>
+                    <img class="boja-pozadine" src="<?php echo "../images/" . $employee_data['photo_path'] ?>" width="70px" height="70px" alt="">                   
                 </div>
                 <h2 class="nav-item">Muhamed Haseljić</h2>
-                <h3 class="nav-item">Admin</h3>
+                <h3 class="nav-item"><?php if($employee_data['is_admin'] == 1) echo "Admin"; else echo "Radnik"; ?></h3>
 
 				<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'>&nbsp;<i class="fa fa-user">  &nbsp; &nbsp;</i></span> Profil</a>
                 <a href="index.php?page=radna_sedmica" class="nav-item radna_sedmica"><span class='icon-field'>&nbsp;<i class="fas fa-calendar-week">  &nbsp; &nbsp;</i></span> Radna sedmica</a>

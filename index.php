@@ -4,6 +4,7 @@ require_once "config/config.php";
 require_once "radnik/Radnik.php";
 
 
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -18,17 +19,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit;
     }
 
+    if($radnik->is_admin()){
+
     header('Location: http://localhost/retro/app/dashboard.php?page=home');
+    } else{
+        header('Location: http://localhost/retro/radnik/index.php?page=home');
+    }
     exit;
 }
 
 //session_start();
 
 // Example hardcoded users (you can replace this with a database query)
-$users = [
-    'admin@example.com' => ['password' => 'adminpass', 'role' => 'admin'],
-    'employee@example.com' => ['password' => 'employeepass', 'role' => 'employee']
-];
+
 
 // Check if the form was submitted
 if (isset($_POST['login'])) {

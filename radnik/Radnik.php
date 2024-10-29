@@ -92,5 +92,22 @@ protected $conn;
         }
         return false;  // Return false if not logged in or no employee found
     }
+
+    public function is_admin() {
+        $sql = "SELECT * FROM radnici where employee_id = ? AND is_admin = 1";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $_SESSION['employee_id']);
+        $run->execute();
+
+        $results = $run->get_result();
+        if($results->num_rows >0){
+            return true;
+        }
+        return false;
+    }
+
+    public function logout(){
+        unset($_SESSION['employee_id']);
+    }
 }
 ?>
