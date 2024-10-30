@@ -163,11 +163,7 @@ tbody tr:last-child {
     background-color: #666565;
 }
 
-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .custom-main-content h1{
     color:white;
     margin-bottom:20px;
@@ -269,7 +265,7 @@ button {
         }
     </style>
     
-    <div class="custom-main-content">
+    <div class="custom-main-content content">
         <h1 >Poslovi u ovoj sedmici</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <input type="text" placeholder="Search city..." class="custom-search-bar">

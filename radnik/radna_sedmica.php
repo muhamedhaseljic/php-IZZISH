@@ -123,7 +123,7 @@ button#submitBtn:hover {
 
 </style>
 
-<div class="custom-main-content">
+<div class="custom-main-content content">
 <div class="container">
         <div class="row">
             <div class="col" id="todo">

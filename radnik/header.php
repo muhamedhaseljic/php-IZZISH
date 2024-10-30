@@ -18,4 +18,65 @@
     
     
   </head>
+  <style>
+    body{
+        user-select: none; 
+        
+    }
+    #sidebar.closed {
+    transform: translateX(-270px);
+}
+
+#toggleButton {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #0d1017;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 50px;
+    padding-left: 50px;
+    z-index: 100; /* Increase the z-index */
+    margin-left:230px;
+    
+}
+
+   #toggleButton:focus {
+      outline: none;
+      box-shadow: none; /* Removes the white border or shadow */
+   }
+
+   #toggleButton:active {
+      outline: none;
+      border: none;
+      box-shadow: none; /* Removes border on active state */
+   }
+
+
+.icon-open {
+    /* Styles for open icon */
+    background-image: '../images/Stethoscope.png'; /* Example for image */
+}
+
+.icon-close {
+    /* Styles for close icon */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7g27Jo9GbahWe2CeIOcWnQybtAqAl8cAiDWRJmo6VGPY1zmH-KcvO2vSuqbEA8eo-XQ&usqp=CAU'); /* Example for image */
+}
+
+.icon-open::before {
+    content: '\f054'; /* FontAwesome icon for 'Open' */
+    font-family: FontAwesome; /* Adjust to your icon library */
+}
+
+.icon-close::before {
+    content: '\f057'; /* FontAwesome icon for 'Close' */
+    font-family: FontAwesome; /* Adjust to your icon library */
+}
+#toggleIcon {
+      font-size: 30px;  /* Custom size for the icon */
+   }
+
+  </style>
   <body>
