@@ -1,10 +1,5 @@
 
-<?php
-require_once "../config/config.php";
-require_once "Radnik.php";
-$radnik = new Radnik();
 
-?>
 
 <style>
 nav#sidebar {
@@ -141,7 +136,7 @@ nav#sidebar .sidebar-list .hr-custom {
                 <hr class="hr-custom">
                 <img class="nav-item" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
 
-                <a href="http://localhost/retro/index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
+                <a href="../logout.php" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
 		</div>
         <button id="toggleButton" lass="move-button">
 <i id="toggleIcon" class="fas fa-times fa-2x"></i>

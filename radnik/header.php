@@ -80,3 +80,9 @@
 
   </style>
   <body>
+  <?php
+require_once "../config/config.php";
+require_once "Radnik.php";
+$radnik = new Radnik();
+
+?>

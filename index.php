@@ -2,14 +2,22 @@
 // Start the session
 require_once "config/config.php";
 require_once "radnik/Radnik.php";
-
-
+$radnik = new Radnik();
+if($radnik->is_logged())
+{
+    if($radnik->is_admin()){
+        header('Location: http://localhost/retro/app/dashboard.php?page=home');
+        exit;
+    }
+        header('Location: http://localhost/retro/radnik/index.php?page=home');
+        exit;
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $radnik = new Radnik();
+    
     $result = $radnik->login($email, $password);
 
     if(!$result){

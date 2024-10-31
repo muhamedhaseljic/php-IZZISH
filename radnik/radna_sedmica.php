@@ -126,41 +126,29 @@ button#submitBtn:hover {
 <div class="custom-main-content content">
 <div class="container">
         <div class="row">
-            <div class="col" id="todo">
+            <div class="col" id="ponedjeljak">
                 <h3>Ponedjeljak</h3>
-                <div class="task-card" draggable="true">
+                <?php $employee_data = $radnik->get_employee_data() ?>
+                <?php $radnik_id = $employee_data['employee_id'] ?>
+                <?php 
+                
+                $sql = "SELECT kupac.*
+                  FROM `kupac` 
+                  WHERE kupac.employee_id = $radnik_id";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    $select_members = $results;
                     
-                    <div class="task-details">
-                        <p class="task-name">Sanitarna <br> Robot</p>
-                        <p class="task-date">Adresa</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
-                    </div>
-                </div>
-
+                    foreach($results as $kupci) : ?>
                 <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
                     <div class="task-details">
-                        <p class="task-name">Task Name</p>
+                        <p class="task-name"><?=$kupci['objekat']?></p>
                         <p class="task-date">Due Date: 2024-08-31</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
+                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                        
                     </div>
                 </div>
-
-                <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
-                    <div class="task-details">
-                        <p class="task-name">Task Name</p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
             <div class="col" id="in-progress">
                 <h3>Utorak</h3>
@@ -197,13 +185,13 @@ button#submitBtn:hover {
                     </div>
                 </div>
             </div>
-            <div class="col" id="testing">
+            <div class="col" id="srijeda">
                 <h3>Srijeda</h3>
             </div>
-            <div class="col" id="done">
+            <div class="col" id="cetvrtak">
                 <h3>Četvrtak</h3>
             </div>
-            <div class="col" id="done">
+            <div class="col" id="petak">
                 <h3>Petak</h3>
             </div>
         </div>

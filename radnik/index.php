@@ -1,7 +1,11 @@
 <?php
 
 require_once "header.php";
-
+if(!$radnik->is_logged())
+{
+    header('Location: http://localhost/retro/index.php?page=deductions');
+    exit;
+}
 ?>
 
 
