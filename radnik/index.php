@@ -1,9 +1,14 @@
 <?php
 
 require_once "header.php";
+
 if(!$radnik->is_logged())
 {
     header('Location: http://localhost/retro/index.php?page=deductions');
+    exit;
+}
+if($radnik->is_admin()){
+    header('Location: http://localhost/retro/app/dashboard.php?page=home');
     exit;
 }
 ?>

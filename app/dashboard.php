@@ -6,6 +6,10 @@ if(!$radnik->is_logged())
     header('Location: http://localhost/retro/index.php?page=deductions');
     exit;
 }
+if(!$radnik->is_admin()){
+    header('Location: http://localhost/retro/radnik/index.php?page=home');
+    exit;
+}
 ?>
 
 
