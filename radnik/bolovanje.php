@@ -346,6 +346,119 @@ tbody tr:last-child {
     text-decoration: none;
 
 }
+
+.modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        }
+
+        .modal-content {
+            background-color: #171c22;
+            margin: 15% auto;
+            padding: 20px;
+            /*border: 1px solid #888;*/
+            width: 600px;
+            
+            color:white;
+            border-radius:20px;
+        }
+
+        .modal-content input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 0px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #0d1017;
+            color: #fff;
+            font-family: FontAwesome, sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        .modal-content input:focus{
+            border: 1px solid #008cba;
+    outline: none;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    
+    grid-row-gap: 0px;
+
+    grid-column-gap: 60px;
+
+
+}
+        .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+}
+.form-group:last-child {
+    align-items: end;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #0d1017;
+  color: #fff;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+
+}
+.custom-date{
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    /* Hide the default icon */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    /* Add custom calendar icon */
+    background-image: url('https://i.pinimg.com/736x/6e/88/f3/6e88f39cfca6c0f5a09d3326c936f451.jpg'); /* Replace with a path to a white icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px 20px;
+}
+
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
+}
+
+
     </style>
     <?php $employee_data = $radnik->get_employee_data() ;
     $employeeID = $employee_data['employee_id']?>
@@ -366,7 +479,7 @@ tbody tr:last-child {
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Na čekanju</h2>
-        <button onclick="showPopup(<?php echo $employeeID; ?>, '<?php echo $employee_data['first_name']; ?>', '<?php echo $employee_data['last_name']; ?>')" class="custom-delete-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"><span class="fas fa-trash"></span></button>
+        <button onclick="showPopup(<?php echo $employeeID; ?>, '<?php echo $employee_data['first_name']; ?>', '<?php echo $employee_data['last_name']; ?>')" class="custom-add-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"><span>Add</span></button>
     </div>
     <div class="scrolling-divv" >
     <table class="styled-table">
@@ -420,6 +533,34 @@ tbody tr:last-child {
         <!-- Add more rows as needed -->
     </tbody>
 </table>
+<form id="deleteForm" action="dodaj_bolovanje.php" method="POST">
+        <input type="hidden" name="employeeId" id="employeeId">
+        <input type="hidden" name="deleteReason" id="deleteReason">
+    </form>
+      <div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p>Radnik kojeg želite da izbrišete: <br> <span class="modal-name" id="employeeName"></span> <span class="modal-name" id="employeeLastName"></span></p>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="leave_start">OD</label>
+                <input type="date" id="leave_start" name="leave_start" class="custom-date">
+            </div>
+            <div class="form-group">
+                <label for="leave_start">DO</label>
+                <input type="date" id="leave_start" name="leave_start">
+            </div>
+        </div>
+
+        <label for="reason">Razlog brisanja:</label>
+        <input type="text" id="reason" name="reason" placeholder="Unesite razlog ovdje" required>
+        <div class="button-group d-flex justify-content-between">
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+        </div>
+    </div>
+</div>
 </div>
       </div>
     </div>
@@ -542,10 +683,13 @@ tbody tr:last-child {
 </table>
 </div>
       </div>
+
+      
     </div>
   </div>
         </div>
         </div>
+        
         <script>
     function showContainer(containerId) {
     // Hide all containers
@@ -570,6 +714,44 @@ tbody tr:last-child {
         activeTab.classList.add('active');
     }
 }
+function showPopup(employeeId, employeeName, employeeLastName) {
+        // Set the employee's data to the modal and show it
+        document.getElementById('employeeId').value = employeeId;
+        document.getElementById('employeeName').innerText = employeeName;
+        document.getElementById('employeeLastName').innerText = employeeLastName;
+        document.getElementById('modal').style.display = "block";
+    }
+
+    function closePopup() {
+        // Hide the modal
+        document.getElementById('modal').style.display = "none";
+    }
+
+    function submitForm() {
+        // Get the reason input value
+        let reasonInput = document.getElementById('reason').value.trim();
+
+        // Check if the reason input is filled
+        if (reasonInput !== "") {
+            // Set the reason in the form and submit it
+            document.getElementById('deleteReason').value = reasonInput;
+            console.log("Submitting form with reason: " + reasonInput); // Debugging log
+            document.getElementById('deleteForm').submit(); // Submit form via POST
+        } else {
+            // Show an alert if the reason input is empty
+            alert('Please provide a reason for deleting.');
+        }
+    }
+
+    // Event listener for form submission using Enter key in the input
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('reason').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
+            }
+        });
+    });
   </script>
 
   <?php
@@ -577,3 +759,4 @@ tbody tr:last-child {
   require_once "../inc/footer.php";
   
   ?>
+
