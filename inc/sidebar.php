@@ -28,26 +28,26 @@ a.nav-item {
     padding: 0.43rem 0.95rem;
     margin-bottom: 5px;
     margin-top: 5px;
-    background-color: #171c22;
+    background-color:#132650;
     color: white;
     font-weight: 100;
 }
 a.nav-item:hover{
-    background-color:#0298c9;
+    background-color:#23355d;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .nav-item.active {
-    background-color:#008cba;
+    background-color:#23355d;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .sidebar-custom{
-    background-color: #171c22;
+    background-color:#132650;
 }
 div.nav-item{
     position: relative;
@@ -55,7 +55,7 @@ div.nav-item{
     padding: 0.55rem 0.35rem;
     margin-bottom: -1px;
     
-    background-color: #171c22;
+    background-color:#132650;
     color: white;
     font-weight: 400;
     margin-bottom:0px; 
@@ -70,7 +70,7 @@ img.nav-item{
     position: relative;
     display: block;
     padding: 0.55rem 0.35rem;    
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 400;
     margin-bottom:70px;
@@ -82,7 +82,7 @@ img.nav-item{
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
     
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 100;
     justify-content:center;
@@ -124,7 +124,7 @@ nav#sidebar .sidebar-list .hr-custom {
     margin: 0 -20px; /* Counter the parent padding with negative margin */
     width: calc(100% + 40px); /* Adjust width to account for negative margins */
     height: 1px; /* Set the height */
-    background-color: #0d1017; /* Background color for the line */
+    background-color: grey; /* Background color for the line */
     border: none; /* Remove default border */
 }
 
@@ -150,7 +150,7 @@ nav#sidebar .sidebar-list .hr-custom {
 				<a href="../app/dashboard.php?page=automobili" class="nav-item nav-automobili"><span class='icon-field'><i class="fas fa-car"> &nbsp; &nbsp;</i></span> Automobili</a>
 				<a href="../app/dashboard.php?page=historija_radnik" class="nav-item nav-historija_radnik"><span class='icon-field'><i class="fas fa-user-clock"> &nbsp;</i></span> Historija radnika</a>
 				<a href="../app/dashboard.php?page=zavrseni_poslovi" class="nav-item nav-zavrseni_poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Završeni poslovi</a>
-				<a href="../app/dashboard.php?page=godisnji" class="nav-item nav-godisnji"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Godišnji</a>
+				<a href="../app/dashboard.php?page=godisnji" class="nav-item nav-godisnji"><span class='icon-field'>&nbsp;<i class="fas fa-clipboard-check"> &nbsp; &nbsp;</i></span>Bolovanje</a>
                 <hr class="hr-custom">
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->

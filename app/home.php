@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     margin-left: 0px; /* Space for the sidebar */
     width: 100%;
     
-    background-color: #0d1017;
+    background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
     display: flex;
@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     display: flex;
     max-width: 1600px; /* Adjust for a compact layout */
     margin: 40px auto;
-    background-color: #171c22;
+    background-color: #ebeef5;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 0px;
     gap: 0px;
@@ -87,11 +87,12 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .left-section {
     flex: 0 0 400px; /* Fixed width for picture section */
-    background-color: #171c22;
+    background-color: white;
     padding:20px;
     padding-top: 20px;
     border-radius:15px;
     text-align: left;
+    border: 1px solid black;
 }
 
 .profile-picture img {
@@ -102,17 +103,18 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .border-divider {
     width: 20px;
-    background-color: #0d1017; /* Visible border between sections */
+    background-color: #ebeef5; /* Visible border between sections */
     margin-left: ;
     height:650px;
     margin-top:-50px;
 }
 
 .right-section {
-    
+    border-radius:15px;
     padding:20px;
     padding-top: 20px;
-    
+    border: 1px solid black;
+    background-color: white;
 
 }
 
@@ -141,8 +143,9 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -157,7 +160,7 @@ label {
     width: 150px; /* Fixed width for the labels */
     font-weight: bold;
     text-align: left;
-    color:white;
+    color:black;
 }
 
 input {
@@ -170,16 +173,16 @@ input {
 }
 
 input::placeholder {
-    color: white;
+    color: black;
 }
 .left-section h1{
-    color:#8EC1FF;
+    color:#132650;
     text-align: left;
     font-size:22px;
     margin-bottom:20px;
 }
 .left-section p{
-    color:white;
+    color:black;
     text-align: left;
     font-size:18px;
     margin: 10px 0;
