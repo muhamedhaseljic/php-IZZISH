@@ -32,7 +32,7 @@
     position: fixed;
     left: 10px;
     top: 10px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     color: white;
     border: none;
     padding: 10px;
@@ -77,6 +77,7 @@
 }
 #toggleIcon {
       font-size: 30px;  /* Custom size for the icon */
+      color:#132650;
    }
 
   </style>

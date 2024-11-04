@@ -75,10 +75,10 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .profile-container {
     display: flex;
-    max-width: 1600px; /* Adjust for a compact layout */
+    max-width: 1200px; /* Adjust for a compact layout */
     margin: 40px auto;
     background-color: #ebeef5;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
     padding: 0px;
     gap: 0px;
     height:600px;
@@ -92,20 +92,22 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     padding-top: 20px;
     border-radius:15px;
     text-align: left;
-    border: 1px solid black;
+    border: 1px solid #132650;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-picture img {
     width: 200px;
     height: 200px;
     margin-bottom:20px;
+    border: 1px solid #132650;
 }
 
 .border-divider {
     width: 20px;
     background-color: #ebeef5; /* Visible border between sections */
     margin-left: ;
-    height:650px;
+    height:670px;
     margin-top:-50px;
 }
 
@@ -113,7 +115,8 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     border-radius:15px;
     padding:20px;
     padding-top: 20px;
-    border: 1px solid black;
+    border: 1px solid #132650;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
 
 }
