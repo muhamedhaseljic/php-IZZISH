@@ -145,9 +145,8 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-  border: 1px solid white;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid grey;
   color: black;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
@@ -176,7 +175,7 @@ input {
 }
 
 input::placeholder {
-    color: black;
+    color: grey;
 }
 .left-section h1{
     color:#132650;
@@ -207,7 +206,7 @@ input::placeholder {
     weight:400;
 }
 .right-section h1{
-    color:#8EC1FF;
+    color:#132650;
     text-align: left;
     font-size:22px;
     margin-right:70px;
@@ -221,13 +220,13 @@ input::placeholder {
     cursor: pointer;
     color: white;
     margin-top: 60px;
-    background-color: #262c78;
+    background-color: #132650;
     text-align: center;
-    
+    border: 1px solid #132650;
 }
 .form-group button:hover{
-    background-color: #484b8f;
-    color:white;
+    background-color: #23355d;
+    
     
 }
 

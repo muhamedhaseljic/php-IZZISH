@@ -15,7 +15,7 @@ nav#sidebar {
     width:  270px;
 
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid #132650;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 

@@ -40,7 +40,7 @@
     width: 50px;
     padding-left: 50px;
     z-index: 100; /* Increase the z-index */
-    margin-left:230px;
+    margin-left:232px;
     
 }
 
