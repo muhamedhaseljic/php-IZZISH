@@ -15,7 +15,7 @@ require_once '../config/config.php';?>
     width: 100%;
     
     
-    background-color: #0d1017;
+    background-color: #ebeef5;
     
     padding-bottom:0px;
     display: flex;
@@ -32,9 +32,10 @@ require_once '../config/config.php';?>
   flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
-  background-color: #171c22;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
+  border: 1px solid #132650;
 }
 
 .form-group {
@@ -50,9 +51,9 @@ require_once '../config/config.php';?>
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-  border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  background-color: white;
+  border: 1px solid grey;
+  color: black;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -89,13 +90,13 @@ textarea {
   background-color: #2a2b6a;
 }
 label{
-    color:white;
+    color:black;
     margin:0;
     
 }
 .forma-custom h2 {
     text-align: left;
-    color: white;
+    color: #132650;
     margin-bottom: 20px;
     
     
@@ -104,15 +105,16 @@ label{
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
+    text-align: center;
+    border: 1px solid #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
-    color: #fff;
+  background-color: #23355d;
     text-decoration:none;
 }
 

@@ -6,7 +6,7 @@
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     height: 100vh;
     padding-bottom:0px;
 }
@@ -32,8 +32,8 @@
     width: 300px;
     border-radius: 20px;
     border: none;
-    color: white;
-    background-color:#171c22;
+    color: #132650;
+    background-color:white;
     border:1px solid white;
 }
 
@@ -50,10 +50,11 @@
     padding: 15px;
     text-align: left;
     color: #fff;
+    
 }
 
 thead tr {
-    background-color: #272c78;
+    background-color: #132650;
     position: sticky;
     top: 0;
 
@@ -63,12 +64,12 @@ thead tr {
     padding: 15px;
     text-align: left;
     color: #fff;
-    background-color: #272c78;
+    background-color: #132650;
     border: none; /* Remove header cell border */
 }
 
 .custom-table tbody tr td:first-child {
-    border-top-left-radius: 20px;
+    border-top-left-radius: 25px;
     border-bottom-left-radius: 20px;
 }
 
@@ -93,14 +94,13 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color: #171c22 ;
+    background-color: white ;
     vertical-align: middle;
-    border-top: 10px solid #0d1017 ;
+    border-top: 10px solid #ebeef5 ;
+    color: black;
 }
-
 .custom-table tbody tr:hover td {
     
-    background-color: #212528;
     
     
 }
@@ -116,14 +116,14 @@ tbody tr:last-child {
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
+    background-color: #23355d;
     color: #fff;
     text-decoration:none;
 }
@@ -168,7 +168,7 @@ tbody tr:last-child {
 
 
 .custom-main-content h1{
-    color:white;
+    color:#132650;
     margin-bottom:20px;
 }
 .scrolling-divv{
@@ -177,7 +177,7 @@ tbody tr:last-child {
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
-    scrollbar-color: white #0d1017;
+    scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
         /* Pop-up styling */
