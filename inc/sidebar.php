@@ -73,7 +73,7 @@ img.nav-item{
     background-color: #171c22;
     color: white;
     font-weight: 400;
-    margin-bottom:110px;
+    margin-bottom:70px;
     margin-top: 110px;
 }
 .sidebar-custom  a.nav-item:last-child {
