@@ -124,7 +124,7 @@ nav#sidebar .sidebar-list .hr-custom {
     margin: 0 -20px; /* Counter the parent padding with negative margin */
     width: calc(100% + 40px); /* Adjust width to account for negative margins */
     height: 1px; /* Set the height */
-    background-color: grey; /* Background color for the line */
+    background-color: #575757; /* Background color for the line */
     border: none; /* Remove default border */
 }
 

@@ -34,7 +34,7 @@
     border: none;
     color: #132650;
     background-color:white;
-    border:1px solid white;
+    border:1px solid #132650;
 }
 
 /* Table Styling */
@@ -196,6 +196,7 @@ tbody tr:last-child {
             height: 100px;
             background-color: #ccc;
             margin-right: 20px;
+            border: 1px solid #132650;
 }
         .radnik-details {
             display: flex;
@@ -237,7 +238,7 @@ tbody tr:last-child {
 
         /* Popup content */
         .popup-content {
-            background-color: #171c22;
+            background-color: white;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             /*border: 1px solid #888;*/
@@ -248,7 +249,7 @@ tbody tr:last-child {
             width: 500px;
             text-align: left;
             position: relative;
-            color:white;
+            color:#132650;
         }
 
 
@@ -285,12 +286,12 @@ tbody tr:last-child {
         }
 
         .modal-content {
-            background-color: #171c22;
+            background-color: white;
             margin: 15% auto;
             padding: 20px;
             /*border: 1px solid #888;*/
             width: 400px;
-            color:white;
+            color:#132650;
             border-radius:20px;
         }
 
@@ -299,9 +300,9 @@ tbody tr:last-child {
             padding: 10px;
             margin-top: 0px;
             border-radius: 5px;
-            border: 1px solid white;
-            background-color: #0d1017;
-            color: #fff;
+            border: 1px solid #132650;
+            background-color: #ebeef5;
+            color: #132650;
             font-family: FontAwesome, sans-serif;
             font-weight: normal;
             font-size: 14px;
@@ -313,15 +314,18 @@ tbody tr:last-child {
         }
 
         .close {
-            color: #aaa;
-            float: right;
+            color: #132650;
             font-size: 28px;
             font-weight: bold;
+            width: 20px;
+            height: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%;
         }
 
         .close:hover,
         .close:focus {
-            color: black;
             text-decoration: none;
             cursor: pointer;
         }
