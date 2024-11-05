@@ -70,6 +70,8 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
+
 <style>
 * {
     margin: 0;
@@ -83,7 +85,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #0d1017;
+    background: #132650;
     font-family: Arial, sans-serif;
 
     text-align: justify;
@@ -95,23 +97,10 @@ body {
 
   
 }
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('images/pozadina.jpg'); /* Replace with your image path */
-    background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-    opacity: 0.30; /* Adjust opacity for the background image */
-    z-index: -1; /* Keeps the background behind the body content */
-}
+
 .login-box {
     /*position: relative;*/
-    width: 450px;
+    width: 600px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
@@ -210,6 +199,10 @@ button{
     cursor: pointer;
     width: 100%;
     height:50px;
+}
+
+button:hover{
+    background: #23355d;
 }
 
 a span {
@@ -342,6 +335,14 @@ h1{
     from { width: 100%; }
     to { width: 0%; }
 }
+
+.nav-item{
+    position: absolute;
+      bottom: 0;  /* Aligns the image to the bottom */
+      left: 0;   /* Aligns the image to the right */
+      margin: 20px; /* Optional: Adds a little padding from the edges */
+      margin-bottom: 50px;
+}
 </style>
 
 </head>
@@ -362,6 +363,7 @@ if(isset($_SESSION['message'])) :?>
 <?php endif; ?>
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
+
     <div class="login-box">
         <h2>Prijava</h2>    
         <form action="" id="loginForm"  method="POST">
@@ -379,7 +381,8 @@ if(isset($_SESSION['message'])) :?>
             <button type="submit" name="login">Prijavi se</button>
         </form>
     </div>
-    
+    <img class="nav-item" draggable="false" src="images/inz_logo_-1.png" width="400px" height="100px" alt="">
+
 </body>
 <script>
     function togglePassword() {
