@@ -113,8 +113,7 @@ body::before {
     /*position: relative;*/
     width: 450px;
     padding: 20px;
-    background: #11131f;
-    
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     
@@ -122,7 +121,7 @@ body::before {
 
 
 .login-box h2 {
-    color: white;
+    color: black;
     margin-bottom: 50px;
     font-size: 20px;
     text-align: left;
@@ -142,6 +141,7 @@ body::before {
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
+    
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #fff;
@@ -191,7 +191,7 @@ a:hover {
 }
 
 button{
-    background: #008cba;
+    background: #132650;
     color: #fff;
     border-radius: 5px;
 }
@@ -263,7 +263,7 @@ a span:nth-child(4) {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: white;
+    color: #132650;
     text-decoration: none;
     padding: 0px 2px;
     margin:0;
@@ -274,7 +274,7 @@ a span:nth-child(4) {
     
     text-decoration: underline;
     background: none;
-    color: white;
+    color: #132650;
     border-radius: 5px;
 }
 .form-group input, .form-group select, .form-group textarea {
@@ -283,9 +283,9 @@ a span:nth-child(4) {
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-  border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  border: 1px solid #132650;
+  background-color: #ebeef5;
+  color: #132650;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -296,7 +296,7 @@ a span:nth-child(4) {
     outline: none;
 }
 .form-group label{
-    color:white;
+    color:black;
     margin:0px;
     
     
