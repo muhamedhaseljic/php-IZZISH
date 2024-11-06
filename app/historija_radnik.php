@@ -15,7 +15,7 @@ $history_radnik = $history_radnik->fetch_all();
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
 }
@@ -41,9 +41,10 @@ $history_radnik = $history_radnik->fetch_all();
     width: 300px;
     border-radius: 20px;
     border: none;
-    color: white;
-    background-color:#171c22;
-    border:1px solid white;
+    color: #132650;
+    background-color:white;
+    border:1px solid #132650;
+
 }
 
 /* Table Styling */
@@ -61,22 +62,17 @@ $history_radnik = $history_radnik->fetch_all();
     color: #fff;
 }
 
-thead tr {
-    background-color: #272c78;
-    
-
-}
 
 .custom-table thead th {
     padding: 15px;
     text-align: left;
     color: #fff;
-    background-color: #272c78;
+    background-color: #132650;
     border: none; /* Remove header cell border */
 }
 
 .custom-table tbody tr td:first-child {
-    border-top-left-radius: 20px;
+    border-top-left-radius: 25px;
     border-bottom-left-radius: 20px;
 }
 
@@ -101,15 +97,9 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color: #171c22 ;
+    background-color: white ;
     vertical-align: middle;
-    
-}
-
-.custom-table tbody tr:hover td{
-    
-    background-color: #212528;
-    
+    color:black;
     
 }
 
@@ -123,14 +113,14 @@ tbody tr:last-child {
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
+    background-color: #23355d;
     color: #fff;
     text-decoration:none;
 }
@@ -174,7 +164,7 @@ tbody tr:last-child {
 
 
 .custom-main-content h1{
-    color:white;
+    color:#132650;
     margin-bottom:20px;
 }
 .scrolling-divv{
@@ -183,7 +173,7 @@ tbody tr:last-child {
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
-    scrollbar-color: white #16171b;
+    scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
 /* Pop-up styling */
@@ -238,12 +228,12 @@ tbody tr:last-child {
             background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
             justify-content: center;
             align-items: center;
-            z-index: 10;
+            z-index: 999;
         }
 
         /* Popup content */
         .popup-content {
-            background-color: #fefefe;
+            background-color: white;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
@@ -264,6 +254,7 @@ tbody tr:last-child {
             float: right;
             font-size: 28px;
             font-weight: bold;
+            height: 20px;
         }
 
         .close:hover,
