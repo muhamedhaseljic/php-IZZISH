@@ -249,6 +249,7 @@ tbody tr:last-child {
             width: 500px;
             text-align: left;
             position: relative;
+            color:black;
         }
 
 
@@ -259,6 +260,8 @@ tbody tr:last-child {
             float: right;
             font-size: 28px;
             font-weight: bold;
+            width: 20px;
+            height: 20px;
         }
 
         .close:hover,
@@ -273,13 +276,13 @@ tbody tr:last-child {
             justify-content: flex-end; /* Align items to the right */
         }
         .noEmployee{
-            background-color: #8A0000;
+            background-color: #f0a2a2;
             border-radius: 10px;
             padding: 5px;
             width: 131px;
         }
         .yesEmployee{
-            background-color: green;
+            background-color: #a2f0b1;
             border-radius: 10px;
             padding: 5px;
             display: inline-block;

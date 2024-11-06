@@ -249,7 +249,7 @@ tbody tr:last-child {
             width: 500px;
             text-align: left;
             position: relative;
-            color:#132650;
+            color:black;
         }
 
 
@@ -291,7 +291,7 @@ tbody tr:last-child {
             padding: 20px;
             /*border: 1px solid #888;*/
             width: 400px;
-            color:#132650;
+            color:black;
             border-radius:20px;
         }
 
