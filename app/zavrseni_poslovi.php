@@ -5,7 +5,7 @@
     width: 100%;
     padding: 100px;
     padding-top:20px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
 }
@@ -31,9 +31,9 @@
     width: 300px;
     border-radius: 20px;
     border: none;
-    color: white;
-    background-color:#171c22;
-    border:1px solid white;
+    color: #132650;
+    background-color:white;
+    border:1px solid #132650;
 }
 
 /* Table Styling */
@@ -51,22 +51,17 @@
     color: #fff;
 }
 
-thead tr {
-    background-color: #272c78;
-    
-
-}
 
 .custom-table thead th {
     padding: 15px;
     text-align: left;
     color: #fff;
-    background-color: #272c78;
+    background-color: #132650;
     border: none; /* Remove header cell border */
 }
 
 .custom-table tbody tr td:first-child {
-    border-top-left-radius: 20px;
+    border-top-left-radius: 25px;
     border-bottom-left-radius: 20px;
 }
 
@@ -91,15 +86,9 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color:#171c22 ;
+    background-color:white ;
     vertical-align: middle;
-    
-}
-
-.custom-table tbody tr:hover td {
-    
-    background-color: #212528;
-    
+    color:black;
     
 }
 
@@ -164,7 +153,7 @@ tbody tr:last-child {
 
 
 .custom-main-content h1{
-    color:white;
+    color:#132650;
     margin-bottom:20px;
 }
 .scrolling-divv{
@@ -173,7 +162,7 @@ tbody tr:last-child {
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
-    scrollbar-color: white #16171b;
+    scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
 
