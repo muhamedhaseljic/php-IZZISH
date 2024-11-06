@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     width: 100%;
     
     
-    background-color: #0d1017;
+    background-color: #ebeef5;
     
     padding-bottom:0px;
     display: flex;
@@ -59,9 +59,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
-  background-color: #171c22;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
+  border: 1px solid #132650;
 }
 
 .form-group {
@@ -78,11 +79,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  background-color: #ebeef5;
+  color: #132650;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
+  border: 1px solid #132650;
 }
 .form-group input:focus{
     border: 1px solid #008cba;
@@ -116,13 +118,13 @@ textarea {
   background-color: #2a2b6a;
 }
 label{
-    color:white;
+    color:black;
     margin:0;
     
 }
 .forma-custom h2 {
     text-align: left;
-    color: #fff;
+    color: #132650;
     margin-bottom: 20px;
     
     
@@ -131,14 +133,14 @@ label{
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
+    background-color: #23355d;
     color: #fff;
     text-decoration:none;
 }
@@ -158,6 +160,7 @@ label{
     color: #fff;
     text-decoration:none;
 }
+
 </style>
 
 
