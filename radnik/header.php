@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Employee Dashboard</title>
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
 
     <link rel="stylesheet" href="style.css">
 
@@ -31,7 +32,7 @@
     position: fixed;
     left: 10px;
     top: 10px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     color: white;
     border: none;
     padding: 10px;
@@ -39,7 +40,7 @@
     width: 50px;
     padding-left: 50px;
     z-index: 100; /* Increase the z-index */
-    margin-left:230px;
+    margin-left:232px;
     
 }
 
@@ -76,7 +77,9 @@
 }
 #toggleIcon {
       font-size: 30px;  /* Custom size for the icon */
-   }
+      color:#132650;
+
+    }
 
   </style>
   <body>

@@ -4,7 +4,7 @@
     width: 100%;
     padding: 20px;
     padding-top:30px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
 }
@@ -25,10 +25,10 @@
 
 
 .col {
-    width: 260px;
-    background-color: #161c21;
+    width: 200px;
+    background-color: white;
     padding: 10px;
-    border: 1px solid #161c21;
+    border: 1px solid #132650;
     border-radius: 5px;
     min-height: 300px;
     max-height: 500px; /* Set a maximum height for the column */
@@ -36,23 +36,29 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    scrollbar-color: #8a1239 #212528;
+    scrollbar-color: #132650 #ebeef5;
   scrollbar-width: thin;
-  color:white;
+  color:black;
 }
 
-h3 {
+.col h3 {
     text-align: center;
     margin-bottom: 10px;
-    color: white;
+    color: #132650;
+    position: sticky;
+  top: 0;
+  background-color: #fff; /* Background color to avoid overlap with content when scrolling */
+  padding: 10px;
+  z-index: 1; /* Ensures it stays above other content */
+  border-bottom: 1px solid black; /* Optional, for a cleaner separation */
 }
 
 .task-card {
     display: flex;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #132650;
     border-radius: 5px;
     cursor: move;
     align-items: center;
@@ -76,9 +82,8 @@ h3 {
 }
 
 .task-date {
-    color: #666;
+    color: black;
     margin: 5px 0 0 0;
-    color: white;
 }
 
 /* Task being dragged has reduced opacity */
@@ -111,14 +116,15 @@ button#submitBtn {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #28a745;
+    background-color: #132650;
     color: white;
     border: none;
     border-radius: 5px;
+    margin-top: 50px;
 }
 
 button#submitBtn:hover {
-    background-color: #218838;
+    background-color:#23355d;
 }
 
 </style>
@@ -153,7 +159,6 @@ button#submitBtn:hover {
             <div class="col" id="in-progress">
                 <h3>Utorak</h3>
                 <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
                     <div class="task-details">
                         <p class="task-name">Task Name</p>
                         <p class="task-date">Due Date: 2024-08-31</p>
@@ -164,7 +169,6 @@ button#submitBtn:hover {
                 </div>
 
                 <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
                     <div class="task-details">
                         <p class="task-name">Task Name</p>
                         <p class="task-date">Due Date: 2024-08-31</p>
@@ -175,7 +179,6 @@ button#submitBtn:hover {
                 </div>
 
                 <div class="task-card" draggable="true">
-                    <img src="path-to-image" alt="Profile">
                     <div class="task-details">
                         <p class="task-name">Task Name</p>
                         <p class="task-date">Due Date: 2024-08-31</p>
