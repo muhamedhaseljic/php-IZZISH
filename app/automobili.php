@@ -259,6 +259,18 @@ tbody tr:last-child {
             align-items: center; /* Align items vertically */
             justify-content: flex-end; /* Align items to the right */
         }
+        .noEmployee{
+            background-color: #f0a2a2;
+            border-radius: 10px;
+            padding: 5px;
+            width: 131px;
+        }
+        .yesEmployee{
+            background-color: #a2f0b1;
+            border-radius: 10px;
+            padding: 5px;
+            display: inline-block;
+        }
     </style>
     
     <div class="custom-main-content content">
@@ -312,10 +324,10 @@ tbody tr:last-child {
                             <?php
 
                                 if($car['employee_name']){
-                                    echo $car['employee_name'] ." ".$car['employee_last_name'];
+                                    echo "<div class='yesEmployee'>" . $car['employee_name'] ." ".$car['employee_last_name']. "</div>";
                                 }
                                 else{
-                                    echo "Nema vozaća";
+                                    echo "<div class='noEmployee'>Nema vozaća</div>";
                                 }
 
                             ?>
