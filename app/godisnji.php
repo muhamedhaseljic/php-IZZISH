@@ -10,7 +10,7 @@ require_once "../classes/Bolovanje.php";
     width: 100%;
     padding: 80px;
     padding-top:20px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     height: 100vh;
     padding-bottom:0px;    
     display: flex;
@@ -38,9 +38,9 @@ require_once "../classes/Bolovanje.php";
     width: 300px;
     border-radius: 20px;
     border: none;
-    color: white;
-    background-color:#171c22;
-    border:1px solid white;
+    color: #132650;
+    background-color:white;
+    border:1px solid #132650;
 }
 
 /* Table Styling */
@@ -63,7 +63,7 @@ require_once "../classes/Bolovanje.php";
     padding: 15px;
     text-align: left;
     color: #fff;
-    background-color: #272c78;
+    background-color: #132650;
     border: none; /* Remove header cell border */
 }
 
@@ -93,9 +93,9 @@ tbody tr:last-child {
 
 .custom-table tbody tr td {
     border: none;
-    background-color:#171c22 ;
+    background-color:white ;
     vertical-align: middle;
-    
+    color:black;
 }
 
 .custom-table tbody tr:hover td {
@@ -151,7 +151,7 @@ tbody tr:last-child {
 }
 
 .custom-main-content h1{
-    color:white;
+    color:#132650;
     margin-bottom:20px;
 }
 .scrolling-divv{
@@ -160,7 +160,7 @@ tbody tr:last-child {
     box-sizing: border-box;
     width: 100%;
     scrollbar-width: thin;
-    scrollbar-color: white #16171b;
+    scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
 .tabs {
@@ -172,7 +172,7 @@ tbody tr:last-child {
 }
 
 .tab {
-    background-color: #0d1017;
+    background-color: #132650;
     padding: 10px 10px;
     color: white;
     cursor: pointer;
@@ -182,7 +182,7 @@ tbody tr:last-child {
 }
 
 .tab:hover, .tab.active {
-    background-color: #171c22;
+    background-color: #23355d;
 }
 
 /* Main content area */
@@ -201,13 +201,11 @@ tbody tr:last-child {
 }
 
 .box {
-    width: 1480px; /* Set to a larger fixed width */
+    width: 1200px; /* Set to a larger fixed width */
     max-width: 100%; /* Ensures it doesn’t exceed the viewport width */
     height: 600px;
-    background-color: #0d1017;
+    background-color: #ebeef5;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     
     color: white;
     margin: 0; /* No margin to ensure it uses full width */
@@ -217,7 +215,7 @@ tbody tr:last-child {
 .box h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: white;
+    color: #132650;
 }
 
 .request {
@@ -283,11 +281,10 @@ tbody tr:last-child {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0px;
-
 }
 
 .styled-table thead th{
-    background-color: #262c78;
+    background-color:#132650;
     position: sticky;
     top: 0;
     padding: 15px;
@@ -295,7 +292,7 @@ tbody tr:last-child {
     padding-right: 0;
     color: white;
     font-weight: bold;
-    border: 1px solid #343a40; /* Existing bottom border */
+    border: 1px solid #132650; /* Existing bottom border */
     
     
     
@@ -305,15 +302,19 @@ tbody tr:last-child {
     padding: 15px;
     text-align: left;
     padding-right: 0;
-    border: 1px solid #343a40;
+    border-bottom: 1px solid #343a40;
 }
 
 .styled-table tbody tr {
-    background-color: #171c22;
+    background-color: white;
+    color:black;
+}
+.styled-table tbody tr td:first-child {
+    border-left: 1px solid #343a40;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #15171a;
+.styled-table tbody tr td:last-child {
+    border-right: 1px solid #343a40;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -334,15 +335,16 @@ tbody tr:last-child {
 
 .status.active {
     background-color: #a2f0b1;
-    color: #1d7d3a;
+    color: black;
     text-decoration: none;
-
+    font-weight: 200;
 
 }
 
 .status.inactive {
     background-color: #f0a2a2;
-    color: #7d1d1d;
+    color: black;
+    font-weight: 200;
     text-decoration: none;
 
 }
@@ -350,7 +352,7 @@ tbody tr:last-child {
     
     <div class="custom-main-content content">
         <div>
-        <h1>Godišnji odmor</h1>
+        <h1>Bolovanje</h1>
         <div class="tabs">
             <div class="tab active" onclick="showContainer('na čekanju')">NA ČEKANJU</div>
             <div class="tab" onclick="showContainer('odobreno')">ODOBRENO</div>
