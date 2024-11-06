@@ -97,7 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     width: 100%;
     
     
-    background-color: #0d1017;
+    background-color: #ebeef5;
     
     padding-bottom:0px;
     display: flex;
@@ -114,9 +114,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   flex-wrap: wrap;
   gap: 15px;
   justify-content: space-between;
-  background-color: #171c22;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
+  border: 1px solid #132650;
 }
 
 .form-group {
@@ -134,11 +135,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  background-color: #ebeef5;
+  color: #132650;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
+  border: 1px solid #132650;
 }
 .form-group input:focus{
     border: 1px solid #008cba;
@@ -172,13 +174,13 @@ textarea {
   background-color: #2a2b6a;
 }
 label{
-    color:white;
+    color:black;
     margin:0;
     
 }
 .forma-custom h2 {
     text-align: left;
-    color: #fff;
+    color: #132650;
     margin-bottom: 20px;
     
     
@@ -187,14 +189,14 @@ label{
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
+    background-color: #23355d;
     color: #fff;
     text-decoration:none;
 }
@@ -244,7 +246,7 @@ label{
             white-space: nowrap; /* Ensure it scrolls horizontally */
             margin-bottom:0px;
             scrollbar-width: thin;
-    scrollbar-color: white #16171b;
+    scrollbar-color: #13264f white;
         }
 
         .person {
@@ -268,26 +270,32 @@ label{
         }
         .btn-add-person{
           padding: 10px 20px;
-    color: #fff;
     
-    background-color: white;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    color: black;
     font-weight:800;
+    color:white
+        }
+        .btn-add-person:hover{
+          background-color: #23355d;
+
         }
         
         .person button {
             margin-top: 10px;
-            background-color: white;
-            color: black;
+            background-color: #13264f;
+            color: white;
     font-weight:800;
             border: none;
             padding: 10px 10px;
             cursor: pointer;
             border: none;
     border-radius: 20px;
+        }
+        .person button:hover{
+          background-color:#23355d;
         }
         .razmak{
           display: none;align-items: flex-start; gap: 20px;
@@ -337,15 +345,15 @@ input[type="checkbox"] + label:before {
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-    border: 1px solid white; /* Border color */
+    border: 1px solid #132650; /* Border color */
     border-radius: 4px; /* Rounded corners */
-    background-color: #0d1017; /* Background color */
+    background-color:#ebeef5; /* Background color */
     transition: background-color 0.3s, border-color 0.3s;
 }
 
 /* Style for checked state */
 input[type="checkbox"]:checked + label:before {
-    background-color: #008cba; /* Checked background color */
+    background-color: #132650; /* Checked background color */
     border-color: #008cba; /* Change border color when checked */
 }
 
@@ -360,7 +368,7 @@ input[type="checkbox"]:checked + label:after {
     color: white; /* Check mark color */
 }
 .naslov-bakterije{
-  color:white;
+  color:#132650;
   font-size:18px;
   margin-bottom:20px;
 }
