@@ -113,7 +113,7 @@
 }
 
 button#submitBtn {
-    padding: 10px 20px;
+    padding: 20px 60px;
     font-size: 16px;
     cursor: pointer;
     background-color: #132650;
