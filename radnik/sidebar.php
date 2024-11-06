@@ -9,7 +9,7 @@ nav#sidebar {
     left: 0;
     width:  270px;
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid #132650;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
 }
@@ -22,26 +22,26 @@ a.nav-item {
     padding: 0.43rem 0.95rem;
     margin-bottom: 5px;
     margin-top: 5px;
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 100;
 }
 a.nav-item:hover{
-    background-color:#0298c9;
+    background-color:#23355d;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .nav-item.active {
-    background-color:#008cba;
+    background-color:#23355d;
     
     color: white;
     text-decoration:none;
     border-radius: 10px;
 }
 .sidebar-custom{
-    background-color: #171c22;
+    background-color: #132650;
 }
 div.nav-item{
     position: relative;
@@ -49,7 +49,7 @@ div.nav-item{
     padding: 0.55rem 0.35rem;
     margin-bottom: -1px;
     
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 400;
     margin-bottom:0px; 
@@ -64,11 +64,11 @@ img.nav-item{
     position: relative;
     display: block;
     padding: 0.55rem 0.35rem;    
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 400;
-    margin-bottom:110px;
-    margin-top: 238px;
+    margin-bottom:70px;
+    margin-top: 110px;
 }
 .sidebar-custom  a.nav-item:last-child {
     position: relative;
@@ -76,7 +76,7 @@ img.nav-item{
     padding: 0.55rem 0.95rem;
     margin-bottom: -1px;
     
-    background-color: #171c22;
+    background-color: #132650;
     color: white;
     font-weight: 100;
     justify-content:center;
@@ -113,7 +113,7 @@ nav#sidebar .sidebar-list .hr-custom {
     margin: 0 -20px; /* Counter the parent padding with negative margin */
     width: calc(100% + 40px); /* Adjust width to account for negative margins */
     height: 1px; /* Set the height */
-    background-color: #0d1017; /* Background color for the line */
+    background-color: #575757; /* Background color for the line */
     border: none; /* Remove default border */
 }
 
