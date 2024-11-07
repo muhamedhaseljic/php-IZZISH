@@ -1,30 +1,24 @@
 <?php
-// Start the session
 require_once "config/config.php";
 require_once "radnik/Radnik.php";
-// Load Composer's autoloader for PHPMailer
 require 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Database connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     $userEmail = $_POST['email'];
 
-    // Check if email exists in the database
     $stmt = $conn->prepare("SELECT email FROM radnici WHERE email = ?");
     $stmt->bind_param("s", $userEmail);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Create a new PHPMailer object
         $mail = new PHPMailer(true);
 
         try {
-            // Server settings for email
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
@@ -35,18 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->CharSet = 'UTF-8';
             $mail->Encoding = 'base64';
 
-            // Recipients
             $mail->setFrom('your_email@example.com', 'IZZISLJ');
             $mail->addAddress($userEmail);
 
-            // Email content
             $mail->isHTML(true);
             $mail->Subject = '[Institu za zdravlje i sigurnost ljudi] Molimo unesite novu lozinku';
 
-            // Create the reset URL (e.g. reset-password.php page with email as query param)
             $resetLink = "http://localhost/retro/password_change.php";
 
-            // HTML email body
             $mail->Body = '
                 <html>
                 <head>
@@ -131,14 +121,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                 </html>
             ';
 
-            // Send the email
             $mail->send();
             echo 'An email has been sent with instructions to reset your password.';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
-        // Email not found
         echo 'The email you entered is not registered in our system.';
     }
 }
@@ -168,9 +156,9 @@ body {
     text-align: justify;
     text-justify: inter-word;
 
-    position: relative; /* To ensure the pseudo-element is positioned correctly */
+    position: relative; 
     margin: 0;
-    min-height: 100vh; /* Ensures the body covers the entire viewport */
+    min-height: 100vh; 
 
   
 }
@@ -181,15 +169,14 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('images/pozadina.jpg'); /* Replace with your image path */
+    background-image: url('images/pozadina.jpg'); 
     background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
-    opacity: 0.30; /* Adjust opacity for the background image */
-    z-index: -1; /* Keeps the background behind the body content */
+    opacity: 0.30; 
+    z-index: -1; 
 }
 .login-box {
-    /*position: relative;*/
     width: 450px;
     padding: 20px;
     background: #11131f;
@@ -254,9 +241,7 @@ a {
     color: #008cba;
     font-size: 16px;
     text-decoration: none;
-    /*text-transform: uppercase;*/
     overflow: hidden;
-    /*letter-spacing: 3px;*/
     margin-top: 40px;
     border: none;
     cursor: pointer;
@@ -281,7 +266,6 @@ button{
     padding: 10px 65px;
     font-size: 14px;
     text-decoration: none;
-    /*text-transform: uppercase;*/
     overflow: hidden;
     letter-spacing: 2px;
     margin-top: 50px;
@@ -414,7 +398,7 @@ h1{
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width linear; /* Smooth transition */
+    transition: width linear; 
 }
 
 @keyframes progress {
@@ -467,11 +451,11 @@ if(isset($_SESSION['message'])) :?>
 }
 
 let timeout;
-let totalDuration = 5000; // Total time in milliseconds (5 seconds)
-let remainingTime = totalDuration; // Time remaining on countdown
+let totalDuration = 5000; 
+let remainingTime = totalDuration; 
 let startTime;
-let elapsedTime = 0; // Tracks how much time has passed
-let isHovered = false; // Tracks hover state
+let elapsedTime = 0; 
+let isHovered = false;
 let progressBar, popup;
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -479,11 +463,11 @@ document.addEventListener("DOMContentLoaded", function() {
     progressBar = document.getElementById("progress-bar");
 
     if (popup) {
-        popup.style.display = 'block'; // Show the popup
-        progressBar.style.width = '100%'; // Set it to full width immediately
+        popup.style.display = 'block'; 
+        progressBar.style.width = '100%'; 
         setTimeout(() => {
-            startTimer(remainingTime); // Start the timer and progress bar
-        }, 50); // A slight delay for the initial width to take effect.
+            startTimer(remainingTime); 
+        }, 50); 
 
         popup.addEventListener("mouseenter", pauseTimer);
         popup.addEventListener("mouseleave", resumeTimer);
@@ -491,12 +475,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function startTimer(duration) {
-    // Start the progress bar and countdown
     startTime = Date.now();
     timeout = setTimeout(hidePopup, duration);
     
     progressBar.style.transitionDuration = duration + 'ms';
-    progressBar.style.width = '0%'; // Animate to 0% over the duration
+    progressBar.style.width = '0%'; 
 }
 
 function hidePopup() {
@@ -505,23 +488,22 @@ function hidePopup() {
 
 function pauseTimer() {
     if (!isHovered) {
-        clearTimeout(timeout); // Pause the countdown timer
-        elapsedTime += Date.now() - startTime; // Add the time that has passed
-        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+        clearTimeout(timeout); 
+        elapsedTime += Date.now() - startTime; 
+        remainingTime = totalDuration - elapsedTime; 
 
-        // Freeze the progress bar
         let percentageElapsed = (elapsedTime / totalDuration) * 100;
         progressBar.style.width = (100 - percentageElapsed) + '%';
-        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        progressBar.style.transitionDuration = '0ms'; 
         isHovered = true;
     }
 }
 
 function resumeTimer() {
     if (isHovered) {
-        startTimer(remainingTime); // Resume the countdown
-        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
-        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        startTimer(remainingTime); 
+        progressBar.style.transitionDuration = remainingTime + 'ms'; 
+        progressBar.style.width = '0%'; 
         isHovered = false;
     }
 }

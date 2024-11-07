@@ -1,7 +1,7 @@
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     padding: 100px;
     padding-top:20px;

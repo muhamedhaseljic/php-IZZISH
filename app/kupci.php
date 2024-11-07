@@ -9,7 +9,7 @@ $kupac = $kupac->fetch_all();
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -44,12 +44,11 @@ $kupac = $kupac->fetch_all();
     border:1px solid #132650;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px; 
     
 }
 
@@ -70,7 +69,7 @@ thead tr {
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none;
 }
 
 .custom-table tbody tr td:first-child {
@@ -84,12 +83,12 @@ thead tr {
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
@@ -218,31 +217,29 @@ tbody tr:last-child {
             font-size: 14px;
         }
 
-        /* Close button */
         .popup {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed; 
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
+            overflow: auto;
             
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            background-color: rgba(0, 0, 0, 0.7); 
             justify-content: center;
             align-items: center;
             z-index: 999;
         }
 
-        /* Popup content */
         .popup-content {
             background-color: white;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%; 
             margin-top:100px;
             display: flex;
             border-radius: 8px;
@@ -252,9 +249,6 @@ tbody tr:last-child {
             color:black;
         }
 
-
-
-        /* The close button */
         .close {
             color: #aaa;
             float: right;
@@ -271,9 +265,9 @@ tbody tr:last-child {
             cursor: pointer;
         }
         .button-container{
-            display: flex; /* Align items horizontally */
-            align-items: center; /* Align items vertically */
-            justify-content: flex-end; /* Align items to the right */
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end;
         }
         .noEmployee{
             background-color: #f0a2a2;
@@ -357,7 +351,6 @@ tbody tr:last-child {
                         </td>
                     </tr>
                     <?php endforeach; ?>
-                    <!-- Repeat for other entries -->
                 </tbody>
             </table>
             </div>
@@ -385,7 +378,6 @@ tbody tr:last-child {
                     <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
                     <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
                 </div>
-                <!-- Add more fields as needed -->
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -393,12 +385,10 @@ tbody tr:last-child {
 </div>
 
 <script>
-        // Get the popup element
         document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById("popup");
     const closeBtn = document.getElementById("close-popup");
 
-    // Function to show the popup and populate details
     function showPopup(customer) {
 
         document.getElementById("osobe-product-name").style.display = "block";  // Show the person section
@@ -414,18 +404,16 @@ tbody tr:last-child {
         document.getElementById("customer-objekt").textContent = customer.objekat;
         document.getElementById("customer-employee-name").textContent = customer.employee_name;
         document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
-        //document.getElementById("customer-product-name").textContent = customer.produkt_osoba_name;
 
         const produktOsobaNames = customer.produkt_osoba_names;
-        //const productNames = customer.produkt_osoba_names.split(','); // Assuming it's comma-separated
         const productNameContainer = document.getElementById("customer-product-name");
-        productNameContainer.innerHTML = ''; // Clear existing persons
+        productNameContainer.innerHTML = ''; 
 
         if (produktOsobaNames) {
             const productNamesArray = produktOsobaNames.split(',');
             productNamesArray.forEach(function(name) {
                 const li = document.createElement('li');
-                li.textContent = name.trim(); // Create a new list item for each person
+                li.textContent = name.trim(); 
                 productNameContainer.appendChild(li);
             });
             document.getElementById("customer-product-food").style.display = "none";
@@ -441,20 +429,17 @@ tbody tr:last-child {
         popup.style.display = "block";
     }
 
-    // Event listener for all "View" buttons
     document.querySelectorAll(".view-customer-btn").forEach(function(button) {
         button.addEventListener("click", function() {
             const employee = JSON.parse(this.getAttribute("data-customer"));
-            showPopup(employee);  // Show the popup with employee details
+            showPopup(employee);  
         });
     });
 
-    // Close the popup when the user clicks on <span> (x)
     closeBtn.onclick = function() {
         popup.style.display = "none";
     }
 
-    // Close the popup when clicking outside of the content
     window.onclick = function(event) {
         if (event.target == popup) {
             popup.style.display = "none";
@@ -467,14 +452,13 @@ document.getElementById('search-input').addEventListener('input', function() {
         const rows = document.querySelectorAll('#customer-table tr');
 
         rows.forEach(row => {
-            const nameCell = row.querySelector('td:nth-child(2)'); // Column for 'Ime i prezime'
+            const nameCell = row.querySelector('td:nth-child(2)'); 
             const name = nameCell.textContent.toLowerCase();
 
-            // Check if the name starts with the search input
             if (name.startsWith(searchValue)) {
-                row.style.display = ''; // Show the row
+                row.style.display = ''; 
             } else {
-                row.style.display = 'none'; // Hide the row
+                row.style.display = 'none'; 
             }
         });
     });

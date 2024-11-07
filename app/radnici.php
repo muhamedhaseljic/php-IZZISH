@@ -2,7 +2,7 @@
   
   <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -37,7 +37,6 @@
     border:1px solid #132650;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
@@ -65,7 +64,7 @@ thead tr {
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none;
 }
 
 .custom-table tbody tr td:first-child {
@@ -79,12 +78,12 @@ thead tr {
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px; 
     border-bottom-right-radius: 20px;
 }
 
@@ -180,10 +179,7 @@ tbody tr:last-child {
     scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
-        /* Pop-up styling */
 
-
-        /* Styling for the picture */
         .profile-picture {
             width: 100px;
             height: 100px;
@@ -218,31 +214,29 @@ tbody tr:last-child {
             font-size: 14px;
         }
 
-        /* Close button */
         .popup {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed; 
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
+            overflow: auto;
             
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            background-color: rgba(0, 0, 0, 0.7); 
             justify-content: center;
             align-items: center;
             z-index: 999;
         }
 
-        /* Popup content */
         .popup-content {
             background-color: white;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto; 
             padding: 20px;
             /*border: 1px solid #888;*/
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%; 
             margin-top:100px;
             display: flex;
             border-radius: 8px;
@@ -254,7 +248,6 @@ tbody tr:last-child {
 
 
 
-        /* The close button */
         .close {
             color: #aaa;
             float: right;
@@ -269,20 +262,20 @@ tbody tr:last-child {
             cursor: pointer;
         }
         .button-container{
-            display: flex; /* Align items horizontally */
-            align-items: center; /* Align items vertically */
-            justify-content: flex-end; /* Align items to the right */
+            display: flex; 
+            align-items: center;
+            justify-content: flex-end; 
         }
 
         .modal {
-            display: none; /* Hidden by default */
+            display: none; 
             position: fixed;
             z-index: 999;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.7); 
         }
 
         .modal-content {
@@ -354,7 +347,7 @@ tbody tr:last-child {
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width linear; /* Smooth transition */
+    transition: width linear; 
 }
 
 @keyframes progress {
@@ -418,7 +411,6 @@ if(isset($_SESSION['message'])) :?>
         </thead>
         <tbody id="employee-table">
             <?php 
-            // Fetch all employees from the database
             $sql = "SELECT * FROM radnici";
             $run = $conn->query($sql);
             $results = $run->fetch_all(MYSQLI_ASSOC);
@@ -449,7 +441,6 @@ if(isset($_SESSION['message'])) :?>
         <input type="hidden" name="deleteReason" id="deleteReason">
     </form>
 
-    <!-- Modal -->
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePopup()">&times;</span>
@@ -467,8 +458,6 @@ if(isset($_SESSION['message'])) :?>
 </div>
         </div>
 
-        <!-- Pop-up Window -->
-<!-- Popup HTML -->
 <div id="popup" class="popup">
     <div class="popup-content">
         <div class="profile-picture">
@@ -492,7 +481,6 @@ if(isset($_SESSION['message'])) :?>
                 <li><strong>Pozicija:</strong> <span id="employee-position"></span></li>
                 <li><strong>Plata:</strong> <span id="employee-salary"></span></li>
                 <li><strong>Bilješke:</strong> <span id="employee-notes"></span></li>
-                <!-- Add more fields as needed -->
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -501,12 +489,10 @@ if(isset($_SESSION['message'])) :?>
 
 
 <script>
-        // Get the popup element
         document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById("popup");
     const closeBtn = document.getElementById("close-popup");
 
-    // Function to show the popup and populate details
     function showPopup(employee) {
         document.getElementById("employee-id").textContent = employee.employee_id;
         document.getElementById("employee-first-name").textContent = employee.first_name;
@@ -529,20 +515,17 @@ if(isset($_SESSION['message'])) :?>
         popup.style.display = "block";
     }
 
-    // Event listener for all "View" buttons
     document.querySelectorAll(".view-employee-btn").forEach(function(button) {
         button.addEventListener("click", function() {
             const employee = JSON.parse(this.getAttribute("data-employee"));
-            showPopup(employee);  // Show the popup with employee details
+            showPopup(employee);  
         });
     });
 
-    // Close the popup when the user clicks on <span> (x)
     closeBtn.onclick = function() {
         popup.style.display = "none";
     }
 
-    // Close the popup when clicking outside of the content
     window.onclick = function(event) {
         if (event.target == popup) {
             popup.style.display = "none";
@@ -557,20 +540,18 @@ if(isset($_SESSION['message'])) :?>
         const rows = document.querySelectorAll('#employee-table tr');
 
         rows.forEach(row => {
-            const nameCell = row.querySelector('td:nth-child(2)'); // Column for 'Ime i prezime'
+            const nameCell = row.querySelector('td:nth-child(2)'); 
             const name = nameCell.textContent.toLowerCase();
 
-            // Check if the name starts with the search input
             if (name.startsWith(searchValue)) {
-                row.style.display = ''; // Show the row
+                row.style.display = ''; 
             } else {
-                row.style.display = 'none'; // Hide the row
+                row.style.display = 'none'; 
             }
         });
     });
 
     function showPopup(employeeId, employeeName, employeeLastName) {
-        // Set the employee's data to the modal and show it
         document.getElementById('employeeId').value = employeeId;
         document.getElementById('employeeName').innerText = employeeName;
         document.getElementById('employeeLastName').innerText = employeeLastName;
@@ -578,27 +559,21 @@ if(isset($_SESSION['message'])) :?>
     }
 
     function closePopup() {
-        // Hide the modal
         document.getElementById('modal').style.display = "none";
     }
 
     function submitForm() {
-        // Get the reason input value
         let reasonInput = document.getElementById('reason').value.trim();
 
-        // Check if the reason input is filled
         if (reasonInput !== "") {
-            // Set the reason in the form and submit it
             document.getElementById('deleteReason').value = reasonInput;
-            console.log("Submitting form with reason: " + reasonInput); // Debugging log
-            document.getElementById('deleteForm').submit(); // Submit form via POST
+            console.log("Submitting form with reason: " + reasonInput); 
+            document.getElementById('deleteForm').submit(); 
         } else {
-            // Show an alert if the reason input is empty
             alert('Please provide a reason for deleting.');
         }
     }
 
-    // Event listener for form submission using Enter key in the input
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('reason').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
@@ -609,11 +584,11 @@ if(isset($_SESSION['message'])) :?>
     });
 
     let timeout;
-let totalDuration = 5000; // Total time in milliseconds (5 seconds)
-let remainingTime = totalDuration; // Time remaining on countdown
+let totalDuration = 5000; 
+let remainingTime = totalDuration; 
 let startTime;
-let elapsedTime = 0; // Tracks how much time has passed
-let isHovered = false; // Tracks hover state
+let elapsedTime = 0; 
+let isHovered = false;
 let progressBar, popup;
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -621,11 +596,11 @@ document.addEventListener("DOMContentLoaded", function() {
     progressBar = document.getElementById("progress-bar");
 
     if (popup) {
-        popup.style.display = 'block'; // Show the popup
-        progressBar.style.width = '100%'; // Set it to full width immediately
+        popup.style.display = 'block'; 
+        progressBar.style.width = '100%'; 
         setTimeout(() => {
-            startTimer(remainingTime); // Start the timer and progress bar
-        }, 50); // A slight delay for the initial width to take effect.
+            startTimer(remainingTime); 
+        }, 50); 
 
         popup.addEventListener("mouseenter", pauseTimer);
         popup.addEventListener("mouseleave", resumeTimer);
@@ -633,12 +608,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function startTimer(duration) {
-    // Start the progress bar and countdown
     startTime = Date.now();
     timeout = setTimeout(hidePopup, duration);
     
     progressBar.style.transitionDuration = duration + 'ms';
-    progressBar.style.width = '0%'; // Animate to 0% over the duration
+    progressBar.style.width = '0%'; 
 }
 
 function hidePopup() {
@@ -647,23 +621,22 @@ function hidePopup() {
 
 function pauseTimer() {
     if (!isHovered) {
-        clearTimeout(timeout); // Pause the countdown timer
-        elapsedTime += Date.now() - startTime; // Add the time that has passed
-        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+        clearTimeout(timeout); 
+        elapsedTime += Date.now() - startTime; 
+        remainingTime = totalDuration - elapsedTime; 
 
-        // Freeze the progress bar
         let percentageElapsed = (elapsedTime / totalDuration) * 100;
         progressBar.style.width = (100 - percentageElapsed) + '%';
-        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        progressBar.style.transitionDuration = '0ms'; 
         isHovered = true;
     }
 }
 
 function resumeTimer() {
     if (isHovered) {
-        startTimer(remainingTime); // Resume the countdown
-        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
-        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        startTimer(remainingTime); 
+        progressBar.style.transitionDuration = remainingTime + 'ms'; 
+        progressBar.style.width = '0%'; 
         isHovered = false;
     }
 }

@@ -25,7 +25,6 @@
         $notes = $_POST['notes'];
 
         
-        //photo
         $photo_path = basename($_FILES['photo_path']['name']);
         $target_file = $target_dir . $photo_path;
         $uploadOk = 1;

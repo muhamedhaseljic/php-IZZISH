@@ -1,5 +1,4 @@
 <?php
-// Start the session
 require_once "config/config.php";
 require_once "radnik/Radnik.php";
 $radnik = new Radnik();
@@ -36,22 +35,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     exit;
 }
 
-//session_start();
 
-// Example hardcoded users (you can replace this with a database query)
-
-
-// Check if the form was submitted
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Check if the user exists and the password is correct
     if (isset($users[$email]) && $users[$email]['password'] === $password) {
-        // Store the user role in the session
         $_SESSION['role'] = $users[$email]['role'];
 
-        // Redirect based on user role
         if ($users[$email]['role'] === 'admin') {
             header('Location: http://localhost/retro/app/dashboard.php?page=home');
         } elseif ($users[$email]['role'] === 'employee') {
@@ -59,7 +50,6 @@ if (isset($_POST['login'])) {
         }
         exit();
     } else {
-        // If login fails, display an error message
         echo "<script>alert('Invalid email or password');</script>";
     }
 }
@@ -91,15 +81,14 @@ body {
     text-align: justify;
     text-justify: inter-word;
 
-    position: relative; /* To ensure the pseudo-element is positioned correctly */
+    position: relative; 
     margin: 0;
-    min-height: 100vh; /* Ensures the body covers the entire viewport */
+    min-height: 100vh; 
 
   
 }
 
 .login-box {
-    /*position: relative;*/
     width: 600px;
     padding: 20px;
     background-color: white;
@@ -164,9 +153,7 @@ a {
     color: #008cba;
     font-size: 16px;
     text-decoration: none;
-    /*text-transform: uppercase;*/
     overflow: hidden;
-    /*letter-spacing: 3px;*/
     margin-top: 40px;
     border: none;
     cursor: pointer;
@@ -191,7 +178,6 @@ button{
     padding: 10px 65px;
     font-size: 14px;
     text-decoration: none;
-    /*text-transform: uppercase;*/
     overflow: hidden;
     letter-spacing: 2px;
     margin-top: 50px;
@@ -328,7 +314,7 @@ h1{
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width linear; /* Smooth transition */
+    transition: width linear; 
 }
 
 @keyframes progress {
@@ -338,9 +324,9 @@ h1{
 
 .nav-item{
     position: absolute;
-      bottom: 0;  /* Aligns the image to the bottom */
-      left: 0;   /* Aligns the image to the right */
-      margin: 20px; /* Optional: Adds a little padding from the edges */
+      bottom: 0;  
+      left: 0;   
+      margin: 20px; 
       margin-bottom: 50px;
 }
 </style>
@@ -377,7 +363,7 @@ if(isset($_SESSION['message'])) :?>
             <label for="password"> Šifra</label>
             <input type="password" id="password" name="password" placeholder="Šifra" required>
         </div>
-            <a href="password_reset.php" class="forgot-password">Zaboravili ste šifru?</a> <!-- Forgot Password Link -->
+            <a href="password_reset.php" class="forgot-password">Zaboravili ste šifru?</a> 
             <button type="submit" name="login">Prijavi se</button>
         </form>
     </div>
@@ -395,11 +381,11 @@ if(isset($_SESSION['message'])) :?>
 }
 
 let timeout;
-let totalDuration = 5000; // Total time in milliseconds (5 seconds)
-let remainingTime = totalDuration; // Time remaining on countdown
+let totalDuration = 5000; 
+let remainingTime = totalDuration; 
 let startTime;
-let elapsedTime = 0; // Tracks how much time has passed
-let isHovered = false; // Tracks hover state
+let elapsedTime = 0; 
+let isHovered = false; 
 let progressBar, popup;
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -407,11 +393,11 @@ document.addEventListener("DOMContentLoaded", function() {
     progressBar = document.getElementById("progress-bar");
 
     if (popup) {
-        popup.style.display = 'block'; // Show the popup
-        progressBar.style.width = '100%'; // Set it to full width immediately
+        popup.style.display = 'block'; 
+        progressBar.style.width = '100%'; 
         setTimeout(() => {
-            startTimer(remainingTime); // Start the timer and progress bar
-        }, 50); // A slight delay for the initial width to take effect.
+            startTimer(remainingTime); 
+        }, 50); 
 
         popup.addEventListener("mouseenter", pauseTimer);
         popup.addEventListener("mouseleave", resumeTimer);
@@ -419,12 +405,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function startTimer(duration) {
-    // Start the progress bar and countdown
     startTime = Date.now();
     timeout = setTimeout(hidePopup, duration);
     
     progressBar.style.transitionDuration = duration + 'ms';
-    progressBar.style.width = '0%'; // Animate to 0% over the duration
+    progressBar.style.width = '0%'; 
 }
 
 function hidePopup() {
@@ -433,23 +418,22 @@ function hidePopup() {
 
 function pauseTimer() {
     if (!isHovered) {
-        clearTimeout(timeout); // Pause the countdown timer
-        elapsedTime += Date.now() - startTime; // Add the time that has passed
-        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+        clearTimeout(timeout); 
+        elapsedTime += Date.now() - startTime;
+        remainingTime = totalDuration - elapsedTime; 
 
-        // Freeze the progress bar
         let percentageElapsed = (elapsedTime / totalDuration) * 100;
         progressBar.style.width = (100 - percentageElapsed) + '%';
-        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        progressBar.style.transitionDuration = '0ms'; 
         isHovered = true;
     }
 }
 
 function resumeTimer() {
     if (isHovered) {
-        startTimer(remainingTime); // Resume the countdown
-        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
-        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        startTimer(remainingTime);
+        progressBar.style.transitionDuration = remainingTime + 'ms'; 
+        progressBar.style.width = '0%'; 
         isHovered = false;
     }
 }

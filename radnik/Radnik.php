@@ -78,19 +78,17 @@ protected $conn;
         if($this->is_logged()) {
             $employee_id = $_SESSION['employee_id'];
             
-            // Assuming you have a database connection $conn
             $stmt = $this->conn->prepare("SELECT * FROM radnici WHERE employee_id = ?");
             $stmt->bind_param("i", $employee_id);
             $stmt->execute();
             $result = $stmt->get_result();
             
             if($result->num_rows > 0) {
-                // Fetch employee data (photo path)
                 $employee_data = $result->fetch_assoc();
-                return $employee_data;  // Return the employee's photo path
+                return $employee_data; 
             }
         }
-        return false;  // Return false if not logged in or no employee found
+        return false; 
     }
 
     public function is_admin() {

@@ -6,7 +6,7 @@ require_once "../classes/Bolovanje.php";
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     padding: 80px;
     padding-top:20px;
@@ -14,7 +14,7 @@ require_once "../classes/Bolovanje.php";
     height: 100vh;
     padding-bottom:0px;    
     display: flex;
-    justify-content: center;  /* Center horizontally */
+    justify-content: center;
     
 }
 .d-flex {
@@ -43,12 +43,11 @@ require_once "../classes/Bolovanje.php";
     border:1px solid #132650;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px;
     
 }
 
@@ -64,7 +63,7 @@ require_once "../classes/Bolovanje.php";
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none;
 }
 
 .custom-table tbody tr td:first-child {
@@ -78,12 +77,12 @@ require_once "../classes/Bolovanje.php";
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
@@ -164,11 +163,11 @@ tbody tr:last-child {
     padding-right:5px;
 }
 .tabs {
-    width: auto; /* Allow tabs to fit to content */
+    width: auto;
     display: flex;
     position: fixed;
     top: 0;
-    margin-top: 100px; /* Space for fixed tabs */
+    margin-top: 100px;
 }
 
 .tab {
@@ -185,33 +184,31 @@ tbody tr:last-child {
     background-color: #23355d;
 }
 
-/* Main content area */
 
 
 .container-custom {
-    width: 100%; /* Allow container to fill the space */
-    display: none; /* Hide by default */
-    justify-content: flex-start; /* Align items left */
-    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    display: none;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding-top: 100px;
 }
 
 .active-container-custom {
-    display: flex; /* Show active container */
+    display: flex;
 }
 
 .box {
-    width: 1200px; /* Set to a larger fixed width */
-    max-width: 100%; /* Ensures it doesn’t exceed the viewport width */
+    width: 1200px;
+    max-width: 100%;
     height: 600px;
     background-color: #ebeef5;
     border-radius: 10px;
     
     color: white;
-    margin: 0; /* No margin to ensure it uses full width */
+    margin: 0;
 }
 
-/* Headings and Requests */
 .box h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -245,7 +242,7 @@ tbody tr:last-child {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    margin-bottom: 5px; /* Adds space between the buttons */
+    margin-bottom: 5px;
     font-size: 16px;
 }
 
@@ -292,7 +289,7 @@ tbody tr:last-child {
     padding-right: 0;
     color: white;
     font-weight: bold;
-    border: 1px solid #132650; /* Existing bottom border */
+    border: 1px solid #132650;
     
     
     
@@ -359,10 +356,8 @@ tbody tr:last-child {
             <div class="tab" onclick="showContainer('odbijeno')">ODBIJENO</div>
         </div>
 
-  <!-- Content (vacation requests) -->
   
   <div class="container-custom-div">
-    <!-- Waiting Requests -->
     <div id="na čekanju" class="container-custom active-container-custom">
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -416,7 +411,6 @@ tbody tr:last-child {
         </tr>
         <?php endforeach; ?>
         
-        <!-- Add more rows as needed -->
     </tbody>
 </table>
 </div>
@@ -424,9 +418,8 @@ tbody tr:last-child {
     </div>
 
     
-    <!-- Approved Requests -->
     <div id="odobreno" class="container-custom ">
-      <div class="box"> <!-- Add inline style -->
+      <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odobreno</h2>
     <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
@@ -475,7 +468,6 @@ tbody tr:last-child {
         </tr>
         <?php endforeach; ?>
         
-        <!-- Add more rows as needed -->
     </tbody>
 </table>
 </div>
@@ -483,7 +475,6 @@ tbody tr:last-child {
       </div>
     </div>
 
-    <!-- Rejected Requests -->
     <div id="odbijeno" class="container-custom">
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -536,7 +527,6 @@ tbody tr:last-child {
         </tr>
         <?php endforeach; ?>
         
-        <!-- Add more rows as needed -->
     </tbody>
 </table>
 </div>
@@ -547,19 +537,16 @@ tbody tr:last-child {
         </div>
         <script>
     function showContainer(containerId) {
-    // Hide all containers
     const containers = document.querySelectorAll('.container-custom');
     containers.forEach(container => {
         container.classList.remove('active-container-custom');
     });
 
-    // Show the selected container
     const activeContainer = document.getElementById(containerId);
     if (activeContainer) {
         activeContainer.classList.add('active-container-custom');
     }
 
-    // Update active tab
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
         tab.classList.remove('active');

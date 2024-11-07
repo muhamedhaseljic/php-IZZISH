@@ -6,7 +6,7 @@ require_once "../classes/Automobili.php";
 ?>
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -41,12 +41,11 @@ require_once "../classes/Automobili.php";
     border:1px solid #132650;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px; 
     
 }
 
@@ -63,7 +62,7 @@ require_once "../classes/Automobili.php";
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none;
 }
 
 .custom-table tbody tr td:first-child {
@@ -77,12 +76,12 @@ require_once "../classes/Automobili.php";
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px; 
     border-bottom-right-radius: 20px;
 }
 
@@ -204,31 +203,29 @@ tbody tr:last-child {
             font-size: 14px;
         }
 
-        /* Close button */
         .popup {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed; 
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
+            overflow: auto; 
             
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
             z-index: 999;
         }
 
-        /* Popup content */
         .popup-content {
             background-color: white;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%; 
             margin-top:100px;
             display: flex;
             border-radius: 8px;
@@ -239,7 +236,6 @@ tbody tr:last-child {
 
 
 
-        /* The close button */
         .close {
             color: #aaa;
             float: right;
@@ -255,9 +251,9 @@ tbody tr:last-child {
             cursor: pointer;
         }
         .button-container{
-            display: flex; /* Align items horizontally */
-            align-items: center; /* Align items vertically */
-            justify-content: flex-end; /* Align items to the right */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
         .noEmployee{
             background-color: #f0a2a2;
@@ -341,7 +337,6 @@ tbody tr:last-child {
                     </td>
                     </tr>
                     <?php endforeach; ?>
-                    <!-- Repeat for other entries -->
                 </tbody>
             </table>
             </div>
@@ -362,7 +357,6 @@ tbody tr:last-child {
                 <li><strong>Cijena:</strong> <span id="car-price"></span></li>
                 <li><strong>Kilometraža:</strong> <span id="car-kilometers"></span></li>
 
-                <!-- Add more fields as needed -->
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -370,12 +364,10 @@ tbody tr:last-child {
 </div>
 
 <script>
-        // Get the popup element
         document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById("popup");
     const closeBtn = document.getElementById("close-popup");
 
-    // Function to show the popup and populate details
     function showPopup(car) {
         document.getElementById("car-id").textContent = car.car_id;
         document.getElementById("car-name").textContent = car.name;
@@ -390,20 +382,17 @@ tbody tr:last-child {
         popup.style.display = "block";
     }
 
-    // Event listener for all "View" buttons
     document.querySelectorAll(".view-car-btn").forEach(function(button) {
         button.addEventListener("click", function() {
             const employee = JSON.parse(this.getAttribute("data-car"));
-            showPopup(employee);  // Show the popup with employee details
+            showPopup(employee);
         });
     });
 
-    // Close the popup when the user clicks on <span> (x)
     closeBtn.onclick = function() {
         popup.style.display = "none";
     }
 
-    // Close the popup when clicking outside of the content
     window.onclick = function(event) {
         if (event.target == popup) {
             popup.style.display = "none";

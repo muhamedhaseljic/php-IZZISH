@@ -11,7 +11,7 @@ $history_radnik = $history_radnik->fetch_all();
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -47,12 +47,11 @@ $history_radnik = $history_radnik->fetch_all();
 
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px;
     
 }
 
@@ -68,7 +67,7 @@ $history_radnik = $history_radnik->fetch_all();
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none;
 }
 
 .custom-table tbody tr td:first-child {
@@ -82,12 +81,12 @@ $history_radnik = $history_radnik->fetch_all();
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
@@ -176,10 +175,8 @@ tbody tr:last-child {
     scrollbar-color: #132650 #ebeef5;
     padding-right:5px;
 }
-/* Pop-up styling */
 
 
-        /* Styling for the picture */
         .profile-picture {
             width: 100px;
             height: 100px;
@@ -213,31 +210,29 @@ tbody tr:last-child {
             font-size: 14px;
         }
 
-        /* Close button */
         .popup {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed; 
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
+            overflow: auto;
             
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
             z-index: 999;
         }
 
-        /* Popup content */
         .popup-content {
             background-color: white;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%;
             margin-top:100px;
             display: flex;
             border-radius: 8px;
@@ -246,9 +241,6 @@ tbody tr:last-child {
             position: relative;
         }
 
-
-
-        /* The close button */
         .close {
             color: #aaa;
             float: right;
@@ -264,9 +256,9 @@ tbody tr:last-child {
             cursor: pointer;
         }
         .button-container{
-            display: flex; /* Align items horizontally */
-            align-items: center; /* Align items vertically */
-            justify-content: flex-end; /* Align items to the right */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
     </style>
@@ -318,7 +310,6 @@ tbody tr:last-child {
                         </td>
                     </tr>
                     <?php endforeach; ?>
-                    <!-- Repeat for other entries -->
                 </tbody>
             </table>
             </div>
@@ -348,7 +339,6 @@ tbody tr:last-child {
                 <li><strong>Plata:</strong> <span id="employee-salary"></span></li>
                 <li><strong>Bilješke:</strong> <span id="employee-notes"></span></li>
                 <li><strong>Razlog brisanja:</strong> <span id="employee-reason-notes"></span></li>
-                <!-- Add more fields as needed -->
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -356,12 +346,10 @@ tbody tr:last-child {
 </div>
 
 <script>
-     // Get the popup element
      document.addEventListener("DOMContentLoaded", function() {
     const popup = document.getElementById("popup");
     const closeBtn = document.getElementById("close-popup");
 
-    // Function to show the popup and populate details
     function showPopup(history) {
         document.getElementById("employee-id").textContent = history.history_id;
         document.getElementById("employee-first-name").textContent = history.first_name;
@@ -387,20 +375,17 @@ tbody tr:last-child {
         popup.style.display = "block";
     }
 
-    // Event listener for all "View" buttons
     document.querySelectorAll(".view-employee-btn").forEach(function(button) {
         button.addEventListener("click", function() {
             const history = JSON.parse(this.getAttribute("data-employee"));
-            showPopup(history);  // Show the popup with employee details
+            showPopup(history); 
         });
     });
 
-    // Close the popup when the user clicks on <span> (x)
     closeBtn.onclick = function() {
         popup.style.display = "none";
     }
 
-    // Close the popup when clicking outside of the content
     window.onclick = function(event) {
         if (event.target == popup) {
             popup.style.display = "none";

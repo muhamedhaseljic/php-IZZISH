@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     
     
@@ -63,8 +63,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     padding-bottom:0px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: center;
+    align-items: center;
     height: 100vh;    
     padding: 150px;    
     padding-top:150px;

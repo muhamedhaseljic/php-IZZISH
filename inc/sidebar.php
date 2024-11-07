@@ -20,7 +20,7 @@ nav#sidebar {
 }
 
 nav#sidebar.closed {
-    margin-left: -270px; /* Move the sidebar out of view */
+    margin-left: -270px; 
 }
 a.nav-item {
     position: relative;
@@ -120,12 +120,12 @@ h3.nav-item{
      
 }
 nav#sidebar .sidebar-list .hr-custom {
-    padding: 0; /* Ensure no padding */
-    margin: 0 -20px; /* Counter the parent padding with negative margin */
-    width: calc(100% + 40px); /* Adjust width to account for negative margins */
-    height: 1px; /* Set the height */
-    background-color: #575757; /* Background color for the line */
-    border: none; /* Remove default border */
+    padding: 0; 
+    margin: 0 -20px; 
+    width: calc(100% + 40px); 
+    height: 1px; 
+    background-color: #575757; 
+    border: none; 
 }
 
 

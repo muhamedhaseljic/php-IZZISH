@@ -1,7 +1,7 @@
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -36,12 +36,11 @@
     border:1px solid #132650;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px; 
     
 }
 
@@ -57,7 +56,7 @@
     text-align: left;
     color: #fff;
     background-color: #132650;
-    border: none; /* Remove header cell border */
+    border: none; 
 }
 
 .custom-table tbody tr td:first-child {
@@ -71,12 +70,12 @@
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px; 
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px; 
     border-bottom-right-radius: 20px;
 }
 
@@ -210,7 +209,6 @@ tbody tr:last-child {
                         </td>
                     </tr>
                     <?php endfor; ?>
-                    <!-- Repeat for other entries -->
                 </tbody>
             </table>
             </div>

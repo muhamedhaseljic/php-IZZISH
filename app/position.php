@@ -4,7 +4,6 @@
 	
 	<div class="col-lg-12">
 		<div class="row">
-			<!-- FORM Panel -->
 			<div class="col-md-4">
 			<form action="" id="manage-position">
 				<div class="card">
@@ -43,9 +42,6 @@
 				</div>
 			</form>
 			</div>
-			<!-- FORM Panel -->
-
-			<!-- Table Panel -->
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-body">
@@ -80,7 +76,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- Table Panel -->
 		</div>
 	</div>	
     

@@ -11,7 +11,7 @@ require_once '../config/config.php';?>
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     
     
@@ -19,8 +19,8 @@ require_once '../config/config.php';?>
     
     padding-bottom:0px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: center;
+    align-items: center;
     height: 100vh;    
     padding: 150px;    
     padding-top:150px;
@@ -145,9 +145,9 @@ label{
         color: red;
         font-size: 12px;
         position: absolute;
-        top: 100%;  /* Below the input field */
+        top: 100%;
         left: 0;
-        display: none; /* Hidden by default */
+        display: none;
     }
 </style>
 
@@ -296,9 +296,8 @@ document.getElementById('employeeForm').addEventListener('submit', function (eve
       first_nameError.style.display = 'none';
     }
     
-    // Check if password length is less than 5
     if (password.length < 5) {
-        event.preventDefault();  // Prevent form submission
+        event.preventDefault();
         //alert("Please enter a valid password with at least 5 characters."); // Show the error
         passwordInput.classList.add('invalid');
         errorMessage.style.display = 'inline';

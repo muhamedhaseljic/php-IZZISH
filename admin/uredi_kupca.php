@@ -36,7 +36,7 @@ $resultbacteria = $stmt->get_result();
 
 $selected_bacteria_ids = [];
 while ($row = $resultbacteria->fetch_assoc()) {
-    $selected_bacteria_ids[] = $row['bacteria_id']; // Store bacteria IDs in an array
+    $selected_bacteria_ids[] = $row['bacteria_id'];
 }
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
     
     
@@ -101,8 +101,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     
     padding-bottom:0px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: center;
+    align-items: center;
     height: 100vh;    
     padding: 150px;    
     padding-top:150px;
@@ -227,8 +227,8 @@ label{
 
 }
 .fixed-height {
-            height: 150px; /* Adjust this to your desired form height */
-            position: relative; /* Ensures that the input fields are positioned relative to this container */
+            height: 150px;
+            position: relative;
         }
 
         .form-group.full-width {
@@ -238,24 +238,20 @@ label{
             display: flex;
             
             overflow-x: auto;
-            max-width: 1330px; /* Set a fixed width */
+            max-width: 1330px;
             min-height:185px;
-            /*border: 1px solid #ccc;*/
             padding: 0px;
             
-            white-space: nowrap; /* Ensure it scrolls horizontally */
+            white-space: nowrap;
             margin-bottom:0px;
             scrollbar-width: thin;
     scrollbar-color: #13264f white;
         }
 
         .person {
-            min-width: 400px; /* Each input block size */
+            min-width: 400px;
             padding: 0px;
-            /*border: 1px solid #ddd;*/
-            margin-right: 65px;
-            
-            /*background-color: #f9f9f9;*/
+            margin-right: 65px;          
         }
 
         .person label {
@@ -302,33 +298,26 @@ label{
       
     }
         .analiza{
-      min-width: 400px; /* Each input block size */
+      min-width: 400px;
             padding: 0px;
-            /*border: 1px solid #ddd;*/
             margin-right: 50px;
-            
-            /*background-color: #f9f9f9;*/
-    }
+            }
 
-    /* Hide the default checkbox */
     .analiza-checkbox{
-      min-width: 350px; /* Each input block size */
-            padding: 0px;
-            /*border: 1px solid #ddd;*/
-            
+      min-width: 350px; 
+            padding: 0px;            
             margin-top:10px;
     }
     input[type="checkbox"] {
     display: none;
 }
 
-/* Create a custom checkbox */
 input[type="checkbox"] + label {
     position: relative;
-    padding-left: 35px; /* Space for the custom checkbox */
+    padding-left: 35px; 
     cursor: pointer;
     user-select: none;
-    display: inline-block; /* Ensure the label and checkbox are on the same line */
+    display: inline-block; 
     vertical-align: middle;
     margin-bottom:10px;
 }
@@ -336,7 +325,6 @@ input[type="checkbox"] + label:last-child{
   margin-bottom:0px;
 }
 
-/* Custom checkbox style */
 input[type="checkbox"] + label:before {
     content: "";
     position: absolute;
@@ -345,27 +333,25 @@ input[type="checkbox"] + label:before {
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-    border: 1px solid #132650; /* Border color */
-    border-radius: 4px; /* Rounded corners */
-    background-color:#ebeef5; /* Background color */
+    border: 1px solid #132650; 
+    border-radius: 4px; 
+    background-color:#ebeef5; 
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Style for checked state */
 input[type="checkbox"]:checked + label:before {
-    background-color: #132650; /* Checked background color */
-    border-color: #008cba; /* Change border color when checked */
+    background-color: #132650; 
+    border-color: #008cba; 
 }
 
-/* Add a check mark */
 input[type="checkbox"]:checked + label:after {
-    content: "\2713"; /* Unicode check mark */
+    content: "\2713"; 
     position: absolute;
     left: 3px;
-    top: 50%; /* Centering the checkmark vertically */
-    transform: translateY(-50%); /* Ensure it stays in the middle */
+    top: 50%; 
+    transform: translateY(-50%);
     font-size: 16px;
-    color: white; /* Check mark color */
+    color: white;
 }
 .naslov-bakterije{
   color:#132650;
@@ -454,7 +440,6 @@ input[type="checkbox"]:checked + label:after {
 
   <div id="sanitarnaFields" class="form-group hidden full-width">
   <div id="persons">
-            <!-- Initial Person Input -->
              
             <?php if($persons!=null) foreach($persons as $index=>$person): ?>
             <div class="person" data-id="<?php echo $person['product_person_id'] ?>">
@@ -603,14 +588,13 @@ input[type="checkbox"]:checked + label:after {
         function clearInputs(container) {
     var inputs = container.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = "";  // Clear each input value
+        inputs[i].value = ""; 
     }
 }
 function clearPersons() {
     const personsContainer = document.getElementById('persons');
     const initialPerson = personsContainer.querySelector('.initial');
     
-    // Clear all dynamically added persons except the initial one
     while (personsContainer.children.length > 1) {
         personsContainer.removeChild(personsContainer.lastChild);
     }
@@ -619,26 +603,23 @@ function clearPersons() {
 function addRequired(container) {
     const inputs = container.getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].type !== 'checkbox') { // Exclude checkboxes
+      if (inputs[i].type !== 'checkbox') { 
             inputs[i].setAttribute('required', 'required');
         }
     }
 }
 
-// Helper function to remove 'required' from inputs
 function removeRequired(container) {
     const inputs = container.getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].removeAttribute('required');
     }
 }
-                // Add new person input fields dynamically
                 function addPerson() {
     var personDiv = document.createElement('div');
-    var personCount = document.querySelectorAll('.person').length; // Get the current count of persons
+    var personCount = document.querySelectorAll('.person').length; 
     personDiv.classList.add('person');
     
-    // Use personCount as the index to group name and last name fields
     personDiv.innerHTML = `
         <label for="nameProduct">Ime</label>
         <input type="text" name="persons[${personCount}][name_product]" placeholder="Ime" required>
@@ -651,11 +632,9 @@ function removeRequired(container) {
     document.getElementById('persons').appendChild(personDiv);
 }
 
-// Remove person input fields
 function removePerson(button) {
     button.parentElement.remove();
 
-    // Re-index remaining inputs after removing
     var persons = document.querySelectorAll('.person');
     persons.forEach((personDiv, index) => {
         personDiv.querySelector('input[name^="persons"]').name = `persons[${index}][name_product]`;
@@ -676,19 +655,16 @@ function addvisiblederatizacija(){
   
 }
 function validateCheckboxes() {
-    // Get all checkboxes
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    // Convert NodeList to Array and check if any checkbox is checked
     var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-    // Show error message if no checkbox is checked
     var errorMessage = document.getElementById('error-message');
     if (!isChecked) {
-        errorMessage.style.display = 'block'; // Show error message
-        return false; // Prevent form submission
+        errorMessage.style.display = 'block'; 
+        return false; 
     } else {
-        errorMessage.style.display = 'none'; // Hide error message
-        return true; // Allow form submission
+        errorMessage.style.display = 'none'; 
+        return true; 
     }
 }
 function validateForm() {
@@ -697,10 +673,10 @@ function validateForm() {
 
     if (checkboxes.length === 0) {
         errorMessage.style.display = 'block';
-        return false; // Prevent form submission
+        return false; 
     } else {
         errorMessage.style.display = 'none';
-        return true; // Allow form submission
+        return true; 
     }
 }
 </script>

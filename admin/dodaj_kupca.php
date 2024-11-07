@@ -63,21 +63,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px;
     width: 100%;
-    
-    
     background-color: #ebeef5;
-    
     padding-bottom:0px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: center;
+    align-items: center;
     height: 100vh;    
     padding: 150px;    
     padding-top:150px;
 }
-
 
 .employee-form {
   display: flex;
@@ -196,31 +192,26 @@ label{
 
 }
 .fixed-height {
-            height: 150px; /* Adjust this to your desired form height */
-            position: relative; /* Ensures that the input fields are positioned relative to this container */
+            height: 150px;
+            position: relative;
         }
 
-        #persons {
+#persons {
             display: flex;
             overflow-x: auto;
-            max-width: 1330px; /* Set a fixed width */
-            min-height:185px;
-            /*border: 1px solid #ccc;*/
+            max-width: 1330px;
+            min-height:185px;           
             padding: 0px;
-            
-            white-space: nowrap; /* Ensure it scrolls horizontally */
+            white-space: nowrap;
             margin-bottom:0px;
             scrollbar-width: thin;
             scrollbar-color: #132650 white;
         }
 
         .person {
-            min-width: 400px; /* Each input block size */
+            min-width: 400px;
             padding: 0px;
-            /*border: 1px solid #ddd;*/
             margin-right: 65px;
-            
-            /*background-color: #f9f9f9;*/
         }
 
         .person label {
@@ -274,10 +265,10 @@ label{
         color: #d13517;
         font-size: 12px;
         position: absolute;
-        top: 100%;  /* Below the input field */
+        top: 100%;
         left: 0;
         font-weight: 800;
-        display: none; /* Hidden by default */
+        display: none;
     }
     .razmak{
       display: none; align-items: flex-start; gap: 20px;
@@ -285,19 +276,14 @@ label{
     }
 
     .analiza{
-      min-width: 400px; /* Each input block size */
+      min-width: 400px;
             padding: 0px;
-            /*border: 1px solid #ddd;*/
             margin-right: 50px;
-            
-            /*background-color: #f9f9f9;*/
     }
 
-    /* Hide the default checkbox */
     .analiza-checkbox{
-      min-width: 350px; /* Each input block size */
+      min-width: 350px;
             padding: 0px;
-            /*border: 1px solid #ddd;*/
             
             margin-top:10px;
     }
@@ -305,13 +291,12 @@ label{
     display: none;
 }
 
-/* Create a custom checkbox */
 input[type="checkbox"] + label {
     position: relative;
-    padding-left: 35px; /* Space for the custom checkbox */
+    padding-left: 35px; 
     cursor: pointer;
     user-select: none;
-    display: inline-block; /* Ensure the label and checkbox are on the same line */
+    display: inline-block;
     vertical-align: middle;
     margin-bottom:10px;
 }
@@ -319,7 +304,6 @@ input[type="checkbox"] + label:last-child{
   margin-bottom:0px;
 }
 
-/* Custom checkbox style */
 input[type="checkbox"] + label:before {
     content: "";
     position: absolute;
@@ -328,28 +312,26 @@ input[type="checkbox"] + label:before {
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-    border: 1px solid white; /* Border color */
-    border-radius: 4px; /* Rounded corners */
-    background-color: #ebeef5; /* Background color */
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: #ebeef5;
     border: 1px solid #132650;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Style for checked state */
 input[type="checkbox"]:checked + label:before {
-    background-color: #132650; /* Checked background color */
-    border-color: #008cba; /* Change border color when checked */
+    background-color: #132650;
+    border-color: #008cba;
 }
 
-/* Add a check mark */
 input[type="checkbox"]:checked + label:after {
-    content: "\2713"; /* Unicode check mark */
+    content: "\2713"; 
     position: absolute;
     left: 3px;
-    top: 50%; /* Centering the checkmark vertically */
-    transform: translateY(-50%); /* Ensure it stays in the middle */
+    top: 50%; 
+    transform: translateY(-50%); 
     font-size: 16px;
-    color: white; /* Check mark color */
+    color: white; 
 }
 .naslov-bakterije{
   color:#132650;
@@ -430,7 +412,6 @@ input[type="checkbox"]:checked + label:after {
 
   <div id="sanitarnaFields" class="form-group hidden full-width">
   <div id="persons">
-            <!-- Initial Person Input -->
             <div class="person">
             
                 <label for="nameProduct">Ime osobe za sanitarnu</label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[0][name_product]" >
@@ -542,14 +523,13 @@ input[type="checkbox"]:checked + label:after {
         function clearInputs(container) {
     var inputs = container.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = "";  // Clear each input value
+        inputs[i].value = "";
     }
 }
 function clearPersons() {
     const personsContainer = document.getElementById('persons');
     const initialPerson = personsContainer.querySelector('.initial');
     
-    // Clear all dynamically added persons except the initial one
     while (personsContainer.children.length > 1) {
         personsContainer.removeChild(personsContainer.lastChild);
     }
@@ -562,20 +542,17 @@ function addRequired(container) {
     }
 }
 
-// Helper function to remove 'required' from inputs
 function removeRequired(container) {
     const inputs = container.getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].removeAttribute('required');
     }
 }
-        // Add new person input fields dynamically
         function addPerson() {
     var personDiv = document.createElement('div');
-    var personCount = document.querySelectorAll('.person').length; // Get the current count of persons
+    var personCount = document.querySelectorAll('.person').length;
     personDiv.classList.add('person');
     
-    // Use personCount as the index to group name and last name fields
     personDiv.innerHTML = `
         <label for="nameProduct${personCount}">Ime</label>
         <input type="text" id="nameProduct${personCount}" name="persons[${personCount}][name_product]" placeholder="Ime" required>
@@ -588,11 +565,9 @@ function removeRequired(container) {
     document.getElementById('persons').appendChild(personDiv);
 }
 
-// Remove person input fields
 function removePerson(button) {
     button.parentElement.remove();
 
-    // Re-index remaining inputs after removing
     var persons = document.querySelectorAll('.person');
     persons.forEach((personDiv, index) => {
         personDiv.querySelector('input[name^="persons"]').name = `persons[${index}][name_product]`;
@@ -602,10 +577,10 @@ function removePerson(button) {
 
 $('#validationForm').parsley({
   errorsContainer: function (ParsleyField) {
-    return ParsleyField.$element.siblings('.error-message');  // Use custom error message container
+    return ParsleyField.$element.siblings('.error-message'); 
   },
-  errorsWrapper: '',  // Prevent default Parsley wrapper
-  errorTemplate: ''  // Prevent default Parsley error template
+  errorsWrapper: '', 
+  errorTemplate: ''
 });
 
 $('#validationForm').parsley({
@@ -618,30 +593,26 @@ $('#validationForm').parsley().on('field:validated', function(field) {
       var $field = $(field.$element);
       var $errorMessage = $field.siblings('.error-message');
       
-      // Show or hide the error message
       if (field.isValid()) {
-          $errorMessage.hide();       // Hide error message
-          $field.removeClass('invalid'); // Remove red border
+          $errorMessage.hide();
+          $field.removeClass('invalid');
       } else {
-          $errorMessage.show();       // Show error message
-          $field.addClass('invalid'); // Add red border
+          $errorMessage.show();
+          $field.addClass('invalid');
       }
   });
 
   function validateCheckboxes() {
-    // Get all checkboxes
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    // Convert NodeList to Array and check if any checkbox is checked
     var isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
 
-    // Show error message if no checkbox is checked
     var errorMessage = document.getElementById('error-message');
     if (!isChecked) {
-        errorMessage.style.display = 'block'; // Show error message
-        return false; // Prevent form submission
+        errorMessage.style.display = 'block';
+        return false; 
     } else {
-        errorMessage.style.display = 'none'; // Hide error message
-        return true; // Allow form submission
+        errorMessage.style.display = 'none'; 
+        return true; 
     }
 }
 </script>

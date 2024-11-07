@@ -1,6 +1,6 @@
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     padding: 20px;
     padding-top:30px;
@@ -11,7 +11,7 @@
     
     .container {
     width: 100%;
-    max-width: 1500px; /* Limit the max width */
+    max-width: 1500px; 
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -19,7 +19,7 @@
 
 .row {
     display: flex;
-    gap: 20px; /* Space between columns */
+    gap: 20px;
 }
 
 
@@ -31,8 +31,8 @@
     border: 1px solid #132650;
     border-radius: 5px;
     min-height: 300px;
-    max-height: 500px; /* Set a maximum height for the column */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    max-height: 500px; 
+    overflow-y: auto; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -47,10 +47,10 @@
     color: #132650;
     position: sticky;
   top: 0;
-  background-color: #fff; /* Background color to avoid overlap with content when scrolling */
+  background-color: #fff; 
   padding: 10px;
-  z-index: 1; /* Ensures it stays above other content */
-  border-bottom: 1px solid black; /* Optional, for a cleaner separation */
+  z-index: 1; 
+  border-bottom: 1px solid black; 
 }
 
 .task-card {
@@ -85,26 +85,20 @@
     color: black;
     margin: 5px 0 0 0;
 }
-
-/* Task being dragged has reduced opacity */
-/* Task being dragged has reduced opacity */
 .dragging {
     opacity: 0.5;
 }
 
-/* When dragging over another task, it moves slightly to make room */
 .task-card.dragover {
-    transform: translateY(15px); /* Move down by 15px */
-    transition: transform 0.2s ease-in-out; /* Smooth movement */
+    transform: translateY(15px); 
+    transition: transform 0.2s ease-in-out; 
 }
-/* When the task is marked as done, change background color */
 .task-card.done {
-    background-color: #d4edda; /* Light green for completed task */
+    background-color: #d4edda; 
     border-color: #c3e6cb;
     color:black;
 }
 
-/* Submit button container */
 .submit-container {
     width: 100%;
     display: flex;
@@ -224,13 +218,13 @@ function dragStart(event) {
     draggedItem = event.target;
     event.target.classList.add('dragging');
     setTimeout(() => {
-        event.target.style.display = 'none'; // Hide the task being dragged
+        event.target.style.display = 'none'; 
     }, 0);
 }
 
 function dragEnd(event) {
     event.target.classList.remove('dragging');
-    event.target.style.display = 'block'; // Show the task again
+    event.target.style.display = 'block';
     clearDragOverEffects();
     draggedItem = null;
 }
@@ -240,24 +234,23 @@ function dragOver(event) {
     
     const afterElement = getDragAfterElement(event.currentTarget, event.clientY);
 
-    clearDragOverEffects(); // Remove effects from all tasks before adding them to the new one
+    clearDragOverEffects(); 
     
     if (afterElement == null) {
         event.currentTarget.appendChild(draggedItem);
     } else {
         event.currentTarget.insertBefore(draggedItem, afterElement);
-        afterElement.classList.add('dragover'); // Add effect to the nearest task
+        afterElement.classList.add('dragover'); 
     }
 }
 
 function drop(event) {
     event.preventDefault();
     draggedItem.style.display = 'block';
-    clearDragOverEffects(); // Remove the visual cue
+    clearDragOverEffects(); 
     draggedItem = null;
 }
 
-// Function to determine where the dragged item should be dropped
 function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll('.task-card:not(.dragging)')];
 
@@ -272,14 +265,12 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-// Function to clear the dragover effect from all tasks
 function clearDragOverEffects() {
     const allTasks = document.querySelectorAll('.task-card');
     allTasks.forEach(task => {
         task.classList.remove('dragover');
     });
 }
-// Adding event listeners to all task checkboxes
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('.done-checkbox');
     

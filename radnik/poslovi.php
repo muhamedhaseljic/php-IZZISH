@@ -1,7 +1,7 @@
 
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     padding: 100px;
     padding-top:20px;
@@ -36,12 +36,11 @@
     border:1px solid white;
 }
 
-/* Table Styling */
 .custom-table {
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; /* Increased gap between rows */
+    border-spacing: 0 10px; 
     
 }
 
@@ -62,7 +61,7 @@ thead tr {
     text-align: left;
     color: #fff;
     background-color: #272c78;
-    border: none; /* Remove header cell border */
+    border: none; 
 }
 
 .custom-table tbody tr td:first-child {
@@ -76,12 +75,12 @@ thead tr {
 }
 
 .custom-table thead th:first-child {
-    border-top-left-radius: 20px; /* Rounded left corner */
+    border-top-left-radius: 20px; 
     border-bottom-left-radius: 20px;
 }
 
 .custom-table thead th:last-child {
-    border-top-right-radius: 20px; /* Rounded right corner */
+    border-top-right-radius: 20px; 
     border-bottom-right-radius: 20px;
 }
 
@@ -177,10 +176,8 @@ tbody tr:last-child {
     scrollbar-color: white #0d1017;
     padding-right:5px;
 }
-        /* Pop-up styling */
 
 
-        /* Styling for the picture */
         .profile-picture {
             width: 100px;
             height: 100px;
@@ -214,31 +211,29 @@ tbody tr:last-child {
             font-size: 14px;
         }
 
-        /* Close button */
         .popup {
-            display: none; /* Hidden by default */
+            display: none; 
             position: fixed; 
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
+            overflow: auto; 
             
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Blurred background effect */
+            background-color: rgba(0, 0, 0, 0.7); 
             justify-content: center;
             align-items: center;
             z-index: 10;
         }
 
-        /* Popup content */
         .popup-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%; 
             margin-top:100px;
             display: flex;
             border-radius: 8px;
@@ -249,7 +244,6 @@ tbody tr:last-child {
 
 
 
-        /* The close button */
         .close {
             color: #aaa;
             float: right;
@@ -310,13 +304,11 @@ tbody tr:last-child {
                         </td>
                     </tr>
                     <?php endfor; ?>
-                    <!-- Repeat for other entries -->
                 </tbody>
             </table>
             </div>
         </div>
 
-        <!-- Pop-up Window -->
 <div id="popup" class="popup">
     <div class="popup-content">
         <div class="profile-picture"><img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg"  alt=""> </div> <!-- Placeholder for the picture -->
@@ -347,26 +339,20 @@ tbody tr:last-child {
 </div>
 
 <script>
-        // Get the popup element
         var popup = document.getElementById("popup");
 
-        // Get the button that opens the popup
         var btn = document.getElementById("popupBtn");
 
-        // Get the <span> element that closes the popup
         var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the popup 
         btn.onclick = function() {
             popup.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the popup
         span.onclick = function() {
             popup.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the popup, close it
         window.onclick = function(event) {
             if (event.target == popup) {
                 popup.style.display = "none";

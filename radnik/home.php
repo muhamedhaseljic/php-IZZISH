@@ -55,14 +55,14 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 ?>
 <style>
 .custom-main-content {
-    margin-left: 0px; /* Space for the sidebar */
+    margin-left: 0px; 
     width: 100%;
     
     background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
+    justify-content: center;
     align-items: center;
     
 }/*
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .profile-container {
     display: flex;
-    max-width: 1200px; /* Adjust for a compact layout */
+    max-width: 1200px; 
     margin: 40px auto;
     background-color: #ebeef5;
     
@@ -86,7 +86,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 .left-section {
-    flex: 0 0 400px; /* Fixed width for picture section */
+    flex: 0 0 400px; 
     background-color: white;
     padding:20px;
     padding-top: 20px;
@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .border-divider {
     width: 20px;
-    background-color: #ebeef5; /* Visible border between sections */
+    background-color: #ebeef5; 
     margin-left: ;
     height:670px;
     margin-top:-50px;
@@ -123,7 +123,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    grid-template-columns: repeat(2, 1fr); 
     
     grid-row-gap: 0px;
 
@@ -159,7 +159,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 label {
-    width: 150px; /* Fixed width for the labels */
+    width: 150px; 
     font-weight: bold;
     text-align: left;
     color:black;
@@ -167,7 +167,7 @@ label {
 
 input {
     flex: 1;
-    padding: 5px; /* Smaller padding for compact inputs */
+    padding: 5px; 
     border-radius: 5px;
     border: 1px solid grey;
     background-color: #0d1017;
@@ -192,7 +192,7 @@ input::placeholder {
 }
 .profile-label {
     display: inline-block;
-    width: 50px; /* Adjust this value to your desired space */
+    width: 50px; 
     
     font-size:18px;
   }
@@ -254,10 +254,9 @@ input::placeholder {
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width linear; /* Smooth transition */
+    transition: width linear; 
 }
 
-/* Content Styles */
 
 
 @keyframes progress {
@@ -287,7 +286,6 @@ if(isset($_SESSION['message'])) :?>
     <form id="myForm" action="" method="POST" enctype="multipart/form-data">
         <div class="profile-container">
         
-        <!-- Left Section (Profile Picture) -->
         <div class="left-section">
         <h1 ><b>PROFIL DETALJI</b></h1>
             <div class="profile-picture">
@@ -321,10 +319,7 @@ if(isset($_SESSION['message'])) :?>
             <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']?></span></p>
         </div>
 
-        <!-- Divider with Border -->
         <div class="border-divider"></div> 
-
-        <!-- Right Section (Editable Fields) -->
          
         <div class="right-section">
         <h1 ><b>O MENI</b></h1>
@@ -412,11 +407,11 @@ if(isset($_SESSION['message'])) :?>
 
         <script>
 let timeout;
-let totalDuration = 5000; // Total time in milliseconds (5 seconds)
-let remainingTime = totalDuration; // Time remaining on countdown
+let totalDuration = 5000; 
+let remainingTime = totalDuration; 
 let startTime;
-let elapsedTime = 0; // Tracks how much time has passed
-let isHovered = false; // Tracks hover state
+let elapsedTime = 0; 
+let isHovered = false; 
 let progressBar, popup;
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -424,11 +419,11 @@ document.addEventListener("DOMContentLoaded", function() {
     progressBar = document.getElementById("progress-bar");
 
     if (popup) {
-        popup.style.display = 'block'; // Show the popup
-        progressBar.style.width = '100%'; // Set it to full width immediately
+        popup.style.display = 'block'; 
+        progressBar.style.width = '100%'; 
         setTimeout(() => {
-            startTimer(remainingTime); // Start the timer and progress bar
-        }, 50); // A slight delay for the initial width to take effect.
+            startTimer(remainingTime); 
+        }, 50); 
 
         popup.addEventListener("mouseenter", pauseTimer);
         popup.addEventListener("mouseleave", resumeTimer);
@@ -436,12 +431,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function startTimer(duration) {
-    // Start the progress bar and countdown
     startTime = Date.now();
     timeout = setTimeout(hidePopup, duration);
     
     progressBar.style.transitionDuration = duration + 'ms';
-    progressBar.style.width = '0%'; // Animate to 0% over the duration
+    progressBar.style.width = '0%'; 
 }
 
 function hidePopup() {
@@ -450,23 +444,22 @@ function hidePopup() {
 
 function pauseTimer() {
     if (!isHovered) {
-        clearTimeout(timeout); // Pause the countdown timer
-        elapsedTime += Date.now() - startTime; // Add the time that has passed
-        remainingTime = totalDuration - elapsedTime; // Calculate remaining time
+        clearTimeout(timeout); 
+        elapsedTime += Date.now() - startTime; 
+        remainingTime = totalDuration - elapsedTime; 
 
-        // Freeze the progress bar
         let percentageElapsed = (elapsedTime / totalDuration) * 100;
         progressBar.style.width = (100 - percentageElapsed) + '%';
-        progressBar.style.transitionDuration = '0ms'; // Stop bar transition
+        progressBar.style.transitionDuration = '0ms'; 
         isHovered = true;
     }
 }
 
 function resumeTimer() {
     if (isHovered) {
-        startTimer(remainingTime); // Resume the countdown
-        progressBar.style.transitionDuration = remainingTime + 'ms'; // Continue bar
-        progressBar.style.width = '0%'; // Animate to 0% over remaining time
+        startTimer(remainingTime); 
+        progressBar.style.transitionDuration = remainingTime + 'ms'; 
+        progressBar.style.width = '0%'; 
         isHovered = false;
     }
 }
