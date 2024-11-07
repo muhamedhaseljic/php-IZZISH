@@ -122,12 +122,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             ';
 
             $mail->send();
-            echo 'An email has been sent with instructions to reset your password.';
+            $_SESSION['message']['type'] = "success";
+            $_SESSION['message']['text'] = "Poruka je poslana na mejl";
+            header('Location: http://localhost/retro/password_reset.php');
+            exit;
+            //echo 'An email has been sent with instructions to reset your password.';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
-        echo 'The email you entered is not registered in our system.';
+        $_SESSION['message']['type'] = "danger";
+        $_SESSION['message']['text'] = "Email ne postoji u bazi podataka";
+        header('Location: http://localhost/retro/password_reset.php');
+        exit;
+        //echo 'The email you entered is not registered in our system.';
     }
 }
 ?>
@@ -137,6 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
+
 <style>
 * {
     margin: 0;
@@ -150,7 +160,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #0d1017;
+    background: #132650;
     font-family: Arial, sans-serif;
 
     text-align: justify;
@@ -162,25 +172,11 @@ body {
 
   
 }
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('images/pozadina.jpg'); 
-    background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-    opacity: 0.30; 
-    z-index: -1; 
-}
+
 .login-box {
-    width: 450px;
+    width: 600px;
     padding: 20px;
-    background: #11131f;
-    
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     
@@ -188,7 +184,7 @@ body::before {
 
 
 .login-box h2 {
-    color: white;
+    color: black;
     margin-bottom: 50px;
     font-size: 20px;
     text-align: left;
@@ -208,6 +204,7 @@ body::before {
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
+    
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #fff;
@@ -255,7 +252,7 @@ a:hover {
 }
 
 button{
-    background: #008cba;
+    background: #132650;
     color: #fff;
     border-radius: 5px;
 }
@@ -273,6 +270,10 @@ button{
     cursor: pointer;
     width: 100%;
     height:50px;
+}
+
+button:hover{
+    background: #23355d;
 }
 
 a span {
@@ -326,7 +327,7 @@ a span:nth-child(4) {
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: white;
+    color: #132650;
     text-decoration: none;
     padding: 0px 2px;
     margin:0;
@@ -337,7 +338,7 @@ a span:nth-child(4) {
     
     text-decoration: underline;
     background: none;
-    color: white;
+    color: #132650;
     border-radius: 5px;
 }
 .form-group input, .form-group select, .form-group textarea {
@@ -346,9 +347,9 @@ a span:nth-child(4) {
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-  border: 1px solid white;
-  background-color: #0d1017;
-  color: #fff;
+  border: 1px solid #132650;
+  background-color: #ebeef5;
+  color: #132650;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -359,7 +360,7 @@ a span:nth-child(4) {
     outline: none;
 }
 .form-group label{
-    color:white;
+    color:black;
     margin:0px;
     
     
@@ -375,7 +376,7 @@ h1{
 }
 
 .alert-danger {
-    background-color: #4cb050;
+    background-color: #b81f1f;
     color: white;
     padding: 15px;
     position: fixed;
@@ -404,6 +405,14 @@ h1{
 @keyframes progress {
     from { width: 100%; }
     to { width: 0%; }
+}
+
+.nav-item{
+    position: absolute;
+      bottom: 0;  
+      left: 0;   
+      margin: 20px; 
+      margin-bottom: 50px;
 }
 </style>
 
@@ -438,7 +447,8 @@ if(isset($_SESSION['message'])) :?>
             <button type="submit" name="login">Pošalji email za poništavanje lozinke</button>
         </form>
     </div>
-    
+    <img class="nav-item" draggable="false" src="images/inz_logo_-1.png" width="400px" height="100px" alt="">
+
 </body>
 <script>
     function togglePassword() {
