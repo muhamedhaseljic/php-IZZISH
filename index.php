@@ -75,7 +75,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #132650;
+    background: #23355d;
     font-family: Arial, sans-serif;
 
     text-align: justify;
