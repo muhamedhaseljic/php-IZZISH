@@ -66,7 +66,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #132650;
+    background: #23355d;
     font-family: Arial, sans-serif;
 
     text-align: justify;
@@ -158,7 +158,7 @@ a:hover {
 }
 
 button{
-    background: #132650;
+    background: #23355d;
     color: #fff;
     border-radius: 5px;
 }
@@ -179,7 +179,7 @@ button{
 }
 
 button:hover{
-    background: #23355d;
+    background: #132650;
 }
 
 a span {
