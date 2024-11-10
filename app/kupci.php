@@ -298,7 +298,12 @@ tbody tr:last-child {
                         <th>Telefon</th>
                         <th>Grad</th>
                         <th>Tip</th>
-						<th>Radnik</th>                        
+						<th>
+                         Radnik
+            <button id="sortEmployeeBtn" onclick="sortByEmployeeStatus()" style="margin-left:10px; border: 1px solid white; background: none;color: white; cursor: pointer;">
+                <span>&#x21C5;</span> <!-- Up/Down arrow symbol -->
+            </button>
+                        </th>                        
                         <th>Akcije</th>
                     </tr>
                 </thead>
@@ -462,4 +467,40 @@ document.getElementById('search-input').addEventListener('input', function() {
             }
         });
     });
+
+    //sorting algoritham
+    let sortAssignedFirst = null; 
+
+    function sortByEmployeeStatus() {
+        const rows = Array.from(document.getElementById("customer-table").rows);
+    const sortButton = document.getElementById("sortEmployeeBtn");
+
+    if (sortAssignedFirst === null || sortAssignedFirst === false) {
+        sortAssignedFirst = true;
+        sortButton.style.color = "#a2f0b1";
+    } else if (sortAssignedFirst === true) {
+        sortAssignedFirst = false;
+        sortButton.style.color = "#f0a2a2";
+    } else {
+        sortAssignedFirst = null;
+        sortButton.style.color = "white";
+    }
+
+    rows.sort((rowA, rowB) => {
+        const hasEmployeeA = rowA.cells[5].textContent.trim().toLowerCase() !== "nije dodjeljeno";
+        const hasEmployeeB = rowB.cells[5].textContent.trim().toLowerCase() !== "nije dodjeljeno";
+
+        if (sortAssignedFirst === true) {
+            return hasEmployeeA === hasEmployeeB ? 0 : hasEmployeeA ? -1 : 1;
+        } else if (sortAssignedFirst === false) {
+            return hasEmployeeA === hasEmployeeB ? 0 : hasEmployeeA ? 1 : -1;
+        }
+
+        return 0;
+    });
+
+    const tbody = document.getElementById("customer-table");
+    tbody.innerHTML = "";
+    rows.forEach(row => tbody.appendChild(row));
+}
 </script>
