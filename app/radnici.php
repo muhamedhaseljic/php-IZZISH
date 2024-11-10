@@ -367,6 +367,11 @@ tbody tr:last-child {
 .modal-name{
     font-weight:800;
 }
+
+.table-filter {
+    border-radius: 5px;
+}
+
     </style>
 
 <?php
@@ -396,14 +401,20 @@ if(isset($_SESSION['message'])) :?>
     <a href="add_employees.php" class="custom-add-btn">Add</a>
 </div>
 <div class="scrolling-divv">
-    <table class="table custom-table">
+    <table class="table custom-table" id="emp-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Ime i prezime</th>
-                <th>Email</th>
-                <th>Telefon</th>
-                <th>Pozicija</th>
+                <th col-index = 1>ID
+                
+                </th>
+                <th col-index = 2>Ime i prezime
+                <button onclick="sortTable(1)" style="border: none; background: none; cursor: pointer;">
+                <span>&#x21C5;</span> <!-- Up/Down arrow symbol -->
+            </button>
+                </th>
+                <th col-index = 3>Email</th>
+                <th col-index = 4>Telefon</th>
+                <th col-index = 5>Pozicija</th>
                 <th>Plata</th>                        
                 <th>Slika</th>
                 <th>Akcije</th>
@@ -640,4 +651,28 @@ function resumeTimer() {
         isHovered = false;
     }
 }
+
+// sortiranje 
+
+function sortTable(columnIndex) {
+    const table = document.getElementById("emp-table");
+    const rows = Array.from(table.rows).slice(1); 
+    const isAscending = table.getAttribute("data-sort-order") === "asc";
+    
+    rows.sort((rowA, rowB) => {
+        const cellA = rowA.cells[columnIndex].textContent.trim().toLowerCase();
+        const cellB = rowB.cells[columnIndex].textContent.trim().toLowerCase();
+        
+        if (cellA < cellB) return isAscending ? -1 : 1;
+        if (cellA > cellB) return isAscending ? 1 : -1;
+        return 0;
+    });
+
+    table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
+
+    const tbody = document.getElementById("employee-table");
+    tbody.innerHTML = ""; 
+    rows.forEach(row => tbody.appendChild(row)); 
+}
+
     </script>
