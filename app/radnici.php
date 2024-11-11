@@ -408,7 +408,7 @@ if(isset($_SESSION['message'])) :?>
                 
                 </th>
                 <th col-index = 2>Ime i prezime
-                <button onclick="sortTable(1)" style="border: none; background: none; cursor: pointer;">
+                <button onclick="sortTable(1)" style="margin-left:10px; border: 1px solid white; background: none;color: white; cursor: pointer;">
                 <span>&#x21C5;</span> <!-- Up/Down arrow symbol -->
             </button>
                 </th>
