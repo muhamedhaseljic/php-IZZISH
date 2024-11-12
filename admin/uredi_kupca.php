@@ -674,10 +674,20 @@ function validateCheckboxes() {
         return true; 
     }
 }
+
+function confirmCheckboxes(){
+  var errorMessage = document.getElementById('error-message');
+  errorMessage.style.display = 'none'; 
+        return true; 
+}
+
 function validateForm() {
     const checkboxes = document.querySelectorAll('input[name="bacteria_ids[]"]:checked');
     const errorMessage = document.getElementById('error-message');
-
+    const service = document.getElementById('service').value;
+    if (service === 'sanitarna') {
+      return true; 
+    }
     if (checkboxes.length === 0) {
         errorMessage.style.display = 'block';
         return false; 
