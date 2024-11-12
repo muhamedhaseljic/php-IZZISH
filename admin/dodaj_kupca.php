@@ -198,8 +198,9 @@ label{
 
 #persons {
             display: flex;
+            
             overflow-x: auto;
-            max-width: 1330px;
+            max-width: 1200px;
             min-height:185px;           
             padding: 0px;
             white-space: nowrap;
@@ -209,9 +210,9 @@ label{
         }
 
         .person {
-            min-width: 400px;
+            min-width: 30%;
             padding: 0px;
-            margin-right: 65px;
+            margin-right: 58px;
         }
 
         .person label {
@@ -276,15 +277,21 @@ label{
     }
 
     .analiza{
-      min-width: 400px;
+      min-width: 340px;
             padding: 0px;
             margin-right: 50px;
     }
 
     .analiza-checkbox{
-      min-width: 350px;
+      min-width: 320px;
             padding: 0px;
-            
+            margin-right: 65px;
+            margin-top:10px;
+    }
+    .analiza-checkbox2{
+      min-width: 320px;
+            padding: 0px;
+            margin-right: 0px;
             margin-top:10px;
     }
     input[type="checkbox"] {
@@ -434,7 +441,7 @@ input[type="checkbox"]:checked + label:after {
             </div>
 
 
-            <div class="analiza-checkbox" style="margin-right: 90px;">
+            <div class="analiza-checkbox" >
             <h1 class="naslov-bakterije">Mikrobiološka ispitivanja</h1>
             <input type="checkbox" id="demoCheckbox1" name="bacteria_ids[]" value="1">
             <label for="demoCheckbox1">Salmonela</label>
@@ -464,7 +471,7 @@ input[type="checkbox"]:checked + label:after {
             <p id="error-message" style="position: absolute; color:red; display:none; white-space: nowrap;">Please select at least one checkbox.</p>
             
           </div>
-          <div class="analiza-checkbox">
+          <div class="analiza-checkbox2">
             <h1 class="naslov-bakterije">Hemijska i bromatološka ispitivanja</h1>
             <input type="checkbox" id="demoCheckbox9" name="bacteria_ids[]" value="9">
             <label for="demoCheckbox9">Određivanje energetske vrijednosti namirnica</label>
