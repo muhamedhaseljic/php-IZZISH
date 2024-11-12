@@ -408,8 +408,8 @@ if(isset($_SESSION['message'])) :?>
                 
                 </th>
                 <th col-index = 2>Ime i prezime
-                <button onclick="sortTable(1)" style="margin-left:10px; border: 1px solid white; background: none;color: white; cursor: pointer;">
-                <span>&#x21C5;</span> <!-- Up/Down arrow symbol -->
+                <button onclick="sortTable(1, this)" style="width:30px;margin-left:10px; border: 1px solid white; background: none; color: white; cursor: pointer;">
+                <span class="sort-icon">&#x21C5;</span> <!-- Default ↕ symbol -->
             </button>
                 </th>
                 <th col-index = 3>Email</th>
@@ -654,11 +654,18 @@ function resumeTimer() {
 
 // sortiranje 
 
-function sortTable(columnIndex) {
+function sortTable(columnIndex, button) {
     const table = document.getElementById("emp-table");
-    const rows = Array.from(table.rows).slice(1); 
-    const isAscending = table.getAttribute("data-sort-order") === "asc";
-    
+    const tbody = document.getElementById("employee-table");
+    const rows = Array.from(tbody.rows);
+    const icon = button.querySelector(".sort-icon");
+
+    let isAscending = table.getAttribute("data-sort-order") === "asc";
+
+    if (table.getAttribute("data-sort-order") === null) {
+        isAscending = true;
+    }
+
     rows.sort((rowA, rowB) => {
         const cellA = rowA.cells[columnIndex].textContent.trim().toLowerCase();
         const cellB = rowB.cells[columnIndex].textContent.trim().toLowerCase();
@@ -670,9 +677,14 @@ function sortTable(columnIndex) {
 
     table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
 
-    const tbody = document.getElementById("employee-table");
-    tbody.innerHTML = ""; 
-    rows.forEach(row => tbody.appendChild(row)); 
+    if (isAscending) {
+        icon.innerHTML = "&#9660;";
+    } else {
+        icon.innerHTML = "&#9650;";
+    }
+
+    tbody.innerHTML = "";
+    rows.forEach(row => tbody.appendChild(row));
 }
 
     </script>
