@@ -38,6 +38,7 @@ $selected_bacteria_ids = [];
 while ($row = $resultbacteria->fetch_assoc()) {
     $selected_bacteria_ids[] = $row['bacteria_id'];
 }
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $customer_id = $_GET['id'];
@@ -71,12 +72,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $type_product = $_POST['type_product'];
         $description_product = $_POST['description_product'];
         $produkt_hrana_obj->create($name_product_food, $type_product, $description_product, $customer_id);
+        
         if (!empty($_POST['bacteria_ids'])) {
-        $bacteria_ids = $_POST['bacteria_ids'];
+        $bacteria_ids = array_filter($_POST['bacteria_ids'], function($id) {
+          return !empty($id);
+      });
 
-        foreach ($bacteria_ids as $bacteria_id){
-          $bakterije_hrana->create($bacteria_id, $customer_id);
-        }}
+      if (!empty($bacteria_ids)) {
+        foreach ($bacteria_ids as $bacteria_id) {
+            $bakterije_hrana->create($bacteria_id, $customer_id);
+        }
+    }}
     
     }
     header('Location: ../app/dashboard.php?page=kupci');
@@ -470,7 +476,7 @@ input[type="checkbox"]:checked + label:after {
 
   <div id="deratizacijaFields"  class="form-group hidden razmak">
   <div class="analiza">
-    <?php if($foods != null) :?>
+  <?php if($foods != null) :?>
             <label for="name_product_food">Naziv proizvoda</label>
             <input value="<?php echo $foods['name'] ?>" placeholder="name" type="text" id="name_product_food" name="name_product_food">
             <br><br>
@@ -595,7 +601,9 @@ input[type="checkbox"]:checked + label:after {
         function clearInputs(container) {
     var inputs = container.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = ""; 
+      if (inputs[i].type !== 'checkbox') { // Skip checkboxes
+            inputs[i].value = "";
+        }
     }
 }
 function clearPersons() {
