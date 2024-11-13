@@ -2,11 +2,11 @@
 .custom-main-content {
     margin-left: 0px; 
     width: 100%;
-    padding: 20px;
-    padding-top:30px;
+    padding: 100px;
     background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
+
 }
     
     .container {
@@ -28,6 +28,7 @@
     width: 200px;
     background-color: white;
     padding: 10px;
+    padding-top:0;
     border: 1px solid #132650;
     border-radius: 5px;
     min-height: 300px;
@@ -120,14 +121,22 @@ button#submitBtn {
 button#submitBtn:hover {
     background-color:#23355d;
 }
+#poslovi{
+    background-color: #ecfeaa;
+}
+#poslovi h3 {
 
+  background-color: #ecfeaa; 
+    color:black;
+}
 </style>
 
 <div class="custom-main-content content">
 <div class="container">
         <div class="row">
-            <div class="col" id="ponedjeljak">
-                <h3>Ponedjeljak</h3>
+        
+            <div class="col" id="poslovi">
+                <h3>Poslovi</h3>
                 <?php $employee_data = $radnik->get_employee_data() ?>
                 <?php $radnik_id = $employee_data['employee_id'] ?>
                 <?php 
@@ -143,13 +152,18 @@ button#submitBtn:hover {
                 <div class="task-card" draggable="true">
                     <div class="task-details">
                         <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
+                        <p class="task-date">Due Date: <br> 2024-08-31</p>
                         <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        
+                        <p class="task-date"> <b> Šire </b> <br>  </p>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
+
+            <div class="col" id="ponedjeljak">
+                <h3>Ponedjeljak</h3>
+            </div>
+
             <div class="col" id="in-progress">
                 <h3>Utorak</h3>
                 <div class="task-card" draggable="true">
