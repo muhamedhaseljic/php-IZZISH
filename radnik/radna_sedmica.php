@@ -146,64 +146,98 @@ button#submitBtn:hover {
                   WHERE kupac.employee_id = $radnik_id";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
-                    $select_members = $results;
+                    $select_members = $results;?>
                     
-                    foreach($results as $kupci) : ?>
-                <div class="task-card" draggable="true">
-                    <div class="task-details">
+                    <?php foreach ($results as $kupci): ?>
+                        <?php if ($kupci['day_of_a_week'] == 'poslovi'): ?>
+                            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="poslovi">
+                            <div class="task-details">
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date">Due Date: <br> 2024-08-31</p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                                        <p class="task-date"> <b> Šire </b> <br>  </p>
+                                    </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+            </div>
+
+            <div class="col" id="ponedjeljak">
+                <h3>Ponedjeljak</h3>
+                <?php foreach ($results as $kupci): ?>
+        <?php if ($kupci['day_of_a_week'] == 'ponedjeljak'): ?>
+            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="ponedjeljak">
+            <div class="task-details">
                         <p class="task-name"><?=$kupci['objekat']?></p>
                         <p class="task-date">Due Date: <br> 2024-08-31</p>
                         <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
                         <p class="task-date"> <b> Šire </b> <br>  </p>
                     </div>
-                </div>
-                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
             </div>
 
-            <div class="col" id="ponedjeljak">
-                <h3>Ponedjeljak</h3>
-            </div>
-
-            <div class="col" id="in-progress">
+            <div class="col" id="utorak">
                 <h3>Utorak</h3>
-                <div class="task-card" draggable="true">
-                    <div class="task-details">
-                        <p class="task-name">Task Name</p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
+                <?php foreach ($results as $kupci): ?>
+        <?php if ($kupci['day_of_a_week'] == 'utorak'): ?>
+            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="utorak">
+            <div class="task-details">
+                        <p class="task-name"><?=$kupci['objekat']?></p>
+                        <p class="task-date">Due Date: <br> 2024-08-31</p>
+                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                        <p class="task-date"> <b> Šire </b> <br>  </p>
                     </div>
-                </div>
-
-                <div class="task-card" draggable="true">
-                    <div class="task-details">
-                        <p class="task-name">Task Name</p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
-                    </div>
-                </div>
-
-                <div class="task-card" draggable="true">
-                    <div class="task-details">
-                        <p class="task-name">Task Name</p>
-                        <p class="task-date">Due Date: 2024-08-31</p>
-                        <label>
-                            <input type="checkbox" class="done-checkbox"> Done
-                        </label>
-                    </div>
-                </div>
             </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+                </div>
+
             <div class="col" id="srijeda">
                 <h3>Srijeda</h3>
+                <?php foreach ($results as $kupci): ?>
+        <?php if ($kupci['day_of_a_week'] == 'srijeda'): ?>
+            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="srijeda">
+            <div class="task-details">
+                        <p class="task-name"><?=$kupci['objekat']?></p>
+                        <p class="task-date">Due Date: <br> 2024-08-31</p>
+                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                        <p class="task-date"> <b> Šire </b> <br>  </p>
+                    </div>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
             </div>
             <div class="col" id="cetvrtak">
                 <h3>Četvrtak</h3>
+                <?php foreach ($results as $kupci): ?>
+        <?php if ($kupci['day_of_a_week'] == 'cetvrtak'): ?>
+            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="cetvrtak">
+            <div class="task-details">
+                        <p class="task-name"><?=$kupci['objekat']?></p>
+                        <p class="task-date">Due Date: <br> 2024-08-31</p>
+                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                        <p class="task-date"> <b> Šire </b> <br>  </p>
+                    </div>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
             </div>
             <div class="col" id="petak">
                 <h3>Petak</h3>
+                <?php foreach ($results as $kupci): ?>
+        <?php if ($kupci['day_of_a_week'] == 'petak'): ?>
+            <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="petak">
+            <div class="task-details">
+                        <p class="task-name"><?=$kupci['objekat']?></p>
+                        <p class="task-date">Due Date: <br> 2024-08-31</p>
+                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
+                        <p class="task-date"> <b> Šire </b> <br>  </p>
+                    </div>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -301,4 +335,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// adding card to day_of_a_week
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const updatedTasks = [];
+
+    // Loop through each column to gather tasks and their new day of the week
+    document.querySelectorAll('.col').forEach(column => {
+        const dayOfWeek = column.id;  // The ID represents the day of the week
+        const tasksInColumn = column.querySelectorAll('.task-card');
+
+        tasksInColumn.forEach(task => {
+            const taskId = task.dataset.taskId;  // Assuming you add a data-task-id attribute
+            updatedTasks.push({
+                id: taskId,
+                day: dayOfWeek
+            });
+        });
+    });
+
+    // Send the data to the server via AJAX
+    fetch('update_task_days.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedTasks)
+    })
+    .then(response => response.json())
+    
+    .catch(error => console.error('Error:', error));
+});
     </script>
