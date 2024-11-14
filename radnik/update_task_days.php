@@ -27,10 +27,10 @@ if (is_array($data)) {
     $stmt->close();
 }
 
+$_SESSION['message']['type'] = "success";
+$_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Poslovi su uspješno spremljeni";
+
 echo json_encode($response);
 $conn->close();
-
-header('Location: http://localhost/retro/radnik/index.php?page=home');
-        exit();
 
 ?>
