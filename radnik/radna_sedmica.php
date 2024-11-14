@@ -136,15 +136,14 @@ button#submitBtn:hover {
     padding: 15px;
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right:20px;
     z-index: 9999;
     border-radius: 7px;
     display: none;
     width: 450px;
     text-align: center;
     overflow: hidden;
-    border:none;
+    border:1px solid #4cb050;
 }
 
 .progress-bar {

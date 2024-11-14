@@ -40,7 +40,7 @@
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; 
+    border-spacing: 0px;
     
 }
 
