@@ -194,7 +194,8 @@ if(isset($_SESSION['message'])) :?>
                 
                 $sql = "SELECT kupac.*
                   FROM `kupac` 
-                  WHERE kupac.employee_id = $radnik_id";
+                  WHERE kupac.employee_id = $radnik_id
+                  ORDER BY kupac.day_of_a_week, kupac.position";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     $select_members = $results;?>
@@ -391,21 +392,20 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('submitBtn').addEventListener('click', function() {
     const updatedTasks = [];
 
-    // Loop through each column to gather tasks and their new day of the week
     document.querySelectorAll('.col').forEach(column => {
-        const dayOfWeek = column.id;  // The ID represents the day of the week
+        const dayOfWeek = column.id;  
         const tasksInColumn = column.querySelectorAll('.task-card');
 
-        tasksInColumn.forEach(task => {
-            const taskId = task.dataset.taskId;  // Assuming you add a data-task-id attribute
+        tasksInColumn.forEach((task, index) => {
+            const taskId = task.dataset.taskId;  
             updatedTasks.push({
                 id: taskId,
-                day: dayOfWeek
+                day: dayOfWeek,
+                position: index + 1
             });
         });
     });
 
-    // Send the data to the server via AJAX
     fetch('update_task_days.php', {
         method: 'POST',
         headers: {
@@ -423,6 +423,8 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     })
     .catch(error => console.error('Error:', error));
 });
+
+// success message
 
 let timeout;
 let totalDuration = 5000; 
