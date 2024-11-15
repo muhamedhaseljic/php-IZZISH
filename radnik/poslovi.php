@@ -1,4 +1,11 @@
+<?php
 
+require_once "../classes/Kupac.php";
+
+$kupac = new Kupac();
+$kupac = $kupac->fetch_all();
+
+?>
 <style>
 .custom-main-content {
     margin-left: 0px; 
@@ -287,27 +294,48 @@ tbody tr:last-child {
                 </thead>
                 
                 <tbody>
-                <?php for($i=1;$i<10;$i++) : ?>
+                <?php $employee_data = $radnik->get_employee_data() ?>
+                <?php $radnik_id = $employee_data['employee_id'] ?>
+
+                <?php 
+                
+                $sql = "SELECT kupac.*,
+                  radnici.first_name as employee_name,
+                  radnici.last_name as employee_last_name,
+                  produkt_hrana.name as product_food_name,
+                  produkt_hrana.type as product_food_type,
+                  produkt_hrana.description as product_food_description,
+                   GROUP_CONCAT(CONCAT(produkt_osoba.first_name, ' ', produkt_osoba.last_name) SEPARATOR ', ') AS produkt_osoba_names
+                  FROM `kupac` 
+                  left join `radnici` on kupac.employee_id = radnici.employee_id
+                  left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
+                  left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
+                  where kupac.employee_id = $radnik_id
+                  GROUP BY 
+                  kupac.customer_id;";
+                    $run = $conn->query($sql);
+                    $results = $run->fetch_all(MYSQLI_ASSOC);
+                    $select_members = $results;
+                    
+                    foreach($results as $kupci) : ?>
+
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Medina Haseljić</td>
+                        <td><?=$kupci['customer_id']?></td>
+                        <td><?=$kupci['first_name']. " ".$kupci['last_name'] ?></td>
                         <td>medina@gmail.com</td>
                         <td>
-                            <?php
-                                $FourDigitRandomNumber = mt_rand(111111111,999999999);
-                                echo "+" . $FourDigitRandomNumber;
-                            ?>
+                        <?=$kupci['phone_number'] ?>
                         </td>
-                        <td>Sanitarna</td>
-                        <td>Robot</td>
-                        <td>Sarajevo</td>
+                        <td><?=$kupci['service'] ?></td>
+                        <td><?=$kupci['objekat'] ?></td>
+                        <td><?=$kupci['city'] ?></td>
                         <td>29. 10. 1999</td>
                         <td>
                         <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-check "></span></a>
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             </div>
