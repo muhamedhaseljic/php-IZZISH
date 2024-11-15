@@ -20,9 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $description = $_POST['description'];
     $adress = $_POST['adress'];
     $objekat = $_POST['ustanova'];
+    $day_of_a_week = 'poslovi';
     
-    
-    $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat);
+    $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat, $day_of_a_week);
     $customer_id = $kupac->get_latest_id_by_name($name, $surname);
 
     if(!empty($_POST['persons'])){

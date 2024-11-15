@@ -693,7 +693,7 @@ function validateForm() {
     const checkboxes = document.querySelectorAll('input[name="bacteria_ids[]"]:checked');
     const errorMessage = document.getElementById('error-message');
     const service = document.getElementById('service').value;
-    if (service === 'sanitarna') {
+    if (service === 'sanitarna' || service === 'deratizacija' || service === 'dezinfekcija') {
       return true; 
     }
     if (checkboxes.length === 0) {

@@ -15,10 +15,10 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($first_name, $last_name, $email, $phone_number, $adress, $description, $objekat){
-        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description, objekat) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public function create($first_name, $last_name, $email, $phone_number, $adress, $description, $objekat, $day_of_a_week){
+        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description, objekat, day_of_a_week) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("sssssss", $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat);
+        $run->bind_param("ssssssss", $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat, $day_of_a_week);
         $run->execute();
     }
 
