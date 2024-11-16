@@ -270,13 +270,43 @@ tbody tr:last-child {
         }
         .table-filter {
     border-radius: 5px;
+    margin-left: 10px;
+    
+}
+
+.service-filter-btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.service-filter-btn.active {
+    background-color: #132650;
+    color:white;
+    border: none;
+}
+.service-filter-btn:focus {
+    outline: none; 
+}
+.service-filter-btn:nth-of-type(1){
+    margin-left: 50px;
 }
     </style>
     
     <div class="custom-main-content content">
         <h1 >Poslovi u ovoj sedmici</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Search city..." class="custom-search-bar">
+                <div>
+                    <input type="text" placeholder="Search city..." class="custom-search-bar">
+                    <button class="service-filter-btn active" data-filter="all" onclick="filterRowsByButton(this)">All</button>
+                    <button class="service-filter-btn" data-filter="Analiza" onclick="filterRowsByButton(this)">Analiza</button>
+                    <button class="service-filter-btn" data-filter="Sanitarna" onclick="filterRowsByButton(this)">Sanitarna</button>
+                    <button class="service-filter-btn" data-filter="Deratizacija" onclick="filterRowsByButton(this)">Deratizacija</button>
+                </div>
                 <a href="add_employees.php" class="custom-add-btn">PDF</a>
 
             </div>
@@ -498,5 +528,68 @@ rows.forEach((row) => {
 
 })
 
+}
+
+// dugmad za filterovanje po service
+
+function filterRowsByButton(button) {
+    selectedService = button.getAttribute("data-filter");
+
+    document.querySelectorAll(".service-filter-btn").forEach((btn) => {
+        btn.classList.remove("active");
+    });
+    button.classList.add("active");
+
+    filter_rows();
+}
+
+function filter_rows() {
+    const allFilters = document.querySelectorAll(".table-filter");
+    const filter_value_dict = {};
+
+    allFilters.forEach((filter_i) => {
+        const col_index = filter_i.parentElement.getAttribute("col-index");
+        const value = filter_i.value;
+        if (value !== "all") {
+            filter_value_dict[col_index] = value;
+        }
+    });
+
+    const rows = document.querySelectorAll("#emp-table tbody tr");
+
+    rows.forEach((row) => {
+        let display_row = true;
+
+        const col_cell_value_dict = {};
+        allFilters.forEach((filter_i) => {
+            const col_index = filter_i.parentElement.getAttribute("col-index");
+            col_cell_value_dict[col_index] = row.querySelector(
+                "td:nth-child(" + col_index + ")"
+            ).innerHTML;
+        });
+
+        for (const col_i in filter_value_dict) {
+            const filter_value = filter_value_dict[col_i];
+            const row_cell_value = col_cell_value_dict[col_i];
+
+            if (
+                row_cell_value.indexOf(filter_value) === -1 &&
+                filter_value !== "all"
+            ) {
+                display_row = false;
+                break;
+            }
+        }
+
+        const serviceValue = row.querySelector("td:nth-child(4)").innerHTML; 
+        if (
+            selectedService !== "all" &&
+            serviceValue.indexOf(selectedService) === -1
+        ) {
+            display_row = false;
+        }
+
+        row.style.display = display_row ? "table-row" : "none";
+    });
 }
     </script>
