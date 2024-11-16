@@ -347,8 +347,9 @@ tbody tr:last-child {
                   left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
                   left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
                   where kupac.employee_id = $radnik_id && kupac.day_of_a_week != 'poslovi'
-                  GROUP BY 
-                  kupac.customer_id;";
+                  GROUP BY kupac.customer_id
+                  ORDER BY FIELD(kupac.day_of_a_week, 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'),
+                  kupac.position;";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     $select_members = $results;
