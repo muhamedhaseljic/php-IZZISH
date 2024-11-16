@@ -268,6 +268,9 @@ tbody tr:last-child {
             text-decoration: none;
             cursor: pointer;
         }
+        .table-filter {
+    border-radius: 5px;
+}
     </style>
     
     <div class="custom-main-content content">
@@ -278,17 +281,20 @@ tbody tr:last-child {
 
             </div>
             <div class="scrolling-divv">
-            <table class="table custom-table">
+            <table id="emp-table" class="table custom-table">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Radnik</th>
-                        <th>Email</th>
                         <th>Telefon</th>
                         <th>Posao</th>
                         <th>Ustanova</th>
                         <th>Grad</th>
-                        <th>Datum narudjbe</th>
+                        <th col-index = 7 >Dan
+                        <select class="table-filter" onchange="filter_rows()">
+                            <option value="all"></option>
+                        </select>
+                        </th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
@@ -310,7 +316,7 @@ tbody tr:last-child {
                   left join `radnici` on kupac.employee_id = radnici.employee_id
                   left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
                   left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
-                  where kupac.employee_id = $radnik_id
+                  where kupac.employee_id = $radnik_id && kupac.day_of_a_week != 'poslovi'
                   GROUP BY 
                   kupac.customer_id;";
                     $run = $conn->query($sql);
@@ -322,14 +328,13 @@ tbody tr:last-child {
                     <tr>
                         <td><?=$kupci['customer_id']?></td>
                         <td><?=$kupci['first_name']. " ".$kupci['last_name'] ?></td>
-                        <td>medina@gmail.com</td>
                         <td>
                         <?=$kupci['phone_number'] ?>
                         </td>
                         <td><?=$kupci['service'] ?></td>
                         <td><?=$kupci['objekat'] ?></td>
                         <td><?=$kupci['city'] ?></td>
-                        <td>29. 10. 1999</td>
+                        <td><?=$kupci['day_of_a_week'] ?></td>
                         <td>
                         <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-check "></span></a>
@@ -390,4 +395,108 @@ tbody tr:last-child {
                 popup.style.display = "none";
             }
         }
+        getUniqueValuesFromColumn()
+        // sortiranje po danu
+
+        function getUniqueValuesFromColumn() {
+
+var unique_col_values_dict = {}
+
+allFilters = document.querySelectorAll(".table-filter")
+allFilters.forEach((filter_i) => {
+    col_index = filter_i.parentElement.getAttribute("col-index");
+    const rows = document.querySelectorAll("#emp-table > tbody > tr")
+
+    rows.forEach((row) => {
+        cell_value = row.querySelector("td:nth-child("+col_index+")").innerHTML;
+        if (col_index in unique_col_values_dict) {
+
+            if (unique_col_values_dict[col_index].includes(cell_value)) {
+
+            } else {
+                unique_col_values_dict[col_index].push(cell_value)
+
+            }
+
+
+        } else {
+            unique_col_values_dict[col_index] = new Array(cell_value)
+        }
+    });
+
+    
+});
+
+
+
+updateSelectOptions(unique_col_values_dict)
+
+};
+
+
+function updateSelectOptions(unique_col_values_dict) {
+allFilters = document.querySelectorAll(".table-filter")
+
+allFilters.forEach((filter_i) => {
+    col_index = filter_i.parentElement.getAttribute('col-index')
+
+    unique_col_values_dict[col_index].forEach((i) => {
+        filter_i.innerHTML = filter_i.innerHTML + `\n<option value="${i}">${i}</option>`
+    });
+
+});
+};
+
+
+function filter_rows() {
+allFilters = document.querySelectorAll(".table-filter")
+var filter_value_dict = {}
+
+allFilters.forEach((filter_i) => {
+    col_index = filter_i.parentElement.getAttribute('col-index')
+
+    value = filter_i.value
+    if (value != "all") {
+        filter_value_dict[col_index] = value;
+    }
+});
+
+var col_cell_value_dict = {};
+
+const rows = document.querySelectorAll("#emp-table tbody tr");
+rows.forEach((row) => {
+    var display_row = true;
+
+    allFilters.forEach((filter_i) => {
+        col_index = filter_i.parentElement.getAttribute('col-index')
+        col_cell_value_dict[col_index] = row.querySelector("td:nth-child(" + col_index+ ")").innerHTML
+    })
+
+    for (var col_i in filter_value_dict) {
+        filter_value = filter_value_dict[col_i]
+        row_cell_value = col_cell_value_dict[col_i]
+        
+        if (row_cell_value.indexOf(filter_value) == -1 && filter_value != "all") {
+            display_row = false;
+            break;
+        }
+
+
+    }
+
+    if (display_row == true) {
+        row.style.display = "table-row"
+
+    } else {
+        row.style.display = "none"
+
+    }
+
+
+
+
+
+})
+
+}
     </script>
