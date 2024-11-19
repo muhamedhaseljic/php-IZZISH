@@ -280,7 +280,7 @@ tbody tr:last-child {
     border: none;
     background-color: white;
     color: black;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -294,6 +294,96 @@ tbody tr:last-child {
 }
 .service-filter-btn:nth-of-type(1){
     margin-left: 50px;
+}
+
+.modal {
+            display: none; 
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            /*border: 1px solid #888;*/
+            width: 600px;
+            
+            color:black;
+            border-radius:20px;
+        }
+        .modal-content input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 0px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #ebeef5;
+            color: #132650;
+            font-family: FontAwesome, sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .modal-content input:focus{
+            border: 1px solid #008cba;
+    outline: none;
+        }
+        .close {
+            color: #132650;
+            font-size: 28px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    
+    grid-row-gap: 0px;
+    grid-column-gap: 60px;
+}
+        .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+}
+.form-group {
+    align-items: center;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #ebeef5;
+            color: #132650;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  border: 1px solid  black;
+}
+
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
+}
+.modal-name{
+    font-weight:800;
 }
     </style>
     
@@ -368,12 +458,45 @@ tbody tr:last-child {
                         <td><?=$kupci['day_of_a_week'] ?></td>
                         <td>
                         <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
-                            <a href="edit_employees.php" class="custom-edit-btn"><span class="fas fa-check "></span></a>
+                            <button onclick="showPopup(<?php echo $kupci['customer_id']; ?>, '<?php echo $kupci['service']; ?>', '<?php echo $kupci['city']; ?>')" class="custom-edit-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"> <span class="fas fa-check "> </span> </button>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <form id="deleteForm" action="zavrsi_posao.php" method="POST">
+        <input type="hidden" name="customerId" id="customerId">
+        <input type="hidden" name="deleteReason" id="deleteReason">
+        <input type="hidden" name="leave_startDate" id="leave_startDate">
+        <input type="hidden" name="taking-timeDate" id="taking-timeDate">
+    </form>
+      <div id="modal" class="modal">
+    <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p>Naziv posla: <span class="modal-name" id="employeeName"></span> <br>
+        Mjesto: <span class="modal-name" id="employeeLastName"></span> <br>
+        Unesite datum i vrijeme završetka posla:</p>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="leave_start">Datum:</label>
+                <input type="date" id="leave_start" name="leave_start" class="custom-date">
+            </div>
+            <div class="form-group">
+                <label for="taking-time">Vrijeme:</label>
+                <input type="time" id="taking-time" name="taking-time" min="00:00" max="23:59" required>
+
+            </div>
+        </div>
+        
+        <div class="button-group d-flex justify-content-between">
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+        </div>
+    </div>
+</div>
+
             </div>
         </div>
 
@@ -407,25 +530,7 @@ tbody tr:last-child {
 </div>
 
 <script>
-        var popup = document.getElementById("popup");
-
-        var btn = document.getElementById("popupBtn");
-
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-            popup.style.display = "block";
-        }
-
-        span.onclick = function() {
-            popup.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == popup) {
-                popup.style.display = "none";
-            }
-        }
+        
         getUniqueValuesFromColumn()
         // sortiranje po danu
 
@@ -593,4 +698,55 @@ function filter_rows() {
         row.style.display = display_row ? "table-row" : "none";
     });
 }
+
+// modal for done jobs
+
+function showPopup(employeeId, employeeName, employeeLastName) {
+        document.getElementById('customerId').value = employeeId;
+        document.getElementById('employeeName').innerText = employeeName;
+        document.getElementById('employeeLastName').innerText = employeeLastName;
+        document.getElementById('modal').style.display = "block";
+    }
+    function closePopup() {
+        document.getElementById('modal').style.display = "none";
+    }
+    function submitForm() {
+        let leave_startInput = document.getElementById('leave_start').value;
+        let taking_timeInput = document.getElementById('taking-time').value;
+
+            document.getElementById('leave_startDate').value = leave_startInput;
+            document.getElementById('taking-timeDate').value = taking_timeInput;
+
+            document.getElementById('deleteForm').submit(); 
+        
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('leave_start').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
+            }
+        });
+    });
+
+    //vrijeme
+    function setCurrentTime() {
+      const timeInput = document.getElementById('taking-time');
+      const dateInput = document.getElementById('leave_start');
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); 
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+
+      const currentTime = `${hours}:${minutes}`;
+      const currentDate = `${year}-${month}-${day}`;
+
+      dateInput.value = currentDate; 
+      timeInput.value = currentTime; 
+    }
+
+    setCurrentTime();
     </script>
