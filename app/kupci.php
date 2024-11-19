@@ -322,6 +322,7 @@ tbody tr:last-child {
                   left join `radnici` on kupac.employee_id = radnici.employee_id
                   left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
                   left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
+                  where kupac.jobs_id =0
                   GROUP BY 
                   kupac.customer_id;";
                     $run = $conn->query($sql);

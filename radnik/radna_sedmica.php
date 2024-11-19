@@ -193,7 +193,7 @@ if(isset($_SESSION['message'])) :?>
                 
                 $sql = "SELECT kupac.*
                   FROM `kupac` 
-                  WHERE kupac.employee_id = $radnik_id
+                  WHERE kupac.employee_id = $radnik_id && kupac.jobs_id =0
                   ORDER BY kupac.day_of_a_week, kupac.position";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);

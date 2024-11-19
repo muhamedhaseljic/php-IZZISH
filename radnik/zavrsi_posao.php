@@ -44,19 +44,16 @@
         if($count === 0){
             $sql_bacteria_ids = "SELECT bacteria_id FROM hrane_bakterije WHERE customer_id = $customer_id";
             $run_bacteria_ids = $conn->query($sql_bacteria_ids);
-            $bacteria_ids = $run_bacteria_ids->fetch_all(MYSQLI_ASSOC); // Array of bacteria_id
+            $bacteria_ids = $run_bacteria_ids->fetch_all(MYSQLI_ASSOC); 
         
-            // Extract just the ids as an array
             $bacteria_id_array = array_column($bacteria_ids, 'bacteria_id');
 
             $bacteria_id_list = implode(",", $bacteria_id_array);
 
-            // Step 3: Sum prices of bacteria_id in the bakterije table
             $sql_sum_prices = "SELECT SUM(price) as total_price FROM bakterije WHERE bacteria_id IN ($bacteria_id_list)";
             $run_sum_prices = $conn->query($sql_sum_prices);
             $total_price = (float) $run_sum_prices->fetch_assoc()['total_price'];
 
-            // Output the total price
             echo "Total Price: " . $total_price;
         }
         else{

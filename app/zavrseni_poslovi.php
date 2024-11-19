@@ -40,7 +40,7 @@
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; 
+    border-spacing: 0px; 
     
 }
 
@@ -50,6 +50,12 @@
     color: #fff;
 }
 
+thead tr {
+    background-color: #132650;
+    position: sticky;
+    top: 0;
+
+}
 
 .custom-table thead th {
     padding: 15px;
@@ -87,6 +93,7 @@ tbody tr:last-child {
     border: none;
     background-color:white ;
     vertical-align: middle;
+    border-top: 10px solid #ebeef5 ;
     color:black;
     
 }
@@ -178,37 +185,60 @@ tbody tr:last-child {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Posao</th>
                         <th>Ime radnika</th>
-                        <th>Naziv kupca</th>
+                        <th>Posao</th>
+                        <th>Grad</th>
                         <th>Vrijeme završetka</th>
-                        <th>Produkt</th>                        
+                        <th>Auto</th>                        
                         <th>Cijena</th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                <?php for($i=1;$i<10;$i++) : ?>
+                <?php 
+            $sql = "SELECT obavljeni_poslovi.*,
+            kupac.first_name as customer_name,
+            kupac.last_name as customer_last_name,
+            kupac.email as customer_email,
+            kupac.phone_number as customer_phone_number,
+            kupac.adress as customer_adress,
+            kupac.service as service,
+            kupac.city as customer_city,
+            radnici.first_name as employee_name,
+            radnici.last_name as employee_last_name,
+
+
+            produkt_hrana.name as product_food_name,
+            produkt_hrana.type as product_food_type,
+            produkt_hrana.description as product_food_description,
+             GROUP_CONCAT(CONCAT(produkt_osoba.first_name, ' ', produkt_osoba.last_name) SEPARATOR ', ') AS produkt_osoba_names
+            FROM `obavljeni_poslovi` 
+            left join `kupac` on kupac.jobs_id = obavljeni_poslovi.jobs_id
+            left join `radnici` on radnici.employee_id = kupac.employee_id
+            left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
+            left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
+            where kupac.jobs_id !=0
+            GROUP BY kupac.customer_id;";
+              $run = $conn->query($sql);
+              $results = $run->fetch_all(MYSQLI_ASSOC);
+              $select_members = $results;
+
+            foreach($results as $result) : ?>
                     <tr>
-                        <td><?php echo $i ?></td>
-                        <td>Sanitarna</td>
-                        <td>Muhamed Haseljić</td>
-						<td>Ramo Zatagić</td>
-                        <td>
-                            <?php
-                                
-                                echo date("Y.m.d"). "<br> ". date("h:i:sa");
-                            ?>
-                        </td>
-                        <td>Maslanica</td>
-                        <td>$ 1350</td>
+                        <td><?php echo $result['jobs_id'] ?></td>
+                        <td><?php echo $result['employee_name'] ." ". $result['employee_last_name'] ?></td>
+                        <td><?php echo $result['service'] ?></td>
+						<td><?php echo $result['customer_city'] ?></td>
+                        <td><?php echo $result['completition_date'] ?></td>
+                        <td><?php echo $result['car_name'] ?></td>
+                        <td><?php echo $result['price'] ?></td>
                         <td>
                             <button class="custom-view-btn"><span class="fas fa-eye"></span></button>
                             
                         </td>
                     </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             </div>
