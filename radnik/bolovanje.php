@@ -114,14 +114,14 @@ tbody tr:last-child {
     padding: 10px 20px;
     color: #fff;
     
-    background-color: #262c78;
+    background-color: #132650;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
 }
 .custom-add-btn:hover{
-    background-color: #484b8f;
+    background-color: #23355d;
     color: #fff;
     text-decoration:none;
 }
@@ -171,20 +171,21 @@ tbody tr:last-child {
 }
 
 .tab {
-    background-color: #132650;
+    background-color: white;
     padding: 10px 10px;
-    color: white;
+    color: black;
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
     margin-right: 10px;
 }
 
-.tab:hover, .tab.active {
-    background-color: #23355d;
+
+
+.tab.active {
+    background-color: #132650;
+    color: white;
 }
-
-
 
 .container-custom {
     width: 100%; 
@@ -345,6 +346,95 @@ tbody tr:last-child {
     text-decoration: none;
 
 }
+
+.modal {
+            display: none; 
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            /*border: 1px solid #888;*/
+            width: 600px;
+            
+            color:black;
+            border-radius:20px;
+        }
+        .modal-content input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 0px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #ebeef5;
+            color: #132650;
+            font-family: FontAwesome, sans-serif;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .modal-content input:focus{
+            border: 1px solid #008cba;
+    outline: none;
+        }
+        .close {
+            color: #132650;
+            font-size: 28px;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    
+    grid-row-gap: 0px;
+    grid-column-gap: 60px;
+}
+        .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    
+}
+.form-group {
+    align-items: center;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #ebeef5;
+            color: #132650;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  border: 1px solid  black;
+}
+.form-group input:focus{
+    border: 1px solid #008cba;
+    outline: none;
+}
+.modal-name{
+    font-weight:800;
+}
     </style>
     
     <div class="custom-main-content content">
@@ -355,21 +445,21 @@ tbody tr:last-child {
             <div class="tab" onclick="showContainer('odobreno')">ODOBRENO</div>
             <div class="tab" onclick="showContainer('odbijeno')">ODBIJENO</div>
         </div>
-
+        <?php $employee_data = $radnik->get_employee_data() ?>
+        <?php $radnik_id = $employee_data['employee_id'] ?>
   
   <div class="container-custom-div">
     <div id="na čekanju" class="container-custom active-container-custom">
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Na čekanju</h2>
-        <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
-    </div>
+        <button onclick="showPopup(<?php echo $radnik_id ?>, '<?php echo $employee_data['first_name']; ?>', '<?php echo $employee_data['last_name']; ?>')" class="custom-add-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"> <span> Add </span> </button>
+        </div>
     <div class="scrolling-divv" >
     <table class="styled-table">
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Email</th>
+
             <th>Početak bolovanja</th>
             <th>Kraj bolovanja</th>
             <th>Dani</th>
@@ -390,22 +480,20 @@ tbody tr:last-child {
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
-                  WHERE bolovanje.status='pending'";
+                  WHERE bolovanje.status='pending' && bolovanje.employee_id = $radnik_id";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     
                     foreach($results as $leave) :
                   ?>
         <tr>
-            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
-            <td><?php echo $leave['employee_email'] ?></td>
+
             <td><?php echo $leave['leave_date'] ?></td>
             <td><?php echo $leave['return_date'] ?></td>
             <td><?php echo $leave['days'] ?></td>
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
             </div></td>
         </tr>
@@ -413,6 +501,36 @@ tbody tr:last-child {
         
     </tbody>
 </table>
+<form id="deleteForm" action="dodaj_bolovanje.php" method="POST">
+        <input type="hidden" name="customerId" id="customerId">
+        <input type="hidden" name="deleteReason" id="deleteReason">
+        <input type="hidden" name="leave_startDate" id="leave_startDate">
+        <input type="hidden" name="taking-timeDate" id="taking-timeDate">
+    </form>
+      <div id="modal" class="modal">
+    <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p>Naziv posla: <span class="modal-name" id="employeeName"></span> <br>
+        Mjesto: <span class="modal-name" id="employeeLastName"></span> <br>
+        Unesite datum i vrijeme završetka posla:</p>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="leave_start">Datum:</label>
+                <input type="date" id="leave_start" name="leave_start" class="custom-date">
+            </div>
+            <div class="form-group">
+                <label for="taking-time">Vrijeme:</label>
+                <input type="time" id="taking-time" name="taking-time" min="00:00" max="23:59" required>
+            </div>
+        </div>
+        
+        <div class="button-group d-flex justify-content-between">
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+        </div>
+    </div>
+</div>
 </div>
       </div>
     </div>
@@ -422,20 +540,17 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odobreno</h2>
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
 
         <div class="scrolling-divv" >
     <table class="styled-table">
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Email</th>
             <th>Početak bolovanja</th>
             <th>Kraj bolovanja</th>
             <th>Dani</th>
             <th>Datum slanja</th>
-            <th>Akcije</th>
+            <th>Odobrio</th>
         </tr>
     </thead>
     <tbody>
@@ -448,23 +563,18 @@ tbody tr:last-child {
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
-                  WHERE bolovanje.status='approved'";
+                  WHERE bolovanje.status='approved' && bolovanje.employee_id = $radnik_id";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     
                     foreach($results as $leave) :
                   ?>
         <tr>
-            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
-            <td><?php echo $leave['employee_email'] ?></td>
             <td><?php echo $leave['leave_date'] ?></td>
             <td><?php echo $leave['return_date'] ?></td>
             <td><?php echo $leave['days'] ?></td>
             <td><?php echo $leave['created_date'] ?></td>
-            <td>
-                <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
-            </div></td>
+            <td><?php echo $leave['confirmed_by'] ?></td>
         </tr>
         <?php endforeach; ?>
         
@@ -479,19 +589,17 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odbijeno</h2>
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
 </div>
 <div class="scrolling-divv" >
     <table class="styled-table">
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Email</th>
+
             <th>Početak bolovanja</th>
             <th>Kraj bolovanja</th>
             <th>Dani</th>
             <th>Datum slanja</th>
-            <th>Akcije</th>
+            <th>Odbio</th>
         </tr>
     </thead>
     
@@ -507,23 +615,18 @@ tbody tr:last-child {
                   bolovanje.status as bolovanje_status
                   FROM `bolovanje` 
                   left join `radnici` on bolovanje.employee_id = radnici.employee_id
-                  WHERE bolovanje.status='disapproved'";
+                  WHERE bolovanje.status='disapproved' && bolovanje.employee_id=$radnik_id";
                     $run = $conn->query($sql);
                     $results = $run->fetch_all(MYSQLI_ASSOC);
                     
                     foreach($results as $leave) :
                   ?>
         <tr>
-            <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
-            <td><?php echo $leave['employee_email'] ?></td>
             <td><?php echo $leave['leave_date'] ?></td>
             <td><?php echo $leave['return_date'] ?></td>
             <td><?php echo $leave['days'] ?></td>
             <td><?php echo $leave['created_date'] ?></td>
-            <td>
-                <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
-            </div></td>
+            <td><?php echo $leave['confirmed_by'] ?></td>
         </tr>
         <?php endforeach; ?>
         
@@ -556,6 +659,33 @@ tbody tr:last-child {
         activeTab.classList.add('active');
     }
 }
+
+// modal for adding leave
+function showPopup(employeeId, employeeName, employeeLastName) {
+        document.getElementById('customerId').value = employeeId;
+        document.getElementById('employeeName').innerText = employeeName;
+        document.getElementById('employeeLastName').innerText = employeeLastName;
+        document.getElementById('modal').style.display = "block";
+    }
+    function closePopup() {
+        document.getElementById('modal').style.display = "none";
+    }
+    function submitForm() {
+        let leave_startInput = document.getElementById('leave_start').value;
+        let taking_timeInput = document.getElementById('taking-time').value;
+            document.getElementById('leave_startDate').value = leave_startInput;
+            document.getElementById('taking-timeDate').value = taking_timeInput;
+            document.getElementById('deleteForm').submit(); 
+        
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('leave_start').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
+            }
+        });
+    });
   </script>
 
   <?php
