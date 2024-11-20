@@ -142,6 +142,10 @@ tbody tr:last-child {
 .custom-delete-btn {
     background-color: #ed484d;
     color:white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
 }
 .custom-delete-btn:hover{
     background-color: #ba383c;
@@ -509,9 +513,9 @@ tbody tr:last-child {
     </form>
       <div id="modal" class="modal">
     <div class="modal-content">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <p>Naziv posla: <span class="modal-name" id="employeeName"></span> <br>
-        Mjesto: <span class="modal-name" id="employeeLastName"></span> <br>
+    <span class="close" onclick="closePopup()">&times;</span><br>
+    <p><span hidden class="modal-name" id="employeeName"></span>
+        <span hidden class="modal-name" id="employeeLastName"></span> 
         Unesite datum početka i kraja bolovanja:</p>
         
         <div class="form-grid">

@@ -32,12 +32,13 @@ protected $conn;
         return $result->fetch_assoc();
     }
 
-    public function update($leave_id, $status, $reason){
+    public function update($leave_id, $status, $reason, $confirmed_by){
         $sql = "UPDATE bolovanje SET        status = ?,
-                                          reason = ?
+                                          reason = ?,
+                                          confirmed_by=?
                                           WHERE leave_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssi", $status, $reason, $leave_id);
+        $run->bind_param("sssi", $status, $reason,$confirmed_by, $leave_id);
         $run->execute();
     }
 
