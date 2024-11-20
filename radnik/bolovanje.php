@@ -340,8 +340,8 @@ tbody tr:last-child {
 }
 
 .status.inactive {
-    background-color: #f0a2a2;
-    color: black;
+    background-color: #ed484d;
+    color: white;
     font-weight: 200;
     text-decoration: none;
 
@@ -412,8 +412,8 @@ tbody tr:last-child {
     align-items: start;
     
 }
-.form-group {
-    align-items: center;
+.form-group:last-child {
+    align-items: end;
 }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%;
@@ -494,7 +494,7 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Cancel</span></a>
             </div></td>
         </tr>
         <?php endforeach; ?>
@@ -502,26 +502,26 @@ tbody tr:last-child {
     </tbody>
 </table>
 <form id="deleteForm" action="dodaj_bolovanje.php" method="POST">
-        <input type="hidden" name="customerId" id="customerId">
+        <input type="hidden" name="employeeId" id="employeeId">
         <input type="hidden" name="deleteReason" id="deleteReason">
         <input type="hidden" name="leave_startDate" id="leave_startDate">
-        <input type="hidden" name="taking-timeDate" id="taking-timeDate">
+        <input type="hidden" name="leave_endDate" id="leave_endDate">
     </form>
       <div id="modal" class="modal">
     <div class="modal-content">
     <span class="close" onclick="closePopup()">&times;</span>
     <p>Naziv posla: <span class="modal-name" id="employeeName"></span> <br>
         Mjesto: <span class="modal-name" id="employeeLastName"></span> <br>
-        Unesite datum i vrijeme završetka posla:</p>
+        Unesite datum početka i kraja bolovanja:</p>
         
         <div class="form-grid">
             <div class="form-group">
-                <label for="leave_start">Datum:</label>
+                <label for="leave_start">OD:</label>
                 <input type="date" id="leave_start" name="leave_start" class="custom-date">
             </div>
             <div class="form-group">
-                <label for="taking-time">Vrijeme:</label>
-                <input type="time" id="taking-time" name="taking-time" min="00:00" max="23:59" required>
+                <label for="leave_end">DO:</label>
+                <input type="date" id="leave_end" name="leave_end" class="custom-date">
             </div>
         </div>
         
@@ -662,7 +662,7 @@ tbody tr:last-child {
 
 // modal for adding leave
 function showPopup(employeeId, employeeName, employeeLastName) {
-        document.getElementById('customerId').value = employeeId;
+        document.getElementById('employeeId').value = employeeId;
         document.getElementById('employeeName').innerText = employeeName;
         document.getElementById('employeeLastName').innerText = employeeLastName;
         document.getElementById('modal').style.display = "block";
@@ -672,9 +672,9 @@ function showPopup(employeeId, employeeName, employeeLastName) {
     }
     function submitForm() {
         let leave_startInput = document.getElementById('leave_start').value;
-        let taking_timeInput = document.getElementById('taking-time').value;
+        let leave_endInput = document.getElementById('leave_end').value;
             document.getElementById('leave_startDate').value = leave_startInput;
-            document.getElementById('taking-timeDate').value = taking_timeInput;
+            document.getElementById('leave_endDate').value = leave_endInput;
             document.getElementById('deleteForm').submit(); 
         
     }
