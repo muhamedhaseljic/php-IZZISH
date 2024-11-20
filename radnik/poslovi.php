@@ -411,7 +411,7 @@ tbody tr:last-child {
                         <th>Ustanova</th>
                         <th>Grad</th>
                         <th col-index = 7 >Dan
-                        <select class="table-filter" onchange="filter_rows()">
+                        <select class="table-filter" onchange="filter_rowss()">
                             <option value="all"></option>
                         </select>
                         </th>
@@ -584,7 +584,7 @@ allFilters.forEach((filter_i) => {
 };
 
 
-function filter_rows() {
+function filter_rowss() {
 allFilters = document.querySelectorAll(".table-filter")
 var filter_value_dict = {}
 
