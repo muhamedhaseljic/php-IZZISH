@@ -415,7 +415,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = "http://localhost/retro/radnik/index.php?page=radna_sedmica";
+            window.location.href = "http://localhost/retro/radnik/pdf_radna_sedmica.php";
         } else {
             alert('Error updating tasks.');
         }
