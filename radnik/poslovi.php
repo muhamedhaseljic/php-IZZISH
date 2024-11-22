@@ -397,7 +397,7 @@ tbody tr:last-child {
                     <button class="service-filter-btn" data-filter="Sanitarna" onclick="filterRowsByButton(this)">Sanitarna</button>
                     <button class="service-filter-btn" data-filter="Deratizacija" onclick="filterRowsByButton(this)">Deratizacija</button>
                 </div>
-                <a href="add_employees.php" class="custom-add-btn">PDF</a>
+                <a target="_blank" href="customers.pdf" class="custom-add-btn">PDF</a>
 
             </div>
             <div class="scrolling-divv">

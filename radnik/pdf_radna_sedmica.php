@@ -10,7 +10,7 @@ $employee_data = $radnik->get_employee_data();
 $radnik_id = $employee_data['employee_id'];
 
 $sql = "SELECT * FROM kupac 
-        WHERE employee_id  = $radnik_id AND jobs_id = 0
+        WHERE employee_id  = $radnik_id AND jobs_id = 0 AND day_of_a_week !='poslovi'
         ORDER BY FIELD(kupac.day_of_a_week, 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'),
                   kupac.position;";   
 $result  = $conn->query($sql);
@@ -208,7 +208,7 @@ EOD;
     $pdf->AddPage();
 }
 
-$pdf->Output('invoice.pdf', 'I');
+$pdf->Output('C:\xampp\htdocs\retro\radnik\customers.pdf', 'F');
 $conn->close();
 
 header("Location: http://localhost/retro/radnik/index.php?page=radna_sedmica");
