@@ -10,7 +10,9 @@ $employee_data = $radnik->get_employee_data();
 $radnik_id = $employee_data['employee_id'];
 
 $sql = "SELECT * FROM kupac 
-        WHERE employee_id  = $radnik_id AND jobs_id = 0";   
+        WHERE employee_id  = $radnik_id AND jobs_id = 0
+        ORDER BY FIELD(kupac.day_of_a_week, 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'),
+                  kupac.position;";   
 $result  = $conn->query($sql);
 
 $customers = [];
@@ -40,14 +42,16 @@ $pdf->AddPage();
 
 $checked = "\u{2611}"; 
 $unchecked = "\u{2610}";
+$br=0;
 
 $html = <<<EOD
 <table border="0" cellspacing="0" cellpadding="5">
     <tr>
         <td style="width:100%">
-            <h2>INSTITUT ZA ZDRAVLJE I SIGURNOST HRANE</h2>
+            <h1 style="text-align: center;" >INSTITUT ZA ZDRAVLJE I SIGURNOST HRANE</h1><br>
             <p>
-                <strong>Adresa: </strong>Fra Ivana Jukić br.2 72000 Zenica<br>
+                <strong>Adresa: </strong>Fra Ivana Jukić br.2<br>
+                <strong>Grad: </strong>72000 Zenica<br>
                 <strong>E-mail: </strong>info@inz.ba<br>
                 <strong>Tel</strong>032/448/001<br>
                 <strong>Fax</strong>032/448/000
@@ -100,39 +104,40 @@ foreach ($customers as $customer) {
         $isChecked = in_array($bacteria['bacteria_id'], $associatedBacteria) ? $checked : $unchecked;
         $bacteriaHtml .= <<<EOD
         <tr>
-            <td>{$bacteria['name']}</td>
-            <td align="center">{$isChecked}</td>
+            <td style="width:70%" >{$bacteria['name']}</td>
+            <td style="width:15%" align="center">{$isChecked}</td>
+            <td style="width:15%" >{$bacteria['price']}</td>
         </tr>
         EOD;
     }
 
     $html = <<<EOD
-    <h2>Customer Information</h2>
+    <h2>NARUDŽBENICA BROJ: {$customer['customer_id']}</h2>
+    <h2>Podaci o kupcu</h2>
     <table cellpadding="5" cellspacing="0" border="1">
-        <tr><td><b>Customer ID</b></td><td>{$customer['customer_id']}</td></tr>
-        <tr><td><b>First Name</b></td><td>{$customer['first_name']}</td></tr>
-        <tr><td><b>Last Name</b></td><td>{$customer['last_name']}</td></tr>
+        <tr><td><b>Ime</b></td><td>{$customer['first_name']}</td></tr>
+        <tr><td><b>Prezime</b></td><td>{$customer['last_name']}</td></tr>
         <tr><td><b>Email</b></td><td>{$customer['email']}</td></tr>
-        <tr><td><b>Phone Number</b></td><td>{$customer['phone_number']}</td></tr>
-        <tr><td><b>Address</b></td><td>{$customer['adress']}</td></tr>
-        <tr><td><b>City</b></td><td>{$customer['city']}</td></tr>
-        <tr><td><b>Service</b></td><td>{$customer['service']}</td></tr>
-        <tr><td><b>Description</b></td><td>{$customer['description']}</td></tr>
+        <tr><td><b>Broj telefona</b></td><td>{$customer['phone_number']}</td></tr>
+        <tr><td><b>Adresa</b></td><td>{$customer['adress']}</td></tr>
+        <tr><td><b>Grad</b></td><td>{$customer['city']}</td></tr>
+        <tr><td><b>Posao</b></td><td>{$customer['service']}</td></tr>
+        <tr><td><b>Opis usluge</b></td><td>{$customer['description']}</td></tr>
         <tr><td><b>Objekat</b></td><td>{$customer['objekat']}</td></tr>
-        <tr><td><b>Day of a Week</b></td><td>{$customer['day_of_a_week']}</td></tr>
+        <tr><td><b>Dan obavljanja</b></td><td>{$customer['day_of_a_week']}</td></tr>
     </table>
     <br><br>
     EOD;
 
     if (!empty($persons)) {
         $html .= <<<EOD
-        <h2>Associated Persons</h2>
+        <h2>U prilogu su podaci uposlenika</h2>
         <table cellpadding="5" cellspacing="0" border="1">
             <thead>
-                <tr>
-                    <th><b>Person ID</b></th>
-                    <th><b>First Name</b></th>
-                    <th><b>Last Name</b></th>
+                <tr style="background-color:#f2f2f2; font-weight:bold;">
+                    <th><b>Rb.</b></th>
+                    <th><b>Ime</b></th>
+                    <th><b>Prezime</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -153,15 +158,15 @@ EOD;
         </table>
         <br><br>
         EOD;
-    } else {
+    } else if (empty($persons) and $customer['service'] != 'Deratizacija') {
         $html .= <<<EOD
-        <h2>Associated Products</h2>
+        <h2>Podaci o uzorku</h2>
         <table cellpadding="5" cellspacing="0" border="1">
             <thead>
-                <tr>
-                    <th><b>Product Name</b></th>
-                    <th><b>Type</b></th>
-                    <th><b>Description</b></th>
+                <tr style="background-color:#f2f2f2; font-weight:bold;">
+                    <th><b>Naziv uzorka</b></th>
+                    <th><b>Vrsta uzorka</b></th>
+                    <th><b>Opis uzorka</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -182,12 +187,13 @@ EOD;
         </table>
         <br><br>
 
-        <h2>Associated Bacteria</h2>
+        <h2>Podaci o obimu ispitivanja</h2>
         <table cellpadding="5" cellspacing="0" border="1">
             <thead>
-                <tr>
-                    <th><b>Bacteria Name</b></th>
-                    <th><b>Status</b></th>
+                <tr style="background-color:#f2f2f2; font-weight:bold;">
+                    <th style="width:70%"><b>Naziv ispitivanja</b></th>
+                    <th style="width:15%" ><b>Status</b></th>
+                    <th style="width:15%"><b>Cijena</b></th>
                 </tr>
             </thead>
             <tbody>
