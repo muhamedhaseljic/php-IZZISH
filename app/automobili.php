@@ -45,7 +45,7 @@ require_once "../classes/Automobili.php";
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; 
+    border-spacing: 0px; 
     
 }
 
@@ -55,7 +55,12 @@ require_once "../classes/Automobili.php";
     color: #fff;
 }
 
+thead tr {
+    background-color: #132650;
+    position: sticky;
+    top: 0;
 
+}
 
 .custom-table thead th {
     padding: 15px;
@@ -93,6 +98,7 @@ tbody tr:last-child {
     border: none;
     background-color: white ;
     vertical-align: middle;
+    border-top: 10px solid #ebeef5 ;
     color:black;
 }
 
