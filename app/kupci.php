@@ -48,7 +48,7 @@ $kupac = $kupac->fetch_all();
     
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px; 
+    border-spacing: 0px;
     
 }
 
@@ -60,7 +60,8 @@ $kupac = $kupac->fetch_all();
 
 thead tr {
     background-color: #132650;
-    
+    position: sticky;
+    top: 0;
 
 }
 
