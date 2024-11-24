@@ -231,33 +231,34 @@ input::placeholder {
 }
 
 .alert-success {
-    background-color: #4cb050;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 15px;
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right:20px;
     z-index: 9999;
     border-radius: 7px;
     display: none;
-    width: 450px;
+    height: 60px;
     text-align: center;
     overflow: hidden;
-    border:none;
+    
+}
+
+.alert-success i{
+    color: #4cb050;
 }
 
 .progress-bar {
     height: 5px;
-    background-color: #c9e8c6;
+    background-color: #4cb050;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
     transition: width linear; 
 }
-
-
 
 @keyframes progress {
     from { width: 100%; }
