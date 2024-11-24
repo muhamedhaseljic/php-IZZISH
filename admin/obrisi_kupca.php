@@ -10,6 +10,8 @@ $customer = new Kupac();
 
     $customer->delete($customer_id);
 
+    $_SESSION['message']['type'] = "success";
+    $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Posao uspješno izbrisan";
     header("Location: ../app/dashboard.php?page=kupci");
 
 ?>

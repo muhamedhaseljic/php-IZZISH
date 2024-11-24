@@ -87,6 +87,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }}
     
     }
+    $_SESSION['message']['type'] = "success";
+    $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno uređen posao";
     header('Location: ../app/dashboard.php?page=kupci');
     exit();
     }
