@@ -131,8 +131,8 @@ button#submitBtn:hover {
 }
 
 .alert-success {
-    background-color: #4cb050;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 15px;
     position: fixed;
     top: 20px;
@@ -140,23 +140,25 @@ button#submitBtn:hover {
     z-index: 9999;
     border-radius: 7px;
     display: none;
-    width: 450px;
+    height: 60px;
     text-align: center;
     overflow: hidden;
-    border:1px solid #4cb050;
+    
+}
+
+.alert-success i{
+    color: #4cb050;
 }
 
 .progress-bar {
     height: 5px;
-    background-color: #c9e8c6;
+    background-color: #4cb050;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
     transition: width linear; 
 }
-
-
 
 @keyframes progress {
     from { width: 100%; }
