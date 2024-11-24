@@ -133,7 +133,7 @@ nav#sidebar .sidebar-list .hr-custom {
                 <a href="../radnik/index.php?page=radna_sedmica" class="nav-item nav-radna_sedmica"><span class='icon-field'>&nbsp;<i class="fas fa-calendar-week">  &nbsp; &nbsp;</i></span> Radna sedmica</a>
                 <a href="index.php?page=poslovi" class="nav-item nav-poslovi"><span class='icon-field'>&nbsp;<i class="fas fa-tasks">  &nbsp; &nbsp;</i></span> Poslovi</a>
                 <a href="index.php?page=poruke" class="nav-item nav-poruke"><span class='icon-field'>&nbsp;<i class="fas fa-envelope">  &nbsp; &nbsp;</i></span> Poruke</a>
-                <a href="index.php?page=bolovanje" class="nav-item nav-bolovanje"><span class='icon-field'>&nbsp;<i class="fas fa-envelope">  &nbsp; &nbsp;</i></span> Bolovanje</a>
+                <a href="index.php?page=bolovanje" class="nav-item nav-bolovanje"><span class='icon-field'>&nbsp;<i class="fas fa-calendar-check">  &nbsp; &nbsp;</i></span> Bolovanje</a>
 
                 <hr class="hr-custom">
                 <img class="nav-item" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">

@@ -53,8 +53,8 @@ $html = <<<EOD
                 <strong>Adresa: </strong>Fra Ivana Jukić br.2<br>
                 <strong>Grad: </strong>72000 Zenica<br>
                 <strong>E-mail: </strong>info@inz.ba<br>
-                <strong>Tel</strong>032/448/001<br>
-                <strong>Fax</strong>032/448/000
+                <strong>Tel: </strong>032/448/001<br>
+                <strong>Fax: </strong>032/448/000
             </p>
         </td>
     </tr>

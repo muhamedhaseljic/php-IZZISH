@@ -692,8 +692,4 @@ function showPopup(employeeId, employeeName, employeeLastName) {
     });
   </script>
 
-  <?php
-  
-  require_once "../inc/footer.php";
-  
-  ?>
+ 

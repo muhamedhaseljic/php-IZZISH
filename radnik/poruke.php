@@ -11,6 +11,6 @@
 }
     </style>
     
-    <div class="custom-main-content">
+    <div class="custom-main-content content">
        
         </div>
