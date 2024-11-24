@@ -274,7 +274,21 @@ tbody tr:last-child {
             display: inline-block;
         }
     </style>
+    <?php
+
+if(isset($_SESSION['message'])) :?>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
+
+    <?php
     
+      echo $_SESSION['message']['text'];
+      unset($_SESSION['message']);
+    
+    ?>
+     <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<?php endif; ?>
     <div class="custom-main-content content">
         <h1 >Lista automobila</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">

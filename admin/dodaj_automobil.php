@@ -17,6 +17,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $kilometers = $_POST['kilometers'];
     
     $car->create($name, $model, $registration, $date_of_production, $price, $kilometers);
+    $_SESSION['message']['type'] = "success";
+    $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Automobil ".$name." uspješno dodan";
+
     header('Location: ../app/dashboard.php?page=automobili');
     exit();
     }

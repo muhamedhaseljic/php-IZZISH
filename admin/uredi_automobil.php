@@ -23,6 +23,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   
         $car_obj->update($car_id, $name, $model, $registration, $date_of_production, $price, $kilometers);
         $car_obj->assign_car($car_id, $employee_id);
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno uređen automobil";
+    
         header('Location: ../app/dashboard.php?page=automobili');
         exit();
 
