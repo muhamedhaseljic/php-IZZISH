@@ -385,7 +385,58 @@ tbody tr:last-child {
 .modal-name{
     font-weight:800;
 }
+
+.alert-success {
+    background-color: white;
+    color: black;
+    padding: 15px;
+    position: fixed;
+    top: 20px;
+    right:20px;
+    z-index: 9999;
+    border-radius: 7px;
+    display: none;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    
+}
+
+.alert-success i{
+    color: #4cb050;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: #4cb050;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width linear; 
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
     </style>
+
+<?php
+
+if(isset($_SESSION['message'])) :?>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
+
+    <?php
+    
+      echo $_SESSION['message']['text'];
+      unset($_SESSION['message']);
+    
+    ?>
+     <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<?php endif; ?>
     
     <div class="custom-main-content content">
         <h1 >Poslovi u ovoj sedmici</h1>
@@ -749,4 +800,64 @@ function showPopup(employeeId, employeeName, employeeLastName) {
     }
 
     setCurrentTime();
+
+    // success message
+
+let timeout;
+let totalDuration = 5000; 
+let remainingTime = totalDuration; 
+let startTime;
+let elapsedTime = 0; 
+let isHovered = false; 
+let progressBar, popup;
+
+document.addEventListener("DOMContentLoaded", function() {
+    popup = document.getElementById("success-popup");
+    progressBar = document.getElementById("progress-bar");
+
+    if (popup) {
+        popup.style.display = 'block'; 
+        progressBar.style.width = '100%'; 
+        setTimeout(() => {
+            startTimer(remainingTime); 
+        }, 50); 
+
+        popup.addEventListener("mouseenter", pauseTimer);
+        popup.addEventListener("mouseleave", resumeTimer);
+    }
+});
+
+function startTimer(duration) {
+    startTime = Date.now();
+    timeout = setTimeout(hidePopup, duration);
+    
+    progressBar.style.transitionDuration = duration + 'ms';
+    progressBar.style.width = '0%'; 
+}
+
+function hidePopup() {
+    popup.style.display = 'none';
+}
+
+function pauseTimer() {
+    if (!isHovered) {
+        clearTimeout(timeout); 
+        elapsedTime += Date.now() - startTime; 
+        remainingTime = totalDuration - elapsedTime; 
+
+        let percentageElapsed = (elapsedTime / totalDuration) * 100;
+        progressBar.style.width = (100 - percentageElapsed) + '%';
+        progressBar.style.transitionDuration = '0ms'; 
+        isHovered = true;
+    }
+}
+
+function resumeTimer() {
+    if (isHovered) {
+        startTimer(remainingTime); 
+        progressBar.style.transitionDuration = remainingTime + 'ms'; 
+        progressBar.style.width = '0%'; 
+        isHovered = false;
+    }
+}
     </script>

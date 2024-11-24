@@ -21,8 +21,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     $objekat = $_POST['ustanova'];
     $day_of_a_week = 'poslovi';
+    $service = $_POST['service'];
+    $city = $_POST['city'];
     
-    $kupac->create($name, $surname, $email, $phone_number,$adress, $description, $objekat, $day_of_a_week);
+    $kupac->create($name, $surname, $email, $phone_number,$adress,$city,$service, $description, $objekat, $day_of_a_week);
     $customer_id = $kupac->get_latest_id_by_name($name, $surname);
 
     if(!empty($_POST['persons'])){
@@ -392,28 +394,29 @@ input[type="checkbox"]:checked + label:after {
   </div>
 
   <div class="form-group">
+  <label for="city"> Grad</label>
+    <input type="text" id="city" placeholder="Grad"  name="city">
+  </div>
+
+  <div class="form-group">
   <label for="adress"> Adresa</label>
     <input type="text" id="adress" placeholder="Adresa"  name="adress">
   </div>
+  
 
   <div class="form-group">
   <label for="ustanova"> Ustanova</label>
     <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova">
   </div>
 
-  <div class="form-group">
-  <label for="website"> Website</label>
-    <input type="text" id="website" placeholder="Website"  name="website">
-  </div>
+  
 
   <div class="form-group">
   <label for="service">Select Service:</label>
         <select id="service" name="service" onchange="showFields()">
             <option value="posao">Izaberi posao</option>
-            <option value="sanitarna">Sanitarna odbrada</option>
-            <option value="deratizacija">Analiza</option>
-            <option value="posao">Deratizacija</option>
-            <option value="posao">Dezinfekcija</option>
+            <option value="Sanitarna">Sanitarna odbrada</option>
+            <option value="Analiza">Analiza</option>
         </select>
   </div>
 
@@ -508,23 +511,18 @@ input[type="checkbox"]:checked + label:after {
             removeRequired(deratizacijaFields);
             
 
-            if (service === 'sanitarna') {
+            if (service === 'Sanitarna') {
               clearInputs(deratizacijaFields);
               addRequired(sanitarnaFields);
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
-            } else if (service === 'deratizacija') {
+            } else if (service === 'Analiza') {
               deratizacijaFields.style.display = "flex";
               clearInputs(sanitarnaFields);
               clearPersons(); 
               addRequired(deratizacijaFields);
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
-            }else if (service === 'posao'){
-             
-            clearInputs(deratizacijaFields);
-            clearInputs(sanitarnaFields);
-            clearPersons();
             }
         }
         function clearInputs(container) {

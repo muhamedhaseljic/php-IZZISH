@@ -219,7 +219,8 @@ tbody tr:last-child {
             left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
             left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
             where kupac.jobs_id !=0
-            GROUP BY kupac.customer_id;";
+            GROUP BY kupac.customer_id
+            ORDER BY obavljeni_poslovi.jobs_id;";
               $run = $conn->query($sql);
               $results = $run->fetch_all(MYSQLI_ASSOC);
               $select_members = $results;

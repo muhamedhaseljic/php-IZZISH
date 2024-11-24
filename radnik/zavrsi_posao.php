@@ -20,6 +20,7 @@
         $results = $run->fetch_assoc();
 
         $employee_id = $results['employee_id'];
+        $service = $results['service'];
         
         $sql = "SELECT * FROM radnici WHERE employee_id  = $employee_id";
         $run = $conn->query($sql);
@@ -41,7 +42,7 @@
         $count = (int) $run->fetch_assoc()['count'];
         
 
-        if($count === 0){
+        if($service === 'Analiza'){
             $sql_bacteria_ids = "SELECT bacteria_id FROM hrane_bakterije WHERE customer_id = $customer_id";
             $run_bacteria_ids = $conn->query($sql_bacteria_ids);
             $bacteria_ids = $run_bacteria_ids->fetch_all(MYSQLI_ASSOC); 
@@ -54,11 +55,11 @@
             $run_sum_prices = $conn->query($sql_sum_prices);
             $total_price = (float) $run_sum_prices->fetch_assoc()['total_price'];
 
-            echo "Total Price: " . $total_price;
+            
+
         }
         else{
             $total_price = $count*35;
-            echo  $total_price;
         }
 
         
@@ -78,7 +79,8 @@
 
         
 
-        $_SESSION['uspjeh'] = $message;
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno završen posao";
         header('location: http://localhost/retro/radnik/index.php?page=poslovi');
         exit;
     }

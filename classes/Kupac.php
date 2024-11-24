@@ -15,10 +15,10 @@ protected $conn;
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($first_name, $last_name, $email, $phone_number, $adress, $description, $objekat, $day_of_a_week){
-        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, description, objekat, day_of_a_week) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public function create($first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description, $objekat, $day_of_a_week){
+        $sql = "INSERT INTO kupac (first_name, last_name, email, phone_number, adress, city, service, description, objekat, day_of_a_week) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("ssssssss", $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat, $day_of_a_week);
+        $run->bind_param("ssssssssss", $first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description, $objekat, $day_of_a_week);
         $run->execute();
     }
 
@@ -30,17 +30,19 @@ protected $conn;
         return $result->fetch_assoc();
     }
 
-    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress, $description, $objekat){
+    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description, $objekat){
         $sql = "UPDATE kupac SET        first_name = ?,
                                           last_name = ?,
                                           email = ?, 
                                           phone_number = ?,
                                           adress = ?, 
+                                          city = ?,
+                                          service = ?,
                                           description = ?,
                                           objekat = ?
                                           WHERE customer_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("sssssssi", $first_name, $last_name, $email, $phone_number, $adress, $description,$objekat, $customer_id);
+        $run->bind_param("sssssssssi", $first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description,$objekat, $customer_id);
         $run->execute();
     }
 

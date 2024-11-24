@@ -50,8 +50,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     $objekat= $_POST['ustanova'];
     $employee_id= $_POST['assign_employee'];
+    $city = $_POST['city'];
+    $service = $_POST['service'];
     
-    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress, $description, $objekat);
+    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress,$city, $service, $description, $objekat);
     $kupac_obj->assign_employee($customer_id, $employee_id);
     $produkt_osoba_obj->delete($_GET['id']);
     $produkt_hrana_obj->delete($_GET['id']);
@@ -420,10 +422,8 @@ input[type="checkbox"]:checked + label:after {
   <label for="service">Select Service:</label>
         <select id="service" name="service" onchange="showFields()">
             <option value="posao">Izaberi posao</option>
-            <option <?php if($persons!=null) echo "selected" ?> value="sanitarna">Sanitarna odbrada</option>
-            <option <?php if($foods!=null) echo "selected" ?> value="deratizacija">Analiza</option>
-            <option value="posao">Deratizacija</option>
-            <option value="posao">Dezinfekcija</option>
+            <option <?php if($persons!=null) echo "selected" ?> value="Sanitarna">Sanitarna odbrada</option>
+            <option <?php if($foods!=null) echo "selected" ?> value="Analiza">Analiza</option>
         </select>
   </div>
 
@@ -576,23 +576,18 @@ input[type="checkbox"]:checked + label:after {
             removeRequired(deratizacijaFields);
             
 
-            if (service === 'sanitarna') {
+            if (service === 'Sanitarna') {
               clearInputs(deratizacijaFields);
               addRequired(sanitarnaFields);
                 sanitarnaFields.classList.remove('hidden');
                 sanitarnaFields.classList.add('visible');
-            } else if (service === 'deratizacija') {
+            } else if (service === 'Analiza') {
               deratizacijaFields.style.display = "flex";
               clearInputs(sanitarnaFields);
               clearPersons(); 
               addRequired(deratizacijaFields);
                 deratizacijaFields.classList.remove('hidden');
                 deratizacijaFields.classList.add('visible');
-            }else if (service === 'posao'){
-            
-            //clearInputs(deratizacijaFields);
-            //clearInputs(sanitarnaFields);
-            //clearPersons();
             }
         }
         window.onload = function(){
@@ -693,7 +688,7 @@ function validateForm() {
     const checkboxes = document.querySelectorAll('input[name="bacteria_ids[]"]:checked');
     const errorMessage = document.getElementById('error-message');
     const service = document.getElementById('service').value;
-    if (service === 'sanitarna' || service === 'deratizacija' || service === 'dezinfekcija') {
+    if (service === 'Sanitarna') {
       return true; 
     }
     if (checkboxes.length === 0) {
