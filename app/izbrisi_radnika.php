@@ -50,7 +50,8 @@
             $message = "radnik nije obrisan";
         }
 
-        $_SESSION['uspjeh'] = $message;
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno izbrisan radnik";
         header('location: http://localhost/retro/app/dashboard.php?page=radnici');
         exit;
     }

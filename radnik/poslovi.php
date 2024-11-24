@@ -553,7 +553,7 @@ if(isset($_SESSION['message'])) :?>
 
 <div id="popup" class="popup">
     <div class="popup-content">
-        <div class="profile-picture"><img class="boja-pozadine" src="images/Haseljić Muhamed_pp.jpg"  alt=""> </div> <!-- Placeholder for the picture -->
+        <div class="profile-picture"><img class="boja-pozadine" src=""  alt=""> </div> <!-- Placeholder for the picture -->
         <div class="radnik-details">
             <h2>Muhamed Haseljić</h2>
             <ul>
