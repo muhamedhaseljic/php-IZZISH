@@ -392,7 +392,8 @@ if(isset($_SESSION['message'])) :?>
         </thead>
         <tbody id="employee-table">
             <?php 
-            $sql = "SELECT * FROM radnici";
+            $sql = "SELECT * FROM radnici 
+                    WHERE is_admin=0";
             $run = $conn->query($sql);
             $results = $run->fetch_all(MYSQLI_ASSOC);
 
