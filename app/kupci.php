@@ -314,7 +314,7 @@ if(isset($_SESSION['message'])) :?>
                         <th>Ime i prezime</th>
                         <th>Telefon</th>
                         <th>Grad</th>
-                        <th>Tip</th>
+                        <th>Posao</th>
 						<th>
                          Radnik
             <button id="sortEmployeeBtn" onclick="sortByEmployeeStatus()" style="margin-left:10px; border: 1px solid white; background: none;color: white; cursor: pointer;">
@@ -353,8 +353,8 @@ if(isset($_SESSION['message'])) :?>
                         <td>
                         <?=$kupci['phone_number'] ?>
                         </td>
-                        <td><?=$kupci['adress'] ?></td>
-                        <td><?=$kupci['description'] ?></td>
+                        <td><?=$kupci['city'] ?></td>
+                        <td><?=$kupci['service'] ?></td>
 						<td><?php
 
                             if($kupci['employee_name']){

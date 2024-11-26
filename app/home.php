@@ -332,10 +332,17 @@ if(isset($_SESSION['message'])) :?>
                     <label for="datum_zaposlenja">Datum Zaposlenja:</label>
                     <input type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
                 </div>
+                
+
                 <div class="form-group">
-                    <label for="radni_status">Radni Status:</label>
-                    <input type="text" id="radni_status" value="<?=$employee_data['status']?>" name="radni_status" placeholder="Enter Radni Status" />
+                <label for="radni_status"> Status</label>
+                    <select id="radni_status"  name="radni_status">
+                    <option value="stalno-zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
+                    <option value="privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
+                    <option value="pripravnici_rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="jmbg">JMBG:</label>
                     <input type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
@@ -343,7 +350,7 @@ if(isset($_SESSION['message'])) :?>
 
                 <div class="form-group">
                 <label for="files"> Slika</label>
-                    <input type="file"  id="file" name="photo_path" >
+                    <input type="file"  id="file" name="photo_path">
                 </div>
 
                 <div class="form-group">
@@ -355,6 +362,8 @@ if(isset($_SESSION['message'])) :?>
                     <label for="pozicija">Pozicija:</label>
                     <input type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
+
+                
 
                 <div class="form-group">
                     <button class="custom-add-btn">SPREMI</button>

@@ -50,10 +50,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $adress = $_POST['adress'];
     $objekat= $_POST['ustanova'];
     $employee_id= $_POST['assign_employee'];
-    $city = $_POST['city'];
     $service = $_POST['service'];
     
-    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress,$city, $service, $description, $objekat);
+    $kupac_obj->update($customer_id, $name, $surname, $email, $phone_number,$adress, $service, $description, $objekat);
     $kupac_obj->assign_employee($customer_id, $employee_id);
     $produkt_osoba_obj->delete($_GET['id']);
     $produkt_hrana_obj->delete($_GET['id']);
@@ -409,6 +408,7 @@ input[type="checkbox"]:checked + label:after {
   <label for="description"> Detalji</label>
     <input type="text" id="description" value="<?php echo $result['description'] ?>" placeholder="Detalji"  name="description">
   </div>
+
 
   <div class="form-group">
   <label for="adress"> Adresa</label>
