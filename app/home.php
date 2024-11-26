@@ -212,17 +212,21 @@ input::placeholder {
     border-radius: 20px;
     cursor: pointer;
     color: white;
-    margin-top: 60px;
     background-color: #132650;
     text-align: center;
     border: 1px solid #132650;
+    display: block;
+  margin-left: auto;
+  margin-right: 0;
 }
 .form-group button:hover{
     background-color: #23355d;
     
     
 }
-
+.razmakk{
+    width: 280px;
+}
 
 
     </style>
@@ -335,11 +339,11 @@ if(isset($_SESSION['message'])) :?>
                 
 
                 <div class="form-group">
-                <label for="radni_status"> Status</label>
+                <label for="radni_status" class="razmakk"> Status</label>
                     <select id="radni_status"  name="radni_status">
-                    <option value="stalno-zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
-                    <option value="privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
-                    <option value="pripravnici_rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
+                    <option value="Stalno zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
+                    <option value="Privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
+                    <option value="Pripravnički rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
                     </select>
                 </div>
 
@@ -365,11 +369,12 @@ if(isset($_SESSION['message'])) :?>
 
                 
 
-                <div class="form-group">
-                    <button class="custom-add-btn">SPREMI</button>
-                </div>
+                
                 </form>
             </div>
+            <div class="form-group">
+                    <button class="custom-add-btn">SPREMI</button>
+                </div>
             
         </div>
     </div>
