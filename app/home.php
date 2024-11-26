@@ -97,7 +97,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 .border-divider {
-    width: 20px;
+    width: 40px;
     background-color: #ebeef5;
     margin-left: ;
     height:670px;
