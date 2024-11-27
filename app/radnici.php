@@ -365,10 +365,10 @@ if(isset($_SESSION['message'])) :?>
     
 
 
-        <h1 >Employees List</h1>
+        <h1 >Lista radnika</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
-    <a href="add_employees.php" class="custom-add-btn">Add</a>
+    <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
+    <a href="add_employees.php" class="custom-add-btn">Dodaj</a>
 </div>
 <div class="scrolling-divv">
     <table class="table custom-table" id="emp-table">
