@@ -286,7 +286,6 @@ tbody tr:last-child {
                         <th>Pozicija</th>
                         <th>Plata</th>                        
                         <th>Slika</th>
-                        <th>Datum rodjenja</th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
@@ -308,7 +307,6 @@ tbody tr:last-child {
                         <td><?=$history['position'] ?></td>
                         <td><?=$history['salary'] ?></td>
                         <td><img src="<?php echo "../images/" . $history['photo_path'] ?>" alt="Edis" class="custom-profile-img"></td>
-                        <td><?=$history['date_of_birth'] ?></td>
                         <td>
                             
                         <button id="popupBtn" class="custom-view-btn view-employee-btn" data-employee='<?php echo json_encode($history); ?>'><span class="fas fa-eye"></span></button>

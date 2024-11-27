@@ -30,19 +30,18 @@ protected $conn;
         return $result->fetch_assoc();
     }
 
-    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description, $objekat){
+    public function update($customer_id, $first_name, $last_name, $email, $phone_number, $adress, $service, $description, $objekat){
         $sql = "UPDATE kupac SET        first_name = ?,
                                           last_name = ?,
                                           email = ?, 
                                           phone_number = ?,
                                           adress = ?, 
-                                          city = ?,
                                           service = ?,
                                           description = ?,
                                           objekat = ?
                                           WHERE customer_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("sssssssssi", $first_name, $last_name, $email, $phone_number, $adress,$city, $service, $description,$objekat, $customer_id);
+        $run->bind_param("ssssssssi", $first_name, $last_name, $email, $phone_number, $adress, $service, $description,$objekat, $customer_id);
         $run->execute();
     }
 

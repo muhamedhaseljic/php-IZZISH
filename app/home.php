@@ -97,7 +97,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 .border-divider {
-    width: 20px;
+    width: 40px;
     background-color: #ebeef5;
     margin-left: ;
     height:670px;
@@ -212,17 +212,21 @@ input::placeholder {
     border-radius: 20px;
     cursor: pointer;
     color: white;
-    margin-top: 60px;
     background-color: #132650;
     text-align: center;
     border: 1px solid #132650;
+    display: block;
+  margin-left: auto;
+  margin-right: 0;
 }
 .form-group button:hover{
     background-color: #23355d;
     
     
 }
-
+.razmakk{
+    width: 280px;
+}
 
 
     </style>
@@ -332,10 +336,17 @@ if(isset($_SESSION['message'])) :?>
                     <label for="datum_zaposlenja">Datum Zaposlenja:</label>
                     <input type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
                 </div>
+                
+
                 <div class="form-group">
-                    <label for="radni_status">Radni Status:</label>
-                    <input type="text" id="radni_status" value="<?=$employee_data['status']?>" name="radni_status" placeholder="Enter Radni Status" />
+                <label for="radni_status" class="razmakk"> Status</label>
+                    <select id="radni_status"  name="radni_status">
+                    <option value="Stalno zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
+                    <option value="Privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
+                    <option value="Pripravnički rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="jmbg">JMBG:</label>
                     <input type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
@@ -343,7 +354,7 @@ if(isset($_SESSION['message'])) :?>
 
                 <div class="form-group">
                 <label for="files"> Slika</label>
-                    <input type="file"  id="file" name="photo_path" >
+                    <input type="file"  id="file" name="photo_path">
                 </div>
 
                 <div class="form-group">
@@ -356,11 +367,14 @@ if(isset($_SESSION['message'])) :?>
                     <input type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
 
-                <div class="form-group">
-                    <button class="custom-add-btn">SPREMI</button>
-                </div>
+                
+
+                
                 </form>
             </div>
+            <div class="form-group">
+                    <button class="custom-add-btn">SPREMI</button>
+                </div>
             
         </div>
     </div>
