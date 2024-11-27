@@ -384,8 +384,6 @@ if(isset($_SESSION['message'])) :?>
                 </th>
                 <th col-index = 3>Email</th>
                 <th col-index = 4>Telefon</th>
-                <th col-index = 5>Pozicija</th>
-                <th>Plata</th>                        
                 <th>Slika</th>
                 <th>Akcije</th>
             </tr>
@@ -403,8 +401,6 @@ if(isset($_SESSION['message'])) :?>
                 <td><?php echo $result['first_name'] ." ". $result['last_name'] ?></td>
                 <td><?php echo $result['email'] ?></td>
                 <td><?php echo $result['phone_number'] ?></td>
-                <td><?php echo $result['position'] ?></td>
-                <td>$ <?php echo $result['salary'] ?></td>
                 <td><img src="<?php echo "../images/" . $result['photo_path'] ?>" alt="img" class="custom-profile-img"></td>
                 <td>
                     <div class="button-container">

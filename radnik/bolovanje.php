@@ -204,9 +204,9 @@ tbody tr:last-child {
 }
 
 .box {
-    width: 1200px; 
+    width: 1100px; 
     max-width: 100%; 
-    height: 600px;
+    height: 550px;
     background-color: #ebeef5;
     border-radius: 10px;
     

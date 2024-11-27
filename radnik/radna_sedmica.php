@@ -6,12 +6,14 @@
     background-color: #ebeef5;
     min-height: 100vh;
     padding-bottom:0px;
+    padding-right:50px;
+    padding-left:50px;
 
 }
     
     .container {
     width: 100%;
-    max-width: 1500px; 
+    max-width: 1800px; 
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -25,7 +27,7 @@
 
 
 .col {
-    width: 200px;
+    width: 240px;
     background-color: white;
     padding: 10px;
     padding-top:0;

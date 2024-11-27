@@ -3,16 +3,19 @@
 
 <style>
 nav#sidebar {
-    height: 100vh;
-    position: sticky;
-    z-index: 99;
-    left: 0;
-    width:  270px;
-    padding: 20px;
-    border: 1px solid #132650;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        height: 100vh;
+        position: sticky;
+        z-index: 99;
+        left: 0;
+        width: 270px;
+        padding: 20px;
+        border: 1px solid #132650;
+        background-color: #132650;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Space between top, center, and bottom sections */
+    }
 
-}
 nav#sidebar.closed {
     margin-left: -270px; 
 }
@@ -116,7 +119,74 @@ nav#sidebar .sidebar-list .hr-custom {
     background-color: #575757; 
     border: none; 
 }
+.sidebar-list {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 
+    a.nav-item {
+        display: block;
+        padding: 0.43rem 0.95rem;
+        margin: 5px 0;
+        background-color: #132650;
+        color: white;
+        font-weight: 100;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+
+    a.nav-item:hover {
+        background-color: #23355d;
+    }
+
+    .nav-item.active {
+        background-color: #23355d;
+    }
+
+    .nav-item img {
+        border-radius: 100%;
+        border: 3px solid #008cba;
+        margin: auto;
+    }
+
+    h2.nav-item, h3.nav-item {
+        text-align: center;
+        color: white;
+        margin: 5px 0;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .logo-container img {
+        max-width: 200px;
+        max-height: 60px;
+    }
+
+    .logout-section {
+        text-align: center;
+        margin-bottom: 50px; /* Margin from the bottom */
+    }
+
+    .logout-section a {
+        display: inline-block;
+        padding: 0.55rem 0.95rem;
+        background-color: #132650;
+        color: white;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .logout-section a:hover {
+        background-color: #23355d;
+        color: grey;
+    }
 </style>
 
 <nav id="sidebar" class='mx-lt-5 sidebar-custom' >
@@ -136,8 +206,11 @@ nav#sidebar .sidebar-list .hr-custom {
                 <a href="index.php?page=bolovanje" class="nav-item nav-bolovanje"><span class='icon-field'>&nbsp;<i class="fas fa-calendar-check">  &nbsp; &nbsp;</i></span> Bolovanje</a>
 
                 <hr class="hr-custom">
-                <img class="nav-item" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
-
+                <div class="logo-container">
+            <img src="../images/inz_logo_-1.png" alt="Logo">
+        </div>
+        </div>
+        <div class="logout-section">
                 <a href="../logout.php" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> LogOut</a>
 		</div>
         <button id="toggleButton" lass="move-button">
