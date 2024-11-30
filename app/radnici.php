@@ -478,7 +478,7 @@ if(isset($_SESSION['message'])) :?>
         document.getElementById("employee-email").textContent = employee.email;
         document.getElementById("employee-phone").textContent = employee.phone_number;
         document.getElementById("employee-position").textContent = employee.position;
-        document.getElementById("employee-salary").textContent = "$ " + employee.salary;
+        document.getElementById("employee-salary").textContent = employee.salary + " KM";
         document.getElementById("employee-image").src = "../images/" + employee.photo_path;
 
         document.getElementById("employee-date-of-birth").textContent = employee.date_of_birth;
