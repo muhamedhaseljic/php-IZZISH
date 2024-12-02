@@ -1,12 +1,8 @@
 <?php
-
-
-
 $target_dir = "../images/";
 
 if($_SERVER['REQUEST_METHOD']== "POST"){
     $radnik_temp = new Radnik();
-
     $employee_id = $employee_data['employee_id'];
     $first_name= $_POST['ime'];
     $last_name = $_POST['prezime'];
@@ -24,9 +20,6 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     $gender = $_POST['spol'];
     $notes = "";
     
-    
-    
-
     if (empty($_FILES['photo_path']['name'])){
         $photo_path = $employee_data['photo_path'];
     }
@@ -55,7 +48,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 ?>
 <style>
 .custom-main-content {
-    margin-left: 0px; 
+    margin-left: 0px;
     width: 100%;
     
     background-color: #ebeef5;
@@ -86,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 .left-section {
-    flex: 0 0 400px; 
+    flex: 0 0 400px;
     background-color: white;
     padding:20px;
     padding-top: 20px;
@@ -104,8 +97,8 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 .border-divider {
-    width: 20px;
-    background-color: #ebeef5; 
+    width: 40px;
+    background-color: #ebeef5;
     margin-left: ;
     height:670px;
     margin-top:-50px;
@@ -123,7 +116,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     
     grid-row-gap: 0px;
 
@@ -159,7 +152,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 }
 
 label {
-    width: 150px; 
+    width: 150px;
     font-weight: bold;
     text-align: left;
     color:black;
@@ -167,7 +160,7 @@ label {
 
 input {
     flex: 1;
-    padding: 5px; 
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid grey;
     background-color: #0d1017;
@@ -192,7 +185,7 @@ input::placeholder {
 }
 .profile-label {
     display: inline-block;
-    width: 50px; 
+    width: 50px;
     
     font-size:18px;
   }
@@ -219,17 +212,21 @@ input::placeholder {
     border-radius: 20px;
     cursor: pointer;
     color: white;
-    margin-top: 60px;
     background-color: #132650;
     text-align: center;
     border: 1px solid #132650;
+    display: block;
+  margin-left: auto;
+  margin-right: 0;
 }
 .form-group button:hover{
     background-color: #23355d;
     
     
 }
-
+.razmakk{
+    width: 287px;
+}
 
 
     </style>
@@ -284,7 +281,7 @@ if(isset($_SESSION['message'])) :?>
             </span></p>
             <p><span class="profile-label">Status:</span> <span class="detalji-profil"><?=$employee_data['status']?></span></p>
             <p><span class="profile-label">Pozicija:</span> <span class="detalji-profil"><?=$employee_data['position']?></span></p>
-            <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']?></span></p>
+            <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']. " KM"?></span></p>
         </div>
 
         <div class="border-divider"></div> 
@@ -339,10 +336,17 @@ if(isset($_SESSION['message'])) :?>
                     <label for="datum_zaposlenja">Datum Zaposlenja:</label>
                     <input type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
                 </div>
+                
+
                 <div class="form-group">
-                    <label for="radni_status">Radni Status:</label>
-                    <input type="text" id="radni_status" value="<?=$employee_data['status']?>" name="radni_status" placeholder="Enter Radni Status" />
+                <label for="radni_status" class="razmakk"> Status</label>
+                    <select id="radni_status"  name="radni_status">
+                    <option value="Stalno zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
+                    <option value="Privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
+                    <option value="Pripravnički rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
+                    </select>
                 </div>
+
                 <div class="form-group">
                     <label for="jmbg">JMBG:</label>
                     <input type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
@@ -350,7 +354,7 @@ if(isset($_SESSION['message'])) :?>
 
                 <div class="form-group">
                 <label for="files"> Slika</label>
-                    <input type="file"  id="file" name="photo_path" >
+                    <input type="file"  id="file" name="photo_path">
                 </div>
 
                 <div class="form-group">
@@ -363,11 +367,14 @@ if(isset($_SESSION['message'])) :?>
                     <input type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
 
-                <div class="form-group">
-                    <button class="custom-add-btn">SPREMI</button>
-                </div>
+                
+
+                
                 </form>
             </div>
+            <div class="form-group">
+                    <button class="custom-add-btn">SPREMI</button>
+                </div>
             
         </div>
     </div>
