@@ -225,7 +225,7 @@ input::placeholder {
     
 }
 .razmakk{
-    width: 280px;
+    width: 287px;
 }
 
 
@@ -281,7 +281,7 @@ if(isset($_SESSION['message'])) :?>
             </span></p>
             <p><span class="profile-label">Status:</span> <span class="detalji-profil"><?=$employee_data['status']?></span></p>
             <p><span class="profile-label">Pozicija:</span> <span class="detalji-profil"><?=$employee_data['position']?></span></p>
-            <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']?></span></p>
+            <p><span class="profile-label">Plata:</span> <span class="detalji-profil"><?=$employee_data['salary']. " KM"?></span></p>
         </div>
 
         <div class="border-divider"></div> 

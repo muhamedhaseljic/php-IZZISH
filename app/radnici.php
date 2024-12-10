@@ -341,7 +341,13 @@ tbody tr:last-child {
 .table-filter {
     border-radius: 5px;
 }
-
+.custom-excel-btn{
+    margin-left: 10px;
+    background-color:#5db85c ;
+}
+.custom-excel-btn:hover{
+    background-color: #2f8f47;
+}
     </style>
 
 <?php
@@ -367,7 +373,10 @@ if(isset($_SESSION['message'])) :?>
 
         <h1 >Lista radnika</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
     <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
+    <a href="export.php?what=radnici" class="custom-add-btn custom-excel-btn">Excel</a>
+    </div>
     <a href="add_employees.php" class="custom-add-btn">Dodaj</a>
 </div>
 <div class="scrolling-divv">

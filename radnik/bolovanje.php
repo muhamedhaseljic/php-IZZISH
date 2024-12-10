@@ -331,7 +331,7 @@ tbody tr:last-child {
     font-size: 0.9em;
     font-weight: bold;
     text-decoration: none;
-    margin: 10px 5px 0px 5px;
+    margin: 10px 5px 0px 0px;
 
 }
 
@@ -498,8 +498,9 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Cancel</span></a>
-            </div></td>
+            <a href="" class="status inactive" ><span  >Cancel</span></a>
+            <a href="" class="status active" ><span  >Edit</span></a>
+        </div></td>
         </tr>
         <?php endforeach; ?>
         
