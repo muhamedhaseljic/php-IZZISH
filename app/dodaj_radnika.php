@@ -48,7 +48,7 @@
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
         $run = $conn->prepare($sql);
-        $run->bind_param("ssssssssisssssss", $first_name, $last_name, $email, $password, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
+        $run->bind_param("ssssssssssssssss", $first_name, $last_name, $email, $password, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
         $result = $run->execute();
 /*
         if($result){

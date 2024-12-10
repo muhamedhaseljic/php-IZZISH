@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Reset password</title>
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
 
 <style>
@@ -69,7 +69,6 @@ body {
     background: #23355d;
     font-family: Arial, sans-serif;
 
-    text-align: justify;
     text-justify: inter-word;
 
     position: relative; 

@@ -40,7 +40,7 @@ protected $conn;
                                           position = ?, 
                                           notes = ? WHERE employee_id = ? ";
         $run = $this->conn->prepare($sql);
-        $run->bind_param("sssssssisssssssi", $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes, $employee_id);
+        $run->bind_param("sssssssssssssssi", $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes, $employee_id);
         $run->execute();
         
         $_SESSION['message']['type'] = "success";
