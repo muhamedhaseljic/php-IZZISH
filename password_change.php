@@ -5,45 +5,39 @@ require_once "radnik/Radnik.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    $password = $_POST['password'];
-    $newpassword = $_POST['newpassword'];
+    $email = $_POST['email'] ?? '';
+    $newPassword = $_POST['new_password'] ?? '';
+    $confirmPassword = $_POST['confirm_password'] ?? '';
 
-    $radnik = new Radnik();
-    $result = $radnik->login($email, $password);
-
-    if(!$result){
+    // Check if passwords match
+    if ($newPassword !== $confirmPassword) {
         $_SESSION['message']['type'] = "danger";
-        $_SESSION['message']['text'] = "Netacan email ili sifra";
-        header('Location: http://localhost/retro/index.php?page=deductions');
+        $_SESSION['message']['text'] = "Lozinke se ne podudaraju. Pokušajte ponovo.";
+        header('Location: password_change.php?email=' . urlencode($email));
         exit;
     }
 
-    header('Location: http://localhost/retro/app/dashboard.php?page=home');
-    exit;
-}
+    // Hash the new password
+    $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 
-$users = [
-    'admin@example.com' => ['password' => 'adminpass', 'role' => 'admin'],
-    'employee@example.com' => ['password' => 'employeepass', 'role' => 'employee']
-];
-
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    if (isset($users[$email]) && $users[$email]['password'] === $password) {
-        $_SESSION['role'] = $users[$email]['role'];
-
-        if ($users[$email]['role'] === 'admin') {
-            header('Location: http://localhost/retro/app/dashboard.php?page=home');
-        } elseif ($users[$email]['role'] === 'employee') {
-            header('Location: http://localhost/retro/radnik/index.php?page=home');
-        }
-        exit();
+    // Update the password in the database
+    $stmt = $conn->prepare("UPDATE radnici SET password = ? WHERE email = ?");
+    $stmt->bind_param("ss", $hashedPassword, $email);
+    if ($stmt->execute()) {
+        $_SESSION['message']['type'] = "success";
+        $_SESSION['message']['text'] = "Vaša lozinka je uspješno promijenjena. Možete se prijaviti.";
+        header('Location: http://localhost/retro/index.php?page=deductions'); // Redirect to the login page
+        exit;
     } else {
-        echo "<script>alert('Invalid email or password');</script>";
+        $_SESSION['message']['type'] = "danger";
+        $_SESSION['message']['text'] = "Došlo je do greške prilikom promjene lozinke. Pokušajte ponovo.";
+        header('Location: password_change.php?email=' . urlencode($email));
+        exit;
     }
 }
+
+// Get the email from the query parameter
+$email = $_GET['email'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -323,34 +317,27 @@ h1{
 
 </head>
 <body>
-    <?php
-if(isset($_SESSION['message'])) :?>
-<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
-
-    <?php
-    
-      echo $_SESSION['message']['text'];
-      unset($_SESSION['message']);
-    
-    ?>
-     <div class="progress-bar" id="progress-bar"></div>
-</div>
-
-<?php endif; ?>
+<?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>">
+                <?php echo $_SESSION['message']['text']; ?>
+                <?php unset($_SESSION['message']); ?>
+            </div>
+        <?php endif; ?>
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
         <h2>Prijava</h2>    
         <form action="" id="loginForm"  method="POST">
-        
+        <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+
         <div class="form-group">
-            <label for="password">Nova šifra</label>
-            <input type="password" id="password" name="password" placeholder="Unesi novu šifru" required>
+            <label for="new_password">Nova šifra</label>
+            <input type="password" id="new_password" name="new_password" placeholder="Unesi novu šifru" required>
         </div>
         
         <div class="form-group">
-            <label for="newpassword"> Potvrdi novu šifru</label>
-            <input type="password" id="newpassword" name="newpassword" placeholder="Ponovi šifru" required>
+            <label for="confirm_password"> Potvrdi novu šifru</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Ponovi šifru" required>
         </div>
             <button type="submit" name="login">Prijavi se</button>
         </form>

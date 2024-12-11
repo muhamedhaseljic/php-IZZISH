@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->isHTML(true);
             $mail->Subject = '[Institu za zdravlje i sigurnost ljudi] Molimo unesite novu lozinku';
 
-            $resetLink = "http://localhost/retro/password_change.php";
+            $resetLink = "http://localhost/retro/password_change.php?email=" . urlencode($userEmail);
 
             $mail->Body = '
                 <html>
