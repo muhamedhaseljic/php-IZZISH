@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->CharSet = 'UTF-8';
             $mail->Encoding = 'base64';
 
-            $mail->setFrom('your_email@example.com', 'IZZISLJ');
+            $mail->setFrom('your_email@example.com', 'ISINZ');
             $mail->addAddress($userEmail);
 
             $mail->isHTML(true);
-            $mail->Subject = '[Institu za zdravlje i sigurnost ljudi] Molimo unesite novu lozinku';
+            $mail->Subject = '[Institu za zdravlje i sigurnost hrane] Molimo unesite novu lozinku';
 
             $resetLink = "http://localhost/retro/password_change.php?email=" . urlencode($userEmail);
 
