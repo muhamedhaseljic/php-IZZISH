@@ -123,16 +123,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
 
             $mail->send();
             $_SESSION['message']['type'] = "success";
-            $_SESSION['message']['text'] = "Poruka je poslana na mejl";
+            $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Poruka je poslana na mejl";
             header('Location: http://localhost/retro/password_reset.php');
             exit;
             //echo 'An email has been sent with instructions to reset your password.';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+        
     } else {
         $_SESSION['message']['type'] = "danger";
-        $_SESSION['message']['text'] = "Email ne postoji u bazi podataka";
+        $_SESSION['message']['text'] = "<i class='fas fa-times-circle'>&nbsp; &nbsp;</i>Email ne postoji u bazi podataka";
         header('Location: http://localhost/retro/password_reset.php');
         exit;
         //echo 'The email you entered is not registered in our system.';
@@ -146,6 +147,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
+    <link rel="stylesheet" href="css/bootstrap4-retro.min.css">
+    <link rel="stylesheet" href="css/bootstrap4-retro.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 
 <style>
 * {
@@ -375,21 +381,42 @@ h1{
     margin-bottom:70px;
 }
 
-.alert-danger {
-    background-color: #b81f1f;
+.alert-success {
+    background-color: #46d78a;
     color: white;
     padding: 15px;
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right:100px;
     z-index: 9999;
-    border-radius: 7px;
+    border-radius: 15px;
     display: none;
-    width: 450px;
+    height: 60px;
     text-align: center;
     overflow: hidden;
-    border:none;
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
+
+.alert-success i{
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f7481d;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 20px;
+    right:100px;
+    z-index: 9999;
+    border-radius: 15px;
+    display: none;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Montserrat';
+    font-weight: 800;
 }
 
 .progress-bar {

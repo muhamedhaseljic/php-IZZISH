@@ -9,7 +9,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $newPassword = $_POST['new_password'] ?? '';
     $confirmPassword = $_POST['confirm_password'] ?? '';
 
-    // Check if passwords match
     if ($newPassword !== $confirmPassword) {
         $_SESSION['message']['type'] = "danger";
         $_SESSION['message']['text'] = "Lozinke se ne podudaraju. Pokušajte ponovo.";
@@ -17,16 +16,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit;
     }
 
-    // Hash the new password
     $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 
-    // Update the password in the database
     $stmt = $conn->prepare("UPDATE radnici SET password = ? WHERE email = ?");
     $stmt->bind_param("ss", $hashedPassword, $email);
     if ($stmt->execute()) {
         $_SESSION['message']['type'] = "success";
         $_SESSION['message']['text'] = "Vaša lozinka je uspješno promijenjena. Možete se prijaviti.";
-        header('Location: http://localhost/retro/index.php?page=deductions'); // Redirect to the login page
+        header('Location: http://localhost/retro/index.php?page=deductions');
         exit;
     } else {
         $_SESSION['message']['type'] = "danger";
@@ -36,7 +33,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 
-// Get the email from the query parameter
 $email = $_GET['email'] ?? '';
 ?>
 <!DOCTYPE html>
