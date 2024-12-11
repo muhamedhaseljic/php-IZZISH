@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if ($newPassword !== $confirmPassword) {
         $_SESSION['message']['type'] = "danger";
-        $_SESSION['message']['text'] = "Lozinke se ne podudaraju. Pokušajte ponovo.";
+        $_SESSION['message']['text'] = "<i class='fas fa-times-circle'>&nbsp; &nbsp;</i>Lozinke se ne podudaraju";
         header('Location: password_change.php?email=' . urlencode($email));
         exit;
     }
@@ -22,12 +22,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $stmt->bind_param("ss", $hashedPassword, $email);
     if ($stmt->execute()) {
         $_SESSION['message']['type'] = "success";
-        $_SESSION['message']['text'] = "Vaša lozinka je uspješno promijenjena. Možete se prijaviti.";
+        $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno promijenjena lozinka.";
         header('Location: http://localhost/retro/index.php?page=deductions');
         exit;
     } else {
         $_SESSION['message']['type'] = "danger";
-        $_SESSION['message']['text'] = "Došlo je do greške prilikom promjene lozinke. Pokušajte ponovo.";
+        $_SESSION['message']['text'] = "<i class='fas fa-times-circle'>&nbsp; &nbsp;</i>Nepravilno unesena lozinka";
         header('Location: password_change.php?email=' . urlencode($email));
         exit;
     }
@@ -42,6 +42,10 @@ $email = $_GET['email'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset password</title>
     <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/medical-specialties-set-3/256/Emergency_Medicine-512.png" type="image/png">
+    <link rel="stylesheet" href="css/bootstrap4-retro.min.css">
+    <link rel="stylesheet" href="css/bootstrap4-retro.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Shrikhand" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <style>
 * {
@@ -270,21 +274,25 @@ h1{
     margin-bottom:70px;
 }
 
+..alert-success i{
+    color: white;
+}
+
 .alert-danger {
-    background-color: #b81f1f;
+    background-color: #f7481d;
     color: white;
     padding: 15px;
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right:100px;
     z-index: 9999;
-    border-radius: 7px;
+    border-radius: 15px;
     display: none;
-    width: 450px;
+    height: 60px;
     text-align: center;
     overflow: hidden;
-    border:none;
+    font-family: 'Montserrat';
+    font-weight: 800;
 }
 
 .progress-bar {
@@ -301,7 +309,6 @@ h1{
     from { width: 100%; }
     to { width: 0%; }
 }
-
 .nav-item{
     position: absolute;
       bottom: 0;  
@@ -313,12 +320,20 @@ h1{
 
 </head>
 <body>
-<?php if (isset($_SESSION['message'])): ?>
-            <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>">
-                <?php echo $_SESSION['message']['text']; ?>
-                <?php unset($_SESSION['message']); ?>
-            </div>
-        <?php endif; ?>
+<?php
+if(isset($_SESSION['message'])) :?>
+<div class="alert alert-<?= $_SESSION['message']['type'];?> alert-dismissible fade show" role="alert" id="success-popup">
+
+    <?php
+    
+      echo $_SESSION['message']['text'];
+      unset($_SESSION['message']);
+    
+    ?>
+     <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<?php endif; ?>
     <h1>INSTITUT ZA ZDRAVLJE</h1>
     <h1 class="naslov-razmak">I SIGURNOST HRANE</h1>
     <div class="login-box">
