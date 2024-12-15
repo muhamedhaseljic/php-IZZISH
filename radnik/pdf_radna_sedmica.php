@@ -208,7 +208,7 @@ EOD;
     $pdf->AddPage();
 }
 
-$pdf->Output('C:\xampp\htdocs\retro\radnik\customers.pdf', 'F');
+$pdf->Output('C:\xampp\htdocs\retro\jobs_pdf\customers'. $radnik_id .'.pdf', 'F');
 $conn->close();
 
 header("Location: http://localhost/retro/radnik/index.php?page=radna_sedmica");

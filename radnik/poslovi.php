@@ -404,7 +404,12 @@ if(isset($_SESSION['message'])) :?>
 </div>
 
 <?php endif; ?>
+    <?php
     
+    $employee_data = $radnik->get_employee_data();
+$radnik_id = $employee_data['employee_id'];
+    
+    ?>
     <div class="custom-main-content content">
         <h1 >Poslovi u ovoj sedmici</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -415,7 +420,7 @@ if(isset($_SESSION['message'])) :?>
                     <button class="service-filter-btn" data-filter="Sanitarna" onclick="filterRowsByButton(this)">Sanitarna</button>
                     <button class="service-filter-btn" data-filter="Deratizacija" onclick="filterRowsByButton(this)">Deratizacija</button>
                 </div>
-                <a target="_blank" href="customers.pdf" class="custom-add-btn">PDF</a>
+                <a target="_blank" href="<?php echo "../jobs_pdf/customers".$radnik_id.".pdf"?>" class="custom-add-btn">PDF</a>
 
             </div>
             <div class="scrolling-divv">
