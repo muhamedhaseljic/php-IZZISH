@@ -121,6 +121,7 @@ textarea {
 }
 
 .form-buttons {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -397,29 +398,37 @@ input[type="checkbox"]:checked + label:after {
 
   <div class="form-group">
   <label for="city"> Grad</label>
-    <input type="text" id="city" placeholder="Grad"  name="city">
+    <input type="text" id="city" placeholder="Grad"  name="city"
+    data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
+    <span class="error-message">Grad mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   <div class="form-group">
   <label for="adress"> Adresa</label>
-    <input type="text" id="adress" placeholder="Adresa"  name="adress">
+    <input type="text" id="adress" placeholder="Adresa"  name="adress"
+    data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
+    <span class="error-message">Adresa mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
   
 
   <div class="form-group">
   <label for="ustanova"> Ustanova</label>
-    <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova">
+    <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova"
+    data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
+    <span class="error-message">Ustanova mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   
 
   <div class="form-group">
   <label for="service">Select Service:</label>
-        <select id="service" name="service" onchange="showFields()">
+        <select id="service" name="service" onchange="showFields()"
+        data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
             <option value="posao">Izaberi posao</option>
             <option value="Sanitarna">Sanitarna odbrada</option>
             <option value="Analiza">Analiza</option>
         </select>
+        <span class="error-message">Servis je obavezan!</span>
   </div>
 
   <div id="sanitarnaFields" class="form-group hidden full-width">
