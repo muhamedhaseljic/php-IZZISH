@@ -71,7 +71,7 @@ img.nav-item{
     color: white;
     font-weight: 400;
     margin-bottom:70px;
-    margin-top: 110px;
+    margin-top: 50px;
 }
 .sidebar-custom  a.nav-item:last-child {
     position: relative;
@@ -126,7 +126,7 @@ nav#sidebar .sidebar-list .hr-custom {
 
 
     .logo-container {
-        margin: 100px 0;
+        margin: 50px 0;
     }
 
     .logo-container img {

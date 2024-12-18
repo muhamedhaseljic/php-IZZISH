@@ -17,6 +17,9 @@ nav#sidebar {
     padding: 20px;
     border: 1px solid #132650;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 }
 
 nav#sidebar.closed {
@@ -73,8 +76,8 @@ img.nav-item{
     background-color: #132650;
     color: white;
     font-weight: 400;
-    margin-bottom:70px;
-    margin-top: 110px;
+    margin-bottom:50px;
+    margin-top: 50px;
 }
 .sidebar-custom  a.nav-item:last-child {
     position: relative;
@@ -127,7 +130,18 @@ nav#sidebar .sidebar-list .hr-custom {
     background-color: #575757; 
     border: none; 
 }
+.logo-container {
+        margin: 50px 0;
+    }
 
+    .logo-container img {
+        padding: 0.55rem 0.35rem; 
+    }
+
+    .logout-section {
+        text-align: center;
+        margin-bottom: 0px; /* Margin from the bottom */
+    }
 
 
 
@@ -155,8 +169,11 @@ nav#sidebar .sidebar-list .hr-custom {
 
 				<!--<a href="index.php?page=allowance" class="nav-item nav-allowance"><span class='icon-field'><i class="fa fa-list"> &nbsp; &nbsp;</i></span> Profil</a>-->
 				<!--<a href="index.php?page=deductions" class="nav-item nav-deductions"><span class='icon-field'><i class="fa fa-money-bill-wave"> &nbsp; &nbsp;</i></span> Deduction List</a>		-->
-				<img class="nav-item" draggable="false" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
-
+				<div class="logo-container">
+                <img  draggable="false" src="../images/inz_logo_-1.png" width="200px" height="60px" alt="">
+                </div>
+                </div>
+                <div class="logout-section">
                 <a href="../logout.php" class="nav-item nav-deductions"><span class='icon-field'><i class="fas fa-sign-out-alt"> &nbsp; &nbsp;</i></span> Odjava</a>
 		</div>
         <button id="toggleButton" lass="move-button">
