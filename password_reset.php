@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
         $mail = new PHPMailer(true);
 
         try {
+            // POSTAVKE SERVERA
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
@@ -29,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $mail->CharSet = 'UTF-8';
             $mail->Encoding = 'base64';
 
+            // PRIMAOC
             $mail->setFrom('your_email@example.com', 'ISINZ');
             $mail->addAddress($userEmail);
 
+            //SADRŽAJ
             $mail->isHTML(true);
-            $mail->Subject = '[Institu za zdravlje i sigurnost hrane] Molimo unesite novu lozinku';
+            $mail->Subject = '[Institut za zdravlje i sigurnost hrane] Molimo unesite novu lozinku';
 
             $resetLink = "http://localhost/retro/password_change.php?email=" . urlencode($userEmail);
 
@@ -42,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                 <head>
                     <style>
                         .container {
-                            font-family: Arial, sans-serif;
+                            font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif ;
                             width: 100%;
                             padding:20px 0;
                             background-color: white;
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                             
                         }
                         .email-content {
-                            max-width: 600px;
+                            max-width: 500px;
                             margin: 0 auto;
                             background-color: #fff;
                             border-radius: 10px;
@@ -61,11 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                             font-size: 22px;
                             color: black;
                             margin-bottom: 20px;
+                            font-weight:600;
                         }
                         .email-body {
                             font-size: 16px;
-                            color: #555;
+                            color: #24292e;
+                            
                         }
+                            .email-body p{
+                                    text-align: left;
+                                }
                         .btn-reset {
                             display: inline-block;
                             padding: 10px 20px;
@@ -79,7 +87,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                             margin-top: 30px;
                             font-size: 14px;
                             color: #888;
+                            text-align: left;
                         }
+                            .email-footer-bottom{
+                            margin-top: 30px;
+                            font-size: 14px;
+                            color: #888;
+                            
+                                }
                         .custom-img {
                             width: 200px;
                             height: 60px;
@@ -88,17 +103,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                         h1{
                             font-size:24px;
                             color:black;
-                            font-weight:200;
+                            font-weight:400;
                         }
                             a{
                                 color:white;
                             }
+                                
                     </style>
                 </head>
                 <body>
                     <div class="container">
                             <img src="https://inz.ba/wp-content/uploads/2018/12/footer-inz-logo-300x80.png" alt="img" class="custom-img">
-                            <h1>Poništite vašu šifru</h1>
+                            <h1>Poništite vašu šifru na ISINZ sistemu</h1>
                         <div class="email-content">
                             
                             <div class="email-header">
@@ -106,16 +122,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
                             </div>
                             <div class="email-body">
                                 <p>Primili smo zahtjev za poništavanje vaše lozinke. Pritisnite donje dugme da biste ga poništili:</p>
-                                <p>
-                                    <a href="' . $resetLink . '" class="btn-reset">Poništi svoju lozinku</a>
-                                </p>
+                                
+                                    <a href="' . $resetLink . '" style="color:#fff; font-weight:600;" class="btn-reset">Poništi svoju lozinku</a>
+                                
                                 <p>Ako niste zatražili ponovno postavljanje lozinke, možete zanemariti ovu e-poštu.</p>
                             </div>
                             <div class="email-footer">
-                                <p>Hvala,</p>
-                                <p>Muhamed Haseljić</p>
+                                <p>Hvala,<br>Muhamed Haseljić</p>
+                                
                             </div>
                         </div>
+                        <div class="email-footer-bottom">
+                                <p style="color:#888;">Primili ste ovaj email jer je traženo poništavanje lozinke za vaš račun</p>
+                                <p>ISINZ sistem・Fakultetska 1・Zenica 72000</p>
+                            </div>
                     </div>
                 </body>
                 </html>
