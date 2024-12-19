@@ -47,6 +47,14 @@ protected $conn;
         $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Uspješno uređen radnik ".$first_name;
     }
 
+    public function updateProfile($employee_id, $email,$password, $phone_number, $photo_path){
+        $sql = "UPDATE radnici SET email = ?, password = ?, phone_number = ?, photo_path = ?
+                               WHERE employee_id = ? ";
+        $run = $this->conn->prepare($sql);   
+        $run->bind_param("ssssi", $email,$password, $phone_number, $photo_path, $employee_id);
+        $run->execute();          
+    }
+
     public function login($email, $password){
         $sql = "SELECT employee_id, password FROM radnici where email = ?";
         $run = $this->conn->prepare($sql);

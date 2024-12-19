@@ -8,7 +8,14 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     $last_name = $_POST['prezime'];
     $email = $_POST['email'];
     $phone_number = $_POST['telefon'];
-    $password = $_POST['password'];
+    //$password = password_hash($password, PASSWORD_DEFAULT);
+    if(!empty($_POST['password'])){
+        $password = $_POST['password'];
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }
+    else{
+        $password = $employee_data['password'];
+    }
     $employment_status = $_POST['radni_status'];
     $mjesto_rodjenja = $_POST['mjesto_rodjenja'];
     $adresa_boravista = $_POST['adresa_boravista'];
@@ -35,7 +42,7 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
         }
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
     }
-        $radnik_temp->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
+        $radnik_temp->updateProfile($employee_id, $email,$password, $phone_number, $photo_path);
         $_SESSION['message']['type'] = "success";
         $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Vaša informacije na profilu su uspješno uređene";
         echo "<script>window.location.href = '" . $_SERVER['PHP_SELF'] . "?page=home';</script>";
@@ -149,6 +156,19 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 .form-group input:focus{
     border: 1px solid #008cba;
     outline: none;
+}
+
+.form-group-disable input, .form-group-disable select{
+    width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: #e8ecef;
+  border: 1px solid grey;
+  color: black;
+  font-family: FontAwesome, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
 }
 
 label {
@@ -294,20 +314,20 @@ if(isset($_SESSION['message'])) :?>
                     <label for="radnikid">RadnikID:</label>
                     <input type="number" value="<?=$employee_data['employee_id']?>" id="radnikid" name="radnikid" placeholder="Enter RadnikID" />
                 </div>-->
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="ime">Ime:</label>
-                    <input type="text" value="<?=$employee_data['first_name']?>" id="ime" name="ime" placeholder="Enter Ime" maxlength="255" />
+                    <input disabled type="text" value="<?=$employee_data['first_name']?>" id="ime" name="ime" placeholder="Enter Ime" maxlength="255" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="prezime">Prezime:</label>
-                    <input type="text" value="<?=$employee_data['last_name']?>" id="prezime" name="prezime" placeholder="Enter Prezime" maxlength="255" />
+                    <input disabled type="text" value="<?=$employee_data['last_name']?>" id="prezime" name="prezime" placeholder="Enter Prezime" maxlength="255" />
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" value="<?=$employee_data['email']?>" name="email" placeholder="Enter Email" />
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group ">
                     <label for="password">Šifra:</label>
                     <input type="password" id="password"  name="password" placeholder="*****" />
                 </div>
@@ -316,55 +336,55 @@ if(isset($_SESSION['message'])) :?>
                     <label for="telefon">Telefon:</label>
                     <input type="number" id="telefon" value="<?=$employee_data['phone_number']?>" name="telefon" placeholder="Enter Telefon" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="mjesto_rodjenja">Mjesto rođenja:</label>
-                    <input type="text" id="mjesto_rodjenja" value="<?=$employee_data['place_of_birth']?>" name="mjesto_rodjenja" placeholder="Enter Mjesto rođenja" />
+                    <input disabled type="text" id="mjesto_rodjenja" value="<?=$employee_data['place_of_birth']?>" name="mjesto_rodjenja" placeholder="Enter Mjesto rođenja" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="adresa_boravista">Adresa boravišta:</label>
-                    <input type="text" id="adresa_boravista" value="<?=$employee_data['adress']?>" name="adresa_boravista" placeholder="Enter Adresa boravišta" />
+                    <input disabled type="text" id="adresa_boravista" value="<?=$employee_data['adress']?>" name="adresa_boravista" placeholder="Enter Adresa boravišta" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="datum_rodjenja">Datum rođenja:</label>
-                    <input type="date" id="datum_rodjenja" value="<?=$employee_data['date_of_birth']?>" name="datum_rodjenja" />
+                    <input disabled type="date" id="datum_rodjenja" value="<?=$employee_data['date_of_birth']?>" name="datum_rodjenja" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="spol">Spol:</label>
-                    <input type="text" id="spol" value="<?=$employee_data['gender']?>" name="spol" placeholder="Enter Spol" maxlength="11" />
+                    <input disabled type="text" id="spol" value="<?=$employee_data['gender']?>" name="spol" placeholder="Enter Spol" maxlength="11" />
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="datum_zaposlenja">Datum Zaposlenja:</label>
-                    <input type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
+                    <input disabled type="date" id="datum_zaposlenja" value="<?=$employee_data['date_of_employment']?>" name="datum_zaposlenja" />
                 </div>
                 
 
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                 <label for="radni_status" class="razmakk"> Status</label>
-                    <select id="radni_status"  name="radni_status">
+                    <select disabled id="radni_status"  name="radni_status">
                     <option value="Stalno zaposlen" <?php echo ($employee_data['status'] == 'Stalno zaposlen') ? 'selected' : ''; ?> >Stalno zaposlen</option>
                     <option value="Privremeno" <?php echo ($employee_data['status'] == 'Privremeno') ? 'selected' : ''; ?> >Privremeno</option>
                     <option value="Pripravnički rad" <?php echo ($employee_data['status'] == 'Pripravnički rad') ? 'selected' : ''; ?> >Pripravnički rad</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="jmbg">JMBG:</label>
-                    <input type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
+                    <input disabled type="number" id="jmbg" value="<?=$employee_data['jmbg']?>" name="jmbg" placeholder="Enter JMBG" />
                 </div>
 
-                <div class="form-group">
-                <label for="files"> Slika</label>
-                    <input type="file"  id="file" name="photo_path">
+                <div class="form-group form-group-disable">
+                    <label for="pozicija">Pozicija:</label>
+                    <input disabled type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group form-group-disable">
                     <label for="plata">Plata:</label>
-                    <input type="number" id="plata" value="<?=$employee_data['salary']?>" name="plata" placeholder="Enter Plata" />
+                    <input disabled type="number" id="plata" value="<?=$employee_data['salary']?>" name="plata" placeholder="Enter Plata" />
                 </div>
                 
                 <div class="form-group">
-                    <label for="pozicija">Pozicija:</label>
-                    <input type="text" id="pozicija" value="<?=$employee_data['position']?>" name="pozicija" placeholder="Enter Pozicija" />
+                <label for="files"> Slika</label>
+                    <input type="file"  id="file" name="photo_path">
                 </div>
 
                 
