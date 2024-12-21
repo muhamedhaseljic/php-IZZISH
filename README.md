@@ -8,7 +8,7 @@
 1. Upravljanje sa radnicima
 2. Upravljanje sa strankama
 3. Upravljanje sa automobilima
-4. Dodjeljivanje poslova željenom radniku
+4. Dodijeljivanje poslova željenom radniku
 5. Pregled obrisanih radnika
 6. Pregled završenih poslova
 7. Upravljanje sa bolovanjima
