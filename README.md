@@ -25,6 +25,10 @@
 2. Zaboravljena lozinka
 3. Promjena lozinke
 4. Pregled profila
+5. Filtriranje po kategoriji servisa i dana
+6. Sortiranje tabela po imenu (asc/desc), dodjeljenom radniku
+6. Pretraživanje po imenu radnika i grada
+7. Generisanje mejla, pdf-a, excel-a
 
 ## ⚙️ Tehnologije korištene
 - **Baza podataka** MySQL
