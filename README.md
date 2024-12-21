@@ -1,17 +1,35 @@
-# Sistem namijenjen radnicima i adminu za institut koji se bavi ispitivanjem zdravlja i sigurnosti uzimanjem uzoraka iz hrane i vode koji je napravljen u  PHP & MySQL
+# 🌐 Informacioni sistem za Institut za zdravlje i sigurnost hrane
 
-## Feautures:
+### Informacioni sistem namijenjen radnicima i adminu za institut koji se bavi ispitivanjem zdravlja i sigurnosti uzimanjem uzoraka iz hrane i vode koji je napravljen u  PHP & MySQL
 
-### Admin:
-Adding editing and deleting employees, cars and customers
-Selecting required jobs and cars for employee
-Viewing completed jobs
-Giving an annual bonus to workers who claim it if they have not exceeded that limit for that year
-Admin can edit his profile
+## 🛠️ Funkcionalnosti:
 
-### Employee:
-Viewing and editing his profile page
-Sorting his jobs for a week 
-Viewing jobs that he must do for that week and he can select it like its done, and that job goes to the list of compleated jobs
-Can require annual
-Chat box with every employee and admin
+### 🔐 Admin:
+1. Upravljanje sa radnicima
+2. Upravljanje sa strankama
+3. Upravljanje sa automobilima
+4. Dodjeljivanje poslova željenom radniku
+5. Pregled obrisanih radnika
+6. Pregled završenih poslova
+7. Upravljanje sa bolovanjima
+
+### 🧑 Radnik:
+1. Upravljanje radnom sedmicom
+2. Pregled bolovanja
+3. Pregled kreiranog pdf dokumenta radne sedmice
+4. Završavanje posla
+5. Kreiranje i pregled bolovanja
+
+### 📋 Dodatne funkcionalnosti
+1. Prijava na sistem
+2. Zaboravljena lozinka
+3. Promjena lozinke
+4. Pregled profila
+
+## ⚙️ Tehnologije korištene
+- **Baza podataka** MySQL
+- **Backend** PHP
+- **Frontend** CSS, JS
+
+## Dizajn:
+![Alt text]()
