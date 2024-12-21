@@ -32,4 +32,3 @@
 - **Frontend** CSS, JS
 
 ## Dizajn:
-![Alt text]()
