@@ -36,3 +36,16 @@
 - **Frontend** CSS, JS
 
 ## Dizajn:
+![image](https://github.com/user-attachments/assets/6c474809-0b43-4446-a7ab-cc6070928cf3)
+
+![image](https://github.com/user-attachments/assets/76974483-4f11-4add-bf78-dc7e991e1ed7)
+
+![image](https://github.com/user-attachments/assets/7e32dbc3-5d1e-4ed2-85e6-7ac544f3ace6)
+
+![image](https://github.com/user-attachments/assets/53d66213-04dd-4af1-8ce3-c7e5d65a57f1)
+
+![image](https://github.com/user-attachments/assets/d86d1930-9ffa-4614-ada0-e393effb2560)
+
+![image](https://github.com/user-attachments/assets/3acc22cc-d833-4902-baff-b72ade5aff75)
+
+![image](https://github.com/user-attachments/assets/b1d28e20-c253-4b07-8730-914a86bc12d4)
