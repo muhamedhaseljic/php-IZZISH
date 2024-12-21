@@ -2,7 +2,7 @@
 
 ### Informacioni sistem namijenjen radnicima i adminu za institut koji se bavi ispitivanjem zdravlja i sigurnosti uzimanjem uzoraka iz hrane i vode koji je napravljen u  PHP & MySQL
 
-## 🛠️ Funkcionalnosti:
+### 🛠️ Funkcionalnosti:
 
 ### 🔐 Admin:
 1. Upravljanje sa radnicima
