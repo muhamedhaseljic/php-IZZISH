@@ -271,8 +271,8 @@ label{
     <textarea id="notes" name="notes"  placeholder="Bilješke radnika..."><?php echo $result['notes'] ?></textarea>
   </div>
   <div class="form-buttons">
-    <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
-    <button type="submit"  class="custom-add-btn">Save</button>
+    <button type="reset" id="clearButton" class="custom-clear-btn">Izbriši</button>
+    <button type="submit"  class="custom-add-btn">Spremi</button>
   </div>
   </div>
 </form>

@@ -348,7 +348,15 @@ tbody tr:last-child {
 .custom-excel-btn:hover{
     background-color: #2f8f47;
 }
-
+.error-message{
+    color: #d13517;
+        font-size: 12px;
+        position: relative;
+        top: 100%;
+        left: 0;
+        font-weight: 800;
+        display: none;
+}
 
     </style>
 
@@ -425,7 +433,7 @@ if(isset($_SESSION['message'])) :?>
         </tbody>
     </table>
 
-    <form id="deleteForm" action="izbrisi_radnika.php" method="POST">
+    <form  id="deleteForm" action="izbrisi_radnika.php" method="POST">
         <input type="hidden" name="employeeId" id="employeeId">
         <input type="hidden" name="deleteReason" id="deleteReason">
     </form>
@@ -433,9 +441,12 @@ if(isset($_SESSION['message'])) :?>
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closePopup()">&times;</span>
-        <p>Radnik kojeg želite da izbrišete: <br> <span class="modal-name" id="employeeName"></span> <span class="modal-name" id="employeeLastName"></span></p>
+        <p>Radnik kojeg želite da izbrišete: <br> 
+        <span class="modal-name" id="employeeName"></span> 
+        <span class="modal-name" id="employeeLastName"></span></p>
         <label for="reason">Razlog brisanja:</label>
         <input type="text" id="reason" name="reason" placeholder="Unesite razlog ovdje" required>
+        <span id="error-message" class="error-message">Razlog brisanja je obavezan</span>
         <div class="button-group d-flex justify-content-between">
             <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
             <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
@@ -549,17 +560,22 @@ if(isset($_SESSION['message'])) :?>
 
     function closePopup() {
         document.getElementById('modal').style.display = "none";
+        document.getElementById('reason').value = ''; // Clear input field
+    document.getElementById('error-message').style.display = 'none';
     }
 
     function submitForm() {
         let reasonInput = document.getElementById('reason').value.trim();
+        let errorMessage = document.getElementById('error-message');
 
         if (reasonInput !== "") {
             document.getElementById('deleteReason').value = reasonInput;
             console.log("Submitting form with reason: " + reasonInput); 
+            errorMessage.style.display = 'none';
             document.getElementById('deleteForm').submit(); 
         } else {
-            alert('Please provide a reason for deleting.');
+            errorMessage.style.display = 'block';
+            //alert('Please provide a reason for deleting.');
         }
     }
 
