@@ -518,15 +518,19 @@ tbody tr:last-child {
     <p><span hidden class="modal-name" id="employeeName"></span>
         <span hidden class="modal-name" id="employeeLastName"></span> 
         Unesite datum početka i kraja bolovanja:</p>
+        <?php 
         
+                        $today = date("Y-m-d");
+        
+        ?>
         <div class="form-grid">
             <div class="form-group">
                 <label for="leave_start">OD:</label>
-                <input type="date" id="leave_start" name="leave_start" class="custom-date">
+                <input type="date" id="leave_start" name="leave_start" class="custom-date" min="<?=$today;?>" value="<?php echo $today; ?>" required>
             </div>
             <div class="form-group">
                 <label for="leave_end">DO:</label>
-                <input type="date" id="leave_end" name="leave_end" class="custom-date">
+                <input type="date" id="leave_end" name="leave_end" class="custom-date" min="<?php echo date('Y-m-d', strtotime($today . ' +1 day')); ?>" value="<?php echo date('Y-m-d', strtotime($today . ' +1 day')); ?>" required>
             </div>
         </div>
         
@@ -691,6 +695,19 @@ function showPopup(employeeId, employeeName, employeeLastName) {
             }
         });
     });
+    
+// Datum
+    document.getElementById('leave_start').addEventListener('change', function () {
+    let startDate = this.value;
+    let endDateField = document.getElementById('leave_end');
+    
+    let nextDay = new Date(startDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+    let formattedNextDay = nextDay.toISOString().split('T')[0];
+
+    endDateField.setAttribute('min', formattedNextDay);
+    endDateField.value = formattedNextDay;
+});
   </script>
 
  
