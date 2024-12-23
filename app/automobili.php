@@ -343,7 +343,7 @@ if(isset($_SESSION['message'])) :?>
                                     echo "<div class='yesEmployee'>" . $car['employee_name'] ." ".$car['employee_last_name']. "</div>";
                                 }
                                 else{
-                                    echo "<div class='noEmployee'>Nema vozaća</div>";
+                                    echo "<div class='noEmployee'>Nema vozača</div>";
                                 }
 
                             ?>
