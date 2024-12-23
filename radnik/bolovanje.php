@@ -498,7 +498,7 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="" class="status inactive" ><span  >Otkaži</span></a>
+            <a href="izbrisi_bolovanje.php?id=<?php echo $leave['leave_id']; ?>" class="status inactive" ><span  >Otkaži</span></a>
             <a href="" class="status active" ><span  >Uredi</span></a>
         </div></td>
         </tr>
@@ -695,7 +695,7 @@ function showPopup(employeeId, employeeName, employeeLastName) {
             }
         });
     });
-    
+
 // Datum
     document.getElementById('leave_start').addEventListener('change', function () {
     let startDate = this.value;

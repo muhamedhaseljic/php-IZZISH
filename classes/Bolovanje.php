@@ -42,5 +42,13 @@ protected $conn;
         $run->execute();
     }
 
+    public function delete($leave_id){
+        $sql = "DELETE FROM bolovanje WHERE leave_id = ?";
+        $run = $this->conn->prepare($sql);
+        $run->bind_param("i", $leave_id);
+        $run->execute();
+
+    }
+
     
 }
