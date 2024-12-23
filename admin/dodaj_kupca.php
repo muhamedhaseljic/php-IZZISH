@@ -421,7 +421,7 @@ input[type="checkbox"]:checked + label:after {
   
 
   <div class="form-group">
-  <label for="service">Select Service:</label>
+  <label for="service">Servis:</label>
         <select id="service" name="service" onchange="showFields()"
         data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
             <option value="posao">Izaberi posao</option>
@@ -439,7 +439,7 @@ input[type="checkbox"]:checked + label:after {
                 <label for="surnameProduct">Prezime osobe za sanitarnu</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[0][last_name_product]">
             </div>
         </div>
-        <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
+        <button class="btn-add-person" type="button" onclick="addPerson()">Dodaj novu osobu</button>
   </div>
 
   <div id="deratizacijaFields" class="form-group hidden razmak ">
@@ -495,8 +495,8 @@ input[type="checkbox"]:checked + label:after {
             </div>  
         </div>
   <div class="form-buttons">
-    <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
-    <button type="submit"  class="custom-add-btn">Save</button>
+    <button type="reset" id="clearButton" class="custom-clear-btn">Izbriši</button>
+    <button type="submit"  class="custom-add-btn">Spremi</button>
   </div>
   </div>
 </form>
@@ -576,7 +576,7 @@ function removeRequired(container) {
         <label for="surnameProduct${personCount}">Prezime</label>
         <input type="text" id="surnameProduct${personCount}" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
 
-        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
+        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Izbaci</button>
     `;
     document.getElementById('persons').appendChild(personDiv);
 }

@@ -368,7 +368,7 @@ tbody tr:last-child {
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Na čekanju</h2>
-        <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+        <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
     </div>
     <div class="scrolling-divv" >
     <table class="styled-table">
@@ -412,8 +412,8 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Odobriti</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Odbiti</span></a>
             </div></td>
         </tr>
         <?php endforeach; ?>
@@ -429,7 +429,7 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odobreno</h2>
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+    <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
 </div>
 
         <div class="scrolling-divv" >
@@ -470,7 +470,7 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Decline</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Odbiti</span></a>
             </div></td>
         </tr>
         <?php endforeach; ?>
@@ -486,7 +486,7 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odbijeno</h2>
-    <input type="text" id="search-input" placeholder="Search name..." class="custom-search-bar">
+    <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
 </div>
 <div class="scrolling-divv" >
     <table class="styled-table">
@@ -529,7 +529,7 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Approve</span></a>
+            <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Odobriti</span></a>
             </div></td>
         </tr>
         <?php endforeach; ?>

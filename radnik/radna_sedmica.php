@@ -175,9 +175,9 @@ if(isset($_SESSION['message'])) :?>
                             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="poslovi">
                             <div class="task-details">
                                         <p class="task-name"><?=$kupci['objekat']?></p>
-                                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                                        <p class="task-date"> <b> Šire </b> <br>  </p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
                                     </div>
                             </div>
                         <?php endif; ?>
@@ -190,11 +190,11 @@ if(isset($_SESSION['message'])) :?>
         <?php if ($kupci['day_of_a_week'] == 'ponedjeljak'): ?>
             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="ponedjeljak">
             <div class="task-details">
-                        <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        <p class="task-date"> <b> Šire </b> <br>  </p>
-                    </div>
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
+                                    </div>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
@@ -206,11 +206,11 @@ if(isset($_SESSION['message'])) :?>
         <?php if ($kupci['day_of_a_week'] == 'utorak'): ?>
             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="utorak">
             <div class="task-details">
-                        <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        <p class="task-date"> <b> Šire </b> <br>  </p>
-                    </div>
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
+                                    </div>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
@@ -222,11 +222,11 @@ if(isset($_SESSION['message'])) :?>
         <?php if ($kupci['day_of_a_week'] == 'srijeda'): ?>
             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="srijeda">
             <div class="task-details">
-                        <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        <p class="task-date"> <b> Šire </b> <br>  </p>
-                    </div>
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
+                                    </div>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
@@ -237,11 +237,11 @@ if(isset($_SESSION['message'])) :?>
         <?php if ($kupci['day_of_a_week'] == 'cetvrtak'): ?>
             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="cetvrtak">
             <div class="task-details">
-                        <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        <p class="task-date"> <b> Šire </b> <br>  </p>
-                    </div>
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
+                                    </div>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
@@ -252,11 +252,11 @@ if(isset($_SESSION['message'])) :?>
         <?php if ($kupci['day_of_a_week'] == 'petak'): ?>
             <div class="task-card" draggable="true" data-task-id="<?= $kupci['customer_id'] ?>" data-day="petak">
             <div class="task-details">
-                        <p class="task-name"><?=$kupci['objekat']?></p>
-                        <p class="task-date">Due Date: <br> 2024-08-31</p>
-                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['adress'] ?></p>
-                        <p class="task-date"> <b> Šire </b> <br>  </p>
-                    </div>
+                                        <p class="task-name"><?=$kupci['objekat']?></p>
+                                        <p class="task-date"><b>Ime: </b> <?php echo $kupci['first_name'] . " ". $kupci['last_name'] ?></p>
+                                        <p class="task-date"><b>Servis: </b> <?=$kupci['service']?></p>
+                                        <p class="task-date"> <b> Lokacija:</b> <?=$kupci['city'] ?></p>
+                                    </div>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
@@ -265,7 +265,7 @@ if(isset($_SESSION['message'])) :?>
     </div>
 
     <div class="submit-container">
-        <button id="submitBtn">Submit</button>
+        <button id="submitBtn">Spremi</button>
     </div>
 </div>
     <script>

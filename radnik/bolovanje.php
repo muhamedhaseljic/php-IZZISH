@@ -457,7 +457,7 @@ tbody tr:last-child {
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Na čekanju</h2>
-        <button onclick="showPopup(<?php echo $radnik_id ?>, '<?php echo $employee_data['first_name']; ?>', '<?php echo $employee_data['last_name']; ?>')" class="custom-add-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"> <span> Add </span> </button>
+        <button onclick="showPopup(<?php echo $radnik_id ?>, '<?php echo $employee_data['first_name']; ?>', '<?php echo $employee_data['last_name']; ?>')" class="custom-add-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"> <span> Dodaj </span> </button>
         </div>
     <div class="scrolling-divv" >
     <table class="styled-table">
@@ -498,8 +498,8 @@ tbody tr:last-child {
             <td><?php echo $leave['created_date'] ?></td>
             <td>
                 <div>
-            <a href="" class="status inactive" ><span  >Cancel</span></a>
-            <a href="" class="status active" ><span  >Edit</span></a>
+            <a href="" class="status inactive" ><span  >Otkaži</span></a>
+            <a href="" class="status active" ><span  >Uredi</span></a>
         </div></td>
         </tr>
         <?php endforeach; ?>
@@ -531,8 +531,8 @@ tbody tr:last-child {
         </div>
         
         <div class="button-group d-flex justify-content-between">
-            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
-            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Spremi</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Otkaži</button>
         </div>
     </div>
 </div>

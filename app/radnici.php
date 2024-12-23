@@ -448,8 +448,8 @@ if(isset($_SESSION['message'])) :?>
         <input type="text" id="reason" name="reason" placeholder="Unesite razlog ovdje" required>
         <span id="error-message" class="error-message">Razlog brisanja je obavezan</span>
         <div class="button-group d-flex justify-content-between">
-            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
-            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Obriši</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Otkaži</button>
         </div>
     </div>
 </div>

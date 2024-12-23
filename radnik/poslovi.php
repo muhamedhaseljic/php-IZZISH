@@ -414,11 +414,10 @@ $radnik_id = $employee_data['employee_id'];
         <h1 >Poslovi u ovoj sedmici</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
-                    <input type="text" placeholder="Search city..." class="custom-search-bar">
-                    <button class="service-filter-btn active" data-filter="all" onclick="filterRowsByButton(this)">All</button>
+                    <input type="text" placeholder="Pretraži po gradu..." class="custom-search-bar">
+                    <button class="service-filter-btn active" data-filter="all" onclick="filterRowsByButton(this)">Sve</button>
                     <button class="service-filter-btn" data-filter="Analiza" onclick="filterRowsByButton(this)">Analiza</button>
                     <button class="service-filter-btn" data-filter="Sanitarna" onclick="filterRowsByButton(this)">Sanitarna</button>
-                    <button class="service-filter-btn" data-filter="Deratizacija" onclick="filterRowsByButton(this)">Deratizacija</button>
                 </div>
                 <a target="_blank" href="<?php echo "../jobs_pdf/customers".$radnik_id.".pdf"?>" class="custom-add-btn">PDF</a>
 
@@ -428,7 +427,7 @@ $radnik_id = $employee_data['employee_id'];
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Radnik</th>
+                        <th>Kupac</th>
                         <th>Telefon</th>
                         <th>Posao</th>
                         <th>Ustanova</th>
@@ -514,8 +513,8 @@ $radnik_id = $employee_data['employee_id'];
         </div>
         
         <div class="button-group d-flex justify-content-between">
-            <button type="button" class="custom-add-btn" onclick="submitForm()">Submit</button>
-            <button type="button" class="custom-delete-btn" onclick="closePopup()">Cancel</button>
+            <button type="button" class="custom-add-btn" onclick="submitForm()">Spremi</button>
+            <button type="button" class="custom-delete-btn" onclick="closePopup()">Otkaži</button>
         </div>
     </div>
 </div>

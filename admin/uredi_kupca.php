@@ -462,7 +462,7 @@ input[type="checkbox"]:checked + label:after {
                 <label for="nameProduct">Ime osobe za sanitarnu</label><input type="text" id="nameProduct"  placeholder="Ime" name="persons[<?php echo $index; ?>][name_product]" value="<?php echo $person['first_name'];?>">
                 <label for="surnameProduct">Prezime osobe za sanitarnu</label> <input type="text" id="surnameProduct"  placeholder="Prezime" name="persons[<?php echo $index; ?>][last_name_product]" value="<?php echo $person['last_name'];?>">
                 <?php if($index>0) :?>
-                <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
+                <button class="btn-product-remove" type="button" onclick="removePerson(this)">Izbaci</button>
                 <?php endif; ?>
               </div>
             <?php endforeach; if($persons==null):?>
@@ -473,7 +473,7 @@ input[type="checkbox"]:checked + label:after {
             </div>
             <?php endif; ?>
         </div>
-        <button class="btn-add-person" type="button" onclick="addPerson()">Add Another Person</button>
+        <button class="btn-add-person" type="button" onclick="addPerson()">Dodaj novu osobu</button>
   </div>
 
   <div id="deratizacijaFields"  class="form-group hidden razmak">
@@ -552,8 +552,8 @@ input[type="checkbox"]:checked + label:after {
           </div>
   
   <div class="form-buttons">
-    <button type="reset" id="clearButton" class="custom-clear-btn">Clear</button>
-    <button type="submit"  class="custom-add-btn" onclick="return validateForm()">Save</button>
+    <button type="reset" id="clearButton" class="custom-clear-btn">Izbriši</button>
+    <button type="submit"  class="custom-add-btn" onclick="return validateForm()">Spremi</button>
   </div>
   </div>
 </form>
@@ -639,7 +639,7 @@ function removeRequired(container) {
         <label for="surnameProduct">Prezime</label>
         <input type="text" name="persons[${personCount}][last_name_product]" placeholder="Prezime" required>
 
-        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Remove</button>
+        <button class="btn-product-remove" type="button" onclick="removePerson(this)">Izbaci</button>
     `;
     document.getElementById('persons').appendChild(personDiv);
 }
