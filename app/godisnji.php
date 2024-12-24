@@ -177,17 +177,18 @@ tbody tr:last-child {
 }
 
 .tab {
-    background-color: #132650;
+    background-color: white;
     padding: 10px 10px;
-    color: white;
+    color: black;
     cursor: pointer;
     text-align: center;
     border-radius: 10px;
     margin-right: 10px;
 }
 
-.tab:hover, .tab.active {
+.tab.active {
     background-color: #23355d;
+    color: white;
 }
 
 
