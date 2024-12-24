@@ -272,8 +272,8 @@ tbody tr:last-child {
             kupac.phone_number as customer_phone_number,
             kupac.adress as customer_adress,
             kupac.service as service,
-            kupac.city as customer_city,
             kupac.objekat as customer_objekat,
+            kupac.city as customer_city,
             radnici.first_name as employee_name,
             radnici.last_name as employee_last_name,
 
@@ -321,15 +321,13 @@ tbody tr:last-child {
         
         <div class="kupac-details">
             <h2 hidden  id="customer-id" > </h2>
-            <h2 hidden id="customer-first-name" > </h2>
 
-            <h2 hidden id="customer-last-name" > </h2>
             <h2> <strong> Podaci o završenom poslu </strong></h2>
             <p>---------------------------------------------------- </p>
             <ul>
+                <li><strong>Kupac: </strong><span id="customer-first-name"  ></span> <span id="customer-last-name"  ></span></li>
                 <li><strong>Email:</strong> <span id="customer-email"></span></li>
                 <li><strong>Telefon:</strong> <span id="customer-phone"></span></li>
-                <li><strong>Grad:</strong> <span id="customer-city"></span></li>
                 <li><strong>Adresa:</strong> <span id="customer-adress"></span></li>
                 <li><strong>Objekat:</strong> <span id="customer-objekt"></span></li>
                 <li><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
@@ -342,6 +340,8 @@ tbody tr:last-child {
                     <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
                     <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
                 </div>
+                <br>
+                <li><strong>Ukupna cijena: </strong> <span id="customer-price" ></span> <strong> KM</strong></li>
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -376,19 +376,19 @@ tbody tr:last-child {
         document.getElementById("customer-product-food").style.display = "block";
 
         document.getElementById("customer-id").textContent = customer.jobs_id;
-        document.getElementById("customer-first-name").textContent = customer.employee_name;
-        document.getElementById("customer-last-name").textContent = customer.employee_last_name;
+        document.getElementById("customer-first-name").textContent = customer.customer_name;
+        document.getElementById("customer-last-name").textContent = customer.customer_last_name;
         document.getElementById("customer-email").textContent = customer.customer_email;
         document.getElementById("customer-phone").textContent = customer.customer_phone_number;
-        document.getElementById("customer-description").textContent = customer.description;
-        document.getElementById("customer-city").textContent = customer.customer_city;
+        //document.getElementById("customer-description").textContent = customer.customer_description;
         document.getElementById("customer-adress").textContent = customer.customer_adress;
-        document.getElementById("customer-objekat").textContent = customer.customer_objekat;
+        document.getElementById("customer-objekt").textContent = customer.customer_objekat;
         document.getElementById("customer-employee-name").textContent = customer.employee_name;
         document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
         document.getElementById("customer-car-name").textContent = customer.car_name;
         document.getElementById("customer-car-model").textContent = customer.car_model;
         document.getElementById("customer-service").textContent = customer.service;
+        document.getElementById("customer-price").textContent = customer.price;
 
         const produktOsobaNames = customer.produkt_osoba_names;
         const productNameContainer = document.getElementById("customer-product-name");
