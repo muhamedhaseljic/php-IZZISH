@@ -177,7 +177,7 @@ tbody tr:last-child {
     <div class="custom-main-content content">
         <h1 >Završeni poslovi</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Pretraži po imenu..." class="custom-search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
                 
             </div>
             <div class="scrolling-divv">
@@ -195,7 +195,7 @@ tbody tr:last-child {
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="jobs-table">
                 <?php 
             $sql = "SELECT obavljeni_poslovi.*,
             kupac.first_name as customer_name,
@@ -244,3 +244,21 @@ tbody tr:last-child {
             </table>
             </div>
         </div>
+
+        <script>
+            document.getElementById('search-input').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#jobs-table tr');
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(2)'); 
+            const name = nameCell.textContent.toLowerCase();
+
+            if (name.startsWith(searchValue)) {
+                row.style.display = ''; 
+            } else {
+                row.style.display = 'none'; 
+            }
+        });
+    });
+        </script>
