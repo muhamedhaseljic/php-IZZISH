@@ -407,10 +407,10 @@ tbody tr:last-child {
         <tr>
             <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
             <td><?php echo $leave['employee_email'] ?></td>
-            <td><?php echo $leave['leave_date'] ?></td>
-            <td><?php echo $leave['return_date'] ?></td>
-            <td><?php echo $leave['days'] ?></td>
-            <td><?php echo $leave['created_date'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['leave_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['return_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo  $leave['days'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['created_date'])->format('d/m/Y');  ?></td>
             <td>
                 <div>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Odobriti</span></a>
@@ -465,10 +465,10 @@ tbody tr:last-child {
         <tr>
             <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
             <td><?php echo $leave['employee_email'] ?></td>
-            <td><?php echo $leave['leave_date'] ?></td>
-            <td><?php echo $leave['return_date'] ?></td>
-            <td><?php echo $leave['days'] ?></td>
-            <td><?php echo $leave['created_date'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['leave_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['return_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo  $leave['days'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['created_date'])->format('d/m/Y');  ?></td>
             <td>
                 <div>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=disapproved" class="status inactive" ><span  >Odbiti</span></a>
@@ -524,10 +524,10 @@ tbody tr:last-child {
         <tr>
             <td><?php echo $leave['employee_name'] . " ". $leave['employee_last_name'] ?></td>
             <td><?php echo $leave['employee_email'] ?></td>
-            <td><?php echo $leave['leave_date'] ?></td>
-            <td><?php echo $leave['return_date'] ?></td>
-            <td><?php echo $leave['days'] ?></td>
-            <td><?php echo $leave['created_date'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['leave_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['return_date'])->format('d/m/Y'); ?></td>
+            <td><?php echo  $leave['days'] ?></td>
+            <td><?php echo DateTime::createFromFormat('Y-m-d', $leave['created_date'])->format('d/m/Y');  ?></td>
             <td>
                 <div>
             <a href="../admin/uredi_status_bolovanja.php?id=<?php echo $leave['leave_id']; ?>&status=approved" class="status active" ><span  >Odobriti</span></a>
