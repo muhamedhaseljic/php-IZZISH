@@ -373,7 +373,7 @@ if(isset($_SESSION['message'])) :?>
                 </form>
             </div>
             <div class="form-group">
-                    <button class="custom-add-btn">SPREMI</button>
+                    <button class="custom-add-btn">Spremi</button>
                 </div>
             
         </div>

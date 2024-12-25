@@ -10,8 +10,6 @@ $bolovanje = new Bolovanje();
 
     $bolovanje->delete($leave_id);
 
-    $_SESSION['message']['type'] = "success";
-    $_SESSION['message']['text'] = "<i class='fas fa-check-circle'>&nbsp; &nbsp;</i>Bolovanje izbrisano";
     header("Location: http://localhost/retro/radnik/index.php?page=bolovanje");
 
 ?>
