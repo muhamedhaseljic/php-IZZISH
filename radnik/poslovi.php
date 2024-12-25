@@ -202,22 +202,23 @@ tbody tr:last-child {
             margin-right: 20px;
             border: 1px solid #132650;
 }
-        .radnik-details {
+        .kupac-details {
             display: flex;
             flex-direction: column;
         }
 
-        .radnik-details h2 {
+        .kupac-details h2 {
             margin-top: 0;
+            
         }
 
-        .radnik-details ul {
+        .kupac-details ul {
             list-style-type: none;
             padding: 0;
             margin-top: 10px;
         }
 
-        .radnik-details ul li {
+        .kupac-details ul li {
             margin-bottom: 8px;
             font-size: 14px;
         }
@@ -385,8 +386,6 @@ tbody tr:last-child {
 .modal-name{
     font-weight:800;
 }
-
-
     </style>
 
 <?php
@@ -453,11 +452,14 @@ $radnik_id = $employee_data['employee_id'];
                   produkt_hrana.name as product_food_name,
                   produkt_hrana.type as product_food_type,
                   produkt_hrana.description as product_food_description,
+                  automobili.name as car_name,
+                  automobili.model as car_model,
                    GROUP_CONCAT(CONCAT(produkt_osoba.first_name, ' ', produkt_osoba.last_name) SEPARATOR ', ') AS produkt_osoba_names
                   FROM `kupac` 
                   left join `radnici` on kupac.employee_id = radnici.employee_id
                   left join `produkt_hrana` on kupac.customer_id = produkt_hrana.customer_id
                   left join `produkt_osoba` on kupac.customer_id = produkt_osoba.customer_id
+                  left join `automobili` on radnici.car_id = automobili.car_id
                   where kupac.employee_id = $radnik_id && kupac.day_of_a_week != 'poslovi' && kupac.jobs_id =0
                   GROUP BY kupac.customer_id
                   ORDER BY FIELD(kupac.day_of_a_week, 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'),
@@ -479,7 +481,8 @@ $radnik_id = $employee_data['employee_id'];
                         <td><?=$kupci['city'] ?></td>
                         <td><?=$kupci['day_of_a_week'] ?></td>
                         <td>
-                        <button id="popupBtn" class="custom-view-btn"><span class="fas fa-eye"></span></button>
+                        <button id="popupBtn" class="custom-view-btn view-customer-btn" data-customer='<?php echo json_encode($kupci); ?>'>
+                            <span class="fas fa-eye"></span></button>
                             <button onclick="showPopup(<?php echo $kupci['customer_id']; ?>, '<?php echo $kupci['service']; ?>', '<?php echo $kupci['city']; ?>')" class="custom-edit-btn" name="employee_id" value="<?php echo $employee_data['employee_id']; ?>"> <span class="fas fa-check "> </span> </button>
                         </td>
                     </tr>
@@ -522,29 +525,33 @@ $radnik_id = $employee_data['employee_id'];
             </div>
         </div>
 
-<div id="popup" class="popup">
+
+
+        <div id="popup" class="popup">
     <div class="popup-content">
-        <div class="profile-picture"><img class="boja-pozadine" src=""  alt=""> </div> <!-- Placeholder for the picture -->
-        <div class="radnik-details">
-            <h2>Muhamed Haseljić</h2>
+        
+        <div class="kupac-details">
+            <h2 hidden  id="customer-id" > </h2>
+
+            <h2> <strong> Podaci o poslu </strong></h2>
+            <p>---------------------------------------------------- </p>
             <ul>
-                <li><strong>RadnikID:</strong> int</li>
-                <li><strong>Ime:</strong> Muhamed</li>
-                <li><strong>Prezime:</strong> Haseljić</li>
-                <li><strong>Email:</strong> varchar(255)</li>
-                <li><strong>Telefon:</strong> int</li>
-                <li><strong>Mjesto_rođenja:</strong> varchar(255)</li>
-                <li><strong>Adresa_boravista:</strong> varchar(255)</li>
-                <li><strong>Datum_rođenja:</strong> date</li>
-                <li><strong>Spol:</strong> varchar(11)</li>
-                <li><strong>DatumZaposlenja:</strong> date</li>
-                <li><strong>RadnoStanje:</strong> zaposen, zamjena, itd...</li>
-                <li><strong>JMBG:</strong> int(13)</li>
-                <li><strong>Slika:</strong> varchar(255)</li>
-                <li><strong>Biljeske:</strong> varchar(255)</li>
-                <li><strong>Plata:</strong> money</li>
-                <li><strong>AutoID:</strong> int</li>
-                <li><strong>Pozicija:</strong> varchar(255)</li>
+                <li><strong>Kupac: </strong><span id="customer-first-name"  ></span> <span id="customer-last-name"  ></span></li>
+                <li><strong>Email:</strong> <span id="customer-email"></span></li>
+                <li><strong>Telefon:</strong> <span id="customer-phone"></span></li>
+                <li><strong>Grad:</strong> <span id="customer-city"></span></li>
+                <li><strong>Adresa:</strong> <span id="customer-adress"></span></li>
+                <li><strong>Objekat:</strong> <span id="customer-objekt"></span></li>
+                <li hidden><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
+                <li><strong>Zaduženi automobil: </strong> <span id="customer-car-name" ></span> <span id="customer-car-model" ></span></li>
+                <br>
+                <li><strong> <span id="customer-service" ></span></strong></li>
+                <li id="osobe-product-name"><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
+                <div id="customer-product-food">
+                    <li><strong>Hrana:</strong> <span id="customer-product-food-name"></span></li>
+                    <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
+                    <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
+                </div>
             </ul>
         </div>
         <span class="close" id="close-popup">&times;</span>
@@ -772,5 +779,73 @@ function showPopup(employeeId, employeeName, employeeLastName) {
 
     setCurrentTime();
 
+
+    // popUp
+    document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("close-popup");
+
+    function showPopupp(customer) {
+
+        document.getElementById("osobe-product-name").style.display = "block";  // Show the person section
+        document.getElementById("customer-product-food").style.display = "block";
+
+        document.getElementById("customer-id").textContent = customer.jobs_id;
+        document.getElementById("customer-first-name").textContent = customer.fist_name;
+        document.getElementById("customer-last-name").textContent = customer.last_name;
+        document.getElementById("customer-email").textContent = customer.email;
+        document.getElementById("customer-phone").textContent = customer.phone_number;
+        //document.getElementById("customer-description").textContent = customer.customer_description;
+        document.getElementById("customer-adress").textContent = customer.adress;
+        document.getElementById("customer-city").textContent = customer.city;
+        document.getElementById("customer-objekt").textContent = customer.objekat;
+        document.getElementById("customer-employee-name").textContent = customer.employee_name;
+        document.getElementById("customer-employee-surname").textContent = customer.employee_last_name;
+        document.getElementById("customer-car-name").textContent = customer.car_name;
+        document.getElementById("customer-car-model").textContent = customer.car_model;
+        document.getElementById("customer-service").textContent = customer.service;
+        //document.getElementById("customer-price").textContent = customer.price;
+
+        const produktOsobaNames = customer.produkt_osoba_names;
+        const productNameContainer = document.getElementById("customer-product-name");
+        productNameContainer.innerHTML = ''; 
+
+        if (produktOsobaNames) {
+            const productNamesArray = produktOsobaNames.split(',');
+            productNamesArray.forEach(function(name) {
+                const li = document.createElement('li');
+                li.textContent = name.trim(); 
+                productNameContainer.appendChild(li);
+            });
+            document.getElementById("customer-product-food").style.display = "none";
+        } else{
+            document.getElementById("osobe-product-name").style.display = "none";
+            document.getElementById("customer-product-food-name").textContent = customer.product_food_name;
+            document.getElementById("customer-product-food-type").textContent = customer.product_food_type;
+            document.getElementById("customer-product-food-description").textContent = customer.product_food_description;
+            
+            
+        }
+        
+        popup.style.display = "block";
+    }
+
+    document.querySelectorAll(".view-customer-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            const employee = JSON.parse(this.getAttribute("data-customer"));
+            showPopupp(employee);  
+        });
+    });
+
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+});
     
     </script>

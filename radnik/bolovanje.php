@@ -499,7 +499,6 @@ tbody tr:last-child {
             <td>
                 <div>
             <a href="izbrisi_bolovanje.php?id=<?php echo $leave['leave_id']; ?>" class="status inactive" ><span  >Otkaži</span></a>
-            <a href="" class="status active" ><span  >Uredi</span></a>
         </div></td>
         </tr>
         <?php endforeach; ?>
