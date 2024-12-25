@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   margin-top: 5px;
   border-radius: 5px;
   background-color: #ebeef5;
-  color: #132650;
+  color: black;
   font-family: FontAwesome, sans-serif;
   font-weight: normal;
   font-size: 14px;

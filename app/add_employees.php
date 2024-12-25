@@ -1,7 +1,8 @@
 <?php
 
 require_once "../inc/header.php";
-require_once '../config/config.php';?>
+require_once '../config/config.php';
+require_once "../inc/header.php";?>
 
 
 <div class="custom-container d-flex">
@@ -40,10 +41,12 @@ require_once '../config/config.php';?>
 
 .form-group {
   width: 30%;
+  position: relative;
 }
 
 .form-group.full-width {
   width: 100%;
+  
 }
 
 .form-group input, .form-group select, .form-group textarea {
@@ -135,18 +138,19 @@ label{
 }
 
 .form-group input.invalid {
-        border: 1px solid red;
+        border: 1px solid #d13517;
     }
     .error-custom{
       position: relative;
 
     }
     .form-group .error-message {
-        color: red;
+        color: #d13517;
         font-size: 12px;
         position: absolute;
         top: 100%;
         left: 0;
+        font-weight: 800;
         display: none;
     }
 </style>
@@ -156,76 +160,94 @@ label{
 
 
             
-<form class="forma-custom" id="employeeForm" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
+<form id="validationForm" class="forma-custom" action="dodaj_radnika.php" method="POST" enctype="multipart/form-data">
 <h2>Dodaj novog radnika</h2>
 <div class="employee-form">
   <div class="form-group error-custom">
     <label for="ime"> Ime</label>
-    <input type="text"  id="ime" placeholder="Ime" name="first_name" >
-    <span id="first_nameError" class="error-message">Password must be at least 5 characters long.</span>
-
+    <input data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text"  id="ime" placeholder="Ime" name="first_name" >
+    <span class="error-message">Ime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
+
 
   <div class="form-group">
   <label for="prezime"> Prezime</label>
-    <input type="text" id="prezime" placeholder="Prezime" name="last_name" >
-    <span id="last_nameError" class="error-message">Password must be at least 5 characters long.</span>
-
+    <input data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="prezime" placeholder="Prezime" name="last_name" >
+    <span id="surname" class="error-message">Prezime mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
   <div class="form-group">
   <label for="email"> Email</label>
-    <input type="email" id="email" placeholder="Email" name="email" >
-    <span id="emailError" class="error-message">Password must be at least 5 characters long.</span>
+    <input type="email" id="email" placeholder="Email" name="email" 
+    data-parsley-type="email" 
+           data-parsley-required="true" 
+           data-parsley-error-message="Please enter a valid email address.">
+           <span  class="error-message">Email nije pravilno unsesen</span>
 
   </div>
 
   <div class="form-group">
   <label for="phone-number"> Broj telefona</label>
-    <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number" >
-    <span id="phone_numberError" class="error-message">Password must be at least 5 characters long.</span>
+    <input type="tel" id="phone-number" placeholder="Phone Number" name="phone_number" 
+    data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" 
+           data-parsley-length="[3, 15]"
+           data-parsley-required="true">
+           <span id="emailError" class="error-message">Limit za dužinu broja je 15</span>
 
   </div>
 
   <div class="form-group error-custom">
-  <label for="sifra"> Sifra</label>
-    <input type="password" class="" id="sifra" placeholder="Šifra" name="password" >
-    <span id="passwordError" class="error-message">Password must be at least 5 characters long.</span>
+  <label for="sifra"> Šifra</label>
+    <input type="password" class="" id="sifra" placeholder="Šifra" name="password" 
+    data-parsley-required="true" 
+      data-parsley-pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{5,}$" 
+      data-parsley-error-message="Lozinka mora imati najmanje 5 karaktera, jednu veliko slovo, jedan broj i jedan specijalni karakter.">
+      <span class="error-message">Lozinka mora imati najmanje 5 karaktera, jedno veliko slovo, jedan broj i jedan specijalni karakter.</span>
   </div>
 
   <div class="form-group">
   <label for="file"> Slika</label>
-    <input type="file" id="file" name="photo_path" >
+    <input data-parsley-required="true" type="file" id="file" name="photo_path" >
+    <span class="error-message">Sliku je obavezno dodati.</span>
+
   </div>
 
   <div class="form-group">
   <label for="mjesto-rodjenja"> Mjesto rođenja</label>
-    <input type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja" name="mjesto_rodjenja" >
+    <input data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="mjesto-rodjenja" placeholder="Mjesto rođenja" name="mjesto_rodjenja" >
+    <span  class="error-message">Mjesto mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
+
   </div>
 
   <div class="form-group">
   <label for="adresa-boravista"> Adresa boravišta</label>
-    <input type="text" id="adresa-boravista" placeholder="Adresa boravišta" name="adresa_boravista" >
+    <input data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="adresa-boravista" placeholder="Adresa boravišta" name="adresa_boravista" >
+    <span  class="error-message">Adresa mora počinjati velikim slovom i ne smije biti duža od 20 karaktera</span>
   </div>
 
   <div class="form-group">
-  <label for="date-of-birth"> Date of Birth</label>
-    <input type="date" id="date-of-birth" placeholder="Date of Birth" name="date_of_birth" >
+  <label for="date-of-birth"> Datum rođenja</label>
+    <input data-parsley-required="true" data-parsley-birthdate type="date" id="date-of-birth" placeholder="Date of Birth" name="date_of_birth" >
+    <span class="error-message">Morate imati 18 godina.</span>
+
   </div>
 
   <div class="form-group">
   <label for="jmbg"> JMBG</label>
-    <input type="text" id="jmbg" placeholder="JMBG" name="jmbg" >
+    <input data-parsley-length="[12, 15]" data-parsley-required="true" type="text" id="jmbg" placeholder="JMBG" name="jmbg" >
+    <span  class="error-message">JMBG mora biti u razmaku od 13 do 15 karaktera</span>
+
   </div>
 
   <div class="form-group">
   <label for="position"> Pozicija</label>
-    <input type="text" id="position" placeholder="Pozicija" name="position" >
+    <input data-parsley-length="[5, 50]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true" type="text" id="position" placeholder="Pozicija" name="position" >
+    <span  class="error-message">Morate unijeti poziciju radnika</span>
   </div>
 
   <div class="form-group">
   <label for="employment-status"> Status</label>
-    <select id="employment-status" name="employment_status" >
+    <select id="employment-status" name="employment_status">
       <option value="stalno-zaposlen">Stalno zaposlen</option>
       <option value="privremeno">Privremeno</option>
     </select>
@@ -233,12 +255,16 @@ label{
 
   <div class="form-group">
   <label for="start-date"> Datum zaposlenja</label>
-    <input type="date" id="start-date" placeholder="Start Date" name="start_date" >
+    <input data-parsley-required="true" type="date" id="start-date" placeholder="Start Date" name="start_date" >
+    <span  class="error-message">Datum zaposlenja je obavezan</span>
+
   </div>
 
   <div class="form-group">
   <label for="plata"> Plata</label>
-    <input type="text" id="plata" placeholder="Plata" name="plata" >
+    <input data-parsley-required="true" type="text" id="plata" placeholder="Plata" name="plata" >
+    <span  class="error-message">Plata je obavezna</span>
+
   </div>
 
   <div class="form-group">
@@ -269,8 +295,9 @@ label{
     require_once "../inc/footer.php";
 
     ?>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    
+    <script>/*
 document.getElementById('employeeForm').addEventListener('submit', function (event) {
     var password = document.getElementById('sifra').value;
     var passwordInput = document.getElementById('sifra');
@@ -313,5 +340,50 @@ document.getElementById('employeeForm').addEventListener('submit', function (eve
       passwordInput.classList.remove('invalid');
       errorMessage.style.display = 'none';
     }
+});
+*/
+//poruke za nepravilan unos
+$('#validationForm').parsley({
+  errorsContainer: function (ParsleyField) {
+    return ParsleyField.$element.siblings('.error-message'); 
+  },
+  errorsWrapper: '', 
+  errorTemplate: ''
+});
+
+$('#validationForm').parsley({
+    errorsContainer: function (ParsleyField) {
+        return ParsleyField.$element.siblings('.error-message');
+    }
+});
+
+$('#validationForm').parsley().on('field:validated', function(field) {
+      var $field = $(field.$element);
+      var $errorMessage = $field.siblings('.error-message');
+      
+      if (field.isValid()) {
+          $errorMessage.hide();
+          $field.removeClass('invalid');
+      } else {
+          $errorMessage.show();
+          $field.addClass('invalid');
+      }
+  });
+
+  Parsley.addValidator('birthdate', {
+  validateString: function(value) {
+    const today = new Date(); // Get today's date
+    const birthDate = new Date(value); // Convert input value to date
+    const age = today.getFullYear() - birthDate.getFullYear(); // Calculate age
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const dayDifference = today.getDate() - birthDate.getDate();
+
+    // Adjust age calculation based on the current month and day
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+      return age - 1 >= 18;
+    }
+
+    return age >= 18; // Ensure age is 18 or more
+  }
 });
 </script>
