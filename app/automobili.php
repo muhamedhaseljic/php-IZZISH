@@ -292,7 +292,7 @@ if(isset($_SESSION['message'])) :?>
     <div class="custom-main-content content">
         <h1 >Lista automobila</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="text" placeholder="Pretraži po nazivu..." class="custom-search-bar">
+                <input type="text" id="search-input" placeholder="Pretraži po nazivu..." class="custom-search-bar">
                 <a href="../admin/dodaj_automobil.php" class="custom-add-btn">Dodaj</a>
             </div>
             <div class="scrolling-divv">
@@ -310,7 +310,7 @@ if(isset($_SESSION['message'])) :?>
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="car-table">
                 <?php
                   
                   $sql = "SELECT automobili.*,
@@ -343,7 +343,7 @@ if(isset($_SESSION['message'])) :?>
                                     echo "<div class='yesEmployee'>" . $car['employee_name'] ." ".$car['employee_last_name']. "</div>";
                                 }
                                 else{
-                                    echo "<div class='noEmployee'>Nema vozaća</div>";
+                                    echo "<div class='noEmployee'>Nema vozača</div>";
                                 }
 
                             ?>
@@ -419,4 +419,20 @@ if(isset($_SESSION['message'])) :?>
         }
     }
 });
+
+document.getElementById('search-input').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#car-table tr');
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(2)'); 
+            const name = nameCell.textContent.toLowerCase();
+
+            if (name.startsWith(searchValue)) {
+                row.style.display = ''; 
+            } else {
+                row.style.display = 'none'; 
+            }
+        });
+    });
 </script>
