@@ -397,7 +397,7 @@ if(isset($_SESSION['message'])) :?>
                 <li><strong>Radnik zadužen za posao:</strong> <span id="customer-employee-name"></span> <span id="customer-employee-surname"></span></li>
                 <li id="osobe-product-name"><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
                 <div id="customer-product-food">
-                    <li><strong>Hrana:</strong> <span id="customer-product-food-name"></span></li>
+                    <li><strong>Naziv:</strong> <span id="customer-product-food-name"></span></li>
                     <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
                     <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
                 </div>

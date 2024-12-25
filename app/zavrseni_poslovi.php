@@ -336,7 +336,7 @@ tbody tr:last-child {
                 <li><strong> <span id="customer-service" ></span></strong></li>
                 <li id="osobe-product-name"><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
                 <div id="customer-product-food">
-                    <li><strong>Hrana:</strong> <span id="customer-product-food-name"></span></li>
+                    <li><strong>Naziv:</strong> <span id="customer-product-food-name"></span></li>
                     <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
                     <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
                 </div>

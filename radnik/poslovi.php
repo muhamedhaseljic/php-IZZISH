@@ -536,7 +536,9 @@ $radnik_id = $employee_data['employee_id'];
             <h2> <strong> Podaci o poslu </strong></h2>
             <p>---------------------------------------------------- </p>
             <ul>
-                <li><strong>Kupac: </strong><span id="customer-first-name"  ></span> <span id="customer-last-name"  ></span></li>
+                <li><strong>Kupac: </strong><span id="customer-first-name"  ></span> 
+                    <span id="customer-last-name"  ></span>
+                </li>
                 <li><strong>Email:</strong> <span id="customer-email"></span></li>
                 <li><strong>Telefon:</strong> <span id="customer-phone"></span></li>
                 <li><strong>Grad:</strong> <span id="customer-city"></span></li>
@@ -548,7 +550,7 @@ $radnik_id = $employee_data['employee_id'];
                 <li><strong> <span id="customer-service" ></span></strong></li>
                 <li id="osobe-product-name"><strong>Osobe:</strong> <ul id="customer-product-name"></ul></li>
                 <div id="customer-product-food">
-                    <li><strong>Hrana:</strong> <span id="customer-product-food-name"></span></li>
+                    <li><strong>Naziv:</strong> <span id="customer-product-food-name"></span></li>
                     <li><strong>Tip:</strong> <span id="customer-product-food-type"></span></li>
                     <li><strong>Opis:</strong> <span id="customer-product-food-description"></span></li>
                 </div>
