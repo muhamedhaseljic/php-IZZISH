@@ -4,8 +4,6 @@ $target_dir = "../images/";
 if($_SERVER['REQUEST_METHOD']== "POST"){
     $radnik_temp = new Radnik();
     $employee_id = $employee_data['employee_id'];
-    $first_name= $_POST['ime'];
-    $last_name = $_POST['prezime'];
     $email = $_POST['email'];
     $phone_number = $_POST['telefon'];
     //$password = password_hash($password, PASSWORD_DEFAULT);
@@ -16,16 +14,6 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
     else{
         $password = $employee_data['password'];
     }
-    $employment_status = $_POST['radni_status'];
-    $mjesto_rodjenja = $_POST['mjesto_rodjenja'];
-    $adresa_boravista = $_POST['adresa_boravista'];
-    $date_of_birth = $_POST['datum_rodjenja'];
-    $jmbg = $_POST['jmbg'];
-    $position = $_POST['pozicija'];
-    $start_date = $_POST['datum_zaposlenja'];
-    $plata = $_POST['plata'];
-    $gender = $_POST['spol'];
-    $notes = "";
     
     if (empty($_FILES['photo_path']['name'])){
         $photo_path = $employee_data['photo_path'];
