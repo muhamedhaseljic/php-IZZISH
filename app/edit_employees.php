@@ -28,6 +28,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $gender = $_POST['gender'];
   $notes = $_POST['notes'];
 
+  if (empty($_FILES['photo_path']['name'])){
+    $photo_path = $result['photo_path'];
+  }
+  else{
   $photo_path = basename($_FILES['photo_path']['name']);
         $target_file = $target_dir . $photo_path;
         $uploadOk = 1;
@@ -38,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             $uploadOk = 0;
         }
         move_uploaded_file($_FILES["photo_path"]["tmp_name"], $target_file);
-
+      }
         $employee_obj->update($employee_id, $first_name, $last_name, $email, $phone_number,$date_of_birth, $mjesto_rodjenja,$gender, $jmbg, $photo_path, $adresa_boravista, $start_date, $employment_status, $plata, $position, $notes);
         header('Location: ../app/dashboard.php?page=radnici');
         exit();
@@ -206,7 +210,7 @@ label{
 
   <div class="form-group">
   <label for="sifra"> Sifra</label>
-    <input type="password" id="sifra" value="<?php echo $result['password'] ?>" placeholder="Šifra" name="password" disabled>
+    <input type="password" id="sifra"  placeholder="*****" name="password" disabled>
   </div>
 
   <div class="form-group">

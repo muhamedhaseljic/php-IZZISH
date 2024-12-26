@@ -1,0 +1,50 @@
+TOP 15 savjeta za mlade ljude koji traže posao u IT\Software development branši
+1. Sjedi sam(a) sa sobom i reci sebi:
+a. JA TO ŽELIM
+b. JA TO MOGU
+c. JA SAM SPREMNA\SPREMAN PLATITI CIJENU
+d. NIŠTA ME NEĆE IZBACITI IZ TAKTA
+e. NIŠTA ME NEĆE ZAUSTAVITI
+2. Pogledajte oglase i ustanovite šta se “traži”. Od onoga što se “traži” izaberite ono što vam se sviđa i što bi voljeli raditi
+3. Uzmite sebi 1 godinu dana da naučite i savladate Techstack koji ste izabrali. Nećete za godinu dana postati eksperti ali ćete 
+ako marljivo budete ucili sigurno biti sposobni da krenete raditi kao Junior
+4. Moji prijedlozi tehnologija (prema svrhama):
+0.) Web develpement (najtraženije na tržištu):
+Bazne tehnologije su : HTML, JavaScript I CSS (obavezno)
+A.) FRONTEND: VUE.js ILI REACT ILI ANGULAR (čiji ja nisam fan ali je definitivno tražen i popularan framework)
+B.) BACKEND: Node.js (JavaScript) ILI Java ILI Phyton ILI C++ ILI C# (.Net) ILI PHP
+C.) BAZE PODATAKA: MYSQL ILI MSSQL ILI NoSQL ILI PostgreSQL ILI Mongo… (izbor DB donekle zavisi i od izbora Backenda. 
+Pa tako su za Fullstack developere (ljude koji mogu da rade I Frontend I Backend) MERN(Mongo, Express(JavaScript),React, Node) 
+I MEAN(Mongo, Express(JavaScript), Angular, Node) “najpoznatije” grupisane tehnologije.
+D.) DESKTOP DEVELOPMENT: Java ILI C# (WPF) ILI C++ …
+E.) EMBEDDED: PHYTON ILI JAVA ILI C++…
+F.) MOBILNE APLIKACIJE: ReactNative (JavaScript), Xamarin(C#)
+G.) Ovo su samo neke od primjena ali pokrivaju većinu oglasa za posao software developera
+5. Napravite account na canva.com (besplatno), iazberite jedan od bezbroj prelijepih template-a za CV i ubacite svoje podatke 
+i prilagodite prema svom ukusu.
+6. Profesionalni CV treba da se sastoji od sljedeća 4 odvojena dokumenta:
+a. Cover
+b. Motivacijsko pismo
+c. Biografija
+d. Prilozi (Diploma, Kursevi…)
+7. Kad kompletirate prvu verziju CV-a dajte kvalitetnim ljudima iz vašeg okruženja da pogledaju pročitaju i daju sugestije za ispravke.
+8. Napravite spisak firmi koje koriste tehnologije koje ste naučili (u tački 3.) i poredajte ih po vašem afinitetu (prva je ona gdje biste najviše voljeli raditi)
+9. Isprintajte CV u 20 primjeraka u boji. Sa isprintanim CV-om bez najave otiđite na vrata svake od ovih firmi sa liste (dok ne dobijete posao) i zamolite za 10 minuta! razgovora sa šefom ili onim ko ima ingerenciju odlučivanja o personalu. (Nema veze što će to biti pola sata ili duže, bitno je da dobijete priliku da se predstavite – a onda je do vas)
+10. Prije polaska na ove razgovore (koje možda i ne dobijete u svakoj od ovih firmi ali „who cares“ idemo dalje) informišite se na googlue o najčešćim interview pitanjima, toku intervijua I spremite dobre odgovore (Tip: I ovo se može naći na googlu – koji će vam biti svakodnevice jednom kad postanete developer )
+11. Ako ne znate engleski ili ste slabi sa engleskim krenite danas sa učenjem (ne čekajte sutra). Ovo bi možda trebala biti tačka broj 1 jer bez engleskog u svijetu developementa a i inače nisi nigdje prispio\prispjela.
+12. Kad dobijete priliku za razgovor sa šefom firme, nastupite samopouzdano [NEMATE ŠTA IZGUBITI! (BUKVALNO NIŠTA)!)]
+Ipak ste vi učili godinu dana te tehnologije i imate šta reći. Taj learning path i iskustva na njemu obavezno spomenite potencijalnom poslodavcu. To će i za nju\njega biti važan signal da razgovara sa kandidatom koji nije pao s Marsa nego se marljivo i sistematično spremio za razgovor. Otvoreno recite da ne znate sve ali da ste spremni da brzo dopunite I proširite znanje onim što vam nedostajte i kroz rad postanete jedan od najboljih developera u branši\tehnologiji te svojim odgovornim, predanim i marljivim radom pridonesete uspjehu i napretku firme u svakom pogledu.
+13. Na svakom razgovoru koji “ne upali” (a garantujem da ih neće biti puno ako budete slijedili ovo uputstvo) zamolite onoga s kim ste imali razgovor da vam da iskren razlog zbog kojeg su vas odbili i da vam daju savjet ili dva za sljedeći razgovor. Zapišite ove odgovore i primjenite ih na sljedećem razgovoru. I tako sve dok ne dobijete posao.
+Tip: One koji vas savjetuju da ne dolazite tako bez najave sa CV-om u rukama ignorisite. Kroz posao šefa sektora za razvoj software-a sam dobio bezbroj mailova sa aplikacijama i većina njih je bez bilo kakve dublje analize otišla u smeće. Uživo RULES!
+14. Ako nije prošlo sa prvih 20 firmi (za što je vjerovatnoća ekstremno niska) isprintajte jos 10 primjeraka CV i uputite se u sljedećih 10 firmi. I tako dok ne “upali”. Garantujem da ćete za manje od 3 mjeseca dobiti posao. A dokle ćete poslje toga dosegnuti zavisi samo od vašeg truda, angažmana i volje I spremnosti za učenjem i usavršavanjem.
+15. I zadnje ali jako bitno (Last but not the least) povedite računa o vašem izgledu kad odete na vrata firme. Svi se detalji broje.
+a. Obucite najljepše odjelo koje imate, a ako nemate ništa za ovu svrhu kupite pa to obucite (ako treba i posudite pare- isplatit će se)
+b. Vodite računa da cipale pašu uz odjelo i da su čiste
+c. Kosa mora biti uredna (najbolje posjetite firzera prije nego što krenete na razgovore – posjete firmama) I uvijek prije izlaska bacite oko na ogledalo da vidite jeli sve „pod konac“
+d. Prije svakog razgovora temeljito operite zube – ne mogu dovoljno naglasiti koliko je ovo bitno
+e. Uvijek sa sobom ponesite nešto za pisanje – najbolje aktu sa papirom i olovkom. Pažljivo slušajte i pišite crtice kad potencijalni poslodavac govori
+f. Nastupajte u svaku firmu sa osmjehom i mijenjajte osmjeh\ozbiljno lice na razgovoru uz prevagu osmjeha te napustite firmu sa osmjehom, zahvalom i srdačnim pozdravom, čak i ako je odgovor na vašu aplikaciju bio negativan (Kako naš narod voli reći: Nigdje ne zatvaraj vrata guzicom jer ne znaš kad ćeš opet na ta vrata pokucati)
+Eto toliko od mene. Sigurno sam bar ovoliko još propustio da napišem (nestalo mi papira 😛) . Javite se slobodno. Pitajte. Ja ću vam uvijek rado (koliko mogu) pomoći savjetom ili na bilo koji drugi način. Iskreno se nadam da će vam ovo uputstvo korisititi. Nisam štedio vremena da ga napravim. Budite iskreni i vrijedni jer to se na duge staze uvijek isplati.
+SRETNO!
+Esselamu alejkum i lijepi pozdravi.
+Asmir Dzebo
