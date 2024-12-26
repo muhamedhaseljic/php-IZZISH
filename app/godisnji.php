@@ -369,7 +369,6 @@ tbody tr:last-child {
         <div class="box">
         <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Na čekanju</h2>
-        <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
     </div>
     <div class="scrolling-divv" >
     <table class="styled-table">
@@ -430,7 +429,6 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odobreno</h2>
-    <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
 </div>
 
         <div class="scrolling-divv" >
@@ -487,7 +485,6 @@ tbody tr:last-child {
       <div class="box">
       <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Odbijeno</h2>
-    <input type="text" id="search-input" placeholder="Pretraži po imenu..." class="custom-search-bar">
 </div>
 <div class="scrolling-divv" >
     <table class="styled-table">
