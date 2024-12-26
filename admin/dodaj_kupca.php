@@ -414,7 +414,7 @@ input[type="checkbox"]:checked + label:after {
   <div class="form-group">
   <label for="ustanova"> Ustanova</label>
     <input type="text" id="ustanova" placeholder="Ustanova"  name="ustanova"
-    data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-required="true">
+    data-parsley-length="[2, 20]" data-parsley-pattern="^[A-Z].*" data-parsley-trigger="change">
     <span class="error-message">Ustanova mora počinjati velikim slovom i ne smije biti duže od 20 karaktera</span>
   </div>
 
