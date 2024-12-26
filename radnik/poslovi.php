@@ -413,7 +413,7 @@ $radnik_id = $employee_data['employee_id'];
         <h1 >Poslovi u ovoj sedmici</h1>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
-                    <input type="text" placeholder="Pretraži po gradu..." class="custom-search-bar">
+                    <input type="text" id="search-input" placeholder="Pretraži po gradu..." class="custom-search-bar">
                     <button class="service-filter-btn active" data-filter="all" onclick="filterRowsByButton(this)">Sve</button>
                     <button class="service-filter-btn" data-filter="Analiza" onclick="filterRowsByButton(this)">Analiza</button>
                     <button class="service-filter-btn" data-filter="Sanitarna" onclick="filterRowsByButton(this)">Sanitarna</button>
@@ -440,7 +440,7 @@ $radnik_id = $employee_data['employee_id'];
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="jobs-table">
                 <?php $employee_data = $radnik->get_employee_data() ?>
                 <?php $radnik_id = $employee_data['employee_id'] ?>
 
@@ -849,5 +849,23 @@ function showPopup(employeeId, employeeName, employeeLastName) {
         }
     }
 });
+
+// search city
+
+document.getElementById('search-input').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#jobs-table tr');
+
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:nth-child(6)'); 
+            const name = nameCell.textContent.toLowerCase();
+
+            if (name.startsWith(searchValue)) {
+                row.style.display = ''; 
+            } else {
+                row.style.display = 'none'; 
+            }
+        });
+    });
     
     </script>
